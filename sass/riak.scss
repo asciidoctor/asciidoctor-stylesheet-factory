@@ -1,0 +1,125 @@
+/* Derived from the Riak documentation theme developed by Basho Technologies, Inc. | CC BY 3.0 License | http://docs.basho.org */
+@import "fonts/titillium-web";
+@import "fonts/noticia-text";
+@import "settings/riak";
+@import "components/asciidoc";
+
+body {
+  background-image: image-url('riak/body-bg.jpg', false, false);
+  //@include bg-noise-mono(#f0f0f0, 4, .07, 200);
+}
+
+::selection {
+  background-color: #fcc07f;
+  color: #fff;
+}
+
+#header h1 {
+  font-weight: bold;
+}
+
+.literalblock,
+.listingblock {
+  & > .content > pre {
+    @include single-box-shadow(#AEB9B6, 0, 1px, 4px, $inset:inset);
+    @include border-radius(5px);
+    //font-size: 80%;
+  }
+}
+
+ul > li {
+  list-style-type: square;
+}
+
+p > em {
+  font-family: 'Noticia Text', serif;
+  font-weight: 400;
+  font-size: 95%;
+}
+
+.admonitionblock {
+  & > table {
+    width: 100%;
+    background-image: image-url('riak/info-bg.jpg', false, false);
+    border-collapse: separate;
+    border-spacing: 0;
+    @include border-radius(5px);
+    border: 1px solid #9EC6DF;
+    td.icon {
+      padding: 15px;
+      .icon-tip:before {
+        text-shadow: 0 0 20px white, 1px 1px 2px rgba(155, 155, 0, .8);
+      }
+    }
+    td.content {
+      font-family: 'Noticia Text', italic;
+      font-size: 90%;
+      font-style: italic;
+      border: 0;
+      padding: 15px;
+    }
+  }
+}
+
+.admonitionblock .literalblock > .content > pre,
+.admonitionblock .listingblock > .content > pre {
+  background-image: image-url('riak/info-bg.jpg', false, false);
+}
+
+.exampleblock > .content {
+  background-color: transparent;
+  border-color: #c9c9c9;
+}
+
+.sidebarblock {
+  background-image: image-url('riak/sidebar-bg.jpg', false, false);
+  //@include bg-noise-mono(#444445, 8, .125, 200);
+  @include border-radius(5px);
+  & > .content {
+    & > .title { 
+      color: #f1f1f1;
+      text-shadow: 0px 2px 2px black;
+      font-size: emCalc(20px);
+      font-weight: bold;
+    }
+    ul, p { 
+      color: #f1f1f1;
+      text-shadow: 0px 1px 1px black;
+    }
+    .title {
+      color: #dfdfdf;
+    }
+    tt {
+      color: #333;
+    }
+    a {
+      color: #60B5D8;
+    }
+    a:hover {
+      color: #FAA94C;
+    }
+
+    .admonitionblock p,
+    .admonitionblock ul {
+      text-shadow: none;
+      color: $blockquote-font-color;
+    }
+  }
+}
+
+table.tableblock.grid-all {
+  @include border-radius(0);
+  @include single-box-shadow(#999, 0, 1px, 3px);
+}
+
+#footer {
+  background-image: image-url('riak/footer-bg.jpg', false, false);
+  padding: 25px 0;
+}
+
+#footer-text {
+  color: #fff;
+  text-shadow: 1px 1px 1px #333;
+  font-size: 80%;
+  text-align: center;
+}

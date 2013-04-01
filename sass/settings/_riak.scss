@@ -1,0 +1,84 @@
+@import "defaults";
+
+// Body
+
+$em-base: 16px;
+$body-font-family: 'Titillium Web', Verdana, Arial, sans-serif;
+$body-font-color: #515151;
+$primary-color: #2984A9;
+$alert-color: lighten(#6d180b, 15%);
+$global-radius: 4px;
+
+// Headings
+
+$header-font-family: $body-font-family;
+$header-font-weight: normal;
+$header-font-color: #616366;
+$header-text-rendering: geometricPrecision;
+$header-top-margin: .5em;
+$subheader-font-color: darken($header-font-color, 15%);
+$title-font-color: $header-font-color;
+$sect-divider-style: dashed;
+$sect-divider-color: #ccc;
+$sidebar-header-border-size: 0;
+
+// Paragraphs
+
+$paragraph-text-rendering: $header-text-rendering;
+$paragraph-line-height: 1.5;
+$paragraph-margin-bottom: emCalc(15px);
+
+// Inline Code
+
+$code-font-family: monospace, serif;
+$code-font-weight: normal;
+$code-font-size: .9em;
+$code-color: $body-font-color;
+$code-bg-color: #dfdfdf;
+$code-border-color: #c9c9c9;
+$code-border-size: 1px;
+$code-padding: 0 3px;
+
+// Code Blocks
+// *Recommended highlight.js themes: googlecode, default, xcode
+
+$pre-font-family: monospace, serif;
+$pre-font-size: .8em;
+$pre-padding: 15px;
+$pre-border-color: #f0f0f0;
+$pre-border-size: 0 0 1px 0;
+$pre-bg: image-url('riak/pre-bg.jpg', false, false);
+//$pre-bg: background_noise(#DDE8E4, 4, .08, 400, false);
+
+// Links
+
+$anchor-text-decoration: underline;
+$anchor-font-color-hover: #FAA94C;
+
+// Lists
+$list-side-margin: emCalc(24px);
+$definition-list-header-margin-bottom: emCalc(5px);
+$definition-list-margin-bottom: emCalc(20px);
+
+// Blockquotes
+
+$blockquote-font-color: $header-font-color;
+$blockquote-cite-font-size: inherit;
+$blockquote-cite-font-color: darken($blockquote-font-color, 10%);
+
+// Tables
+
+$table-bg: #f1f1f1;
+$table-even-row-bg: #dfdfdf;
+$table-head-bg: #dfdfdf;
+$table-head-font-size: inherit;
+$table-row-font-size: inherit;
+$table-line-height: 1.5;
+$table-border-color: white;
+$table-border-size: 5px;
+$table-border-highlight-size: 5px;
+$table-border-highlight-color: white;
+
+// Icons
+
+$icon-text-shadow: 0 0 8px #fff, $icon-text-shadow;

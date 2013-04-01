@@ -1,0 +1,62 @@
+@import "defaults";
+
+// Body
+
+$em-base: 16px;
+//$body-bg: #fcfcfc;
+$primary-color: #005498;
+$alert-color: lighten(#6d180b, 15%);
+$global-radius: 4px;
+
+// Headings
+
+$header-font-family: "Lucida Grande", Georgia, Verdana, "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-weight: normal;
+$header-font-color: #BA3925;
+$header-top-margin: 1em;
+$subheader-font-color: darken($header-font-color, 15%);
+$sect-divider-size: 3px;
+$sect-divider-style: double;
+$sect-divider-color: #ebebeb;
+$sidebar-header-border-size: 0 0 1px 0 !default;
+
+// Paragraphs
+
+// Inline Code
+
+$code-font-weight: normal;
+$code-font-size: emCalc($em-base - 1px);
+$code-bg-color: darken(#fff, 5%);
+$code-border-color: darken(#fff, 20%);
+$code-border-size: 1px;
+$code-padding: 1px 3px 0;
+
+// Code Blocks
+// *Recommended highlight.js themes: magula, default, docco
+
+$pre-border-size: 1px 0;
+$pre-border-style: dotted;
+$pre-border-color: #bfbfbf;
+
+// Links
+
+$anchor-text-decoration: underline;
+
+// Lists
+$list-side-margin: emCalc(24px);
+$definition-list-header-margin-bottom: emCalc(5px);
+$definition-list-margin-bottom: emCalc(20px);
+
+// Blockquotes
+
+$blockquote-font-color: lighten($body-font-color, 30%);
+$blockquote-cite-font-size: inherit;
+$blockquote-cite-font-color: darken($blockquote-font-color, 10%);
+
+// Tables
+
+$table-head-font-size: inherit;
+$table-row-font-size: inherit;
+$table-line-height: 1.6;
+$table-border-highlight-color: #468847 !default;
+$table-border-highlight-size: 3px !default;

@@ -1,0 +1,55 @@
+@import "defaults";
+
+// Body
+
+$body-font-color: #000;
+$body-font-family: ff-meta-web-pro-1, ff-meta-web-pro-2, Arial, 'Helvetica Neue', sans-serif;
+$title-font-color: #111;
+$global-radius: 6px;
+$primary-color: #444;
+
+// Headers
+
+$header-font-color: #465158;
+$header-font-family: $body-font-family;
+$header-top-margin: 1em;
+$subheader-font-color: #6c818f;
+
+// Paragraphs
+
+$paragraph-line-height: 1.5;
+
+// Inline Code
+
+$code-bg-color: #f2f2f2;
+$code-color: $primary-color;
+$code-font-size: 0.95em;
+$code-font-weight: normal;
+$code-font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+
+// Code Blocks
+// *Recommended highlight.js themes: googlecode
+
+$pre-bg: #eee;
+$pre-border-color: #ccc;
+$pre-padding: .5em;
+$pre-font-size: .95em;
+$pre-font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+$pre-line-height: 1.2;
+
+// Links
+
+$anchor-text-decoration: underline;
+$anchor-font-color-hover: #111;
+
+// Tables
+
+$table-line-height: $paragraph-line-height;
+$table-even-row-bg: none;
+$table-border-size: 0;
+$table-head-bg: none;
+$table-head-font-size: emCalc(16px);
+$table-head-padding: 1px 8px 1px 5px;
+$table-border-highlight-size: 0;
+$table-row-padding: 1px 8px 1px 5px;
+$table-row-font-size: emCalc(16px);

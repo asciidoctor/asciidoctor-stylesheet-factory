@@ -1,0 +1,69 @@
+@import "normalize";
+@import "foundation/foundation-global";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+
+// custom default variables
+// NOTE we have a chicken-egg problem here since Foundation
+// doesn't define all of it's variables in global, many
+// come from importing the components
+$rainbow-lightness: -25% !default;
+$rainbow-bg-lightness: -2% !default;
+$table-border-highlight-color: #ddd !default;
+$table-border-highlight-size: 1px !default;
+$title-font-color: #000 !default;
+$font-smoothing: antialiased !default;
+$sect-divider-size: 1px !default;
+$sect-divider-style: solid !default;
+$sect-divider-color: #ddd !default;
+$sidebar-header-border-style: solid !default;
+$sidebar-header-border-size: 0 !default;
+$sidebar-header-border-color: #ddd !default;
+
+$code-font-size: inherit !default;
+$code-bg-color: inherit !default;
+$code-border-color: #ddd !default;
+$code-border-style: solid !default;
+$code-border-size: 0 !default;
+$code-padding: 0 !default;
+
+$pre-font-family: Consolas, 'Liberation Mono', Courier, monospace !default;
+$pre-font-size: emCalc($em-base) !default;
+$pre-font-color: inherit !default;
+$pre-border-size: 1px !default;
+$pre-border-style: solid !default;
+$pre-border-color: #ddd !default;
+$pre-bg: none !default;
+$pre-padding: emCalc(12px) emCalc(12px) emCalc(8px) emCalc(12px) !default;
+$pre-line-height: 1.6 !default;
+
+$icon-text-shadow: 1px 1px 2px rgba(0, 0, 0, .5) !default;
+
+$definition-list-content-margin-left: emCalc(18px) !default;
+
+// exclude unnecessary styles
+$include-html-grid-classes: false;
+$include-html-panel-classes: false;
+$include-print-styles: true;
+
+// cut down on number of vendor prefixes used
+$experimental-support-for-khtml: false;
+$experimental-support-for-microsoft: false;
+$experimental-support-for-mozilla: false;
+$experimental-support-for-opera: false;
+$experimental-support-for-webkit: true;
+
+// bg-noise from https://gist.github.com/aaronrussell/856571 by Aaron Russell
+$bg-noise-default-intensity: 0.5 !default;
+$bg-noise-default-opacity: 0.08 !default;
+$bg-noise-default-size: 200 !default;
+
+@mixin bg-noise($color, $intensity: $bg-noise-default-intensity, $opacity: $bg-noise-default-opacity, $size: $bg-noise-default-size, $mono: false) {
+  background-color: $color;
+  background-image: background_noise($color, $intensity, $opacity, $size, $mono);
+  background-repeat: repeat;
+}
+ 
+@mixin bg-noise-mono($color, $intensity: $bg-noise-default-intensity, $opacity: $bg-noise-default-opacity, $size: $bg-noise-default-size) {
+  @include bg-noise($color, $intensity, $opacity, $size, true);
+}
