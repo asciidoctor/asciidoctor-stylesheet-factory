@@ -72,7 +72,7 @@ You can quickly serve HTML files in the root directory of the project using the 
 Themes go in the +sass/+ folder.
 To create a new theme (e.g., +hipster+), start by creating two new files:
 
-+sass/hipster.scss::
++sass/hipster.scss+::
   * Imports the theme settings, which includes default variables and resets
   * Imports the AsciiDoc components
   * Defines any explicit customizations
