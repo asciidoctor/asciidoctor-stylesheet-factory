@@ -4,6 +4,9 @@
 @import "foundation/components/panels";
 @import "foundation/components/tables";
 
+// controls whether built-in AsciiDoc role classes are generated
+$include-asciidoc-role-classes: true !default;
+
 body {
   //-webkit-font-smoothing: $font-smoothing;
   @extend .antialiased;
@@ -30,6 +33,28 @@ tt {
   //font-style: normal;
 }
 
+@if $anchor-text-decoration != none {
+  // hack to prevent text from being underlined when inside a link
+  // can be replaced with a! > tt in CSS 4
+  p a > tt {
+    display: inline-block;
+    height: 1.45em;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  @if $code-bg-color != inherit {
+    a > tt {
+      border-bottom: 1px solid $anchor-font-color;
+    }
+
+    a > tt:hover {
+      //background-color: darken($code-bg-color, 5%);
+      border-bottom: 1px solid $anchor-font-color-hover;
+    }
+  }
+}
+
 #header,
 #content,
 #footnotes,
@@ -39,7 +64,6 @@ tt {
 }
 
 #header {
-  border-bottom: $sect-divider-size $sect-divider-style $sect-divider-color;
   margin-bottom: $panel-margin-bottom * 2;
   & > h1 {
     color: $title-font-color;
@@ -70,9 +94,12 @@ tt {
 }
 
 #toc {
-  margin-bottom: $panel-margin-bottom * 2;
+  //margin-bottom: $panel-margin-bottom * 2;
+  border-bottom: $sect-divider-size $sect-divider-style $sect-divider-color;
+  padding-bottom: $panel-margin-bottom;
   & > ol {
-    margin-left: 0;
+    //margin-left: 0;
+    margin-left: emCalc(4px);
   }
   ol {
     list-style-type: none;
@@ -474,102 +501,40 @@ span.footnoteref {
   }
 }
 
-// AsciiDoc built-in roles
-span.big {
-  font-size: larger;
-}
-
-span.small {
-  font-size: smaller;
-}
-
-@each $decoration in (underline, overline, line-through) {
-  span.#{$decoration} {
-    text-decoration: $decoration;
-  }
-}
-
 .unbreakable {
   page-break-inside: avoid;
 }
 
-// colors must be quoted or else they may get converted to hex in compression output mode
-@each $color in ('aqua', 'black', 'blue', 'fuchsia', 'gray', 'green', 'lime', 'maroon', 'navy', 'olive', 'purple', 'red', 'silver', 'teal', 'white', 'yellow') {
-  span.#{$color} {
-    color: scale-color(string-to-color($color), $lightness: $rainbow-lightness);
-  }
-
-  span.#{$color}-background {
-    background-color: scale-color(string-to-color($color), $lightness: $rainbow-bg-lightness);
-  }
-}
-
-@import "../fonts/font-awesome";
-
-.admonitionblock td.icon {
-  [class^="icon-"]:before {
-    font-size: 2.5em;
-    text-shadow: $icon-text-shadow;
+// AsciiDoc built-in roles
+@if $include-asciidoc-role-classes {
+  span.big {
+    font-size: larger;
   }
   
-  .icon-note:before {
-    // @extend .icon-pushpin;
-    //content: "\f08d";
-    //color: scale-color(green, $lightness: $rainbow-lightness);
-
-    //@extend .icon-info-sign;
-    content: "\f05a";
-    //color: scale-color(mediumblue, $lightness: $rainbow-lightness);
-    color: $primary-color;
-    color: scale-color($primary-color, $lightness: $rainbow-lightness);
-  }
-  
-  .icon-tip:before {
-    // @extend .icon-info-sign;
-    //content: "\f05a";
-    //color: scale-color(mediumblue, $lightness: $rainbow-lightness);
-    // @extend .icon-lightbulb;
-    content: "\f0eb";
-    //color: scale-color(yellow, $lightness: $rainbow-lightness);
-    //color: scale-color(yellow, $saturation: -15%);
-    //color: $primary-color;
-    text-shadow: 1px 1px 2px rgba(155, 155, 0, .8);
-    color: #111;
-  }
-  
-  .icon-warning:before {
-    // @extend .icon-warning-sign;
-    content: "\f071";
-    color: scale-color(darkorange, $lightness: $rainbow-lightness);
+  span.small {
+    font-size: smaller;
   }
 
-  .icon-caution:before {
-    // @extend .icon-fire;
-    content: "\f06d";
-    color: scale-color(orangered, $lightness: $rainbow-lightness);
+  @each $decoration in (underline, overline, line-through) {
+    span.#{$decoration} {
+      text-decoration: $decoration;
+    }
   }
-  
-  .icon-important:before {
-    // @extend .icon-exclamation-sign;
-    content: "\f06a";
-    color: scale-color(red, $lightness: $rainbow-lightness);
-  }
-}
 
-.conum {
-  display: inline-block;
-  color: white;
-  background-color: $body-font-color;
-  @include border-radius(100px);
-  text-align: center;
-  width: 18px;
-  height: 18px;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 18px;
-  //font-family: $body-font-family;
-  font-family: Arial, sans-serif;
-  font-style: normal;
+  // colors must be quoted or else they may get converted to hex in compression output mode
+  @each $color in ('aqua', 'black', 'blue', 'fuchsia', 'gray', 'green', 'lime', 'maroon', 'navy', 'olive', 'purple', 'red', 'silver', 'teal', 'white', 'yellow') {
+    span.#{$color} {
+      color: scale-color(string-to-color($color), $lightness: $rainbow-lightness);
+    }
+  
+    span.#{$color}-background {
+      background-color: scale-color(string-to-color($color), $lightness: $rainbow-bg-lightness);
+    }
+  }
+
+  //*:not(code) > .comment {
+  //  background: yellow;
+  //}
 }
 
 // A completed catalog of available Foundation CSS resources, annotated with
