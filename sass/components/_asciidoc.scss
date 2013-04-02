@@ -243,6 +243,7 @@ tt {
     @if $pre-border-size != 0 {
       border-style: $pre-border-style;
       border-color: $pre-border-color;
+      @include border-radius($global-radius);
     }
     padding: $pre-padding;
     white-space: pre;
