@@ -4,6 +4,7 @@
 // schemed using:
 // - http://www.cssdrive.com/imagepalette/index.php using golo logo
 // - http://colorschemedesigner.com using #693C16
+// - http://colrd.com/image-dna/23430/ some inspiration
 
 $black: #2a1808;
 $black-brown: #362212;
@@ -32,9 +33,9 @@ $header-font-family: "Varela Round", Arial, sans-serif;
 //$header-font-family: "Droid Sans", Arial, sans-serif;
 $header-font-weight: normal;
 $header-font-color: #152347;
-$header-top-margin: 1em;
+$header-top-margin: .8em;
 //$subheader-font-color: darken($header-font-color, 15%);
-$title-font-color: #693C16;
+$title-font-color: $dark-brown;
 $hr-border-color: lighten($pale-brown, 20%);
 $sect-divider-color: lighten($pale-brown, 25%);
 $sect-divider-size: 1px;
@@ -62,7 +63,7 @@ $pre-border-color: transparentize($header-font-color, .9);
 //$pre-border-color: #f0f0f0;
 $pre-border-style: solid;
 $pre-font-color: black;
-$pre-padding: .8em .8em .6em .8em;
+$pre-padding: .8em;
 
 // Links
 

@@ -5,20 +5,81 @@
 
 body {
   //@include bg-noise(#fdfaf7, 4, .05, 400, false);
-  background-image: image-url('golo/body-bg.png');
+  background: image-url('golo/body-bg.png') $body-bg repeat;
+}
+
+@media #{$small} {
+  #toc {
+    position: static;
+    font-size: 1em;
+    background: none;
+    width: auto;
+    padding-top: .8em;
+    padding-left: 0; 
+    padding-right: 0;
+  }
+
+  #header,
+  #content,
+  #footer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+}
+
+@media #{$medium} {
+
+  #header,
+  #content,
+  #footer {
+    margin-left: emCalc(336px); // 320 + 16
+    margin-right: emCalc(16px);
+    width: auto;
+  }
+  
+  #footer {
+    margin-left: emCalc(320px);
+    width: auto;
+    margin-right: 0;
+  }
+
+  #toc {
+    position: fixed;
+    left: 0;
+    top: 0;
+    font-size: .9em;
+    overflow: auto;
+    width: emCalc(360px); // 360 * .9 ~ 320
+    height: 100%;
+    padding-top: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    background: image-url('golo/body-bg.png') $body-bg repeat;
+    z-index: 1000;
+    border-right: 1px solid $sect-divider-color;
+  }
+}
+
+#toctitle {
+  color: $header-font-color;
 }
 
 #header h1 {
   font-weight: bold;
   position: relative;
-  left: -4px;
+  left: emCalc(-1px);
+
+  span.lo {
+    color: $dark-orange;
+  }
 }
 
 #content {
-  h2, h3, h4, h5 {
+  h2, h3, h4, h5, #toctitle {
     font-weight: normal;
     position: relative;
-    left: -2px;
+    left: emCalc(-1px);
   }
 
   h2 {
