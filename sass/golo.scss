@@ -1,0 +1,41 @@
+@import "fonts/golo-collection";
+@import "settings/golo";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+
+body {
+  //@include bg-noise(#fdfaf7, 4, .05, 400, false);
+  background-image: image-url('golo/body-bg.png');
+}
+
+#header h1 {
+  font-weight: bold;
+  position: relative;
+  left: -4px;
+}
+
+#content {
+  h2, h3, h4, h5 {
+    font-weight: normal;
+    position: relative;
+    left: -2px;
+  }
+
+  h2 {
+    font-weight: bold;
+  }
+}
+
+.admonitionblock > table {
+  td.content {
+    border-color: $sect-divider-color;
+  }
+}
+
+table.tableblock.grid-all {
+  @include border-radius(0);
+}
+
+#footer {
+  background-color: darken($black-brown, 5%);
+}

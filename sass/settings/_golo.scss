@@ -1,0 +1,96 @@
+@import "defaults";
+
+// Colors
+// schemed using:
+// - http://www.cssdrive.com/imagepalette/index.php using golo logo
+// - http://colorschemedesigner.com using #693C16
+
+$black: #2a1808;
+$black-brown: #362212;
+$dark-brown: #693C16;
+$light-brown: #89572f;
+$pale-brown: #b49e8b; // or #c4ab97
+$dark-orange: #dc9424;
+$light-orange: #f8b231;
+$pale-orange: #eeca92;
+$dark-teal: #042829;
+$teal: #0E3D3F;
+
+// Body
+
+$em-base: 16px;
+$body-bg: #fdfaf7;
+$body-font-color: darken($black, 2%);
+$body-font-family: "Open Sans", Arial, sans-serif;
+$primary-color: lighten($dark-teal, 10%);
+//$alert-color: lighten(#6d180b, 15%);
+$global-radius: 6px;
+
+// Headings
+
+$header-font-family: "Varela Round", Arial, sans-serif;
+//$header-font-family: "Droid Sans", Arial, sans-serif;
+$header-font-weight: normal;
+$header-font-color: #152347;
+$header-top-margin: 1em;
+//$subheader-font-color: darken($header-font-color, 15%);
+$title-font-color: #693C16;
+$hr-border-color: lighten($pale-brown, 20%);
+$sect-divider-color: lighten($pale-brown, 25%);
+$sect-divider-size: 1px;
+$sect-divider-style: solid;
+
+// Paragraphs
+
+// Inline Code
+
+$code-color: #691816;
+
+// Code Blocks
+// *Recommended highlight.js themes: foundation
+
+$pre-font-size: .9em;
+$pre-font-family: monospace, serif;
+//$pre-bg: lighten($pale-brown, 30%);
+//$pre-bg: lighten(#5A9C9F, 40%);
+//$pre-bg: background_noise(#DBEAEA, 4, .08, 400, false);
+$pre-bg: image-url('golo/pre-bg.png');
+$pre-line-height: 1.4;
+$pre-border-size: 1px;
+//$pre-border-color: $hr-border-color;
+$pre-border-color: transparentize($header-font-color, .9);
+//$pre-border-color: #f0f0f0;
+$pre-border-style: solid;
+$pre-font-color: black;
+$pre-padding: .8em .8em .6em .8em;
+
+// Links
+
+$anchor-text-decoration: underline;
+$anchor-font-color-hover: darken($primary-color, 10%);
+
+// Lists
+$list-side-margin: emCalc(24px);
+$definition-list-header-margin-bottom: emCalc(5px);
+$definition-list-margin-bottom: emCalc(20px);
+// FIXME need to account for nested definition list
+//$definition-list-content-margin-left: 0;
+
+// Blockquotes
+
+$blockquote-font-color: darken($pale-brown, 20%);
+//$blockquote-cite-font-size: inherit;
+$blockquote-cite-font-color: darken($pale-brown, 30%);
+
+// Tables
+
+$table-even-row-bg: lighten(#6476A3, 45%);
+$table-border-color: lighten(#6476A3, 40%);
+$table-border-highlight-color: $table-border-color;
+//$table-head-bg: lighten(#5A9C9F, 5%);
+$table-head-bg: transparentize($dark-brown, .75);
+$table-head-font-size: inherit;
+$table-head-font-color: $body-font-color;
+$table-row-font-size: inherit;
+$table-row-font-color: $body-font-color;
+$table-line-height: 1.6;
