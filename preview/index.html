@@ -83,7 +83,7 @@ function change_stylesheet(name) {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph"><p>This guide provides a gentle introduction to <a href="http://asciidoc.org">AsciiDoc</a>, a <tt>plain</tt> <tt>text</tt> documentation <strong>syntax</strong> and <strong>processor</strong>.
-This introduction is intended for anyone who wants to reduce the work required to write and publish content, whether it be for technical documentation, articles, web pages or good ol'-fashioned prose.</p></div>
+This introduction is intended for anyone who wants to reduce the effort required to write and publish content, whether for technical documentation, articles, web pages or good ol'-fashioned prose.</p></div>
 <div class="paragraph"><p>In this guide, you&#8217;ll learn:</p></div>
 <div class="ulist">
 <ul>
@@ -100,14 +100,14 @@ This introduction is intended for anyone who wants to reduce the work required t
 <p>How to create your first AsciiDoc document</p>
 </li>
 <li>
-<p>How to add other structural elements such as lists, quotes and source code</p>
+<p>How to add other structural elements such as lists, block quotes and source code</p>
 </li>
 <li>
 <p>How to render an AsciiDoc document to HTML, DocBook and PDF</p>
 </li>
 </ul>
 </div>
-<div class="paragraph"><p>In addition to covering the AsciiDoc basics, this guide also recommends a set of conventions to help you create more consistent documents and maximize your writing productivity.</p></div>
+<div class="paragraph"><p>In addition to covering the AsciiDoc basics, this guide also suggests a set of conventions to help you create more consistent documents and maximize your writing productivity.</p></div>
 <div class="paragraph"><p>Let&#8217;s dive in to AsciiDoc!</p></div>
 </div>
 </div>
@@ -115,13 +115,13 @@ This introduction is intended for anyone who wants to reduce the work required t
 <h2 id="writing-in-asciidoc">Writing in AsciiDoc</h2>
 <div class="sectionbody">
 <div class="paragraph"><p>The goal of this section is to teach you how to compose your first AsciiDoc document.
-Hopefully you&#8217;ll agree that it just makes sense.</p></div>
+Hopefully, when you look back, you&#8217;ll agree it just makes sense.</p></div>
 <div class="paragraph"><p>Your adventures with AsciiDoc begin in your favorite text editor&#8230;</p></div>
 <div class="sect2">
 <h3 id="-it-s-just-text-mate">&#8220;It&#8217;s just text, mate.&#8221;</h3>
 <div class="paragraph"><p>Since AsciiDoc syntax is just <tt>plain</tt> <tt>text</tt>, you can write an AsciiDoc document using <em>any</em> text editor.
 You don&#8217;t need complex word processing programs like Microsoft Word, OpenOffice Writer or Google Docs.
-In fact, you <em>shouldn&#8217;t</em> use these programs because they add cruft to the document (that you can&#8217;t see) and makes conversion tedious.</p></div>
+In fact, you <em>shouldn&#8217;t</em> use these programs because they add cruft to your document (that you can&#8217;t see) and makes conversion tedious.</p></div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -141,7 +141,7 @@ A similar choice on Linux is <strong>GEdit</strong>.
 On Windows, stay away from Notepad and Wordpad because they produce plain text which is not cross-platform friendly.
 Opt instead for a competent text editor like <strong>Notepad++</strong>.
 If you&#8217;re a programmer (or a writer with an inner geek), you&#8217;ll likely prefer <strong>Vim</strong>, <strong>Emacs</strong>, or <strong>Sublime Text</strong>, all of which are available cross-platform.
-The key feature these editors share is <a href="http://asciidoc.org/#_editor_support">syntax highlighting for AsciiDoc</a>.</p></div>
+The key feature all these editors share is <a href="http://asciidoc.org/#_editor_support">syntax highlighting for AsciiDoc</a>.</p></div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -175,11 +175,11 @@ Enter twice, then just keep on typing.</pre>
 <div class="paragraph"><p>Just like that, <strong>you&#8217;re writing in AsciiDoc!</strong>
 <em>As you can see, it&#8217;s just like writing an e-mail.</em></p></div>
 <div class="paragraph"><p>Save the file with a file extension of <tt>.ad</tt> or <tt>.adoc</tt>.</p></div>
-<div class="admonitionblock tip">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="icon-tip"></i>
+<i class="icon-important"></i>
 </td>
 <td class="content">
 Although the file extension doesn&#8217;t matter to the AsciiDoc processor, it&#8217;s used in other contexts (such as by your editor or GitHub) to indicate the format of the document.
@@ -237,9 +237,9 @@ This feature is only available in Asciidoctor at the time of writing.</p></div>
 </div>
 <div class="sect2">
 <h3 id="admonitions">Admonitions</h3>
-<div class="paragraph"><p>There are certain statements that you want to place more emphasis by taking them out of the flow and labeling them with a priority.
+<div class="paragraph"><p>There are certain statements that you might want to draw attention to by taking them out of the flow and labeling them with a priority.
 These are called <em>admonition paragraphs</em>.
-To make an admonition paragraph, prefix it with a uppercase label, such as in this note:</p></div>
+To make a paragraph an admonition, prefix it with a uppercase label, such as in this note:</p></div>
 <div class="listingblock">
 <div class="content monospaced">
 <pre>NOTE: Admonition paragraphs call attention to special words of advice.</pre>
@@ -280,7 +280,7 @@ Admonitions can also encapsulate any block content, which we&#8217;ll cover late
 </table>
 </div>
 <div class="paragraph"><p>All words and no emphasis makes the document monotonous.
-Let&#8217;s give our paragraphs some emotion.</p></div>
+Let&#8217;s give our paragraphs some <strong><span class="big"><em>emotion</em></span></strong>.</p></div>
 </div>
 <div class="sect2">
 <h3 id="mild-punctuation-strong-impact">Mild punctuation, strong impact</h3>
@@ -288,15 +288,15 @@ Let&#8217;s give our paragraphs some emotion.</p></div>
 AsciiDoc refers to this markup as <em>quoted text</em>.</p></div>
 <div class="sect3">
 <h4 id="quoted-text">Quoted text</h4>
-<div class="paragraph"><p>For instance, in an e-mail, you might &#8220;speak&#8221; a word *louder* by encoding it in asterisks.
-As you would expect, this makes the word <strong>louder</strong> bold.</p></div>
+<div class="paragraph"><p>For instance, in an e-mail, you might &#8220;speak&#8221; a word louder by enclosing it in asterisks.</p></div>
 <div class="listingblock">
 <div class="content monospaced">
 <pre>I can't believe it, we *won*!</pre>
 </div>
 </div>
 <div class="paragraph"><p>As you would expect, the asterisks make the text <strong>won</strong> bold.
-This is one example of quoted text.</p></div>
+You can almost sense the emotion.
+This is one example of quoted (i.e., formatted) text.</p></div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2672,7 +2672,7 @@ When all else fails, send your question to the <a href="http://groups.google.com
 </div>
 <div id="footer">
 <div id="footer-text">
-Asciidoctor themes preview page. Lasted updated 2013-04-08 03:10:28 MDT
+Asciidoctor themes preview page. Lasted updated 2013-04-08 05:19:38 MDT
 </div>
 </div>
 </body>
