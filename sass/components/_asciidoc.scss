@@ -221,6 +221,10 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   @include single-box-shadow($panel-border-color, 0, 1px, 8px); 
 }
 
+.imageblock {
+  margin-bottom: $panel-margin-bottom;
+}
+
 .sidebarblock {
   @include panel;
   @include radius;
