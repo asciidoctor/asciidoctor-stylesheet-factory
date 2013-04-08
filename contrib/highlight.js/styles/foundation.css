@@ -1,8 +1,23 @@
+/*
+Description: Foundation 4 docs style for highlight.js
+Author: Dan Allen <dan.j.allen@gmail.com>
+Website: http://foundation.zurb.com/docs/
+Version: 1.0
+Date: 2013-04-02
+*/
+
 pre code {
-  background: #eee;
-  border: 1px solid #ccc;
+  background-color: #eee;
+  /*
+  font-size: .9em;
+  display: block;
+  line-height: 1.4;
+  font-family: monospace;
+  padding: .8em;
+  */
 }
 
+pre .decorator,
 pre .annotation {
   color: #000077;
 }
@@ -22,10 +37,16 @@ pre .comment {
   font-style: italic;
 }
 
+pre .function .title {
+  color: #900;
+}
+
 pre .class {
   color: #458;
 }
 
+pre .id,
+pre .pseudo,
 pre .constant,
 pre .hexcolor {
   color: teal;
@@ -39,6 +60,7 @@ pre .javadoc {
   color: #997700;
 }
 
+pre .pi,
 pre .doctype {
   color: #3344bb;
 }
@@ -74,6 +96,10 @@ pre .symbol {
   color: #990073;
 }
 
+pre .symbol .string {
+  color: #a60;
+}
+
 pre .tag {
   color: #007700;
 }
@@ -91,3 +117,4 @@ pre .scss .tag,
 pre .scss .attribute {
   color: #339;
 }
+
