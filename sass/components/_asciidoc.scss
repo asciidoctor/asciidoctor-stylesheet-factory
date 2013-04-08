@@ -7,6 +7,10 @@
 // controls whether built-in AsciiDoc role classes are generated
 $include-asciidoc-role-classes: true !default;
 
+// fall-through defaults
+$footer-bg: $body-font-color !default;
+$footer-font-color: invert($body-font-color) !default;
+
 body {
   //-webkit-font-smoothing: $font-smoothing;
   @extend .antialiased;
@@ -114,13 +118,13 @@ tt {
 #footer {
   max-width: 100%;
   //margin-top: $panel-margin-bottom * 2;
-  background-color: $body-font-color;
+  background-color: $footer-bg;
   padding: $panel-padding;
 }
 
 #footer-text {
-  color: #ccc;
-  line-height: 1.4;
+  color: $footer-font-color;
+  line-height: $paragraph-line-height * .9;
 }
 
 .sect1 {
@@ -134,7 +138,7 @@ tt {
 
 // AsciiDoc block styles
 
-.admonitionblock,
+.admonitionblock td.content,
 .exampleblock,
 .imageblock,
 .listingblock,
@@ -147,23 +151,36 @@ tt {
 .verseblock,
 .ulist,
 .olist,
-.dlist {
+.dlist,
+.qlist {
   & > .title {
     @extend %subheader;
     text-align: left;
     font-weight: bold;
-    //margin-bottom: $subheader-bottom-margin;
-    //color: $subheader-font-color;
   }
 }
 
-#preamble .paragraph:first-of-type p {
+.tableblock > caption {
+  @extend %subheader;
+  text-align: left;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: visible;
+  max-width: 0;
+}
+
+#preamble > .sectionbody > .paragraph:first-of-type p {
   @extend %lead;
+}
+
+// nested AsciiDoc document (should put "nested" class on surrounding div)
+table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
+  font-size: inherit;
 }
 
 .admonitionblock > table {
   border: 0;
-  background-color: transparent;
+  background: none;
   width: 100%;
   td.icon {
     text-align: center;
@@ -182,12 +199,12 @@ tt {
     padding-right: emCalc(20px);
     border-left: 2px solid $hr-border-color; 
     color: $blockquote-font-color;
+
+    & > .paragraph:last-child > p {
+      margin-bottom: 0;
+    }
   }
 }
-
-//.admonitionblock.note td.icon > .title {
-//  color: blue;
-//}
 
 .exampleblock > .content {
   @include panel($body-bg);
@@ -198,6 +215,10 @@ tt {
   .ulist > ul > li:last-child > :last-child {
     margin-bottom: 0;
   }
+}
+
+.exampleblock.result > .content {
+  @include single-box-shadow($panel-border-color, 0, 1px, 8px); 
 }
 
 .sidebarblock {
@@ -304,6 +325,7 @@ tt {
   @include language-label(xml);
   @include language-label(html);
   @include language-label(ruby);
+  @include language-label(asciidoc);
   @include language-label(java);
   @include language-label(css);
   @include language-label(scss);
@@ -337,6 +359,12 @@ tt {
       margin-bottom: emCalc(10px);
     }
   }
+}
+
+// FIX Foundation, user-agent stylesheet is overriding
+table thead th,
+table tfoot th {
+  font-weight: $table-head-font-weight;
 }
 
 table.tableblock.grid-all {
@@ -409,8 +437,10 @@ dl dd:last-child > :last-child {
 }
 
 // used when you need to style the term inline
+// or should we name it "natural"?
 .unstyled dl dt {
   font-weight: normal;
+  font-style: normal;
 }
 
 ol > li p,
@@ -435,9 +465,10 @@ ol dd {
 .hdlist > table,
 .colist > table {
   border: 0;
-  background-color: transparent;
+  background: none;
+  //width: 100%;
   & > tbody > tr {
-    background-color: transparent;
+    background: none;
   }
 }
 
@@ -502,6 +533,18 @@ span.footnoteref {
   }
 }
 
+// for embedded gists
+.gist .file-data > table {
+  border: none;
+  background: #fff;
+  width: 100%;
+  margin-bottom: 0;
+  td.line-data {
+    width: 99%;
+  }
+}
+
+// QUESTION: should this be a built-in role class?
 .unbreakable {
   page-break-inside: avoid;
 }

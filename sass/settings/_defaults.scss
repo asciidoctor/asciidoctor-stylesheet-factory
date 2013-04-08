@@ -3,6 +3,13 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/border-radius";
 
+// better defaults (maybe do these at the bottom of the theme colors)
+//$table-line-height: 1.6 !default;
+//$table-head-font-size: inherit !default;
+//$table-head-font-color: $body-font-color;
+//$table-row-font-size: inherit !default;
+//$table-row-font-color: $body-font-color;
+
 // custom default variables
 // NOTE we have a chicken-egg problem here since Foundation
 // doesn't define all of it's variables in global, many
@@ -36,6 +43,10 @@ $pre-border-color: #ddd !default;
 $pre-bg: none !default;
 $pre-padding: emCalc(12px) emCalc(12px) emCalc(8px) emCalc(12px) !default;
 $pre-line-height: 1.6 !default;
+
+// fallback values set in components/asciidoc
+//$footer-bg: $body-font-color !default;
+//$footer-font-color: invert($body-font-color) !default;
 
 $icon-text-shadow: 1px 1px 2px rgba(0, 0, 0, .5) !default;
 
