@@ -5,8 +5,8 @@
 @import "components/awesome-icons";
 
 %stretch {
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -($column-gutter/2);
+  margin-right: -($column-gutter/2);
 }
 
 body {
@@ -94,8 +94,8 @@ dl dt {
 
 .literalblock,
 .listingblock {
+  @extend %stretch;
   & > .content > pre {
-    @extend %stretch;
     @include border-radius($global-radius $global-radius 0 0);
     border: 0;
   }
