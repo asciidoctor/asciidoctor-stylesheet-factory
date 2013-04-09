@@ -1,0 +1,37 @@
+$primary-color: #B1005D;
+$alert-color: #640791;
+
+$body-font-color: #555;
+$title-font-color: $primary-color;
+$header-font-color: #333;
+$header-font-weight: normal;
+//$subheader-font-color: #777;
+$subheader-font-color: darken($primary-color, 5%);
+$title-font-weight: $header-font-weight;
+
+$hr-border-color: #ccc;
+$hr-border-style: dotted;
+$sect-divider-color: $hr-border-color;
+
+$anchor-font-color: $primary-color;
+$anchor-font-color-hover: darken($primary-color, 15%);
+
+$panel-font-color: $body-font-color;
+
+$blockquote-font-color: #777;
+$blockquote-cite-font-color: darken($blockquote-font-color, 10%);
+$blockquote-border: 1px solid #efefef;
+
+$code-color: darken($alert-color, 15%);
+
+$pre-bg: #efefef;
+$pre-padding: emCalc(12px) emCalc(12px) emCalc(10px) emCalc(12px);
+
+$table-head-font-color: $header-font-color;
+$table-head-font-weight: normal;
+$table-row-font-color: $body-font-color;
+
+$footer-bg: #272727;
+$footer-font-color: #bcbcbc;
+//$footer-anchor-font-color: $footer-font-color;
+//$footer-anchor-font-color-hover: darken($footer-anchor-font-color, 5%);

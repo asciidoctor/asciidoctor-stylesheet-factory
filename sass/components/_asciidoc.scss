@@ -71,6 +71,7 @@ tt {
   margin-bottom: $panel-margin-bottom * 2;
   & > h1 {
     color: $title-font-color;
+    font-weight: $title-font-weight;
     border-bottom: $hr-border-width $hr-border-style $hr-border-color;
     margin-bottom: -28px;
     padding-bottom: 32px;
@@ -197,7 +198,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   td.content {
     padding-left: emCalc(18px);
     padding-right: emCalc(20px);
-    border-left: 2px solid $hr-border-color; 
+    border-left: $hr-border-width $hr-border-style $hr-border-color; 
     color: $blockquote-font-color;
 
     & > .paragraph:last-child > p {
@@ -413,7 +414,8 @@ table.tableblock {
 }
 
 p.tableblock.header {
-  font-weight: bold;
+  color: $table-head-font-color;
+  font-weight: $table-head-font-weight;
 }
 
 td > div.verse {

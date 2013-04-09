@@ -14,6 +14,7 @@ $header-font-family: "Lucida Grande", Georgia, Verdana, "Helvetica", Helvetica, 
 $header-font-weight: normal;
 $header-font-color: #BA3925;
 $header-top-margin: 1em;
+$title-font-weight: $header-font-weight;
 $subheader-font-color: darken($header-font-color, 15%);
 $sect-divider-size: 3px;
 $sect-divider-style: double;

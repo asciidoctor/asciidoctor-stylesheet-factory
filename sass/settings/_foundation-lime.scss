@@ -1,0 +1,36 @@
+$primary-color: #D2E943;
+$alert-color: #68C40A;
+
+$body-font-color: #555;
+$title-font-color: #B7D30B;
+$title-font-weight: bold;
+$header-font-color: #333;
+$header-font-weight: normal;
+$subheader-font-color: #777;
+
+$hr-border-color: #ccc;
+$hr-border-style: dotted;
+$sect-divider-color: $hr-border-color;
+
+$anchor-font-color: darken($primary-color, 20%);
+$anchor-font-color-hover: $title-font-color;
+
+$panel-font-color: $body-font-color;
+
+$blockquote-font-color: #777;
+$blockquote-cite-font-color: darken($blockquote-font-color, 10%);
+$blockquote-border: 1px solid #efefef;
+
+$code-color: darken($alert-color, 15%);
+
+$pre-bg: #efefef;
+$pre-padding: emCalc(12px) emCalc(12px) emCalc(10px) emCalc(12px);
+
+$table-head-font-color: $header-font-color;
+$table-head-font-weight: normal;
+$table-row-font-color: $body-font-color;
+
+$footer-bg: #272727;
+$footer-font-color: #bcbcbc;
+//$footer-anchor-font-color: $footer-font-color;
+//$footer-anchor-font-color-hover: darken($footer-anchor-font-color, 5%);

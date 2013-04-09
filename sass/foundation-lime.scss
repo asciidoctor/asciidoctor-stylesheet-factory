@@ -1,0 +1,34 @@
+@import "settings/foundation";
+@import "settings/foundation-lime";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+
+#header > h1 {
+  border-bottom-style: solid;
+}
+
+#toctitle {
+  color: $header-font-color;
+}
+
+.listingblock,
+.literalblock {
+  & > .content > pre {
+    background: -moz-linear-gradient(top, #fff 0%, #f4f4f4 100%);
+    background: -webkit-linear-gradient(top, #fff 0%, #f4f4f4 100%);
+    background: linear-gradient(to bottom, #fff 0%, #f4f4f4 100%);
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.sidebarblock {
+  background: none;
+  border: none;
+  -webkit-box-shadow: 0 0 5px rgba(118, 137, 4, .5);
+  box-shadow: 0 0 5px rgba(118, 137, 4, .5);
+
+  & > .content > .title {
+    color: #181818;
+  }
+}
