@@ -15,7 +15,7 @@ function change_stylesheet(name) {
   main = parts[0];
   code = parts[1];
   stylesheets = document.getElementsByTagName('link');
-  stylesheets[0].setAttribute('href', '../stylesheets/' + main + '.css');
+  stylesheets[0].setAttribute('href', '../stylesheets/' + main + '.css?v=2');
   stylesheets[1].setAttribute('href', '../javascripts/highlight.js/styles/' + code + '.css');
 }
 </script>
