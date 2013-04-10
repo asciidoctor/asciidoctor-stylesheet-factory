@@ -15,7 +15,7 @@ function change_stylesheet(name) {
   main = parts[0];
   code = parts[1];
   stylesheets = document.getElementsByTagName('link');
-  stylesheets[0].setAttribute('href', '../stylesheets/' + main + '.css?v=3');
+  stylesheets[0].setAttribute('href', '../stylesheets/' + main + '.css?v=4');
   stylesheets[1].setAttribute('href', '../javascripts/highlight.js/styles/' + code + '.css');
 }
 </script>
@@ -32,6 +32,7 @@ function change_stylesheet(name) {
     <option value="golo|foundation">Golo</option>
     <option value="readthedocs|googlecode">Read the Docs</option>
     <option value="maker|googlecode">Maker</option>
+    <option value="colony|googlecode">Colony</option>
     <option value="rubygems|dark">RubyGems</option>
   </select>
 </div>
