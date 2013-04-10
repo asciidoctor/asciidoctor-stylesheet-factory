@@ -38,6 +38,14 @@ body {
   padding-bottom: 0;
 }
 
+#toc {
+  ol li {
+    ol, ul {
+      padding-left: $list-side-padding;
+    }
+  }
+}
+
 #toctitle {
   letter-spacing: -1px;
 }
@@ -55,7 +63,7 @@ dl dt {
 .ulist > ul,
 .olist > ol, {
   margin-left: 0;
-  padding-left: 40px;
+  padding-left: $list-side-padding;
 }
 
 .admonitionblock > table {

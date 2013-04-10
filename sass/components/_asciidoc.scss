@@ -16,6 +16,12 @@ body {
   @extend .antialiased;
 }
 
+@if $anchor-text-decoration-hover {
+  a:hover, a:focus {
+    text-decoration: $anchor-text-decoration-hover;
+  }
+}
+
 pre > code {
   color: $body-font-color;
 }
@@ -38,25 +44,34 @@ tt {
 }
 
 @if $anchor-text-decoration != none {
+  // this makes the underline the same as the text color
+  p a > tt {
+    text-decoration: $anchor-text-decoration;
+
+    &:hover {
+      color: darken($code-color, 5%);
+    }
+  }
+
   // hack to prevent text from being underlined when inside a link
   // can be replaced with a! > tt in CSS 4
-  p a > tt {
-    display: inline-block;
-    height: 1.45em;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
+  //p a > tt {
+  //  display: inline-block;
+  //  height: 1.45em;
+  //  padding-top: 0;
+  //  padding-bottom: 0;
+  //}
 
-  @if $code-bg-color != inherit {
-    a > tt {
-      border-bottom: 1px solid $anchor-font-color;
-    }
+  //@if $code-bg-color != inherit {
+  //  a > tt {
+  //    border-bottom: 1px solid $anchor-font-color;
+  //  }
 
-    a > tt:hover {
-      //background-color: darken($code-bg-color, 5%);
-      border-bottom: 1px solid $anchor-font-color-hover;
-    }
-  }
+  //  a > tt:hover {
+  //    //background-color: darken($code-bg-color, 5%);
+  //    border-bottom: 1px solid $anchor-font-color-hover;
+  //  }
+  //}
 }
 
 #header,
@@ -68,6 +83,7 @@ tt {
 }
 
 #header {
+  // should this be changed to padding-bottom?
   margin-bottom: $panel-margin-bottom * 2;
   & > h1 {
     color: $title-font-color;

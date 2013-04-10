@@ -1,0 +1,68 @@
+@import "defaults";
+
+// Settings
+
+$primary-color: #cd2e29;
+$global-radius: 3px;
+$em-base: 16px;
+
+// Body
+
+$body-bg: #eee;
+$base-font-size: 14px;
+$body-font-color: black;
+$body-font-family: "Droid Serif", Georgia, "Times New Roman", Times, serif;
+$column-gutter: emCalc(48px);
+
+// Headers
+
+$title-font-weight: 400;
+$header-font-family: "Glegoo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$header-font-color: #555;
+$header-font-weight: 400;
+$header-line-height: 1.8;
+$header-top-margin: .5em;
+$subheader-font-color: darken($primary-color, 10%);
+$sect-divider-color: #eee;
+$sect-divider-size: 0; // yes or no?
+
+// Footer
+
+$footer-bg: none;
+$footer-font-color: $body-font-color;
+
+// Block Quotes
+
+$blockquote-font-color: $header-font-color;
+
+// Links
+
+$anchor-font-color-hover: $primary-color;
+$anchor-text-decoration-hover: underline;
+
+// Inline Code
+
+$code-color: $body-font-color;
+$code-font-weight: bold;
+
+// Code Blocks
+
+$pre-bg: #f8f8f8;
+$pre-font-color: #333;
+$pre-border-color: #ccc;
+$pre-padding: emCalc(12px) emCalc(12px) emCalc(10px) emCalc(12px);
+
+// Panels
+
+$panel-bg: #f5f5f5;
+$panel-border-color: #e3e3e3;
+
+// Paragraphs
+
+$paragraph-margin-bottom: emCalc(12px);
+
+// Tables
+
+$table-head-font-size: inherit;
+$table-row-font-size: inherit;
+$table-line-height: 1.4;
