@@ -1,0 +1,25 @@
+@import "settings/colony";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+
+h1, h2, h3, h4, h5, h6 {
+  border-bottom: 1px solid $sect-divider-color;
+}
+
+#toctitle {
+  color: #00406F;
+  font-weight: normal;
+  margin-top: 1.5em;
+}
+
+.sidebarblock {
+  border-color: #aaa; // why is this not honoring variable?
+}
+
+tt, code {
+  @include border-radius(4px);
+}
+
+p.tableblock.header {
+  color: $table-row-font-color;
+}
