@@ -109,6 +109,15 @@ dl dt {
   }
 }
 
+pre .conum {
+  background: white;
+  color: $body-font-color !important;
+
+  & * {
+    color: $body-font-color !important;
+  }
+}
+
 .sidebarblock {
   @extend %stretch;
   border-color: $panel-border-color;

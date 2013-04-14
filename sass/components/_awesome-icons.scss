@@ -52,15 +52,31 @@
 
 .conum {
   display: inline-block;
-  color: white;
+  color: white !important;
   background-color: $body-font-color;
   @include border-radius(100px);
   text-align: center;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   font-size: 12px;
   font-weight: bold;
-  line-height: 18px;
+  line-height: 20px;
   font-family: Arial, sans-serif;
   font-style: normal;
+  position: relative;
+  top: -2px;
+
+  & * {
+    color: white !important;
+  }
+
+  // hack for when highlight.js adds a bogus element into DOM
+  &:empty {
+    display: none;
+  }
+}
+
+pre .comment .conum {
+  // coverup the comment
+  left: -20px;
 }
