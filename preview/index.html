@@ -15,7 +15,7 @@ function change_stylesheet(name) {
   main = parts[0];
   code = parts[1];
   stylesheets = document.getElementsByTagName('link');
-  stylesheets[0].setAttribute('href', '../stylesheets/' + main + '.css?v=4');
+  stylesheets[0].setAttribute('href', '../stylesheets/' + main + '.css?v=8');
   stylesheets[1].setAttribute('href', '../javascripts/highlight.js/styles/' + code + '.css');
 }
 </script>
@@ -88,6 +88,18 @@ function change_stylesheet(name) {
 <div class="sectionbody">
 <div class="paragraph"><p>This guide provides a gentle introduction to <a href="http://asciidoc.org">AsciiDoc</a>, a <tt>plain</tt> <tt>text</tt> documentation <strong>syntax</strong> and <strong>processor</strong>.
 This introduction is intended for anyone who wants to reduce the effort required to write and publish content, whether for technical documentation, articles, web pages or good ol'-fashioned prose.</p></div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip"></i>
+</td>
+<td class="content">
+If you&#8217;re looking for a concise survey of the AsciiDoc syntax, check out the <a href="http://asciidoctor.org/docs/asciidoc-quick-reference/">AsciiDoc Syntax Quick Reference</a>.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph"><p>In this guide, you&#8217;ll learn:</p></div>
 <div class="ulist">
 <ul>
@@ -114,7 +126,7 @@ This introduction is intended for anyone who wants to reduce the effort required
 <div class="sectionbody">
 <div class="paragraph"><p>The goal of this section is to teach you how to compose your first AsciiDoc document.
 Hopefully, when you look back, you&#8217;ll agree it just makes sense.</p></div>
-<div class="paragraph"><p>Your adventures with AsciiDoc begin in your favorite text editor&#8230;</p></div>
+<div class="paragraph"><p>Your adventure with AsciiDoc begins in your favorite text editor&#8230;</p></div>
 <div class="sect2">
 <h3 id="-it-s-just-text-mate">&#8220;It&#8217;s just text, mate.&#8221;</h3>
 <div class="paragraph"><p>Since AsciiDoc syntax is just <tt>plain</tt> <tt>text</tt>, you can write an AsciiDoc document using <em>any</em> text editor.
@@ -494,8 +506,8 @@ Backticks are commonly used around inline code containing markup.</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">arrows</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt; =&gt; &lt;- &lt;=</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8594; &#8658; &#8592; &#8656;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-&gt; =&gt;<br>&lt;- &lt;=</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8594; &#8658;<br>&#8592; &#8656;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">apostrophe</p></td>
@@ -631,9 +643,9 @@ Then you might organize it as a nested list.</p></div>
 <div class="paragraph"><p>While it would seem as though the number of asterisks represents the nesting level, that&#8217;s not how depth is determined.
 A new level is created for each unique marker encountered.
 However, it&#8217;s much more intuitive to follow this convention:</p></div>
-<div class="literalblock">
-<div class="content monospaced">
-<pre># of asterisks = level of nesting</pre>
+<div class="quoteblock">
+<blockquote><div class="paragraph"><p># of asterisks = level of nesting</p></div></blockquote>
+<div class="attribution">
 </div>
 </div>
 <div class="paragraph"><p>After all, we are shooting for plain text markup that is readable <em>as is</em>.</p></div>
@@ -685,9 +697,9 @@ Instinct might tell you to prefix each item with a number, like in this next lis
 <td class="content">
 <div class="paragraph"><p>Like with the asterisks in an unordered list, the number of dots in an ordered list doesn&#8217;t represent the nesting level.
 However, it&#8217;s much more intuitive to follow this convention:</p></div>
-<div class="literalblock">
-<div class="content monospaced">
-<pre># of dots = level of nesting</pre>
+<div class="quoteblock">
+<blockquote><div class="paragraph"><p># of dots = level of nesting</p></div></blockquote>
+<div class="attribution">
 </div>
 </div>
 <div class="paragraph"><p>Again, we are shooting for plain text markup that is readable <em>as is</em>.</p></div>
@@ -697,6 +709,9 @@ However, it&#8217;s much more intuitive to follow this convention:</p></div>
 </div>
 <div class="paragraph"><p>AsciiDoc selects a different number scheme for each level of nesting.
 Here&#8217;s how the previous list renders:</p></div>
+<div class="exampleblock">
+<div class="title">Example 1. A nested ordered list</div>
+<div class="content">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -739,6 +754,8 @@ Here&#8217;s how the previous list renders:</p></div>
 </div>
 </li>
 </ol>
+</div>
+</div>
 </div>
 <div class="paragraph"><p>The following table shows the number scheme used by default for each nesting level:</p></div>
 <table class="tableblock frame-all grid-all" style="width: 100%">
@@ -856,7 +873,7 @@ Monitor:: Displays information in visual form using text and graphics.</pre>
 <div class="paragraph"><p>By default, the content of each item is displayed below the label when rendered.
 Here&#8217;s a preview of how this list is rendered:</p></div>
 <div class="exampleblock">
-<div class="title">Example 1. A basic labeled list</div>
+<div class="title">Example 2. A basic labeled list</div>
 <div class="content">
 <div class="dlist">
 <dl>
@@ -980,8 +997,10 @@ Cloud Providers::
 </div>
 </div>
 <div class="paragraph"><p>Here&#8217;s how the list is rendered:</p></div>
+<div class="exampleblock">
+<div class="title">Example 3. A hybrid list</div>
+<div class="content">
 <div class="dlist">
-<div class="title">A hybrid list</div>
 <dl>
 <dt class="hdlist1">Operating Systems</dt>
 <dd>
@@ -1053,6 +1072,8 @@ Cloud Providers::
 </div>
 </dd>
 </dl>
+</div>
+</div>
 </div>
 <div class="paragraph"><p>You can include more complex content in a list item as well.</p></div>
 </div>
@@ -1127,7 +1148,7 @@ v1.0, 2013-01-01
 </div>
 <div class="paragraph"><p>Here&#8217;s how the source is rendered:</p></div>
 <div class="exampleblock">
-<div class="title">Example 2. A list with complex content</div>
+<div class="title">Example 4. A list with complex content</div>
 <div class="content">
 <div class="ulist">
 <ul>
@@ -1226,7 +1247,7 @@ AsciiDoc recognizes URLs that begin with <tt>http://</tt>, <tt>https://</tt> and
 <div class="paragraph"><p>If you want to link to a file relative to the current document, use the <tt>link:</tt> prefix in front of the file name:</p></div>
 <div class="listingblock">
 <div class="content monospaced">
-<pre>link:editing-asciidoc-with-live-preview/[Editing AsciiDoc with Live Preview]</pre>
+<pre>link:editing-asciidoc-with-live-preview/[Editing with Live Preview]</pre>
 </div>
 </div>
 <div class="paragraph"><p>To link directly to a section in the document (a &#8220;deep&#8221; link), append a hash (<tt>#</tt>) followed by the id of the section to the end of the file name:</p></div>
@@ -1280,6 +1301,9 @@ image::sunset.jpg[Sunset, 300, 200, link="http://www.flickr.com/photos/javh/5448
 </div>
 <div class="paragraph"><p>The title of a block image is displayed underneath the image when rendered.
 Here&#8217;s a preview:</p></div>
+<div class="exampleblock">
+<div class="title">Example 5. A hyperlinked image with caption</div>
+<div class="content">
 <div class="imageblock" id="img-sunset">
 <div class="content">
 <a class="image" href="http://www.flickr.com/photos/javh/5448336655">
@@ -1287,6 +1311,8 @@ Here&#8217;s a preview:</p></div>
 </a>
 </div>
 <div class="title">Figure 1. A mountain sunset</div>
+</div>
+</div>
 </div>
 <div class="paragraph"><p>If you want to include an image inline, use the <tt>image:</tt> prefix instead (notice there is only one colon):</p></div>
 <div class="listingblock">
@@ -1986,12 +2012,37 @@ Here&#8217;s an example:</p></div>
 <div class="content monospaced">
 <pre>[source,ruby]
 ----
-require 'asciidoctor' &lt;1&gt;
+require 'asciidoctor'  #&lt;1&gt;
 
-puts Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true) &lt;2&gt;
+puts Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)  #&lt;2&gt;
 ----
 &lt;1&gt; Imports the library
 &lt;2&gt; Reads, parses and renders the file</pre>
+</div>
+</div>
+<div class="paragraph"><p>Here&#8217;s how the callouts appear when rendered:</p></div>
+<div class="exampleblock" id="eg-callouts">
+<div class="title">Example 6. Source code with callouts</div>
+<div class="content">
+<div class="listingblock">
+<div class="content monospaced">
+<pre class="highlight"><code class="ruby">require 'asciidoctor'  #<i class="conum">1</i>
+
+puts Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)  #<i class="conum">2</i></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum">1</i></td>
+<td>Imports the library</td>
+</tr>
+<tr>
+<td><i class="conum">2</i></td>
+<td>Reads, parses and renders the file</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -2552,7 +2603,7 @@ For legacy reasons, the conversion to PDF is handled by a separate program in th
 <div class="paragraph"><p><tt>a2x</tt> can accept a DocBook file as input and produce a PDF:</p></div>
 <div class="literalblock">
 <div class="content monospaced">
-<pre>$&gt; a2x -f pdf sample.xml</pre>
+<pre>$&gt; a2x -f pdf --fop sample.xml</pre>
 </div>
 </div>
 <div class="paragraph"><p>A new PDF document, named <tt>sample.pdf</tt>, will now be present in the current directory:</p></div>
@@ -2569,7 +2620,7 @@ It was that easy!</strong></p></div>
 <div class="paragraph"><p>Rather than converting from AsciiDoc to DocBook and then from DocBook to PDF in two steps, <tt>a2x</tt> can go directly from AsciiDoc to PDF in a single call:</p></div>
 <div class="literalblock">
 <div class="content monospaced">
-<pre>$&gt; a2x -f pdf sample.adoc</pre>
+<pre>$&gt; a2x -f pdf --fop sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph"><p>AsciiDoc can also be used for creating HTML-based presentations.
@@ -2670,7 +2721,7 @@ When all else fails, send your question to the <a href="http://groups.google.com
 </div>
 <div id="footer">
 <div id="footer-text">
-Asciidoctor themes preview page. Lasted updated 2013-04-08 05:19:38 MDT
+Asciidoctor themes preview page. Lasted updated 2013-04-14 16:15:22 MDT
 </div>
 </div>
 </body>
