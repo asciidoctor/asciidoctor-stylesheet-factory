@@ -566,13 +566,12 @@ span.footnoteref {
   }
 }
 
-// QUESTION: should this be a built-in role class?
-.unbreakable {
-  page-break-inside: avoid;
-}
-
 // AsciiDoc built-in roles
 @if $include-asciidoc-role-classes {
+  div.unbreakable {
+    page-break-inside: avoid;
+  }
+
   span.big {
     font-size: larger;
   }
