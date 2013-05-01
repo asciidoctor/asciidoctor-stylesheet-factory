@@ -4,6 +4,7 @@
   [class^="icon-"]:before {
     font-size: 2.5em;
     text-shadow: $icon-text-shadow;
+    cursor: default;
   }
   
   .icon-note:before {
@@ -50,6 +51,8 @@
   }
 }
 
+// alternatively could use &#10122; through &#10131 to get the numbered circles,
+// then style them as appropriate; would need to output them in the text, though
 .conum {
   display: inline-block;
   color: white !important;
@@ -65,6 +68,7 @@
   font-style: normal;
   position: relative;
   top: -2px;
+  letter-spacing: -1px;
 
   & * {
     color: white !important;
