@@ -10,6 +10,12 @@ body {
   //@include bg-noise-mono(#f0f0f0, 4, .07, 200);
 }
 
+//@media #{$medium} {
+//  #toc.toc2 {
+//    background-image: image-url('riak/body-bg.jpg', false, false);
+//  }
+//}
+
 ::selection {
   background-color: #fcc07f;
   color: #fff;

@@ -43,6 +43,38 @@ tt {
   //font-style: normal;
 }
 
+kbd.keyseq {
+  color: lighten($body-font-color, 20%);
+}
+
+kbd:not(.keyseq) {
+  display: inline-block;
+  color: $body-font-color;
+  font-size: emCalc(12px);
+  line-height: 1.4;
+  background-color: #F7F7F7;
+  //border: 1px solid $pre-border-color;
+  border: 1px solid #ccc;
+  @include radius(3px);
+  @include box-shadow(0 1px 0 rgba(0, 0, 0, .2), 0 0 0 2px white inset);
+  margin: -0.15em 0.15em 0 0.15em;
+  padding: 0.2em 0.6em 0.2em 0.5em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+kbd kbd:first-child {
+  margin-left: 0;
+}
+
+kbd kbd:last-child {
+  margin-right: 0;
+}
+
+.menuseq, .menu {
+  color: darken($body-font-color, 10%);
+}
+
 @if $anchor-text-decoration != none {
   // this makes the underline the same as the text color
   p a > tt {
@@ -122,6 +154,14 @@ tt {
     //margin-left: 0;
     margin-left: emCalc(4px);
   }
+  ol.sectlevel0 > li > a {
+    font-style: italic; 
+  }
+  ol.sectlevel0 ol.sectlevel1 {
+    margin-left: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
   ol {
     list-style-type: none;
   }
@@ -130,6 +170,47 @@ tt {
 #toctitle {
   @extend h3;
   color: $subheader-font-color;
+}
+
+@media #{$medium} {
+  body.toc2 {
+    padding-left: 20em;
+    //#header,
+    //#content,
+    //#footnotes,
+    //#footer {
+    //  margin-left: 0;
+    //}
+  }
+
+  #toc.toc2 {
+    //background: $body-bg;
+    position: fixed;
+    width: 20em;
+    left: 0;
+    top: 0;
+    border-right: 1px solid $sect-divider-color;
+    border-bottom: 0;
+    z-index: 1000;
+    padding: 1em;
+    height: 100%;
+    overflow: auto;
+    #toctitle {
+      margin-top: 0;
+    }
+    & > ol {
+      font-size: .95em;
+    }
+    ol ol {
+      margin-left: 0;
+      padding-left: 1em;
+    }
+    ol.sectlevel0 ol.sectlevel1 {
+      padding-left: 0;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+  }
 }
 
 #footer {
@@ -151,6 +232,43 @@ tt {
 
 .sect1:last-of-type {
   border-bottom: 0;
+}
+
+#content #{headers()} {
+  & > a.anchor {
+    position: absolute;
+    width: 1em;
+    margin-left: -1em;
+    display: block;
+    text-decoration: none;
+    visibility: hidden;
+    text-align: center;
+    font-weight: normal;
+
+    &:before {
+      content: '\00A7';
+      font-size: .85em;
+      vertical-align: text-top;
+      display: block;
+      margin-top: 0.05em;
+    }
+  }
+
+  //&:focus > a.anchor,
+  &:hover > a.anchor,
+  //& > a.anchor:focus,
+  & > a.anchor:hover {
+    visibility: visible;
+  }
+
+  & > a.link {
+    color: $header-font-color;
+    text-decoration: none;
+    //&:focus,
+    &:hover {
+      color: darken($header-font-color, 5%); 
+    }
+  }
 }
 
 // AsciiDoc block styles
@@ -186,6 +304,7 @@ tt {
   max-width: 0;
 }
 
+.paragraph.lead > p,
 #preamble > .sectionbody > .paragraph:first-of-type p {
   @extend %lead;
 }
@@ -229,7 +348,8 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   & > :last-child > :last-child,
   // argh, review!
   .olist > ol > li:last-child > :last-child,
-  .ulist > ul > li:last-child > :last-child {
+  .ulist > ul > li:last-child > :last-child,
+  .qlist > ol > li:last-child > :last-child {
     margin-bottom: 0;
   }
 }
@@ -270,6 +390,17 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
       //background-color: #f9f9f9;
     }
   }
+}
+
+pre {
+  color: $pre-font-color;
+  font-family: $pre-font-family;
+  overflow-x: auto;
+  line-height: $pre-line-height;
+}
+
+.verseblock {
+  margin-bottom: $panel-margin-bottom;
 }
 
 .literalblock,
@@ -348,6 +479,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   @include language-label(ruby);
   @include language-label(asciidoc);
   @include language-label(java);
+  @include language-label(javascript);
   @include language-label(css);
   @include language-label(scss);
 }
@@ -360,7 +492,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
 
   blockquote {
     margin: 0 0 $paragraph-margin-bottom 0;
-    padding: 0;
+    padding: 0 0 emCalc(9px) 0;
     border: 0;
 
     & > .paragraph:last-child p {
@@ -369,6 +501,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   }
 
   .attribution {
+    margin-top: -.25em;
     padding-bottom: emCalc(9px);
     font-size: $blockquote-cite-font-size;
     color: $blockquote-cite-font-color;
@@ -513,6 +646,7 @@ ol dd {
 td.hdlist1 {
   vertical-align: top;
   padding-right: .8em;
+  font-weight: bold;
 }
 
 .qanda > ol > li > p:first-child {
@@ -532,9 +666,12 @@ span.footnoteref {
 #footnotes {
   padding: emCalc(12px) emCalc(6px);
   margin-bottom: $paragraph-margin-bottom;
-  border-top: $hr-border-width $hr-border-style $hr-border-color;
+  #border-top: $hr-border-width $hr-border-style $hr-border-color;
   hr {
-    display: none;
+    width: 20%;
+    min-width: emCalc(100px);
+    margin: -.25em 0 .75em 0;
+    border-width: 1px 0 0 0;
   }
   .footnote {
     line-height: 1.3;
@@ -572,27 +709,27 @@ span.footnoteref {
     page-break-inside: avoid;
   }
 
-  span.big {
+  .big {
     font-size: larger;
   }
   
-  span.small {
+  .small {
     font-size: smaller;
   }
 
   @each $decoration in (underline, overline, line-through) {
-    span.#{$decoration} {
+    .#{$decoration} {
       text-decoration: $decoration;
     }
   }
 
   // colors must be quoted or else they may get converted to hex in compression output mode
   @each $color in ('aqua', 'black', 'blue', 'fuchsia', 'gray', 'green', 'lime', 'maroon', 'navy', 'olive', 'purple', 'red', 'silver', 'teal', 'white', 'yellow') {
-    span.#{$color} {
+    .#{$color} {
       color: scale-color(string-to-color($color), $lightness: $rainbow-lightness);
     }
   
-    span.#{$color}-background {
+    .#{$color}-background {
       background-color: scale-color(string-to-color($color), $lightness: $rainbow-bg-lightness);
     }
   }
