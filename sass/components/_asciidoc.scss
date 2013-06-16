@@ -143,6 +143,14 @@ kbd kbd:last-child {
     & + span:before {
       content: "\2013 \0020";
     }
+
+    & + span.author {
+      padding-left: 0;
+    }
+
+    & + span.author:before {
+      content: ", ";
+    }
   }
 }
 
@@ -603,6 +611,13 @@ ul > li p,
 ul dd,
 ol dd {
   margin-bottom: $paragraph-margin-bottom / 2;
+}
+
+ul.unstyled,
+ol.unnumbered,
+ul.checklist {
+  list-style-type: none;
+  margin-left: emCalc(10px);
 }
 
 @mixin ordered-list-type($class, $type) {
