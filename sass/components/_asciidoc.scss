@@ -158,19 +158,22 @@ kbd kbd:last-child {
   //margin-bottom: $panel-margin-bottom * 2;
   border-bottom: $sect-divider-size $sect-divider-style $sect-divider-color;
   padding-bottom: $panel-margin-bottom;
+  & > ul,
   & > ol {
     //margin-left: 0;
     margin-left: emCalc(4px);
   }
+  ul.sectlevel0 > li > a,
   ol.sectlevel0 > li > a {
     font-style: italic; 
   }
+  ul.sectlevel0 ul.sectlevel1,
   ol.sectlevel0 ol.sectlevel1 {
     margin-left: 0;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
-  ol {
+  ul, ol {
     list-style-type: none;
   }
 }
@@ -206,13 +209,16 @@ kbd kbd:last-child {
     #toctitle {
       margin-top: 0;
     }
+    & > ul,
     & > ol {
       font-size: .95em;
     }
+    ul ul,
     ol ol {
       margin-left: 0;
       padding-left: 1em;
     }
+    ul.sectlevel0 ul.sectlevel1,
     ol.sectlevel0 ol.sectlevel1 {
       padding-left: 0;
       margin-top: 0.5em;
@@ -427,9 +433,13 @@ pre {
       @include border-radius($global-radius);
     }
     padding: $pre-padding;
-    white-space: pre;
-    overflow-x: auto;
+    word-wrap: break-word;
     line-height: $pre-line-height;
+
+    &.nowrap {
+      overflow-x: auto;
+      white-space: pre;
+    }
     
     & > code {
       color: $pre-font-color;
@@ -474,10 +484,13 @@ pre {
     content: quote($lang);
     text-transform: uppercase;
     float: right;
-    //font-weight: bold;
     font-size: 0.9em;
     //color: $subheader-font-color;
     color: #999;
+    // use the next three styles to "cover-up"
+    //position: relative;
+    //background: $pre-bg;
+    //padding: 0 emCalc(12px);
   }
 }
 
