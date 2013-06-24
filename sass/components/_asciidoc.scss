@@ -1,4 +1,3 @@
-@import "foundation/components/global";
 @import "foundation/components/grid";
 @import "foundation/components/type";
 @import "foundation/components/panels";
@@ -216,7 +215,7 @@ kbd kbd:last-child {
     ul ul,
     ol ol {
       margin-left: 0;
-      padding-left: 1em;
+      padding-left: $list-nested-margin;
     }
     ul.sectlevel0 ul.sectlevel1,
     ol.sectlevel0 ol.sectlevel1 {
@@ -594,12 +593,20 @@ td > div.verse {
 
 // AsciiDoc list styles
 
-ul {
-  margin-left: emCalc(28px);
-}
+//ul {
+//  margin-left: emCalc(28px);
+//}
+//
+//ol {
+//  margin-left: emCalc(30px);
+//}
 
 ol {
-  margin-left: emCalc(30px);
+  margin-left: $list-side-margin + emCalc(4px);
+}
+
+ul li ol {
+  margin-left: $list-side-margin;
 }
 
 dl dd {

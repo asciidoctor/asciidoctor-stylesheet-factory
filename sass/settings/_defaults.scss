@@ -1,5 +1,6 @@
 @import "normalize";
-@import "foundation/foundation-global";
+$cursor-default-value: auto !default;
+@import "foundation/components/global";
 @import "compass/css3/box-shadow";
 @import "compass/css3/border-radius";
 
