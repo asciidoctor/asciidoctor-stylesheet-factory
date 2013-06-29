@@ -1,0 +1,25 @@
+@import "settings/github";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+
+%lead {
+  font-size: $paragraph-font-size;
+  color: $blockquote-font-color;
+}
+
+h2 {
+  color: #325D72;
+  border-bottom: 1px solid $hr-border-color;
+}
+
+#content #{headers()} {
+  & > a.anchor {
+    color: $body-font-color;
+  }
+}
+
+#header, #content, #footnotes {
+  max-width: 660px;
+  padding-left: 0;
+  padding-right: 0;
+}
