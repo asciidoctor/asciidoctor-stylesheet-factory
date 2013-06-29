@@ -56,9 +56,15 @@ $icon-text-shadow: 1px 1px 2px rgba(0, 0, 0, .5) !default;
 
 $definition-list-content-margin-left: emCalc(18px) !default;
 
+$thumb-border-style: solid !default;
+$thumb-border-width: 4px !default;
+$thumb-border-color: #fff !default;
+$thumb-box-shadow: 0 0 0 1px #ddd !default;
+
 // exclude unnecessary styles
 $include-html-grid-classes: false;
 $include-html-panel-classes: false;
+$include-html-media-classes: false;
 $include-print-styles: true;
 
 // cut down on number of vendor prefixes used

@@ -2,6 +2,7 @@
 @import "foundation/components/type";
 @import "foundation/components/panels";
 @import "foundation/components/tables";
+//@import "foundation/components/thumbs";
 
 // controls whether built-in AsciiDoc role classes are generated
 $include-asciidoc-role-classes: true !default;
@@ -371,10 +372,6 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   @include single-box-shadow($panel-border-color, 0, 1px, 8px); 
 }
 
-.imageblock {
-  margin-bottom: $panel-margin-bottom;
-}
-
 .sidebarblock {
   @include panel;
   @include radius;
@@ -686,6 +683,66 @@ td.hdlist1 {
 
 .qanda > ol > li > p:first-child {
   color: darken($primary-color, 5%);
+}
+
+// picked from _thumbs.css
+.thumb,
+.th {
+  line-height: 0;
+  display: inline-block;
+  border: $thumb-border-style $thumb-border-width $thumb-border-color;
+  @if $experimental {
+    -webkit-box-shadow: $thumb-box-shadow;
+  }
+  box-shadow: $thumb-box-shadow;
+}
+
+.imageblock {
+  margin-bottom: $panel-margin-bottom;
+  &.left,
+  &[style*="float: left"] {
+    margin: emCalc(4px) emCalc(10px) $panel-margin-bottom 0;
+  }
+  &.right,
+  &[style*="float: right"] {
+    margin: emCalc(4px) 0 $panel-margin-bottom emCalc(10px);
+  }
+
+  & > .title {
+    margin-bottom: 0;
+  }
+
+  &.thumb,
+  &.th {
+    border-width: $thumb-border-width + ($thumb-border-width * .5);
+    & > .title {
+      padding: 0 emCalc(2px);
+    }
+  }
+}
+
+.image {
+  // QUESTION should we require the related role?
+  // "related" mean "illustrative" or "supporting" of the text
+  //&.related,
+  //&.rel {
+  //}
+
+  &.left,
+  &.right {
+    margin-top: emCalc(4px);
+    margin-bottom: emCalc(4px);
+    display: inline-block;
+    line-height: 0;
+  }
+
+  &.left {
+    margin-right: emCalc(10px);
+  }
+
+  &.right {
+    margin-left: emCalc(10px);
+  }
 }
 
 // AsciiDoc footnote styles
