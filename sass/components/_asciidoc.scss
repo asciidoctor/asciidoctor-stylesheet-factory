@@ -28,11 +28,7 @@ pre > code {
 
 //*:not(pre) > code
 
-tt {
-  @extend code;
-}
-
-tt {
+code {
   font-size: $code-font-size;
   padding: $code-padding;
   white-space: nowrap;
@@ -77,7 +73,7 @@ kbd kbd:last-child {
 
 @if $anchor-text-decoration != none {
   // this makes the underline the same as the text color
-  p a > tt {
+  p a > code {
     text-decoration: $anchor-text-decoration;
 
     &:hover {
@@ -86,8 +82,8 @@ kbd kbd:last-child {
   }
 
   // hack to prevent text from being underlined when inside a link
-  // can be replaced with a! > tt in CSS 4
-  //p a > tt {
+  // can be replaced with a! > code in CSS 4
+  //p a > code {
   //  display: inline-block;
   //  height: 1.45em;
   //  padding-top: 0;
@@ -95,11 +91,11 @@ kbd kbd:last-child {
   //}
 
   //@if $code-bg-color != inherit {
-  //  a > tt {
+  //  a > code {
   //    border-bottom: 1px solid $anchor-font-color;
   //  }
 
-  //  a > tt:hover {
+  //  a > code:hover {
   //    //background-color: darken($code-bg-color, 5%);
   //    border-bottom: 1px solid $anchor-font-color-hover;
   //  }
