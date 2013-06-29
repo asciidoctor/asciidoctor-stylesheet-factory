@@ -20,6 +20,7 @@ $header-font-family: $body-font-family;
 $header-font-color: $body-font-color;
 $header-font-weight: bold;
 $sect-divider-size: 0;
+$subheader-font-color: #777;
 
 $h1-font-size: emCalc(30px);
 $h2-font-size: emCalc(24px);
@@ -36,10 +37,18 @@ $footer-font-color: $body-font-color;
 // Block Quotes
 
 $blockquote-font-color: #666;
+$blockquote-border: none;
+$blockquote-padding: 0;
+
+// Sidebar (Helper)
+
+$sidebar-header-border-size: 0 0 1px 0;
+$sidebar-header-border-style: solid;
+$sidebar-header-border-color: #cacaca;
 
 // Lists
 
-$list-side-margin: emCalc(24px);
+$list-side-margin: emCalc(10.5px);
 $definition-list-header-margin-bottom: emCalc(5px);
 $definition-list-margin-bottom: emCalc(20px);
 
@@ -78,3 +87,8 @@ $panel-border-color: #eaeaea;
 $paragraph-font-family: $body-font-family;
 $paragraph-margin-bottom: emCalc(15px);
 $paragraph-line-height: 1.4;
+
+// Tables
+
+$table-line-height: 1.4;
+$table-row-font-size: emCalc(12px);
