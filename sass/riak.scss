@@ -34,7 +34,7 @@ body {
   }
 }
 
-ul > li {
+#content ul > li {
   list-style-type: square;
 }
 
@@ -96,7 +96,7 @@ p > em {
     .title {
       color: #dfdfdf;
     }
-    tt {
+    code {
       color: #333;
     }
     a {
