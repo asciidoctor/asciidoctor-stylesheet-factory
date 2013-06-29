@@ -22,12 +22,7 @@ body {
   }
 }
 
-pre > code {
-  color: $body-font-color;
-}
-
-//*:not(pre) > code
-
+//*:not(pre) > code {
 code {
   font-size: $code-font-size;
   padding: $code-padding;
@@ -36,7 +31,6 @@ code {
   border: $code-border-size $code-border-style $code-border-color;
   @include radius;
   text-shadow: none;
-  //font-style: normal;
 }
 
 kbd.keyseq {
@@ -431,9 +425,12 @@ pre {
     &.nowrap {
       overflow-x: auto;
       white-space: pre;
+      word-wrap: normal;
     }
     
     & > code {
+      font-size: 1em;
+      white-space: inherit;
       color: $pre-font-color;
       font-family: $pre-font-family;
       padding: 0;
@@ -623,7 +620,10 @@ dl dd:last-child > :last-child {
 ol > li p,
 ul > li p,
 ul dd,
-ol dd {
+ol dd,
+.olist .olist, 
+.ulist .olist,
+.olist .ulist {
   margin-bottom: $paragraph-margin-bottom / 2;
 }
 
