@@ -2,7 +2,8 @@
 @import "foundation/components/type";
 @import "foundation/components/panels";
 @import "foundation/components/tables";
-//@import "foundation/components/thumbs";
+// uncomment inline-lists to support [inline-list] style over unordered list
+//@import "foundation/components/inline-lists";
 
 // controls whether built-in AsciiDoc role classes are generated
 $include-asciidoc-role-classes: true !default;
@@ -19,6 +20,19 @@ body {
 @if $anchor-text-decoration-hover {
   a:hover, a:focus {
     text-decoration: $anchor-text-decoration-hover;
+  }
+}
+
+// QUESTION are these the best names / approach?
+.clearfix,
+.floatend {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
   }
 }
 
@@ -641,10 +655,14 @@ ul.checklist {
 }
 
 @include ordered-list-type(arabic, decimal);
+@include ordered-list-type(decimal, decimal-leading-zero);
 @include ordered-list-type(loweralpha, lower-alpha);
 @include ordered-list-type(upperalpha, upper-alpha);
 @include ordered-list-type(lowerroman, lower-roman);
 @include ordered-list-type(upperroman, upper-roman);
+@include ordered-list-type(lowergreek, lower-greek);
+//@include ordered-list-type(armenian, armenian);
+//@include ordered-list-type(georgian, georgian);
 
 .hdlist > table,
 .colist > table {
@@ -682,7 +700,7 @@ td.hdlist1 {
   color: darken($primary-color, 5%);
 }
 
-// picked from _thumbs.css
+// picked from foundation/components/_thumbs.css
 .thumb,
 .th {
   line-height: 0;
