@@ -1,0 +1,35 @@
+@import "fonts/overpass";
+@import "settings/rocket-panda";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+
+#header, #content, #footnotes {
+  background: white;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+}
+
+#header {
+  margin-bottom: 0;
+  & > h1 {
+    border-bottom: none;
+  }
+}
+
+#footnotes {
+  margin-bottom: 2em;
+}
+
+.sect1 {
+  padding-bottom: 0;
+}
+
+ol > li p,
+ul > li p,
+ul dd,
+ol dd,
+.olist .olist, 
+.ulist .olist,
+.olist .ulist {
+  margin-bottom: $paragraph-margin-bottom / 4;
+}

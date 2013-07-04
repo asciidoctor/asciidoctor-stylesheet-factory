@@ -1,0 +1,87 @@
+$body-bg: #e5e5e5;
+
+@import "defaults";
+
+// General settings
+
+$primary-color: #069;
+$global-radius: 0;
+
+// Body
+
+$body-font-color: #404040;
+$body-font-family: "Helvetica Neue",Helvetica,"Liberation Sans",Arial,sans-serif;
+
+// Headings
+
+$header-font-family: Overpass,"Helvetica Neue",Helvetica,Arial,sans-serif;
+$header-font-weight: normal;
+$header-font-color: black;
+$header-top-margin: 1em;
+$title-font-weight: $header-font-weight;
+$sect-divider-size: 0;
+
+// Panels
+
+$panel-bg: #e5e5e5;
+
+// Paragraphs
+
+$paragraph-font-family: $body-font-family;
+$paragraph-font-size: emCalc(15px);
+$paragraph-margin-bottom: emCalc(22px);
+$paragraph-line-height: 1.4;
+
+// Links
+
+$anchor-font-color-hover: #ea0011;
+$anchor-text-decoration-hover: underline;
+
+// Inline Code
+
+$code-font-family: Menlo, Monaco, 'Liberation Mono', Consolas, monospace;
+$code-font-size: emCalc(15px);
+$code-color: #3b3b3b;
+$code-font-weight: normal;
+$code-padding: 1px 4px;
+$code-border-color: #d4d9d9;
+$code-border-size: 1px;
+$code-bg-color: #eff1f1;
+
+// Code Blocks
+
+$pre-bg: $code-bg-color;
+$pre-font-family: $code-font-family;
+$pre-font-color: $code-color;
+$pre-font-size: emCalc(14px);
+$pre-border-color: rgba(120, 120, 120, 0.35);
+$pre-border-size: 0 0 0 2px;
+$pre-padding: emCalc(16px) emCalc(24px);
+
+// Block Quotes
+
+//$blockquote-font-color: #999;
+$blockquote-font-color: $body-font-color;
+$blockquote-border: 5px solid #ededed;
+$blockquote-padding: 0 0 0 1em;
+
+// Ruler
+
+//$hr-border-width: 2px;
+//$hr-border-color: #eff1f1;
+
+// Lists
+
+$list-side-margin: emCalc(26px);
+$definition-list-content-margin-left: 2em;
+
+// Tables
+
+$table-head-font-size: inherit;
+$table-row-font-size: inherit;
+$table-line-height: $paragraph-line-height;
+
+// Footer
+
+$footer-bg: white;
+$footer-font-color: #666;
