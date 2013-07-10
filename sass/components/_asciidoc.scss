@@ -229,6 +229,18 @@ kbd kbd:last-child {
       margin-bottom: 0.5em;
     }
   }
+
+  body.toc2.toc-right {
+    padding-left: 0;
+    padding-right: 20em;
+
+    #toc.toc2 {
+      border-right: 0;
+      border-left: 1px solid $sect-divider-color;
+      left: auto;
+      right: 0;
+    }
+  }
 }
 
 #footer {
