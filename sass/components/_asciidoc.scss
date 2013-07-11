@@ -256,12 +256,11 @@ kbd kbd:last-child {
 }
 
 .sect1 {
-  border-bottom: $sect-divider-size $sect-divider-style $sect-divider-color;
   padding-bottom: $panel-margin-bottom;
 }
 
-.sect1:last-of-type {
-  border-bottom: 0;
+.sect1 + .sect1 {
+  border-top: $sect-divider-size $sect-divider-style $sect-divider-color;
 }
 
 #content #{headers()} {
@@ -785,7 +784,7 @@ span.footnoteref {
 #footnotes {
   padding: emCalc(12px) emCalc(6px);
   margin-bottom: $paragraph-margin-bottom;
-  #border-top: $hr-border-width $hr-border-style $hr-border-color;
+  //border-top: $hr-border-width $hr-border-style $hr-border-color;
   hr {
     width: 20%;
     min-width: emCalc(100px);
@@ -809,6 +808,11 @@ span.footnoteref {
   .footnote:last-of-type {
     margin-bottom: 0;
   }
+}
+
+// footnotes in embedded documents
+#content #footnotes {
+  margin-top: -$panel-margin-bottom / 2;
 }
 
 // for embedded gists
