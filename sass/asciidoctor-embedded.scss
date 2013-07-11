@@ -1,0 +1,12 @@
+$include-html-grid-classes: true;
+$include-html-panel-classes: true;
+@import "settings/asciidoctor";
+@import "components/asciidoc-embedded";
+@import "components/awesome-icons";
+
+.literalblock,
+.listingblock {
+  & > .content > pre {
+    @include border-radius(0);
+  }
+}
