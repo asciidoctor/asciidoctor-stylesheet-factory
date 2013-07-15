@@ -1,0 +1,10 @@
+@import "asciidoc/shared";
+@import "asciidoc/content";
+
+// QUESTION should class be doctitle?
+// perhaps should have a class "title"?
+#content h1:first-of-type:not([class]) {
+  border-bottom: $hr-border-width $hr-border-style $hr-border-color;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.75em;
+}

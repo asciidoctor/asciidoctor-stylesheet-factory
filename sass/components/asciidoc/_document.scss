@@ -1,0 +1,124 @@
+// fall-through defaults
+$footer-bg: $body-font-color !default;
+$footer-font-color: invert($body-font-color) !default;
+
+body {
+  //-webkit-font-smoothing: $font-smoothing;
+  @extend .antialiased;
+}
+
+#header,
+#content,
+#footnotes,
+#footer {
+  @include grid-row;
+  @include grid-column($float:false);
+}
+
+#header {
+  // should this be changed to padding-bottom?
+  margin-bottom: $panel-margin-bottom * 2;
+  & > h1 {
+    color: $title-font-color;
+    font-weight: $title-font-weight;
+    border-bottom: $hr-border-width $hr-border-style $hr-border-color;
+    margin-bottom: -28px;
+    padding-bottom: 32px;
+  }
+
+  span {
+    color: $blockquote-font-color;
+  }
+
+  #revnumber {
+    text-transform: capitalize;
+  }
+
+  br {
+    display: none;
+
+    & + span {
+      padding-left: 3px;
+    }
+
+    & + span:before {
+      content: "\2013 \0020";
+    }
+
+    & + span.author {
+      padding-left: 0;
+    }
+
+    & + span.author:before {
+      content: ", ";
+    }
+  }
+}
+
+@media #{$medium} {
+  body.toc2 {
+    padding-left: 20em;
+    //#header,
+    //#content,
+    //#footnotes,
+    //#footer {
+    //  margin-left: 0;
+    //}
+  }
+
+  #toc.toc2 {
+    //background: $body-bg;
+    position: fixed;
+    width: 20em;
+    left: 0;
+    top: 0;
+    border-right: 1px solid $sect-divider-color;
+    border-bottom: 0;
+    z-index: 1000;
+    padding: 1em;
+    height: 100%;
+    overflow: auto;
+    #toctitle {
+      margin-top: 0;
+    }
+    & > ul,
+    & > ol {
+      font-size: .95em;
+    }
+    ul ul,
+    ol ol {
+      margin-left: 0;
+      padding-left: $list-nested-margin;
+    }
+    ul.sectlevel0 ul.sectlevel1,
+    ol.sectlevel0 ol.sectlevel1 {
+      padding-left: 0;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+  }
+
+  body.toc2.toc-right {
+    padding-left: 0;
+    padding-right: 20em;
+
+    #toc.toc2 {
+      border-right: 0;
+      border-left: 1px solid $sect-divider-color;
+      left: auto;
+      right: 0;
+    }
+  }
+}
+
+#footer {
+  max-width: 100%;
+  //margin-top: $panel-margin-bottom * 2;
+  background-color: $footer-bg;
+  padding: $panel-padding;
+}
+
+#footer-text {
+  color: $footer-font-color;
+  line-height: $paragraph-line-height * .9;
+}

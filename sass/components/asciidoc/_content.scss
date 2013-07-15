@@ -1,0 +1,733 @@
+// controls whether built-in AsciiDoc role classes are generated
+$include-asciidoc-role-classes: true !default;
+
+@if $anchor-text-decoration-hover {
+  a:hover, a:focus {
+    text-decoration: $anchor-text-decoration-hover;
+  }
+}
+
+// QUESTION are these the best names / approach?
+/*
+.clearfix,
+.floatend {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+*/
+
+//*:not(pre) > code {
+code {
+  font-size: $code-font-size;
+  padding: $code-padding;
+  white-space: nowrap;
+  background-color: $code-bg-color;
+  border: $code-border-size $code-border-style $code-border-color;
+  @include radius;
+  text-shadow: none;
+}
+
+kbd.keyseq {
+  color: lighten($body-font-color, 20%);
+}
+
+kbd:not(.keyseq) {
+  display: inline-block;
+  color: $body-font-color;
+  font-size: emCalc(12px);
+  line-height: 1.4;
+  background-color: #F7F7F7;
+  //border: 1px solid $pre-border-color;
+  border: 1px solid #ccc;
+  @include radius(3px);
+  @include box-shadow(0 1px 0 rgba(0, 0, 0, .2), 0 0 0 2px white inset);
+  margin: -0.15em 0.15em 0 0.15em;
+  padding: 0.2em 0.6em 0.2em 0.5em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+kbd kbd:first-child {
+  margin-left: 0;
+}
+
+kbd kbd:last-child {
+  margin-right: 0;
+}
+
+.menuseq, .menu {
+  color: darken($body-font-color, 10%);
+}
+
+@if $anchor-text-decoration != none {
+  // this makes the underline the same as the text color
+  p a > code {
+    text-decoration: $anchor-text-decoration;
+
+    &:hover {
+      color: darken($code-color, 5%);
+    }
+  }
+
+  // hack to prevent text from being underlined when inside a link
+  // can be replaced with a! > code in CSS 4
+  //p a > code {
+  //  display: inline-block;
+  //  height: 1.45em;
+  //  padding-top: 0;
+  //  padding-bottom: 0;
+  //}
+
+  //@if $code-bg-color != inherit {
+  //  a > code {
+  //    border-bottom: 1px solid $anchor-font-color;
+  //  }
+
+  //  a > code:hover {
+  //    //background-color: darken($code-bg-color, 5%);
+  //    border-bottom: 1px solid $anchor-font-color-hover;
+  //  }
+  //}
+}
+
+#toc {
+  //margin-bottom: $panel-margin-bottom * 2;
+  border-bottom: $sect-divider-size $sect-divider-style $sect-divider-color;
+  padding-bottom: $panel-margin-bottom;
+  & > ul,
+  & > ol {
+    //margin-left: 0;
+    margin-left: emCalc(4px);
+  }
+  ul.sectlevel0 > li > a,
+  ol.sectlevel0 > li > a {
+    font-style: italic; 
+  }
+  ul.sectlevel0 ul.sectlevel1,
+  ol.sectlevel0 ol.sectlevel1 {
+    margin-left: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  ul, ol {
+    list-style-type: none;
+  }
+}
+
+#toctitle {
+  @extend h3;
+  color: $subheader-font-color;
+}
+
+.sect1 {
+  padding-bottom: $panel-margin-bottom;
+}
+
+.sect1 + .sect1 {
+  border-top: $sect-divider-size $sect-divider-style $sect-divider-color;
+}
+
+#content #{headers()} {
+  & > a.anchor {
+    position: absolute;
+    width: 1em;
+    margin-left: -1em;
+    display: block;
+    text-decoration: none;
+    visibility: hidden;
+    text-align: center;
+    font-weight: normal;
+
+    &:before {
+      content: '\00A7';
+      font-size: .85em;
+      vertical-align: text-top;
+      display: block;
+      margin-top: 0.05em;
+    }
+  }
+
+  //&:focus > a.anchor,
+  &:hover > a.anchor,
+  //& > a.anchor:focus,
+  & > a.anchor:hover {
+    visibility: visible;
+  }
+
+  & > a.link {
+    color: $header-font-color;
+    text-decoration: none;
+    //&:focus,
+    &:hover {
+      color: darken($header-font-color, 5%); 
+    }
+  }
+}
+
+// AsciiDoc block styles
+
+.admonitionblock td.content,
+.exampleblock,
+.imageblock,
+.listingblock,
+.literalblock,
+.openblock,
+.paragraph,
+.quoteblock,
+.sidebarblock,
+.tableblock,
+.verseblock,
+.ulist,
+.olist,
+.dlist,
+.qlist {
+  & > .title {
+    @extend %subheader;
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
+.tableblock > caption {
+  @extend %subheader;
+  text-align: left;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: visible;
+  max-width: 0;
+}
+
+.paragraph.lead > p,
+#preamble > .sectionbody > .paragraph:first-of-type p {
+  @extend %lead;
+}
+
+// nested AsciiDoc document (should put "nested" class on surrounding div)
+table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
+  font-size: inherit;
+}
+
+.admonitionblock > table {
+  border: 0;
+  background: none;
+  width: 100%;
+  td.icon {
+    text-align: center;
+    width: 80px;
+    img {
+      max-width: none;
+    }
+    .title {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  td.content {
+    padding-left: emCalc(18px);
+    padding-right: emCalc(20px);
+    border-left: $hr-border-width $hr-border-style $hr-border-color; 
+    color: $blockquote-font-color;
+
+    & > .paragraph:last-child > p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.exampleblock > .content {
+  @include panel($body-bg);
+  @include radius;
+  & > :last-child > :last-child,
+  // argh, review!
+  .olist > ol > li:last-child > :last-child,
+  .ulist > ul > li:last-child > :last-child,
+  .qlist > ol > li:last-child > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.exampleblock.result > .content {
+  @include single-box-shadow($panel-border-color, 0, 1px, 8px); 
+}
+
+.sidebarblock {
+  @include panel;
+  @include radius;
+
+  & > .content {
+    & > .title {
+      @extend h3;
+      color: $subheader-font-color;
+      //color: darken($header-font-color, 15%); // name this panel-header-color?
+      margin-top: 0;
+      line-height: $paragraph-line-height;
+      @if $sidebar-header-border-size != 0 {
+        border-width: $sidebar-header-border-size;
+        border-style: $sidebar-header-border-style;
+        border-color: $sidebar-header-border-color;
+      }
+    }
+
+    & > .paragraph:last-child p {
+      margin-bottom: 0;
+    }
+
+    .literalblock pre,
+    .listingblock pre {
+      // FIXME this breaks themes w/ inverted pre blocks
+      //background-color: #f9f9f9;
+    }
+  }
+}
+
+pre {
+  color: $pre-font-color;
+  font-family: $pre-font-family;
+  overflow-x: auto;
+  line-height: $pre-line-height;
+}
+
+.verseblock {
+  margin-bottom: $panel-margin-bottom;
+}
+
+.literalblock,
+.listingblock {
+  margin-bottom: $panel-margin-bottom;
+
+  & > .content > pre {
+    background: $pre-bg;
+    color: $pre-font-color;
+    font-family: $pre-font-family;
+    //font-style: normal;
+    border-width: $pre-border-size;
+    @if $pre-border-size != 0 {
+      border-style: $pre-border-style;
+      border-color: $pre-border-color;
+      @include border-radius($global-radius);
+    }
+    padding: $pre-padding;
+    word-wrap: break-word;
+    line-height: $pre-line-height;
+
+    &.nowrap {
+      overflow-x: auto;
+      white-space: pre;
+      word-wrap: normal;
+    }
+    
+    & > code {
+      font-size: 1em;
+      white-space: inherit;
+      color: $pre-font-color;
+      font-family: $pre-font-family;
+      padding: 0;
+      background: none;
+      font-weight: normal;
+      border: none;
+    }
+
+    @media #{$screen} {
+      //font-size: $em-base * 0.75;
+      //font-size: 12px;
+      //padding: emCalc(12px);
+
+      font-size: $pre-font-size * .8; 
+    }
+
+    @media #{$small} {
+      //font-size: $em-base * 0.875;
+      //font-size: 14px;
+      //padding: emCalc(14px);
+
+      font-size: $pre-font-size * .9;
+    }
+
+    @media #{$medium} {
+      //font-size: emCalc(16px);
+
+      font-size: $pre-font-size;
+    }
+  }
+}
+
+.listingblock {
+  pre.highlight {
+    // TODO
+  }
+}
+
+@mixin language-label($lang) {
+  .#{$lang}:before {
+    content: quote($lang);
+    text-transform: uppercase;
+    float: right;
+    font-size: 0.9em;
+    //color: $subheader-font-color;
+    color: #999;
+    // use the next three styles to "cover-up"
+    //position: relative;
+    //background: $pre-bg;
+    //padding: 0 emCalc(12px);
+  }
+}
+
+.listingblock:hover {
+  @include language-label(xml);
+  @include language-label(html);
+  @include language-label(ruby);
+  @include language-label(asciidoc);
+  @include language-label(java);
+  @include language-label(javascript);
+  @include language-label(css);
+  @include language-label(scss);
+}
+
+// AsciiDoc quoteblock output is different from what Foundation expects
+.quoteblock {
+  margin: 0 0 $paragraph-margin-bottom;
+  padding: $blockquote-padding;
+  border-#{$default-float}: $blockquote-border;
+
+  blockquote {
+    margin: 0 0 $paragraph-margin-bottom 0;
+    padding: 0 0 emCalc(9px) 0;
+    border: 0;
+
+    & > .paragraph:last-child p {
+      margin-bottom: 0;
+    }
+  }
+
+  .attribution {
+    margin-top: -.25em;
+    padding-bottom: emCalc(9px);
+    font-size: $blockquote-cite-font-size;
+    color: $blockquote-cite-font-color;
+    br {
+      display: none;
+    }
+    cite {
+      display: block;
+      margin-bottom: emCalc(10px);
+    }
+  }
+}
+
+// FIX Foundation, user-agent stylesheet is overriding
+table thead th,
+table tfoot th {
+  font-weight: $table-head-font-weight;
+}
+
+table.tableblock.grid-all {
+  border-collapse: separate;
+  border-spacing: 1px;
+  @include radius;
+  border-top: $table-border-highlight-size solid $table-border-highlight-color;
+  border-bottom: $table-border-highlight-size solid $table-border-highlight-color;
+}
+
+table.tableblock.frame-topbot,
+table.tableblock.frame-none {
+  border-left: 0;
+  border-right: 0;
+}
+
+table.tableblock.frame-sides,
+table.tableblock.frame-none {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+table.tableblock {
+  td .paragraph:last-child p,
+  td > p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@each $halign in (left, right, center) {
+  th.tableblock.halign-#{$halign},
+  td.tableblock.halign-#{$halign} {
+    text-align: $halign;
+  }
+}
+
+@each $valign in (top, bottom, middle) {
+  th.tableblock.halign-#{$valign},
+  td.tableblock.halign-#{$valign} {
+    vertical-align: $valign;
+  }
+}
+
+p.tableblock.header {
+  color: $table-head-font-color;
+  font-weight: $table-head-font-weight;
+}
+
+td > div.verse {
+  white-space: pre;
+}
+
+// AsciiDoc list styles
+
+//ul {
+//  margin-left: emCalc(28px);
+//}
+//
+//ol {
+//  margin-left: emCalc(30px);
+//}
+
+ol {
+  margin-left: $list-side-margin + emCalc(4px);
+}
+
+ul li ol {
+  margin-left: $list-side-margin;
+}
+
+dl dd {
+  margin-left: $definition-list-content-margin-left;
+}
+
+// argh
+dl dd:last-child,
+dl dd:last-child > :last-child {
+  margin-bottom: 0;
+}
+
+// used when you need to style the term inline
+// or should we name it "natural"?
+.unstyled dl dt {
+  font-weight: normal;
+  font-style: normal;
+}
+
+ol > li p,
+ul > li p,
+ul dd,
+ol dd,
+.olist .olist, 
+.ulist .olist,
+.olist .ulist {
+  margin-bottom: $paragraph-margin-bottom / 2;
+}
+
+ul.unstyled,
+ol.unnumbered,
+ul.checklist {
+  list-style-type: none;
+  margin-left: emCalc(10px);
+}
+
+@mixin ordered-list-type($class, $type) {
+  ol.#{$class} {
+    list-style-type: #{$type};
+  }
+}
+
+@include ordered-list-type(arabic, decimal);
+@include ordered-list-type(decimal, decimal-leading-zero);
+@include ordered-list-type(loweralpha, lower-alpha);
+@include ordered-list-type(upperalpha, upper-alpha);
+@include ordered-list-type(lowerroman, lower-roman);
+@include ordered-list-type(upperroman, upper-roman);
+@include ordered-list-type(lowergreek, lower-greek);
+//@include ordered-list-type(armenian, armenian);
+//@include ordered-list-type(georgian, georgian);
+
+.hdlist > table,
+.colist > table {
+  border: 0;
+  background: none;
+  //width: 100%;
+  & > tbody > tr {
+    background: none;
+  }
+}
+
+.literalblock + .colist,
+.listingblock + .colist {
+  margin-top: -0.5em;
+}
+
+.colist > table {
+  tr > td:first-of-type {
+    padding: 0 .8em;
+    line-height: 1;
+  }
+
+  tr > td:last-of-type {
+    padding: emCalc(4px) 0;
+  }
+}
+
+td.hdlist1 {
+  vertical-align: top;
+  padding-right: .8em;
+  font-weight: bold;
+}
+
+.qanda > ol > li > p:first-child {
+  color: darken($primary-color, 5%);
+}
+
+// picked from foundation/components/_thumbs.css
+.thumb,
+.th {
+  line-height: 0;
+  display: inline-block;
+  border: $thumb-border-style $thumb-border-width $thumb-border-color;
+  @if $experimental {
+    -webkit-box-shadow: $thumb-box-shadow;
+  }
+  box-shadow: $thumb-box-shadow;
+}
+
+.imageblock {
+  margin-bottom: $panel-margin-bottom;
+  &.left,
+  &[style*="float: left"] {
+    margin: emCalc(4px) emCalc(10px) $panel-margin-bottom 0;
+  }
+  &.right,
+  &[style*="float: right"] {
+    margin: emCalc(4px) 0 $panel-margin-bottom emCalc(10px);
+  }
+
+  & > .title {
+    margin-bottom: 0;
+  }
+
+  &.thumb,
+  &.th {
+    border-width: $thumb-border-width + ($thumb-border-width * .5);
+    & > .title {
+      padding: 0 emCalc(2px);
+    }
+  }
+}
+
+.image {
+  // QUESTION should we require the related role?
+  // "related" mean "illustrative" or "supporting" of the text
+  //&.related,
+  //&.rel {
+  //}
+
+  &.left,
+  &.right {
+    margin-top: emCalc(4px);
+    margin-bottom: emCalc(4px);
+    display: inline-block;
+    line-height: 0;
+  }
+
+  &.left {
+    margin-right: emCalc(10px);
+  }
+
+  &.right {
+    margin-left: emCalc(10px);
+  }
+}
+
+// AsciiDoc footnote styles
+span.footnote,
+span.footnoteref {
+  vertical-align: super;
+  font-size: emCalc(14px);
+  a {
+    text-decoration: none;
+  }
+}
+
+#footnotes {
+  padding: emCalc(12px) emCalc(6px);
+  margin-bottom: $paragraph-margin-bottom;
+  //border-top: $hr-border-width $hr-border-style $hr-border-color;
+  hr {
+    width: 20%;
+    min-width: emCalc(100px);
+    margin: -.25em 0 .75em 0;
+    border-width: 1px 0 0 0;
+  }
+  .footnote {
+    line-height: 1.3;
+    font-size: emCalc(14px);
+    margin-left: 1.2em;
+    text-indent: -1.2em;
+    //margin-left: 1.5em;
+    //text-indent: -1em;
+    margin-bottom: .2em;
+    a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+
+  .footnote:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+// footnotes in embedded documents
+#content #footnotes {
+  margin-top: -$panel-margin-bottom / 2;
+}
+
+// for embedded gists
+.gist .file-data > table {
+  border: none;
+  background: #fff;
+  width: 100%;
+  margin-bottom: 0;
+  td.line-data {
+    width: 99%;
+  }
+}
+
+// AsciiDoc built-in roles
+@if $include-asciidoc-role-classes {
+  div.unbreakable {
+    page-break-inside: avoid;
+  }
+
+  .big {
+    font-size: larger;
+  }
+  
+  .small {
+    font-size: smaller;
+  }
+
+  @each $decoration in (underline, overline, line-through) {
+    .#{$decoration} {
+      text-decoration: $decoration;
+    }
+  }
+
+  // colors must be quoted or else they may get converted to hex in compression output mode
+  @each $color in ('aqua', 'black', 'blue', 'fuchsia', 'gray', 'green', 'lime', 'maroon', 'navy', 'olive', 'purple', 'red', 'silver', 'teal', 'white', 'yellow') {
+    .#{$color} {
+      color: scale-color(string-to-color($color), $lightness: $rainbow-lightness);
+    }
+  
+    .#{$color}-background {
+      background-color: scale-color(string-to-color($color), $lightness: $rainbow-bg-lightness);
+    }
+  }
+
+  //*:not(code) > .comment {
+  //  background: yellow;
+  //}
+}

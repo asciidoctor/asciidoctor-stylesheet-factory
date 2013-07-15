@@ -1,0 +1,27 @@
+$include-html-grid-classes: true;
+$include-html-panel-classes: true;
+@import "fonts/overpass";
+@import "settings/rocket-panda";
+@import "components/asciidoc-embedded";
+@import "components/awesome-icons";
+
+#content {
+  background: white;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+  margin-bottom: 2em;
+}
+
+.sect1 {
+  padding-bottom: 0;
+}
+
+ol > li p,
+ul > li p,
+ul dd,
+ol dd,
+.olist .olist, 
+.ulist .olist,
+.olist .ulist {
+  margin-bottom: $paragraph-margin-bottom / 4;
+}
