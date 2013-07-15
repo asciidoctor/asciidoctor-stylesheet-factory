@@ -801,7 +801,7 @@ span.footnoteref {
     //margin-left: 1.5em;
     //text-indent: -1em;
     margin-bottom: .2em;
-    a {
+    a:first-of-type {
       font-weight: bold;
       text-decoration: none;
     }
