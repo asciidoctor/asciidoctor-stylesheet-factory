@@ -593,8 +593,8 @@ table.tableblock {
 }
 
 @each $valign in (top, bottom, middle) {
-  th.tableblock.halign-#{$valign},
-  td.tableblock.halign-#{$valign} {
+  th.tableblock.valign-#{$valign},
+  td.tableblock.valign-#{$valign} {
     vertical-align: $valign;
   }
 }
