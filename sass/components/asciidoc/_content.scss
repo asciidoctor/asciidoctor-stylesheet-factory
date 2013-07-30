@@ -8,19 +8,17 @@ $include-asciidoc-role-classes: true !default;
 }
 
 // QUESTION are these the best names / approach?
-/*
-.clearfix,
-.floatend {
-  *zoom: 1;
-  &:before, &:after {
-    content: " ";
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
-}
-*/
+//.clearfix,
+//.floatend {
+//  *zoom: 1;
+//  &:before, &:after {
+//    content: " ";
+//    display: table;
+//  }
+//  &:after {
+//    clear: both;
+//  }
+//}
 
 //*:not(pre) > code {
 code {
@@ -186,7 +184,8 @@ kbd kbd:last-child {
 .ulist,
 .olist,
 .dlist,
-.qlist {
+.qlist,
+.hdlist {
   & > .title {
     @extend %subheader;
     text-align: left;
@@ -462,8 +461,8 @@ table.tableblock {
 }
 
 @each $valign in (top, bottom, middle) {
-  th.tableblock.halign-#{$valign},
-  td.tableblock.halign-#{$valign} {
+  th.tableblock.valign-#{$valign},
+  td.tableblock.valign-#{$valign} {
     vertical-align: $valign;
   }
 }
@@ -669,7 +668,7 @@ span.footnoteref {
     //margin-left: 1.5em;
     //text-indent: -1em;
     margin-bottom: .2em;
-    a {
+    a:first-of-type {
       font-weight: bold;
       text-decoration: none;
     }
