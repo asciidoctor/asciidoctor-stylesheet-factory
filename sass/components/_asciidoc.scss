@@ -521,6 +521,35 @@ pre {
   @include language-label(scss);
 }
 
+// Overrides for Pygments default styles
+table.highlighttable {
+  border: 0;
+  margin-bottom: 0;
+}
+
+table.highlighttable td.code,
+table.highlighttable td.linenos {
+  vertical-align: top;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+table.highlighttable td.code {
+  padding-left: 1em;
+  padding-right: 0;
+}
+
+table.highlighttable td.linenos {
+  color: #999;
+  padding-left: 0;
+  padding-right: .75em;
+  border-right: 1px solid $hr-border-color;
+}
+
+table.highlighttable td.code > pre {
+  margin-bottom: -#{$pre-line-height}em;
+}
+
 // AsciiDoc quoteblock output is different from what Foundation expects
 .quoteblock {
   margin: 0 0 $paragraph-margin-bottom;
@@ -686,6 +715,16 @@ ul.checklist {
   }
 }
 
+td.hdlist1 {
+  padding-right: .8em;
+  font-weight: bold;
+}
+
+td.hdlist1,
+td.hdlist2 {
+  vertical-align: top;
+}
+
 .literalblock + .colist,
 .listingblock + .colist {
   margin-top: -0.5em;
@@ -700,12 +739,6 @@ ul.checklist {
   tr > td:last-of-type {
     padding: emCalc(4px) 0;
   }
-}
-
-td.hdlist1 {
-  vertical-align: top;
-  padding-right: .8em;
-  font-weight: bold;
 }
 
 .qanda > ol > li > p:first-child {
