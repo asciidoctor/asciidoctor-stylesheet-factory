@@ -243,6 +243,20 @@ kbd kbd:last-child {
   }
 }
 
+// toc within content
+#content #toc {
+  @include panel($panel-bg, $panel-padding, false);
+  border-width: 0;
+  @include radius;
+}
+
+#content #toctitle {
+  @extend %subheader;
+  font-weight: bold;
+  font-family: $body-font-family;
+  font-size: emCalc(16px);
+}
+
 #footer {
   max-width: 100%;
   //margin-top: $panel-margin-bottom * 2;
