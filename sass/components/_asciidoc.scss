@@ -755,7 +755,7 @@ td.hdlist2 {
   }
 }
 
-.qanda > ol > li > p:first-child {
+.qanda > ol > li > p > em:only-child {
   color: darken($primary-color, 5%);
 }
 
