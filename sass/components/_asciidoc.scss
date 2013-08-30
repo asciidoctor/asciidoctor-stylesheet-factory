@@ -23,18 +23,16 @@ body {
   }
 }
 
-// QUESTION are these the best names / approach?
-//.clearfix,
-//.floatend {
-//  *zoom: 1;
-//  &:before, &:after {
-//    content: " ";
-//    display: table;
-//  }
-//  &:after {
-//    clear: both;
-//  }
-//}
+.clearfix,
+.float-group {
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
 
 //*:not(pre) > code {
 code {
@@ -536,32 +534,38 @@ pre {
 }
 
 // Overrides for Pygments default styles
-table.highlighttable {
+table.pyhltable {
   border: 0;
   margin-bottom: 0;
 }
 
-table.highlighttable td.code,
-table.highlighttable td.linenos {
+table.pyhltable td {
   vertical-align: top;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-table.highlighttable td.code {
-  padding-left: 1em;
+table.pyhltable td.code {
+  padding-left: .75em;
   padding-right: 0;
 }
 
-table.highlighttable td.linenos {
+.highlight.pygments .lineno,
+table.pyhltable td:not(.code) {
   color: #999;
   padding-left: 0;
-  padding-right: .75em;
+  padding-right: .5em;
   border-right: 1px solid $hr-border-color;
 }
 
-table.highlighttable td.code > pre {
-  margin-bottom: -#{$pre-line-height}em;
+.highlight.pygments .lineno {
+  display: inline-block;
+  margin-right: .25em;
+}
+
+table.pyhltable .linenodiv {
+  background-color: transparent !important;
+  padding-right: 0 !important;
 }
 
 // AsciiDoc quoteblock output is different from what Foundation expects
@@ -701,6 +705,10 @@ ol.unnumbered,
 ul.checklist {
   list-style-type: none;
   margin-left: emCalc(10px);
+}
+
+ul.none {
+  list-style-type: none;
 }
 
 @mixin ordered-list-type($class, $type) {
