@@ -314,9 +314,19 @@ kbd kbd:last-child {
 
 // AsciiDoc block styles
 
+// these blocks that don't inherit panel styles
+.imageblock,
+.literalblock,
+.listingblock,
+.verseblock,
+.videoblock {
+  margin-bottom: $panel-margin-bottom;
+}
+
 .admonitionblock td.content,
 .exampleblock,
 .imageblock,
+.videoblock,
 .listingblock,
 .literalblock,
 .openblock,
@@ -437,14 +447,8 @@ pre {
   line-height: $pre-line-height;
 }
 
-.verseblock {
-  margin-bottom: $panel-margin-bottom;
-}
-
 .literalblock,
 .listingblock {
-  margin-bottom: $panel-margin-bottom;
-
   & > .content > pre {
     background: $pre-bg;
     color: $pre-font-color;
@@ -780,7 +784,6 @@ td.hdlist2 {
 }
 
 .imageblock {
-  margin-bottom: $panel-margin-bottom;
   &.left,
   &[style*="float: left"] {
     margin: emCalc(4px) emCalc(10px) $panel-margin-bottom 0;
