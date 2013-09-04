@@ -397,13 +397,13 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
 .exampleblock > .content {
   @include panel($body-bg);
   @include radius;
-  & > :last-child > :last-child,
-  // argh, review!
-  .olist > ol > li:last-child > :last-child,
-  .ulist > ul > li:last-child > :last-child,
-  .qlist > ol > li:last-child > :last-child {
-    margin-bottom: 0;
-  }
+  //& > :last-child > :last-child,
+  //// argh, review!
+  //.olist > ol > li:last-child > :last-child,
+  //.ulist > ul > li:last-child > :last-child,
+  //.qlist > ol > li:last-child > :last-child {
+  //  margin-bottom: 0;
+  //}
 }
 
 .exampleblock.result > .content {
@@ -428,15 +428,26 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
       }
     }
 
-    & > .paragraph:last-child p {
-      margin-bottom: 0;
-    }
+    //& > .paragraph:last-child p {
+    //  margin-bottom: 0;
+    //}
 
     .literalblock pre,
     .listingblock pre {
       // FIXME this breaks themes w/ inverted pre blocks
       //background-color: #f9f9f9;
     }
+  }
+}
+
+.exampleblock > .content,
+.sidebarblock > .content {
+  // FIXME argh, review!
+  & > :last-child > :last-child,
+  .olist > ol > li:last-child > :last-child,
+  .ulist > ul > li:last-child > :last-child,
+  .qlist > ol > li:last-child > :last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -505,36 +516,46 @@ pre {
   }
 }
 
-.listingblock {
-  pre.highlight {
-    // TODO
-  }
+.listingblock:hover code[class*=" language-"]:before {
+  text-transform: uppercase;
+  float: right;
+  font-size: 0.9em;
+  color: #999;
+
+  // use the next three styles to "cover-up"
+  //position: relative;
+  //background: $pre-bg;
+  //padding: 0 emCalc(12px);
 }
 
 @mixin language-label($lang) {
-  .#{$lang}:before {
+  code.#{$lang}:before {
     content: quote($lang);
-    text-transform: uppercase;
-    float: right;
-    font-size: 0.9em;
-    //color: $subheader-font-color;
-    color: #999;
-    // use the next three styles to "cover-up"
-    //position: relative;
-    //background: $pre-bg;
-    //padding: 0 emCalc(12px);
+    //text-transform: uppercase;
+    //float: right;
+    //font-size: 0.9em;
+    //color: #999; // or $subheader-font-color?
+
+    //// use the next three styles to "cover-up"
+    ////position: relative;
+    ////background: $pre-bg;
+    ////padding: 0 emCalc(12px);
   }
 }
 
 .listingblock:hover {
-  @include language-label(xml);
-  @include language-label(html);
-  @include language-label(ruby);
   @include language-label(asciidoc);
+  @include language-label(clojure);
+  @include language-label(css);
+  @include language-label(groovy);
+  @include language-label(html);
   @include language-label(java);
   @include language-label(javascript);
-  @include language-label(css);
+  @include language-label(python);
+  @include language-label(ruby);
   @include language-label(scss);
+  @include language-label(xml);
+  @include language-label(yaml);
 }
 
 // Overrides for Pygments default styles
@@ -709,6 +730,17 @@ ol.unnumbered,
 ul.checklist {
   list-style-type: none;
   margin-left: emCalc(10px);
+}
+
+// give the checkbox some room
+ul.checklist li > p:first-child > i[class^="icon-check"]:first-child,
+ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
+  margin-right: 0.25em;
+}
+
+ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
+  position: relative;
+  top: 1px;
 }
 
 ul.none {
