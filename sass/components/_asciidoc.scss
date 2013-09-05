@@ -2,8 +2,11 @@
 @import "foundation/components/type";
 @import "foundation/components/panels";
 @import "foundation/components/tables";
-// uncomment inline-lists to support [inline-list] style over unordered list
-//@import "foundation/components/inline-lists";
+$old-include-html-global-classes: $include-html-global-classes;
+$include-html-global-classes: false;
+$inline-list-bottom-margin: $paragraph-margin-bottom / 2 !default;
+@import "foundation/components/inline-lists";
+$include-html-global-classes: $old-include-html-global-classes;
 
 // controls whether built-in AsciiDoc role classes are generated
 $include-asciidoc-role-classes: true !default;
@@ -248,6 +251,9 @@ kbd kbd:last-child {
   @include panel($panel-bg, $panel-padding, false);
   border-width: 0;
   @include radius;
+  a {
+    text-decoration: none;
+  }
 }
 
 #content #toctitle {
@@ -255,6 +261,7 @@ kbd kbd:last-child {
   font-weight: bold;
   font-family: $body-font-family;
   font-size: emCalc(16px);
+  padding-left: emCalc(2px);
 }
 
 #footer {
@@ -718,6 +725,7 @@ ul > li p,
 ul dd,
 ol dd,
 .olist .olist,
+.ulist .ulist,
 .ulist .olist,
 .olist .ulist {
   margin-bottom: $paragraph-margin-bottom / 2;
@@ -745,6 +753,10 @@ ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
 ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
   position: relative;
   top: 1px;
+}
+
+ul.inline {
+  @include inline-list;
 }
 
 // used when you need to style the term inline
@@ -883,9 +895,9 @@ span.footnoteref {
 }
 
 #footnotes {
-  padding: emCalc(12px) emCalc(6px);
-  margin-bottom: $paragraph-margin-bottom;
-  //border-top: $hr-border-width $hr-border-style $hr-border-color;
+  padding-top: emCalc(12px);
+  padding-bottom: emCalc(12px);
+  margin-bottom: $panel-margin-bottom / 2;
   hr {
     width: 20%;
     min-width: emCalc(100px);
@@ -893,12 +905,11 @@ span.footnoteref {
     border-width: 1px 0 0 0;
   }
   .footnote {
+    padding: 0 emCalc(6px);
     line-height: 1.3;
     font-size: emCalc(14px);
     margin-left: 1.2em;
     text-indent: -1.2em;
-    //margin-left: 1.5em;
-    //text-indent: -1em;
     margin-bottom: .2em;
     a:first-of-type {
       font-weight: bold;
@@ -914,6 +925,8 @@ span.footnoteref {
 // footnotes in embedded documents
 #content #footnotes {
   margin-top: -$panel-margin-bottom / 2;
+  margin-bottom: 0;
+  padding: emCalc(12px) 0;
 }
 
 // for embedded gists
