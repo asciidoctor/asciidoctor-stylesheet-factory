@@ -1,6 +1,7 @@
 @import "../fonts/font-awesome";
 
-[class^="icon-"], [class*=" icon-"] {
+span.icon > [class^="icon-"],
+span.icon > [class*=" icon-"] {
   cursor: default;
 }
 

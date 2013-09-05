@@ -45,6 +45,14 @@ code {
   text-shadow: none;
 }
 
+// could use this if we use *:not(pre) > code above
+//pre {
+//  color: $pre-font-color;
+//  font-family: $pre-font-family;
+//  //overflow-x: auto;
+//  line-height: $pre-line-height;
+//}
+
 kbd.keyseq {
   color: lighten($body-font-color, 20%);
 }
@@ -160,22 +168,19 @@ kbd kbd:last-child {
   //margin-bottom: $panel-margin-bottom * 2;
   border-bottom: $sect-divider-size $sect-divider-style $sect-divider-color;
   padding-bottom: $panel-margin-bottom;
-  & > ul,
-  & > ol {
+  & > ul {
     //margin-left: 0;
     margin-left: emCalc(4px);
   }
-  ul.sectlevel0 > li > a,
-  ol.sectlevel0 > li > a {
+  ul.sectlevel0 > li > a {
     font-style: italic; 
   }
-  ul.sectlevel0 ul.sectlevel1,
-  ol.sectlevel0 ol.sectlevel1 {
+  ul.sectlevel0 ul.sectlevel1 {
     margin-left: 0;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
-  ul, ol {
+  ul {
     list-style-type: none;
   }
 }
@@ -211,17 +216,14 @@ kbd kbd:last-child {
     #toctitle {
       margin-top: 0;
     }
-    & > ul,
-    & > ol {
+    & > ul {
       font-size: .95em;
     }
-    ul ul,
-    ol ol {
+    ul ul {
       margin-left: 0;
       padding-left: $list-nested-margin;
     }
-    ul.sectlevel0 ul.sectlevel1,
-    ol.sectlevel0 ol.sectlevel1 {
+    ul.sectlevel0 ul.sectlevel1 {
       padding-left: 0;
       margin-top: 0.5em;
       margin-bottom: 0.5em;
@@ -295,9 +297,7 @@ kbd kbd:last-child {
     }
   }
 
-  //&:focus > a.anchor,
   &:hover > a.anchor,
-  //& > a.anchor:focus,
   & > a.anchor:hover {
     visibility: visible;
   }
@@ -305,9 +305,8 @@ kbd kbd:last-child {
   & > a.link {
     color: $header-font-color;
     text-decoration: none;
-    //&:focus,
     &:hover {
-      color: darken($header-font-color, 5%); 
+      color: darken($header-font-color, 5%);
     }
   }
 }
@@ -335,9 +334,9 @@ kbd kbd:last-child {
 .sidebarblock,
 .tableblock,
 .verseblock,
-.ulist,
-.olist,
 .dlist,
+.olist,
+.ulist,
 .qlist,
 .hdlist {
   & > .title {
@@ -451,12 +450,24 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   }
 }
 
-pre {
-  color: $pre-font-color;
-  font-family: $pre-font-family;
-  overflow-x: auto;
-  line-height: $pre-line-height;
-}
+// GitHub-like look
+//.literalblock, .listingblock {
+//  background-color: #EEE;
+//  border: 1px solid #CCC;
+//  font-family: $code-font-family;
+//  color: #000;
+//  padding: .8em 0 .8em .8em;
+//  margin-bottom: 1.3em;
+//  overflow: auto;
+//  @include radius;
+//
+//  pre {
+//    margin: 0px;
+//    font-size: .9em;
+//    line-height: 1.4em;
+//    white-space: prewrap;
+//  }
+//}
 
 .literalblock,
 .listingblock {
@@ -531,15 +542,6 @@ pre {
 @mixin language-label($lang) {
   code.#{$lang}:before {
     content: quote($lang);
-    //text-transform: uppercase;
-    //float: right;
-    //font-size: 0.9em;
-    //color: #999; // or $subheader-font-color?
-
-    //// use the next three styles to "cover-up"
-    ////position: relative;
-    ////background: $pre-bg;
-    ////padding: 0 emCalc(12px);
   }
 }
 
@@ -556,6 +558,16 @@ pre {
   @include language-label(scss);
   @include language-label(xml);
   @include language-label(yaml);
+}
+
+.listingblock.terminal pre .command:before {
+  content: attr(data-prompt); 
+  padding-right: 0.5em;
+  color: #999;
+}
+
+.listingblock.terminal pre .command:not([data-prompt]):before {
+  content: '$'; 
 }
 
 // Overrides for Pygments default styles
@@ -680,15 +692,8 @@ td > div.verse {
   white-space: pre;
 }
 
-// AsciiDoc list styles
 
-//ul {
-//  margin-left: emCalc(28px);
-//}
-//
-//ol {
-//  margin-left: emCalc(30px);
-//}
+// AsciiDoc list styles
 
 ol {
   margin-left: $list-side-margin + emCalc(4px);
@@ -708,18 +713,11 @@ dl dd:last-child > :last-child {
   margin-bottom: 0;
 }
 
-// used when you need to style the term inline
-// or should we name it "natural"?
-.unstyled dl dt {
-  font-weight: normal;
-  font-style: normal;
-}
-
 ol > li p,
 ul > li p,
 ul dd,
 ol dd,
-.olist .olist, 
+.olist .olist,
 .ulist .olist,
 .olist .ulist {
   margin-bottom: $paragraph-margin-bottom / 2;
@@ -727,8 +725,14 @@ ol dd,
 
 ul.unstyled,
 ol.unnumbered,
-ul.checklist {
+ul.checklist,
+ul.none {
   list-style-type: none;
+}
+
+ul.unstyled,
+ol.unnumbered,
+ul.checklist {
   margin-left: emCalc(10px);
 }
 
@@ -743,8 +747,11 @@ ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
   top: 1px;
 }
 
-ul.none {
-  list-style-type: none;
+// used when you need to style the term inline
+// or should we name it "natural"?
+.unstyled dl dt {
+  font-weight: normal;
+  font-style: normal;
 }
 
 @mixin ordered-list-type($class, $type) {
@@ -767,7 +774,6 @@ ul.none {
 .colist > table {
   border: 0;
   background: none;
-  //width: 100%;
   & > tbody > tr {
     background: none;
   }
