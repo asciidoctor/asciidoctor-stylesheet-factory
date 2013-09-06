@@ -37,8 +37,8 @@ body {
   }
 }
 
-//*:not(pre) > code {
-code {
+*:not(pre) > code {
+//code {
   font-size: $code-font-size;
   padding: $code-padding;
   white-space: nowrap;
@@ -48,12 +48,24 @@ code {
   text-shadow: none;
 }
 
-// could use this if we use *:not(pre) > code above
-//pre {
+pre, pre > code {
+  line-height: $pre-line-height;
+  // this overrides what was set on code
+  color: $pre-font-color;
+  font-family: $pre-font-family;
+  font-weight: normal;
+}
+
+// if we need to trump the code settings
+//pre > code {
+//  font-size: 1em;
+//  white-space: inherit;
 //  color: $pre-font-color;
 //  font-family: $pre-font-family;
-//  //overflow-x: auto;
-//  line-height: $pre-line-height;
+//  padding: 0;
+//  background: none;
+//  font-weight: normal;
+//  border: none;
 //}
 
 kbd.keyseq {
@@ -91,8 +103,9 @@ kbd kbd:last-child {
 @if $anchor-text-decoration != none {
   // this makes the underline the same as the text color
   p a > code {
-    text-decoration: $anchor-text-decoration;
+    //text-decoration: $anchor-text-decoration;
 
+    // this makes the color darken to act like other links
     &:hover {
       color: darken($code-color, 5%);
     }
@@ -394,7 +407,8 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
     border-left: $hr-border-width $hr-border-style $hr-border-color; 
     color: $blockquote-font-color;
 
-    & > .paragraph:last-child > p {
+    //& > .paragraph:last-child > p {
+    & > :last-child > :last-child {
       margin-bottom: 0;
     }
   }
@@ -433,16 +447,6 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
         border-color: $sidebar-header-border-color;
       }
     }
-
-    //& > .paragraph:last-child p {
-    //  margin-bottom: 0;
-    //}
-
-    .literalblock pre,
-    .listingblock pre {
-      // FIXME this breaks themes w/ inverted pre blocks
-      //background-color: #f9f9f9;
-    }
   }
 }
 
@@ -478,11 +482,8 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
 
 .literalblock,
 .listingblock {
-  & > .content > pre {
+  & > .content pre {
     background: $pre-bg;
-    color: $pre-font-color;
-    font-family: $pre-font-family;
-    //font-style: normal;
     border-width: $pre-border-size;
     @if $pre-border-size != 0 {
       border-style: $pre-border-style;
@@ -491,7 +492,6 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
     }
     padding: $pre-padding;
     word-wrap: break-word;
-    line-height: $pre-line-height;
 
     &.nowrap {
       overflow-x: auto;
@@ -500,14 +500,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
     }
     
     & > code {
-      font-size: 1em;
-      white-space: inherit;
-      color: $pre-font-color;
-      font-family: $pre-font-family;
-      padding: 0;
-      background: none;
-      font-weight: normal;
-      border: none;
+      display: block;
     }
 
     @media #{$screen} {
@@ -534,11 +527,21 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   }
 }
 
+.listingblock > .content {
+  // if the floating language text a place to drop anchor
+  position: relative;
+}
+
 .listingblock:hover code[class*=" language-"]:before {
   text-transform: uppercase;
-  float: right;
   font-size: 0.9em;
   color: #999;
+
+  //float: right;
+  //or
+  position: absolute;
+  top: emCalc(6px);
+  right: emCalc(6px);
 
   // use the next three styles to "cover-up"
   //position: relative;
