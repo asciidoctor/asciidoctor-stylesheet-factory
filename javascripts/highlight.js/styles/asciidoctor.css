@@ -1,9 +1,10 @@
 /* Asciidoctor style for highlight.js */
-pre code {
+
+/*pre code {
   display: block; padding: 0.5em;
   color: #333;
   background: #f8f8ff
-}
+}*/
 
 pre .comment,
 pre .template_comment,

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="Asciidoctor 0.1.4.pre" name="generator">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Asciidoctor 1.5.0.preview">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AsciiDoc Writer&#8217;s Guide</title>
 <link href="../stylesheets/asciidoctor.css" rel="stylesheet">
 <link href="../javascripts/highlight.js/styles/asciidoctor.css" rel="stylesheet">
@@ -18,11 +18,41 @@ function change_stylesheet(name) {
   stylesheets[0].setAttribute('href', '../stylesheets/' + main + '.css?v=8');
   stylesheets[1].setAttribute('href', '../javascripts/highlight.js/styles/' + code + '.css');
 }
+function change_toc(direction) {
+  document.getElementsByTagName('body')[0].setAttribute('class', 'article toc2 toc-' + direction);  
+}
 </script>
+<style>
+.theme-controls {
+  font-size: .8em;
+  position: fixed;
+  z-index: 1001;
+  padding: 5px;
+  background-color: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .35);
+  text-align: right;
+
+  /*top: 3px;*/
+  bottom: 4px;
+  right: 4px;
+}
+
+.theme-controls select {
+  z-index: 1001;
+}
+
+.toc-left .theme-controls {
+  /*right: 5px;*/
+}
+
+.toc-right .theme-controls {
+  /*left: 5px;*/
+}
+</style>
 </head>
-<body class="article toc2">
-<div style="position: fixed; top: 5px; right: 5px; z-index: 100">
-  <select onchange="change_stylesheet(this.value)">
+<body class="article toc2 toc-left">
+<div class="theme-controls">
+  <select onchange="change_stylesheet(this.value)" style="width: auto; display: inline-block;">
     <option value="asciidoctor|asciidoctor">Asciidoctor</option>
     <option value="foundation|foundation">Foundation</option>
     <option value="foundation-potion|foundation">Foundation (Potion)</option>
@@ -35,6 +65,12 @@ function change_stylesheet(name) {
     <option value="maker|googlecode">Maker</option>
     <option value="colony|googlecode">Colony</option>
     <option value="rubygems|dark">RubyGems</option>
+    <option value="rocket-panda|googlecode">Rocket Panda</option>
+  </select>
+  <br>
+  TOC Position: <select onchange="change_toc(this.value)" style="width: auto; display: inline-block;">
+    <option value="left">left</option>
+    <option value="right">right</option>
   </select>
 </div>
 <div id="header">
@@ -46,7 +82,7 @@ function change_stylesheet(name) {
 <li><a href="#writing-in-asciidoc">Writing in AsciiDoc</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#-it-s-just-text-mate">&#8220;It&#8217;s just text, mate.&#8221;</a></li>
+<li><a href="#it-s-just-text-mate">&#8220;It&#8217;s just text, mate.&#8221;</a></li>
 <li><a href="#content-is-king">Content is king!</a></li>
 <li><a href="#admonitions">Admonitions</a></li>
 <li><a href="#mild-punctuation-strong-impact">Mild punctuation, strong impact</a></li>
@@ -98,7 +134,7 @@ This introduction is intended for anyone who wants to reduce the effort required
 </td>
 <td class="content">
 If you want to know what AsciiDoc is all about, find the answer in <a href="/docs/what-is-asciidoc-why-use-it">What is AsciiDoc?</a><br>
-If you&#8217;re looking for a concise survey of the AsciiDoc syntax, consult the <a href="/docs/asciidoc-quick-reference/">AsciiDoc Syntax Quick Reference</a>.
+If you&#8217;re looking for a concise survey of the AsciiDoc syntax, consult the <a href="/docs/asciidoc-syntax-quick-reference/">AsciiDoc Syntax Quick Reference</a>.
 </td>
 </tr>
 </table>
@@ -128,7 +164,6 @@ If you&#8217;re looking for a concise survey of the AsciiDoc syntax, consult the
 <div class="paragraph">
 <p>Let&#8217;s dive in to AsciiDoc!</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -142,7 +177,7 @@ Hopefully, when you look back, you&#8217;ll agree it just makes sense.</p>
 <p>Your adventure with AsciiDoc begins in your favorite text editor.</p>
 </div>
 <div class="sect2">
-<h3 id="-it-s-just-text-mate"><a class="anchor" href="#-it-s-just-text-mate"></a>&#8220;It&#8217;s just text, mate.&#8221;</h3>
+<h3 id="it-s-just-text-mate"><a class="anchor" href="#it-s-just-text-mate"></a>&#8220;It&#8217;s just text, mate.&#8221;</h3>
 <div class="paragraph">
 <p>Since AsciiDoc syntax is just <code>plain</code> <code>text</code>, you can write an AsciiDoc document using <em>any</em> text editor.
 You don&#8217;t need complex word processing programs like Microsoft Word, OpenOffice Writer or Google Docs.
@@ -186,7 +221,6 @@ To learn how to setup instant preview, check out the <a href="/docs/editing-asci
 <div class="paragraph">
 <p>Open up your favorite text editor and get ready to write some AsciiDoc!</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="content-is-king"><a class="anchor" href="#content-is-king"></a>Content is king!</h3>
@@ -197,7 +231,7 @@ No special markup is required to write a normal paragraph.
 Just type away!</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>In AsciiDoc, the main structural element is the paragraph.
 A paragraph consists of adjacent lines of text.
 
@@ -240,7 +274,7 @@ If you want to find out how to render the document to HTML, DocBook or PDF, skip
 <div class="content">
 <div class="title">Wrapped text and hard line breaks</div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>Adjacent lines like these are combined as a single paragraph.
 That means you can wrap paragraph text
 or put each sentence on a separate line
@@ -256,14 +290,13 @@ and the line breaks won't appear in the output.</pre>
 <p>Adjacent lines like these are combined as a single paragraph.
 That means you can wrap paragraph text or put each sentence on a separate line and the line breaks won&#8217;t appear in the output.</p>
 </div>
-
 </blockquote>
 </div>
 <div class="paragraph">
 <p>If you want line breaks in a paragraph to be preserved, simply add a space followed by a plus sign at the end of the sentence:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>Roses are red, +
 Violets are blue.</pre>
 </div>
@@ -272,17 +305,15 @@ Violets are blue.</pre>
 <p>Alternatively, if you&#8217;re using Asciidoctor and you want line breaks in a paragraph to be preserved, add the following attribute entry to the header of your document below the title, author and revision lines:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>:hardbreaks:</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>This feature is only available in Asciidoctor.</p>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="admonitions"><a class="anchor" href="#admonitions"></a>Admonitions</h3>
@@ -292,7 +323,7 @@ These are called <em>admonition paragraphs</em>.
 To make a paragraph an admonition, prefix it with an uppercase label, such as in this note:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">NOTE: Admonition paragraphs call attention to special words of advice.</code></pre>
 </div>
 </div>
@@ -338,7 +369,6 @@ Admonitions can also encapsulate any block content, which we&#8217;ll cover late
 <p>All words and no emphasis makes the document monotonous.
 Let&#8217;s give our paragraphs some <strong class="big"><em>emotion</em></strong>.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="mild-punctuation-strong-impact"><a class="anchor" href="#mild-punctuation-strong-impact"></a>Mild punctuation, strong impact</h3>
@@ -352,7 +382,7 @@ AsciiDoc refers to this markup as <em>quoted text</em>.</p>
 <p>For instance, in an e-mail, you might &#8220;speak&#8221; a word louder by enclosing it in asterisks.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">I can't believe it, we *won*!</code></pre>
 </div>
 </div>
@@ -435,7 +465,7 @@ The term &#8220;quote&#8221; is used liberally here to apply to any symbols that
 For instance, to emphasis the first letter of a word, you need to surround it in double asterisks:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">**F**our score and seven years ago...</code></pre>
 </div>
 </div>
@@ -458,7 +488,7 @@ The role can be used to apply custom styling to the text.
 For instance:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">Type the word [userinput]#asciidoc# into the search bar.</code></pre>
 </div>
 </div>
@@ -466,7 +496,7 @@ For instance:</p>
 <p>When rendering to HTML, the word &#8220;asciidoc&#8221; is wrapped in <code>&lt;span&gt;</code> tags and the role is used as the element&#8217;s CSS class:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="html language-html">&lt;span class="userinput"&gt;asciidoc&lt;/span&gt;</code></pre>
 </div>
 </div>
@@ -477,7 +507,6 @@ For instance:</p>
 <p>You may not always want these substitutions to take place.
 In those cases, you&#8217;ll need to use markup to escape the text.</p>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="preventing-substitution"><a class="anchor" href="#preventing-substitution"></a>Preventing substitution</h4>
@@ -490,51 +519,46 @@ In those cases, you&#8217;ll need to use markup to escape the text.</p>
 <dd>
 <p>To prevent punctuation from being interpreted, proceed it with a backslash:</p>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">\*Stars* will not be bold, but rather appear as *Stars*.
 The backslash character is automatically removed.</code></pre>
 </div>
 </div>
-
 </dd>
 <dt class="hdlist1">Double dollar enclosure</dt>
 <dd>
 <p>To exclude a phrase from substitutions, enclose it in double dollars (<code>$$</code>):</p>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">$$*Stars*$$ will not be bold, but rather appear as *Stars*.
 Special characters are still escaped so, $$&lt;p&gt;$$ appears as &lt;p&gt;.
 Double dollar is commonly used to wrap URLs containing punctuation.</code></pre>
 </div>
 </div>
-
 </dd>
 <dt class="hdlist1">Triple plus enclosure &amp; inline pass macro</dt>
 <dd>
 <p>To exclude a phrase from substitutions and disable escaping of special characters, enclose it in triple pluses (<code>+++</code>) or the inline <code>pass:[]</code> macro:</p>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">The markup +++&lt;u&gt;underline me&lt;/u&gt;+++ renders as underlined text.
 The markup pass:[&lt;u&gt;underline me&lt;/u&gt;] produces the same result.
 Triple plus and pass:[] are often used to output custom HTML or XML.</code></pre>
 </div>
 </div>
-
 </dd>
 <dt class="hdlist1">Backticks enclosure</dt>
 <dd>
 <p>To exclude a phrase from substitutions, disable escaping of special characters and render it as monospaced text, enclose it in backticks (<code>`</code>):</p>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">This `*literal*` will appear as *literal* in a monospace font.
 Backticks are commonly used around inline code containing markup.</code></pre>
 </div>
 </div>
-
 </dd>
 </dl>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="replacements"><a class="anchor" href="#replacements"></a>Replacements</h4>
@@ -599,6 +623,7 @@ Backticks are commonly used around inline code containing markup.</code></pre>
 </tr>
 </tbody>
 </table>
+
 <div class="paragraph">
 <p>This mild punctuation does not take away from the readability of the text.
 In fact, you could argue that it makes the text easier to read.
@@ -607,9 +632,7 @@ What&#8217;s important is that these are conventions with which you are likely a
 <div class="paragraph">
 <p>Punctuation is used in AsciiDoc to create another very common type of element in documents, <em>lists!</em></p>
 </div>
-
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="lists-lists-lists"><a class="anchor" href="#lists-lists-lists"></a>Lists, lists, lists</h3>
@@ -648,7 +671,7 @@ Chances are, what you&#8217;d type is exactly how you define an outline list in 
 <p>Here&#8217;s an example of a grocery list written as an unordered list in AsciiDoc:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">* Milk
 * Eggs
 * Bread
@@ -661,7 +684,7 @@ Guess what?
 That works too:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">- Milk
 - Eggs
 - Bread
@@ -704,7 +727,7 @@ Then you might organize it as a nested list.</p>
 <p>To get a nested item, just add another asterisk in front of the item:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">* Diary
 ** Milk
 ** Eggs
@@ -718,7 +741,7 @@ Then you might organize it as a nested list.</p>
 <p>You can have up to five levels of nesting:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">* Kingdom
 ** Phylum
 *** Class
@@ -741,7 +764,7 @@ Then you might organize it as a nested list.</p>
 </div>
 <div class="listingblock">
 <div class="title">List without nested items</div>
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">- Fedora
 - Ubuntu
 - Slackware</code></pre>
@@ -752,7 +775,7 @@ Then you might organize it as a nested list.</p>
 </div>
 <div class="listingblock">
 <div class="title">List with nested items</div>
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">* Linux
 ** Fedora
 ** Ubuntu
@@ -775,7 +798,6 @@ However, it&#8217;s much more intuitive to follow this convention:</p>
 <div class="paragraph">
 <p>After all, we are shooting for plain text markup that is readable <em>as is</em>.</p>
 </div>
-
 </td>
 </tr>
 </table>
@@ -783,7 +805,6 @@ However, it&#8217;s much more intuitive to follow this convention:</p>
 <div class="paragraph">
 <p>Using a different marker, we can create an ordered list in the same way.</p>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="ordering-the-things"><a class="anchor" href="#ordering-the-things"></a>Ordering the things</h4>
@@ -792,7 +813,7 @@ However, it&#8217;s much more intuitive to follow this convention:</p>
 Instinct might tell you to prefix each item with a number, like in this next list:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">1. Protons
 2. Electrons
 3. Neutrons</code></pre>
@@ -802,7 +823,7 @@ Instinct might tell you to prefix each item with a number, like in this next lis
 <p>Since the numbering is obvious, the AsciiDoc processor will insert the numbers for you if you omit them:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">. Protons
 . Electrons
 . Neutrons</code></pre>
@@ -812,7 +833,7 @@ Instinct might tell you to prefix each item with a number, like in this next lis
 <p>Like with unordered lists, you create a nested item by using one or more dots in front of each the item:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">. Lists
 .. Outline
 ... Unordered
@@ -843,7 +864,6 @@ However, it&#8217;s much more intuitive to follow this convention:</p>
 <div class="paragraph">
 <p>Again, we are shooting for plain text markup that is readable <em>as is</em>.</p>
 </div>
-
 </td>
 </tr>
 </table>
@@ -873,14 +893,12 @@ Here&#8217;s how the previous list renders:</p>
 </li>
 </ol>
 </div>
-
 </li>
 <li>
 <p>Labeled</p>
 </li>
 </ol>
 </div>
-
 </li>
 <li>
 <p>Titles</p>
@@ -897,11 +915,9 @@ Here&#8217;s how the previous list renders:</p>
 </li>
 </ol>
 </div>
-
 </li>
 </ol>
 </div>
-
 </div>
 </div>
 <div class="paragraph">
@@ -956,12 +972,13 @@ Here&#8217;s how the previous list renders:</p>
 </tr>
 </tbody>
 </table>
+
 <div class="paragraph">
 <p>You can override the number scheme for any level by setting its style (the first positional entry in a block attribute list).
 You can also set the starting number using the <code>start</code> attribute:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">["lowerroman", start=5]
 . Five
 . Six
@@ -972,7 +989,6 @@ You can also set the starting number using the <code>start</code> attribute:</p>
 . Seven</code></pre>
 </div>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="titling-a-list"><a class="anchor" href="#titling-a-list"></a>Titling a list</h4>
@@ -983,7 +999,7 @@ You can also set the starting number using the <code>start</code> attribute:</p>
 <p>Here are examples of two lists with titles:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">.Shopping list
 * Milk
 * Eggs
@@ -999,7 +1015,6 @@ You can also set the starting number using the <code>start</code> attribute:</p>
 <p>Not all lists have punctuation markers.
 Let&#8217;s look at lists that use terms to tag each item.</p>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="labeled-lists"><a class="anchor" href="#labeled-lists"></a>Labeled lists</h4>
@@ -1024,7 +1039,7 @@ Each item in a labeled list consists of a term or phrase followed by:</p>
 <p>Here&#8217;s an example of a labeled list that identifies parts of a computer:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">CPU:: The brain of the computer.
 Hard drive:: Permanent storage for operating system and/or user files.
 RAM:: Temporarily stores information the CPU uses during operation.
@@ -1068,14 +1083,13 @@ Here&#8217;s a preview of how this list is rendered:</p>
 </dd>
 </dl>
 </div>
-
 </div>
 </div>
 <div class="paragraph">
 <p>If you want the label and content to appear on the same line, add the horizontal style to the list.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[horizontal]
 CPU:: The brain of the computer.
 Hard drive:: Permanent storage for operating system and/or user files.
@@ -1087,7 +1101,7 @@ RAM:: Temporarily stores information the CPU uses during operation.</code></pre>
 For instance, we could rewrite the grocery list from above so that each aisle is a label rather than a parent outline list item.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">Diary::
 * Milk
 * Eggs
@@ -1101,7 +1115,7 @@ Produce::
 <p>Labeled lists are quite lenient about whitespace, so you can spread the items out and even indent the content if that makes it more readable for you:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>Diary::
 
   * Milk
@@ -1116,7 +1130,6 @@ Produce::
   * Bananas</pre>
 </div>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="hybrid-lists"><a class="anchor" href="#hybrid-lists"></a>Hybrid lists</h4>
@@ -1128,7 +1141,7 @@ AsciiDoc works hard to infer the relationships between the items that are most i
 <p>Here&#8217;s an example of nesting an unordered list inside of an ordered list:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">. Linux
 * Fedora
 * Ubuntu
@@ -1142,7 +1155,7 @@ AsciiDoc works hard to infer the relationships between the items that are most i
 <p>Again, you can spread the items out and indent the nested lists if that makes it more readable for you:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>. Linux
 
   * Fedora
@@ -1159,7 +1172,7 @@ AsciiDoc works hard to infer the relationships between the items that are most i
 <p>Here&#8217;s a list that mixes all three types of lists:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>Operating Systems::
   . Linux
     * Fedora
@@ -1204,7 +1217,6 @@ Cloud Providers::
 </li>
 </ul>
 </div>
-
 </li>
 <li>
 <p>BSD</p>
@@ -1218,11 +1230,9 @@ Cloud Providers::
 </li>
 </ul>
 </div>
-
 </li>
 </ol>
 </div>
-
 </dd>
 <dt class="hdlist1">Cloud Providers</dt>
 <dd>
@@ -1240,7 +1250,6 @@ Cloud Providers::
 </li>
 </ul>
 </div>
-
 </li>
 <li>
 <p>IaaS</p>
@@ -1254,21 +1263,17 @@ Cloud Providers::
 </li>
 </ul>
 </div>
-
 </li>
 </ol>
 </div>
-
 </dd>
 </dl>
 </div>
-
 </div>
 </div>
 <div class="paragraph">
 <p>You can include more complex content in a list item as well.</p>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="complex-list-content"><a class="anchor" href="#complex-list-content"></a>Complex list content</h4>
@@ -1283,7 +1288,7 @@ The wrapped lines can be indented and they will still be treated as normal parag
 For example:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>* The header in AsciiDoc is optional, but if
 it is used it must start with a document title.
 
@@ -1313,7 +1318,7 @@ A list continuation is a <code>+</code> symbol on a line by itself, immediately 
 Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>* The header in AsciiDoc must start with a
   document title.
 +
@@ -1330,7 +1335,7 @@ The header is optional.
 <p>Here&#8217;s an example that attaches both a listing block and an admonition paragraph to the first item:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>* The header in AsciiDoc must start with a
   document title.
 +
@@ -1362,7 +1367,7 @@ v1.0, 2013-01-01
 <p>The header in AsciiDoc must start with a
 document title.</p>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>= Document Title</pre>
 </div>
 </div>
@@ -1378,50 +1383,44 @@ The header is optional.
 </tr>
 </table>
 </div>
-
 </li>
 <li>
 <p>Optional Author and Revision information
 immediately follows the header title.</p>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>= Document Title
 Doc Writer &lt;doc.writer@asciidoc.org&gt;
 v1.0, 2013-01-01</pre>
 </div>
 </div>
-
 </li>
 </ul>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="dividing-lists"><a class="anchor" href="#dividing-lists"></a>Dividing lists</h4>
 <div class="paragraph">
 <p>If you have adjacent lists, they have the tendency to want to fuse together.
-To force the lists apart, place a line comment between them, offset on either side by a blank line.
+To force the lists apart, place a line comment between them, offset on either side by a blank line (i.e., an end of list marker).
 Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">* Apples
 * Oranges
 * Bananas
 
-// list divider
+//^
 
 * Walnuts
 * Almonds
 * Cashews</code></pre>
 </div>
 </div>
-
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="links-and-images"><a class="anchor" href="#links-and-images"></a>Links and images</h3>
@@ -1435,7 +1434,7 @@ Here&#8217;s an example:</p>
 Just include the URL in the document and AsciiDoc will turn it into a link.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">You can learn more about AsciiDoc at http://asciidoc.org.</code></pre>
 </div>
 </div>
@@ -1459,11 +1458,10 @@ AsciiDoc recognizes URLs that begin with <code>http://</code>, <code>https://</c
 <p>To turn a word or phrase into a link, just enclose it in square brackets at the end of the URL:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">http://asciidoc.org[AsciiDoc] is a lightweight markup language.</code></pre>
 </div>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="target-window-and-role-attributes-for-links"><a class="anchor" href="#target-window-and-role-attributes-for-links"></a>Target window and role attributes for links</h4>
@@ -1476,7 +1474,7 @@ However, AsciiDoc does not parse attributes in the link macro by default.
 In Asciidoctor 0.1.3, you can enable parsing of link macro attributes by setting the <code>linkattrs</code> document attribute in the header.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">:linkattrs:</code></pre>
 </div>
 </div>
@@ -1484,7 +1482,7 @@ In Asciidoctor 0.1.3, you can enable parsing of link macro attributes by setting
 <p>You can also specify the name of the target window using the <code>window</code> attribute:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">http://google.com[Google, window="_blank"]</code></pre>
 </div>
 </div>
@@ -1493,7 +1491,7 @@ In Asciidoctor 0.1.3, you can enable parsing of link macro attributes by setting
 Just end the link text with a caret (<code>^</code>):</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">http://google.com[Google^]</code></pre>
 </div>
 </div>
@@ -1501,14 +1499,13 @@ Just end the link text with a caret (<code>^</code>):</p>
 <p>Since Asciidoctor is parsing the attributes, that opens the door for adding a role (i.e., CSS class) to the link:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">http://google.com[Google^, role="external"]</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>You can now have fun styling your links.</p>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="links-to-relative-files"><a class="anchor" href="#links-to-relative-files"></a>Links to relative files</h4>
@@ -1516,7 +1513,7 @@ Just end the link text with a caret (<code>^</code>):</p>
 <p>If you want to link to a file relative to the current document, use the <code>link:</code> prefix in front of the file name:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">link:editing-asciidoc-with-live-preview[Editing with Live Preview]</code></pre>
 </div>
 </div>
@@ -1524,14 +1521,13 @@ Just end the link text with a caret (<code>^</code>):</p>
 <p>To link directly to a section in the document (a &#8220;deep&#8221; link), append a hash (<code>#</code>) followed by the id of the section to the end of the file name:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">link:editing-asciidoc-with-live-preview/#livereload[LiveReload]</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>You can also create links that refer to sections within the current document.</p>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="internal-cross-references"><a class="anchor" href="#internal-cross-references"></a>Internal cross references</h4>
@@ -1540,7 +1536,7 @@ Just end the link text with a caret (<code>^</code>):</p>
 You create a cross reference by enclosing the element&#8217;s id in double angled brackets:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">The section &lt;&lt;content-is-king&gt;&gt; covers paragraphs in AsciiDoc.</code></pre>
 </div>
 </div>
@@ -1549,7 +1545,7 @@ You create a cross reference by enclosing the element&#8217;s id in double angle
 If you want to customize the linked text, include it after the id, separated by a comma:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">Learn how to create &lt;&lt;content-is-king,paragraphs&gt;&gt; in AsciiDoc.</code></pre>
 </div>
 </div>
@@ -1557,15 +1553,14 @@ If you want to customize the linked text, include it after the id, separated by 
 <p>Image references are similar to links since they are also references to URLs or files.
 The difference, of course, is that they display the image in the document.</p>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="images"><a class="anchor" href="#images"></a>Images</h4>
 <div class="paragraph">
-<p>To include an image on it&#8217;s own, a <em>block image</em>, use the <code>image::</code> prefix in front of the file name and square brackets after it:</p>
+<p>To include an image on it&#8217;s own line (i.e., a <em>block image</em>), use the <code>image::</code> prefix in front of the file name and square brackets after it:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">image::sunset.jpg[]</code></pre>
 </div>
 </div>
@@ -1573,7 +1568,7 @@ The difference, of course, is that they display the image in the document.</p>
 <p>If you want to specify alt text, include it inside the square brackets:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">image::sunset.jpg[Sunset]</code></pre>
 </div>
 </div>
@@ -1581,7 +1576,7 @@ The difference, of course, is that they display the image in the document.</p>
 <p>You can also give the image an id, a title (i.e., caption), set its dimensions (i.e., width and height) and make it a link:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[[img-sunset]]
 .A mountain sunset
 image::sunset.jpg[Sunset, 300, 200, link="http://www.flickr.com/photos/javh/5448336655"]</code></pre>
@@ -1600,14 +1595,39 @@ Here&#8217;s a preview:</p>
 </div>
 <div class="title">Figure 1. A mountain sunset</div>
 </div>
-
 </div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-important" title="Important"></i>
+</td>
+<td class="content">
+Images are resolved relative to the value of the <code>imagesdir</code> document attribute, which defaults to an empty value.
+The <code>imagesdir</code> attribute can be an absolute path, relative path or base URL.
+If the image target is a URL or an absolute path, the <code>imagesdir</code> prefix is <em>not</em> added.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You should use the <code>imagesdir</code> attribute to avoid hard coding the shared path to your images in every image macro.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>If you want to include an image inline, use the <code>image:</code> prefix instead (notice there is only one colon):</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">Press the image:save.png[Save, title="Save"] button.</code></pre>
 </div>
 </div>
@@ -1622,9 +1642,7 @@ Consult the <a href="http://asciidoc.org/userguide.html#X98">Audio and video blo
 <p>If paragraphs and lists are the meat of the document, then titles and sections are its bones.
 Let&#8217;s explore how to give structure to our document.</p>
 </div>
-
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="titles-titles-titles"><a class="anchor" href="#titles-titles-titles"></a>Titles, titles, titles</h3>
@@ -1674,7 +1692,7 @@ This syntax is the simplest (and thus recommended) way to declare a document tit
 <p>Here&#8217;s an example of a document title followed by an abbreviated paragraph:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">= Lightweight Markup Languages
 
 According to Wikipedia...</code></pre>
@@ -1729,7 +1747,7 @@ Let&#8217;s see how to add additional information to the header, including an au
 <p>Let&#8217;s add these lines to our document:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">= Lightweight Markup Languages
 Doc Writer &lt;doc.writer@asciidoc.org&gt;
 v1.0, 2012-01-01
@@ -1759,9 +1777,7 @@ It&#8217;s excluded from the output of an embedded document.
 <div class="paragraph">
 <p>The document header can also be used to define attributes.</p>
 </div>
-
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="document-attributes"><a class="anchor" href="#document-attributes"></a>Document attributes</h4>
@@ -1781,7 +1797,7 @@ The content is optional.</p>
 <p>Here&#8217;s an example of an attribute that holds the version of an application:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">= User Guide
 Doc Writer &lt;doc.writer@asciidoc.org&gt;
 2012-01-01
@@ -1804,7 +1820,7 @@ There should be no blank lines between the first attribute entry and the rest of
 <p>Now you can refer to this attribute anywhere in the document (where attribute substitution is performed) by surrounding the name in curly braces:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">The current version of the application is {appversion}.</code></pre>
 </div>
 </div>
@@ -1813,7 +1829,7 @@ There should be no blank lines between the first attribute entry and the rest of
 Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">:fedpkg: https://apps.fedoraproject.org/packages/asciidoc</code></pre>
 </div>
 </div>
@@ -1821,7 +1837,7 @@ Here&#8217;s an example:</p>
 <p>Here&#8217;s the attribute in use:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">Information about the AsciiDoc package in Fedora is found at {fedpkg}.</code></pre>
 </div>
 </div>
@@ -1832,7 +1848,7 @@ Here&#8217;s an example:</p>
 <p>For example, to include a table of contents on the left side the document, you can define the <code>toc2</code> attribute:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">:toc2:</code></pre>
 </div>
 </div>
@@ -1840,15 +1856,15 @@ Here&#8217;s an example:</p>
 <p>To undefine an attribute, place a <code>!</code> at the end of the name:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">:linkcss!:</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also set the base path to images (default: <code>./images</code>), icons (default: <code>./images/icons</code>), stylesheets (default: <code>./stylesheets</code>) and JavaScript files (default: <code>./javascripts</code>):</p>
+<p>You can also set the base path to images (default: <em>empty</em>), icons (default: <code>./images/icons</code>), stylesheets (default: <code>./stylesheets</code>) and JavaScript files (default: <code>./javascripts</code>):</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">:imagesdir: ./images
 :iconsdir: ./icons
 :stylesdir: ./styles
@@ -1879,7 +1895,6 @@ We&#8217;ll explore that feature later.
 <p>As your document grows, you&#8217;ll want to break the content into sections, like in this guide.
 That&#8217;s accomplished using section titles.</p>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="section-titles"><a class="anchor" href="#section-titles"></a>Section titles</h4>
@@ -1895,7 +1910,7 @@ The number of equal signs represents the nesting level (using a 0-based index).<
 <p>Here are all the section levels permitted in an AsciiDoc document (for an article doctype, the default), shown below the document title:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">= Document Title (Level 0)
 
 == Level 1 Section
@@ -1942,7 +1957,7 @@ There are two rules you must follow:</p>
 <p>For example, the following syntax is illegal:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">= Document Title
 
 = Illegal Level 0 Section (violates rule #1)
@@ -1957,7 +1972,7 @@ There are two rules you must follow:</p>
 Once the first section is reached, content is associated with the section that proceeds it:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">== First Section
 
 Content of first section
@@ -1988,7 +2003,7 @@ That means the outline of a Markdown document will render just fine as an AsciiD
 <p>To have the processor auto-number the sections, define the <code>numbered</code> attribute in the document header:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">:numbered:</code></pre>
 </div>
 </div>
@@ -1997,7 +2012,7 @@ That means the outline of a Markdown document will render just fine as an AsciiD
 When you want to turn off the numbering, add an exclamation point to the end of the attribute name:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">:numbered!:
 
 == Unnumbered Section</code></pre>
@@ -2010,7 +2025,7 @@ When you want to turn off the numbering, add an exclamation point to the end of 
 If a document title is not present, this content is not wrapped in a preamble section.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">= Document Title
 
 preamble
@@ -2035,9 +2050,7 @@ When using the default Asciidoctor stylesheet, this preamble is rendered in the 
 <div class="paragraph">
 <p>You can also assign titles to individual elements.</p>
 </div>
-
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="block-titles"><a class="anchor" href="#block-titles"></a>Block titles</h4>
@@ -2055,7 +2068,7 @@ The line must begin with a dot (<code>.</code>) and be followed immediately by t
 <p>Here&#8217;s an example of a list with a title:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">.TODO list
 - Learn the AsciiDoc syntax
 - Install AsciiDoc
@@ -2065,11 +2078,8 @@ The line must begin with a dot (<code>.</code>) and be followed immediately by t
 <div class="paragraph">
 <p>Speaking of block titles, let&#8217;s dig into blocks and discover which types of blocks AsciiDoc supports.</p>
 </div>
-
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -2085,7 +2095,7 @@ These components are referred to as <em>delimited blocks</em> because they are s
 <p>You&#8217;ve already seen many examples of the listing block (i.e., code block), which is surrounded by lines with four or more hyphens.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">----
 This is an example of a _listing block_.
 The content inside is rendered as &lt;pre&gt; text.
@@ -2101,7 +2111,7 @@ The delimiters around the block determine the type of block, how the content is 
 <p>Here&#8217;s how the block above appears when rendered as HTML:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>This is an example of a _listing block_.
 The content inside is rendered as &lt;pre&gt; text.</pre>
 </div>
@@ -2110,7 +2120,7 @@ The content inside is rendered as &lt;pre&gt; text.</pre>
 <p>Here&#8217;s the HTML that gets generated:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="html language-html">&lt;div class="listingblock"&gt;
   &lt;div class="content monospaced"&gt;
     &lt;pre&gt;This is an example of a _listing block_.
@@ -2163,58 +2173,59 @@ Since a listing block is typically used for source code, substitutions are not d
 <td class="tableblock halign-left valign-top"><p class="tableblock">comment</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>////</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Private notes that are not displayed in the output</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">none</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">example</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>====</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Designates example content or defines an admonition block</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Normal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">normal</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">literal</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>....</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Output text to be displayed exactly as entered</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verbatim</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">verbatim</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">listing, source</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>----</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Source code or keyboard input to be displayed as entered</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verbatim</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">verbatim</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">open</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>--</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Anonymous block that can act as any other block (except <em>pass</em> or <em>table</em>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Varies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">varies</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">pass</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>++++</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Raw text to be passed through unprocessed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">none</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">quote, verse</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>____</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A quotation or verse with optional attribution</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Normal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">normal</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sidebar</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>****</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Aside text rendered outside the flow of the document</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Normal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">normal</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">table</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>|===</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Used to display tabular content or advanced layouts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Varies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">varies</p></td>
 </tr>
 </tbody>
 </table>
+
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -2290,10 +2301,10 @@ The reader will never see the long delimiters anyway since they are not carried 
 </tr>
 </tbody>
 </table>
+
 <div class="paragraph">
 <p>You can control how blocks are displayed using block metadata.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="block-metadata"><a class="anchor" href="#block-metadata"></a>Block metadata</h3>
@@ -2321,7 +2332,7 @@ There are several types of metadata:</p>
 <p>Here&#8217;s an example of a quote block that includes all types of metadata:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">.Gettysburg Address
 [[gettysburg]]
 [quote, Abraham Lincoln, Soldiers' National Cemetery Dedication]
@@ -2366,7 +2377,6 @@ ____</code></pre>
 </dd>
 </dl>
 </div>
-
 </dd>
 </dl>
 </div>
@@ -2388,7 +2398,6 @@ If there is a name conflict, the last attribute defined wins.
 <p>Some metadata is used as supplementary content, such as the title, whereas other metadata controls how the block is rendered, such as the style.
 Consult the <a href="http://asciidoc.org/userguide.html#X104">Delimited Blocks</a> chapter in the AsciiDoc User Guide for a full list of the metadata that is applicable for each block.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="masquerading-blocks"><a class="anchor" href="#masquerading-blocks"></a>Masquerading blocks</h3>
@@ -2402,7 +2411,7 @@ The block style is the first positional attribute in the block attribute list.</
 <p>For instance, an example block can act as an admonition block:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[NOTE]
 ====
 This is an example of an admonition block.
@@ -2418,7 +2427,6 @@ The style can be any one of the admonition labels:
 ====</code></pre>
 </div>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="listing-and-source-code-blocks"><a class="anchor" href="#listing-and-source-code-blocks"></a>Listing and source code blocks</h4>
@@ -2432,7 +2440,7 @@ They just aren&#8217;t designed for that use case.
 Just shove the raw code into a listing block.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">----
 require 'asciidoctor'
 
@@ -2444,7 +2452,7 @@ puts Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)
 <p>To enable syntax highlighting in the output, set the style on the block to <code>source</code> and specify the source language in the second attribute position.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[source,ruby]
 ----
 require 'asciidoctor'
@@ -2458,7 +2466,7 @@ puts Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)
 Just use the AsciiDoc include macro:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[source,ruby]
 ----
 include::example.rb[]
@@ -2472,15 +2480,15 @@ The explanations are specified below the listing and keyed by number.
 Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[source,ruby]
 ----
 require 'asciidoctor'  #&lt;1&gt;
 
 puts Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)  #&lt;2&gt;
 ----
-&lt;1&gt; Imports the library
-&lt;2&gt; Reads, parses and renders the file</code></pre>
+\&lt;1&gt; Imports the library
+\&lt;2&gt; Reads, parses and renders the file</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2490,28 +2498,26 @@ puts Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)  #&lt;2&g
 <div class="title">Example 6. Source code with callouts</div>
 <div class="content">
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="ruby language-ruby">require 'asciidoctor'  #<i class="conum">1</i>
+<div class="content">
+<pre class="highlight"><code class="ruby language-ruby">require 'asciidoctor'  <i class="conum" data-value="1"></i><b>(1)</b>
 
-puts Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)  #<i class="conum">2</i></code></pre>
+puts Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)  <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Imports the library</td>
 </tr>
 <tr>
-<td><i class="conum">2</i></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Reads, parses and renders the file</td>
 </tr>
 </table>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="open-blocks"><a class="anchor" href="#open-blocks"></a>Open blocks</h4>
@@ -2521,7 +2527,7 @@ An open block can act as any other block, with the exception of <em>pass</em> an
 Here&#8217;s an example of an open block acting as a sidebar:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>[sidebar]
 .Related information
 --
@@ -2531,7 +2537,6 @@ It is used to present information related to the main content.
 --</pre>
 </div>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="passthrough-blocks"><a class="anchor" href="#passthrough-blocks"></a>Passthrough blocks</h4>
@@ -2541,7 +2546,7 @@ As its name implies, this block passes its contents through directly to the outp
 When you&#8217;ve encountered a complex requirement that you can meet using the AsciiDoc syntax, just put the output you want inside a passthrough block.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">++++
 &lt;video poster="images/movie-reel.png"&gt;
   &lt;source src="videos/writing-zen.webm" type="video/webm"&gt;
@@ -2565,9 +2570,7 @@ You can use <a href="http://asciidoc.org/userguide.html#_conditional_inclusion_m
 <div class="paragraph">
 <p>The block style can be used in the absense of block delimiters to promote a paragraph to a block element.</p>
 </div>
-
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="delimiters-optional"><a class="anchor" href="#delimiters-optional"></a>Delimiters optional</h3>
@@ -2578,7 +2581,7 @@ You can use <a href="http://asciidoc.org/userguide.html#_conditional_inclusion_m
 <p>This format is often used for single-line listings:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[listing]
 sudo yum install asciidoc</code></pre>
 </div>
@@ -2587,7 +2590,7 @@ sudo yum install asciidoc</code></pre>
 <p>or single-line quotes:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[quote]
 Never do today what you can put off 'til tomorrow.</code></pre>
 </div>
@@ -2595,7 +2598,6 @@ Never do today what you can put off 'til tomorrow.</code></pre>
 <div class="paragraph">
 <p>While most blocks are linear, tables give you the ability to layout content horizontally as well.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="a-new-perspective-on-tables"><a class="anchor" href="#a-new-perspective-on-tables"></a>A new perspective on tables</h3>
@@ -2614,8 +2616,8 @@ Each list represents one row in the table and must share the same number of item
 <p>Here&#8217;s a simple example of a table with two columns and three rows:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="asciidoc language-asciidoc">[cols=2]
+<div class="content">
+<pre class="highlight"><code class="asciidoc language-asciidoc">[cols="2*"]
 |===
 |Firefox
 |Web Browser
@@ -2629,15 +2631,18 @@ Each list represents one row in the table and must share the same number of item
 </div>
 </div>
 <div class="paragraph">
-<p>The first non-blank line determines the number of columns.
-Since we are putting each column on a separate line, we have to be explicit about the number of columns in the <code>cols</code> block attribute.</p>
+<p>The first non-blank line inside the block delimiter (<code>|===</code>) determines the number of columns.
+Since we are putting each column title on a separate line, we have to use the <code>cols</code> block attribute to explicitly state that this table has two columns.
+The <code>*</code> is the repeat operator.
+It means to repeat the column specification for the remainder of columns.
+In this case, it means to repeat no special formatting (since none is present) across 2 columns.</p>
 </div>
 <div class="paragraph">
 <p>We can make the first row of the table the header by setting the <code>header</code> option on the table.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="asciidoc language-asciidoc">[cols=2, options="header"]
+<div class="content">
+<pre class="highlight"><code class="asciidoc language-asciidoc">[cols="2*", options="header"]
 |===
 |Name
 |Group
@@ -2653,12 +2658,11 @@ Since we are putting each column on a separate line, we have to be explicit abou
 </div>
 </div>
 <div class="paragraph">
-<p>We could define the header cells on one line so that the <code>cols</code> attribute is not required.</p>
+<p>Alternatively, we could define the header row on a single line offset from the body rows by a blank line so neither the <code>cols</code> or the <code>options</code> attributes are required.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="asciidoc language-asciidoc">[options="header"]
-|===
+<div class="content">
+<pre class="highlight"><code class="asciidoc language-asciidoc">|===
 |Name |Group
 
 |Firefox
@@ -2674,9 +2678,8 @@ Unlike other lists, the content of each cell may contain blank lines without the
 A new cell begins when another non-escaped vertical bar (<code>|</code>) is encountered.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="asciidoc language-asciidoc">[options="header"]
-|===
+<div class="content">
+<pre class="highlight"><code class="asciidoc language-asciidoc">|===
 |Name |Group |Description
 
 |Firefox
@@ -2695,11 +2698,11 @@ performance, portability.
 </div>
 <div class="paragraph">
 <p>You can set the relative widths of each column using <em>column specifiers</em>&#8212;a comma-separated list of relative values defined in the <code>cols</code> block attribute.
-The number of entries in the list determines the number of columns:</p>
+The number of entries in the list determines the number of columns.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="asciidoc language-asciidoc">[cols="2,3,5", options="header"]
+<div class="content">
+<pre class="highlight"><code class="asciidoc language-asciidoc">[cols="2,3,5"]
 |===
 |Name |Group |Description
 
@@ -2721,8 +2724,8 @@ performance and portability.
 <p>If you want to include blocks or lists inside the contents of a column, you can put an <code>a</code> (for AsciiDoc) at the end of the column&#8217;s relative value.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="asciidoc language-asciidoc">[cols="2,3,5a", options="header"]
+<div class="content">
+<pre class="highlight"><code class="asciidoc language-asciidoc">[cols="2,3,5a"]
 |===
 |Name |Group |Description
 
@@ -2747,7 +2750,7 @@ It's designed for:
 <p>Alternatively, you can apply the AsciiDoc style to an individual cell by prefixing the vertical bar with an <code>a</code>:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">a|Mozilla Firefox is an open-source web browser.
 It's designed for:
 
@@ -2765,7 +2768,7 @@ Consult the <a href="http://asciidoc.org/userguide.html#_tables">Tables</a> chap
 Just set the <code>format</code> block attribute to <code>csv</code> and insert CSV data inside the block delimiters, either directly:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[format="csv", options="header"]
 |===
 Artist,Track,Genre
@@ -2778,7 +2781,7 @@ The Lumineers,Ho Hey,Folk Rock
 <p>or using an <code>include::[]</code> directive:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[format="csv", options="header"]
 |===
 include::tracks.csv[]
@@ -2793,7 +2796,7 @@ The first position of the table block delimiter (i.e., <code>|===</code>) can be
 <p>Instead of specifying the <code>csv</code> format using an attribute, you can simply replace the leading pipe (<code>|</code>) with a comma (<code>,</code>).</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>,===
 a,b,c
 ,===</pre>
@@ -2803,7 +2806,7 @@ a,b,c
 <p>In the same way, the <code>dsv</code> format can be specified by replacing the leading pipe (<code>|</code>) with a colon (<code>:</code>).</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>:===
 a:b:c
 :===</pre>
@@ -2812,9 +2815,7 @@ a:b:c
 <div class="paragraph">
 <p>That&#8217;s a pretty powerful option.</p>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -2873,7 +2874,6 @@ You&#8217;ve created your first AsciiDoc document.
 Now it&#8217;s time to render the document into a presentable format.
 This will give you a real appreciation for the power that AsciiDoc puts in your hands.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -2920,19 +2920,19 @@ Here are the commands for several popular package management systems:</p>
 </div>
 <div class="literalblock">
 <div class="title">Ubuntu / Debian</div>
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; sudo apt-get install asciidoc</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="title">Fedora</div>
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; sudo yum -y install asciidoc</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="title">MacOSX</div>
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; brew install asciidoc</pre>
 </div>
 </div>
@@ -2952,14 +2952,13 @@ If Python isn&#8217;t already installed, it should be installed as a dependency 
 <p>If the install was successful, you should be able to execute the <code>asciidoc</code> and <code>a2x</code> commands from a command prompt:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; asciidoc --version
 asciidoc 8.6.8
 $&gt; a2x --version
 a2x 8.6.8</pre>
 </div>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="installing-asciidoc-manually"><a class="anchor" href="#installing-asciidoc-manually"></a>Installing AsciiDoc manually</h4>
@@ -2995,7 +2994,7 @@ a2x 8.6.8</pre>
 <p>If the install was successful, you should be able to execute the <code>asciidoc</code> and <code>a2x</code> commands from a command prompt:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; asciidoc --version
 asciidoc 8.6.8
 $&gt; a2x --version
@@ -3005,9 +3004,7 @@ a2x 8.6.8</pre>
 <div class="paragraph">
 <p>Now you&#8217;re ready to convert your document!</p>
 </div>
-
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="converting-a-document-to-html-5"><a class="anchor" href="#converting-a-document-to-html-5"></a>Converting a document to HTML 5</h3>
@@ -3035,7 +3032,7 @@ We want to look forward, so we&#8217;re going to use the <strong>html5</strong> 
 <p>In your command prompt, switch to the directory that contains the document and execute the following command:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; asciidoc -b html5 sample.adoc</pre>
 </div>
 </div>
@@ -3044,7 +3041,7 @@ We want to look forward, so we&#8217;re going to use the <strong>html5</strong> 
 If you type <code>ls</code> (or view the directory in a file manager), there is a new file named <code>sample.html</code>.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; ls
 sample.adoc  sample.html</pre>
 </div>
@@ -3060,7 +3057,7 @@ sample.adoc  sample.html</pre>
 To have the images embedded into the document as well, pass the <code>data-uri</code> attribute to the processor:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; asciidoc -b html5 -a data-uri sample.adoc</pre>
 </div>
 </div>
@@ -3068,7 +3065,7 @@ To have the images embedded into the document as well, pass the <code>data-uri</
 <p>If you want the document to include a table of contents, pass the <code>toc</code> attribute to the processor:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; asciidoc -b html5 -a data-uri -a toc sample.adoc</pre>
 </div>
 </div>
@@ -3076,7 +3073,7 @@ To have the images embedded into the document as well, pass the <code>data-uri</
 <p>If you want to use <code>data-uri</code> and <code>toc</code> by default, you can add them to the header of the document:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="asciidoc language-asciidoc">= Document Title
 Doc Writer &lt;doc.writer@asciidoc.org&gt;
 2012-01-01
@@ -3092,7 +3089,7 @@ AsciiDoc ships with two additional themes, flask and volnitsky.
 People tend to prefer the flask theme, which you can enable using the <code>theme</code> attribute:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; asciidoc -b html5 -a theme=flask sample.adoc</pre>
 </div>
 </div>
@@ -3103,7 +3100,7 @@ People tend to prefer the flask theme, which you can enable using the <code>them
 <p>If you&#8217;d rather supply your own stylesheet, you can specify the relative path to it using the <code>stylesheet</code> attribute:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; asciidoc -b html5 -a stylesheet=mystyles.css sample.adoc</pre>
 </div>
 </div>
@@ -3122,7 +3119,7 @@ Asciidoctor provides both a commandline tool and a Ruby API for converting Ascii
 If you have Ruby and RubyGems on your system, you can install Asciidoctor using the <code>gem</code> command:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; gem install asciidoctor</pre>
 </div>
 </div>
@@ -3130,7 +3127,7 @@ If you have Ruby and RubyGems on your system, you can install Asciidoctor using 
 <p>If you are running Fedora 17 or higher, you can install it using <code>yum</code>, which will also install Ruby if it&#8217;s not yet installed on your system:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; sudo yum install rubygem-asciidoctor</pre>
 </div>
 </div>
@@ -3139,7 +3136,7 @@ If you have Ruby and RubyGems on your system, you can install Asciidoctor using 
 For example, to generate an HTML document:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; asciidoctor sample.adoc</pre>
 </div>
 </div>
@@ -3150,7 +3147,7 @@ For example, to generate an HTML document:</p>
 <p>Asciidoctor also provides a Ruby API, so you can generate an HTML document directly from a Ruby application:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="ruby language-ruby">require 'asciidoctor'
 
 Asciidoctor.render_file('sample.adoc', :in_place =&gt; true)</code></pre>
@@ -3160,7 +3157,7 @@ Asciidoctor.render_file('sample.adoc', :in_place =&gt; true)</code></pre>
 <p>Alternatively, you can capture the HTML output into a variable instead of writing it to a file:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="ruby language-ruby">html = Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)
 puts html</code></pre>
 </div>
@@ -3169,7 +3166,7 @@ puts html</code></pre>
 <p>To generate DocBook, just specify the backend option:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre class="highlight"><code class="ruby language-ruby">Asciidoctor.render_file('sample.adoc', :in_place =&gt; true,
     :backend =&gt; 'docbook')</code></pre>
 </div>
@@ -3177,13 +3174,11 @@ puts html</code></pre>
 <div class="paragraph">
 <p>You can learn more about Asciidoctor and how it differs from the AsciiDoc processor on the <a href="/">Asciidoctor project page</a>.</p>
 </div>
-
 </div>
 </div>
 <div class="paragraph">
 <p>One of the strengths of AsciiDoc is that it can output to a variety of formats, not just HTML.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="converting-a-document-to-docbook"><a class="anchor" href="#converting-a-document-to-docbook"></a>Converting a document to DocBook</h3>
@@ -3197,7 +3192,7 @@ There&#8217;s a corresponding DocBook element for each markup in the AsciiDoc sy
 To convert the document to this format, call the processor with the backend flag set to <strong>docbook</strong>:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; asciidoc -b docbook sample.adoc</pre>
 </div>
 </div>
@@ -3205,7 +3200,7 @@ To convert the document to this format, call the processor with the backend flag
 <p>A new XML document, named <code>sample.xml</code>, will now be present in the current directory:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; ls
 sample.adoc  sample.html  sample.xml</pre>
 </div>
@@ -3214,7 +3209,7 @@ sample.adoc  sample.html  sample.xml</pre>
 <p>If you&#8217;re on Linux, you can view the DocBook file using Yelp:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; yelp sample.xml</pre>
 </div>
 </div>
@@ -3222,7 +3217,6 @@ sample.adoc  sample.html  sample.xml</pre>
 <p>DocBook is only an intermediary format in the AsciiDoc toolchain.
 You&#8217;ll either feed it into a system that processes DocBook (like <a href="https://fedorahosted.org/publican">publican</a>), or you can convert it to PDF using the AsciiDoc processor.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="converting-the-document-to-pdf"><a class="anchor" href="#converting-the-document-to-pdf"></a>Converting the document to PDF</h3>
@@ -3234,7 +3228,7 @@ For legacy reasons, the conversion to PDF is handled by a separate program in th
 <p><code>a2x</code> can accept a DocBook file as input and produce a PDF:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; a2x -f pdf --fop sample.xml</pre>
 </div>
 </div>
@@ -3242,7 +3236,7 @@ For legacy reasons, the conversion to PDF is handled by a separate program in th
 <p>A new PDF document, named <code>sample.pdf</code>, will now be present in the current directory:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; ls
 sample.adoc  sample.html  sample.pdf  sample.xml</pre>
 </div>
@@ -3259,7 +3253,7 @@ It was that easy!</strong></p>
 <p>Rather than converting from AsciiDoc to DocBook and then from DocBook to PDF in two steps, <code>a2x</code> can go directly from AsciiDoc to PDF in a single call:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; a2x -f pdf --fop sample.adoc</pre>
 </div>
 </div>
@@ -3267,7 +3261,6 @@ It was that easy!</strong></p>
 <p>AsciiDoc can also be used for creating HTML-based presentations.
 This use further demonstrates the reusability of the AsciiDoc syntax.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="producing-html-based-presentations"><a class="anchor" href="#producing-html-based-presentations"></a>Producing HTML-based presentations</h3>
@@ -3282,7 +3275,7 @@ You have to put the backend files where AsciiDoc can find them.
 Then you simply run the processor on your AsciiDoc document with the deckjs backend enabled:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$&gt; asciidoc -b deckjs slides.adoc</pre>
 </div>
 </div>
@@ -3290,7 +3283,6 @@ Then you simply run the processor on your AsciiDoc document with the deckjs back
 <p>Asciidoctor has backends for generating deck.js, dzslides and reveal.js presentations as well.
 Backends for other presentation frameworks are in the works.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="output-galore"><a class="anchor" href="#output-galore"></a>Output galore</h3>
@@ -3302,7 +3294,6 @@ Keep in mind that this magazine was produced from AsciiDoc, so never underestima
 <div class="paragraph">
 <p>If you want to start tweaking the output that is generated, refer to instructions in the <a href="http://asciidoc.org/userguide.html">AsciiDoc User Guide</a>.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="where-else-is-asciidoc-rendered"><a class="anchor" href="#where-else-is-asciidoc-rendered"></a>Where else is AsciiDoc rendered?</h3>
@@ -3322,9 +3313,7 @@ If you want to try AsciiDoc without installing any software, a gist is a great w
 <div class="paragraph">
 <p>While there&#8217;s plenty more of the AsciiDoc syntax and toolchain to explore, you know more than enough about it to write a range of documentation, from a simple README to a comprehensive user guide.</p>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -3348,7 +3337,6 @@ Almost immediately, you&#8217;ll find your writing zen and enjoy the rewarding e
 <p>If you get stuck working with the syntax, be sure to browse the <a href="http://asciidoc.org/userguide.html#_gotchas">Gotchas</a> section of the AsciiDoc User Guide and the <a href="http://asciidoc.org/faq.html">AsciiDoc FAQ</a> to find answers.
 When all else fails, send your question to the <a href="http://groups.google.com/group/asciidoc">AsciiDoc discussion list</a>.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -3382,10 +3370,8 @@ When all else fails, send your question to the <a href="http://groups.google.com
 </dd>
 </dl>
 </div>
-
 </div>
 </div>
-
 </div>
 <div id="footnotes">
 <hr>
@@ -3398,7 +3384,7 @@ When all else fails, send your question to the <a href="http://groups.google.com
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-06-29 02:37:17 MDT
+Last updated 2013-09-05 03:42:51 MDT
 </div>
 </div>
 </body>

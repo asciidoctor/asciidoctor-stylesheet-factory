@@ -4,10 +4,10 @@ Dark style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Or
 
 */
 
-pre code {
+/*pre code {
   display: block; padding: 0.5em;
   background: #444;
-}
+}*/
 
 pre .keyword,
 pre .literal,
