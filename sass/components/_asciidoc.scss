@@ -565,6 +565,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   @include language-label(javascript);
   @include language-label(python);
   @include language-label(ruby);
+  @include language-label(sass);
   @include language-label(scss);
   @include language-label(xml);
   @include language-label(yaml);
