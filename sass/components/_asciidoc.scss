@@ -206,21 +206,15 @@ kbd kbd:last-child {
   color: $subheader-font-color;
 }
 
-@media #{$medium} {
+@media #{$small} {
   body.toc2 {
-    padding-left: 20em;
-    //#header,
-    //#content,
-    //#footnotes,
-    //#footer {
-    //  margin-left: 0;
-    //}
+    padding-left: 15em;
+    padding-right: 0;
   }
 
   #toc.toc2 {
-    //background: $body-bg;
     position: fixed;
-    width: 20em;
+    width: 15em;
     left: 0;
     top: 0;
     border-right: 1px solid $sect-divider-color;
@@ -231,13 +225,14 @@ kbd kbd:last-child {
     overflow: auto;
     #toctitle {
       margin-top: 0;
+      font-size: 1.2em;
     }
     & > ul {
-      font-size: .95em;
+      font-size: .90em;
     }
     ul ul {
       margin-left: 0;
-      padding-left: $list-nested-margin;
+      padding-left: $list-nested-margin * .8;
     }
     ul.sectlevel0 ul.sectlevel1 {
       padding-left: 0;
@@ -248,7 +243,7 @@ kbd kbd:last-child {
 
   body.toc2.toc-right {
     padding-left: 0;
-    padding-right: 20em;
+    padding-right: 15em;
 
     #toc.toc2 {
       border-right: 0;
@@ -256,6 +251,35 @@ kbd kbd:last-child {
       left: auto;
       right: 0;
     }
+  }
+}
+
+@media #{$medium} {
+  body.toc2 {
+    padding-left: 20em;
+    padding-right: 0;
+  }
+
+  #toc.toc2 {
+    width: 20em;
+
+    #toctitle {
+      font-size: 1.375em;
+    }
+
+    & > ul {
+      font-size: 0.95em;
+    }
+
+    ul ul {
+      padding-left: 1.25em;
+      padding-left: $list-nested-margin;
+    }
+  }
+
+  body.toc2.toc-right {
+    padding-left: 0;
+    padding-right: 20em;
   }
 }
 
