@@ -100,6 +100,14 @@ kbd kbd:last-child {
   color: darken($body-font-color, 10%);
 }
 
+b.button:before {
+  content: '[ ';
+}
+
+b.button:after {
+  content: ' ]';
+}
+
 @if $anchor-text-decoration != none {
   // this makes the underline the same as the text color
   p a > code {
