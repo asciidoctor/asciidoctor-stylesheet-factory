@@ -684,6 +684,9 @@ table tfoot th {
   font-weight: $table-head-font-weight;
 }
 
+tbody tr th {
+}
+
 table.tableblock.grid-all {
   border-collapse: separate;
   border-spacing: 1px;
@@ -706,8 +709,10 @@ table.tableblock.frame-none {
 
 table.tableblock {
   td .paragraph:last-child p,
-  td > p:last-child {
-    margin-bottom: 0;
+  th, td {
+    & > p:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -725,9 +730,20 @@ table.tableblock {
   }
 }
 
-p.tableblock.header {
-  color: $table-head-font-color;
-  font-weight: $table-head-font-weight;
+// vertical table header (block)
+tbody tr th {
+  display: $table-display;
+  line-height: $table-line-height;
+  background: $table-head-bg;
+}
+
+// vertical table header (content)
+tbody tr th,
+tfoot tr th {
+  &, p {
+    color: $table-head-font-color;
+    font-weight: $table-head-font-weight;
+  }
 }
 
 td > div.verse {
