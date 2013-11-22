@@ -515,8 +515,10 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
 
 .literalblock,
 .listingblock {
-  & > .content pre {
+  & pre:not([class]) {
     background: $pre-bg;
+  }
+  & pre, & pre[class] {
     border-width: $pre-border-size;
     @if $pre-border-size != 0 {
       border-style: $pre-border-style;
@@ -557,6 +559,13 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
 
       font-size: $pre-font-size;
     }
+  }
+}
+
+.listingblock pre.highlight {
+  padding: 0;
+  & > code {
+    padding: $pre-padding;
   }
 }
 
