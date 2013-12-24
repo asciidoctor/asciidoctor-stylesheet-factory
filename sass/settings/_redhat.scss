@@ -1,0 +1,77 @@
+@import "defaults";
+
+$font-family: 'Liberation Sans Regular';
+
+// HTML
+
+$html-font-family: $font-family;
+
+// Body
+
+$em-base: 16px;
+$body-bg: white;
+$body-font-family: 'Liberation Sans Regular';
+$primary-color: #005498;
+$alert-color: lighten(#6d180b, 15%);
+$global-radius: 4px;
+
+// Headings
+
+// $header-font-family: Georgia, "URW Bookman L", Helvetica, Arial, sans-serif;
+$header-font-family: 'Liberation Sans Regular';
+$header-font-weight: normal;
+$header-font-color: #BA3925;
+$header-top-margin: 1em;
+$title-font-weight: $header-font-weight;
+$subheader-font-color: darken($header-font-color, 15%);
+$sect-divider-size: 3px;
+$sect-divider-style: double;
+$sect-divider-color: #ebebeb;
+$sidebar-header-border-size: 0 0 1px 0 !default;
+
+// Paragraphs
+$paragraph-font-family: $body-font-family;
+
+// Inline Code
+
+$code-font-weight: normal;
+$code-font-size: emCalc($em-base - 1px);
+$code-bg-color: darken(#fff, 5%);
+$code-border-color: darken(#fff, 20%);
+$code-border-size: 1px;
+$code-padding: 1px 3px 0;
+
+// Code Blocks
+$code-font-family: $body-font-family;
+
+// *Recommended highlight.js themes: magula, default, docco
+
+$pre-font-family: 'Liberation Sans Regular';
+$pre-border-size: 1px 0;
+$pre-border-style: dotted;
+$pre-border-color: #bfbfbf;
+$pre-line-height: 1.4;
+
+// Links
+
+$anchor-text-decoration: underline;
+
+// Lists
+
+$list-side-margin: emCalc(24px);
+$definition-list-header-margin-bottom: emCalc(5px);
+$definition-list-margin-bottom: emCalc(20px);
+
+// Blockquotes
+
+$blockquote-font-color: lighten($body-font-color, 30%);
+$blockquote-cite-font-size: inherit;
+$blockquote-cite-font-color: darken($blockquote-font-color, 10%);
+
+// Tables
+
+$table-head-font-size: inherit;
+$table-row-font-size: inherit;
+$table-line-height: 1.6;
+$table-border-highlight-color: #468847 !default;
+$table-border-highlight-size: 3px !default;

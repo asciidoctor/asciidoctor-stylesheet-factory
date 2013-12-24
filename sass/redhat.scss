@@ -1,0 +1,13 @@
+@import "settings/redhat";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+@import "compass/css3/font-face";
+
+@include font-face("liberation Sans Regular", inline-font-files("liberation/Sans-Regular.ttf", "liberation/Sans-Regular.eot", "liberation/Sans-Regular.svg","liberation/Sans-Regular.woff"));
+
+.literalblock,
+.listingblock {
+  & > .content > pre {
+    @include border-radius(0);
+  }
+}
