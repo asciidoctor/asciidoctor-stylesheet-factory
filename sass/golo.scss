@@ -8,7 +8,7 @@ body {
   background: image-url('golo/body-bg.png') $body-bg repeat;
 }
 
-#toc.toc2 ol ol {
+#toc.toc2 ul ul {
   list-style-type: circle;
   padding-left: emCalc(28px);
 }
@@ -36,6 +36,13 @@ body {
 
   h2 {
     font-weight: bold;
+  }
+}
+
+.literalblock,
+.listingblock {
+  .content pre.highlight {
+    background: $pre-bg;
   }
 }
 
