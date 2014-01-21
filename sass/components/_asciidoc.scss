@@ -100,12 +100,20 @@ kbd kbd:last-child {
   color: darken($body-font-color, 10%);
 }
 
+b.button:before, b.button:after {
+  position: relative;
+  top: -1px;
+  font-weight: normal;
+}
+
 b.button:before {
-  content: '[ ';
+  content: "[";
+  padding: 0 3px 0 2px;
 }
 
 b.button:after {
-  content: ' ]';
+  content: "]";
+  padding: 0 2px 0 3px;
 }
 
 @if $anchor-text-decoration != none {
