@@ -3,12 +3,12 @@
 $font-family: 'Liberation Sans Regular';
 
 // HTML
+$em-base: 16px;
+$base-font-size: 36px;
 
 $html-font-family: $font-family;
 
 // Body
-
-$em-base: 16px;
 $body-bg: white;
 $body-font-family: 'Liberation Sans Regular';
 $primary-color: #005498;
@@ -31,6 +31,7 @@ $sidebar-header-border-size: 0 0 1px 0 !default;
 
 // Paragraphs
 $paragraph-font-family: $body-font-family;
+$paragraph-font-size: 1.2em;
 
 // Inline Code
 
@@ -45,7 +46,7 @@ $code-padding: 1px 3px 0;
 $code-font-family: $body-font-family;
 
 // *Recommended highlight.js themes: magula, default, docco
-
+$pre-font-size: .9em;
 $pre-font-family: 'Liberation Sans Regular';
 $pre-border-size: 1px 0;
 $pre-border-style: dotted;

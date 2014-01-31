@@ -34,6 +34,10 @@ To build the stylesheets, simply run:
 The stylesheets are compiled from the Sass source files in the +sass/+ folder and written to the +stylesheets/+ folder.
 You can then reference the stylesheets in +stylesheets/+ from your HTML file.
 
+To build the stylesheets, including also the fonts directory and compress the css files generated, run:
+
+  $ compass compile -s compress --fonts-dir sass/fonts
+
 == Create sample documents
 
 First, create a sample AsciiDoc file, such as:
