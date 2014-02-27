@@ -2,3 +2,7 @@
 /.sass-cache/
 /Gemfile.lock
 /stylesheets/
+
+## JetBrains
+.idea/
+*.iml
