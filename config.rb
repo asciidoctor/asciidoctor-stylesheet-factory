@@ -1,4 +1,5 @@
 require 'zurb-foundation'
+require 'sass-globbing'
 require './lib/functions'
 
 http_path = '/'

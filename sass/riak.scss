@@ -3,7 +3,7 @@
 @import "fonts/noticia-text";
 @import "settings/riak";
 @import "components/asciidoc";
-@import "components/awesome-icons";
+@import "components/awesome/*";
 
 body {
   background-image: image-url('riak/body-bg.jpg', false, false);

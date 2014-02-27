@@ -4,7 +4,7 @@
 // - footer border, size, positioning
 @import "settings/github";
 @import "components/asciidoc";
-@import "components/awesome-icons";
+@import "components/awesome/*";
 
 %lead {
   font-size: $paragraph-font-size;
