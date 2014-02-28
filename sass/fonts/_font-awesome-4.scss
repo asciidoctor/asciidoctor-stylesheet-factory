@@ -4,7 +4,7 @@ $faUrl: "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3";
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  *
- *  This is shortened version used in AsciiDoctor Factory
+ *  This is are mixins used in AsciiDoctor Factory
  */
 /* FONT PATH
  * -------------------------- */
@@ -18,7 +18,7 @@ $faUrl: "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3";
 
 /* General icon setting
  * -------------------------- */
-.fa {
+@mixin fa {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -30,19 +30,18 @@ $faUrl: "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3";
 
 /* Only used icons
  * -------------------------- */
-.fa-info-circle:before {
+@mixin fa-info-circle {
   content: "\f05a";
 }
-.fa-lightbulb-o:before {
+@mixin fa-lightbulb-o {
   content: "\f0eb";
 }
-.fa-warning:before,
-.fa-exclamation-triangle:before {
+@mixin fa-exclamation-triangle {
   content: "\f071";
 }
-.fa-fire:before {
+@mixin fa-fire {
   content: "\f06d";
 }
-.fa-exclamation-circle:before {
+@mixin fa-exclamation-circle {
   content: "\f06a";
 }
