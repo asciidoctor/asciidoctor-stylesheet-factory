@@ -2,23 +2,24 @@
 
 span.icon > [class^="icon-"],
 span.icon > [class*=" icon-"] {
+  @extend .fa;
   cursor: default;
 }
 
 .admonitionblock td.icon {
   [class^="icon-"]:before {
+    @extend .fa;
     font-size: 2.5em;
     text-shadow: $icon-text-shadow;
     cursor: default;
   }
   
   .icon-note:before {
-    // @extend .icon-pushpin;
+//    @extend .fa-thumb-tack:before;
     //content: "\f08d";
     //color: scale-color(green, $lightness: $rainbow-lightness);
 
-    //@extend .icon-info-sign;
-    content: "\f05a";
+    @extend .fa-info-circle:before;
     //color: scale-color(mediumblue, $lightness: $rainbow-lightness);
     color: $primary-color;
     color: scale-color($primary-color, $lightness: $rainbow-lightness);
@@ -28,8 +29,7 @@ span.icon > [class*=" icon-"] {
     // @extend .icon-info-sign;
     //content: "\f05a";
     //color: scale-color(mediumblue, $lightness: $rainbow-lightness);
-    // @extend .icon-lightbulb;
-    content: "\f0eb";
+    @extend .fa-lightbulb-o:before;
     //color: scale-color(yellow, $lightness: $rainbow-lightness);
     //color: scale-color(yellow, $saturation: -15%);
     //color: $primary-color;
@@ -38,20 +38,17 @@ span.icon > [class*=" icon-"] {
   }
   
   .icon-warning:before {
-    // @extend .icon-warning-sign;
-    content: "\f071";
+    @extend .fa-exclamation-triangle:before;
     color: scale-color(darkorange, $lightness: $rainbow-lightness);
   }
 
   .icon-caution:before {
-    // @extend .icon-fire;
-    content: "\f06d";
+    @extend .fa-fire:before;
     color: scale-color(orangered, $lightness: $rainbow-lightness);
   }
   
   .icon-important:before {
-    // @extend .icon-exclamation-sign;
-    content: "\f06a";
+    @extend .fa-exclamation-circle:before;
     color: scale-color(red, $lightness: $rainbow-lightness);
   }
 }

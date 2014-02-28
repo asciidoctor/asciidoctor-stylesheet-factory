@@ -1,1 +1,48 @@
-@import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css);
+$faUrl: "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3";
+
+/*!
+ *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ *
+ *  This is shortened version used in AsciiDoctor Factory
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url(#{$faUrl}/fonts/fontawesome-webfont.eot?v=4.0.3);
+  src: url(#{$faUrl}/fonts/fontawesome-webfont.eot?#iefix&v=4.0.3) format('embedded-opentype'), url(#{$faUrl}/fonts/fontawesome-webfont.woff?v=4.0.3) format('woff'), url(#{$faUrl}/fonts/fontawesome-webfont.ttf?v=4.0.3) format('truetype'), url(#{$faUrl}/fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* General icon setting
+ * -------------------------- */
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Only used icons
+ * -------------------------- */
+.fa-info-circle:before {
+  content: "\f05a";
+}
+.fa-lightbulb-o:before {
+  content: "\f0eb";
+}
+.fa-warning:before,
+.fa-exclamation-triangle:before {
+  content: "\f071";
+}
+.fa-fire:before {
+  content: "\f06d";
+}
+.fa-exclamation-circle:before {
+  content: "\f06a";
+}
