@@ -2,7 +2,7 @@
 @import "fonts/lato";
 @import "settings/iconic";
 @import "components/asciidoc";
-@import "components/awesome-icons";
+@import "components/awesome/*";
 
 %stretch {
   margin-left: -($column-gutter/2);
