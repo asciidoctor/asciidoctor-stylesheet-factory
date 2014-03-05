@@ -68,7 +68,7 @@ pre, pre > code {
 //  border: none;
 //}
 
-kbd.keyseq {
+.keyseq {
   color: lighten($body-font-color, 20%);
 }
 
@@ -88,11 +88,11 @@ kbd:not(.keyseq) {
   white-space: nowrap;
 }
 
-kbd kbd:first-child {
+.keyseq kbd:first-child {
   margin-left: 0;
 }
 
-kbd kbd:last-child {
+.keyseq kbd:last-child {
   margin-right: 0;
 }
 
