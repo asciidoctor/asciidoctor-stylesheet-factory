@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 compass compile -s compact
 LINES=`wc -l stylesheets/asciidoctor.css | cut -d" " -f1`
