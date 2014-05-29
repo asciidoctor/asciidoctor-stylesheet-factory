@@ -1,0 +1,43 @@
+@import "settings/asciidoctor-compact";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+
+.admonitionblock > table {
+  border: 0;
+  background: none;
+  width: 100%;
+  td.icon {
+    text-align: center;
+    width: 40px;
+    img {
+      max-width: none;
+    }
+    .title {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  td.content {
+    padding-left: emCalc(14px);
+    padding-right: emCalc(16px);
+    border-left: $hr-border-width $hr-border-style $hr-border-color;
+    color: $blockquote-font-color;
+
+    //& > .paragraph:last-child > p {
+    & > :last-child > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#toc.toc2 {
+  background: $body-bg;
+}
+
+.literalblock,
+.listingblock {
+  & > .content > pre {
+    @include border-radius(0);
+  }
+}
