@@ -4,12 +4,12 @@ $cursor-default-value: auto !default;
 @import "compass/css3/box-shadow";
 @import "compass/css3/border-radius";
 
-// better defaults (maybe do these at the bottom of the theme colors)
+// better defaults (TODO maybe do these at the bottom of the theme colors)
 //$table-line-height: 1.6 !default;
 //$table-head-font-size: inherit !default;
-//$table-head-font-color: $body-font-color;
+$table-head-font-color: $body-font-color !default;
 //$table-row-font-size: inherit !default;
-//$table-row-font-color: $body-font-color;
+$table-row-font-color: $body-font-color !default;
 
 // custom default variables
 // NOTE we have a chicken-egg problem here since Foundation
@@ -28,10 +28,14 @@ $sect-divider-color: #ddd !default;
 $sidebar-header-border-style: solid !default;
 $sidebar-header-border-size: 0 !default;
 $sidebar-header-border-color: #ddd !default;
+$caption-font-family: inherit !default;
+$caption-font-weight: bold !default;
+$caption-font-style: inherit !default;
 
 $anchor-text-decoration-hover: null !default;
 
 $code-font-size: inherit !default;
+$code-line-height: inherit !default;
 $code-bg-color: inherit !default;
 $code-border-color: #ddd !default;
 $code-border-style: solid !default;
@@ -45,7 +49,9 @@ $pre-border-size: 1px !default;
 $pre-border-style: solid !default;
 $pre-border-color: #ddd !default;
 $pre-bg: none !default;
-$pre-padding: emCalc(12px) emCalc(12px) emCalc(8px) emCalc(12px) !default;
+// smaller padding bottom needed if using Cousine / Liberation Sans font
+//$pre-padding: emCalc(12px) emCalc(12px) emCalc(8px) emCalc(12px) !default;
+$pre-padding: emCalc(12px) !default;
 $pre-line-height: 1.6 !default;
 
 // fallback values set in components/asciidoc
@@ -66,7 +72,7 @@ $include-html-grid-classes: false;
 $include-html-panel-classes: false;
 $include-html-media-classes: false;
 $include-html-inline-list-classes: false;
-$include-print-styles: true;
+$include-print-styles: false;
 
 // cut down on number of vendor prefixes used
 $experimental-support-for-khtml: false;

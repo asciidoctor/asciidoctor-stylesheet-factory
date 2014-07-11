@@ -1,14 +1,14 @@
+//@import "fonts/metro";
 @import "settings/asciidoctor";
 @import "components/asciidoc";
 @import "components/awesome-icons";
 
-#toc.toc2 {
-  background: $body-bg;
-}
-
 .literalblock,
 .listingblock {
   & > .content > pre {
+    // FIXME make border radius on literal and listing blocks configurable
     @include border-radius(0);
   }
 }
+
+@import "components/print";

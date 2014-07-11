@@ -1,43 +1,74 @@
+// Color Scheme
+
+// #191919 - black
+// #333333 (or #3b3b3b?) - off-black
+// #454545 - dark gray
+// #6e6e6e - medium grey
+// #7f7f7f - light grey
+// #bfbfbf - lighter grey
+// #d5d5d5 - very light grey
+// #e5e5e5 - lightest grey
+// #f2f2f2 (or #fafaf9) - off-white
+// #ba3925 - orange
+// #7a2518 - medium orange
+// #6d180b - dark orange
+// #3a120c - darkest orange (not orange)
+// #2561ba - lighter blue
+// #1d4c91 - light blue
+// #487c58 - green
+// (old blue was #005498)
+// #fafaf9 - (brown dimmed to gray)
+
+// Body (IMPORTANT $body-* variables must be defined above the defaults import)
+
+$body-bg: white;
+$body-font-color: #333333;
+$body-font-family: "Noto Serif", "DejaVu Serif", "Serif", serif;
+
 @import "defaults";
 
-// Body
+// Default Overrides
 
-$em-base: 16px;
-$body-bg: white;
-$primary-color: #005498;
-$alert-color: lighten(#6d180b, 15%);
+$primary-color: darken(#2561ba, 5%);
+$alert-color: lighten(#6d180b, 15%); // $code-color is 15% darker than $alert-color
 $global-radius: 4px;
+$panel-bg: #fafaf9;
 
 // Headings
 
-$header-font-family: Georgia, "URW Bookman L", Helvetica, Arial, sans-serif;
-$header-font-weight: normal;
-$header-font-color: #BA3925;
+$header-font-family: "Open Sans", "DejaVu Sans", "Sans", sans-serif;
+$header-font-weight: 300;
+$header-font-color: #ba3925;
 $header-top-margin: 1em;
 $title-font-weight: $header-font-weight;
-$subheader-font-color: darken($header-font-color, 15%);
+$subheader-font-color: darken($header-font-color, 15%); // resolves to #7a2518
 $sect-divider-size: 3px;
 $sect-divider-style: double;
-$sect-divider-color: #ebebeb;
-$sidebar-header-border-size: 0 0 1px 0 !default;
+$sect-divider-color: #e5e5e5;
+$hr-border-color: #d8d8d8;
+$caption-font-family: $body-font-family;
+$caption-font-weight: normal;
+$caption-font-style: italic;
 
 // Paragraphs
+// FIXME can't set paragraph-font-size due to incorrect compounding of em values
+//$paragraph-font-size: emCalc(17px);
 
 // Inline Code
 
+$code-font-family: "Droid Sans Mono", "DejaVu Sans Mono", "Monospace", monospace;
 $code-font-weight: normal;
-$code-font-size: emCalc($em-base - 1px);
-$code-bg-color: darken(#fff, 5%);
-$code-border-color: darken(#fff, 20%);
-$code-border-size: 1px;
-$code-padding: 1px 3px 0;
+$code-line-height: 1;
 
 // Code Blocks
 // *Recommended highlight.js themes: magula, default, docco
 
+$pre-font-family: "Droid Sans Mono", "DejaVu Sans Mono", "Monospace", monospace;
+$pre-font-color: #191919;
 $pre-border-size: 1px 0;
 $pre-border-style: dotted;
 $pre-border-color: #bfbfbf;
+$pre-padding: emCalc(12px) emCalc(8px);
 $pre-line-height: 1.4;
 
 // Links
@@ -52,14 +83,13 @@ $definition-list-margin-bottom: emCalc(20px);
 
 // Blockquotes
 
-$blockquote-font-color: lighten($body-font-color, 30%);
+$blockquote-border: 3px solid #487c58;
+$blockquote-font-color: #6e6e6e;
+$blockquote-cite-font-color: #454545;
 $blockquote-cite-font-size: inherit;
-$blockquote-cite-font-color: darken($blockquote-font-color, 10%);
 
 // Tables
 
 $table-head-font-size: inherit;
 $table-row-font-size: inherit;
 $table-line-height: 1.6;
-$table-border-highlight-color: #468847 !default;
-$table-border-highlight-size: 3px !default;
