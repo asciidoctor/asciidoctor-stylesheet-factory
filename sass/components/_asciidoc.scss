@@ -739,25 +739,62 @@ table.spread {
   width: 100%;
 }
 
-// NOTE .grid-* must be defined before .frame-* for styles to cascade properly
-table.grid-all {
-  border-collapse: separate;
-  border-spacing: 1px;
-  @include radius;
-  border-top: $table-border-highlight-size solid $table-border-highlight-color;
-  border-bottom: $table-border-highlight-size solid $table-border-highlight-color;
+// NOTE .grid-* selectors must be defined before .frame-* selectors in order for styles to cascade properly
+table.tableblock,
+th.tableblock,
+td.tableblock {
+  border: 0 solid $table-border-color;
 }
 
-table.frame-topbot,
-table.frame-none {
-  border-left: 0;
-  border-right: 0;
+table.grid-all th.tableblock,
+table.grid-all td.tableblock {
+  border-width: 0 $table-border-size $table-border-size 0;
 }
 
-table.frame-sides,
-table.frame-none {
-  border-top: 0;
-  border-bottom: 0;
+table.grid-all tfoot > tr > th.tableblock,
+table.grid-all tfoot > tr > td.tableblock {
+  border-width: $table-border-size $table-border-size 0 0;
+}
+
+table.grid-cols th.tableblock,
+table.grid-cols td.tableblock {
+  border-width: 0 $table-border-size 0 0;
+}
+
+table.grid-all * > tr > .tableblock:last-child,
+table.grid-cols * > tr > .tableblock:last-child {
+  border-right-width: 0;
+}
+
+table.grid-rows th.tableblock,
+table.grid-rows td.tableblock {
+  border-width: 0 0 $table-border-size 0;
+}
+
+table.grid-all tbody > tr:last-child > th.tableblock,
+table.grid-all tbody > tr:last-child > td.tableblock,
+table.grid-all thead:last-child > tr > th.tableblock,
+table.grid-rows tbody > tr:last-child > th.tableblock,
+table.grid-rows tbody > tr:last-child > td.tableblock,
+table.grid-rows thead:last-child > tr > th.tableblock {
+  border-bottom-width: 0;
+}
+
+table.grid-rows tfoot > tr > th.tableblock,
+table.grid-rows tfoot > tr > td.tableblock {
+  border-width: $table-border-size 0 0 0;
+}
+
+table.frame-all {
+  border-width: $table-border-size;
+}
+
+table.frame-sides {
+  border-width: 0 $table-border-size;
+}
+
+table.frame-topbot {
+  border-width: $table-border-size 0;
 }
 
 @each $halign in (left, right, center) {
