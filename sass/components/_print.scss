@@ -1,6 +1,11 @@
 .print-only { display: none !important; }
 @media print {
-  @page { margin: 0.5cm; }
+  @page {
+    margin-top: 0.5in;
+    margin-bottom: 0.5in;
+    margin-left: 0.75in;
+    margin-right: 0.75in;
+  }
   * {
     @include box-shadow(none !important);
     text-shadow: none !important;
@@ -52,6 +57,37 @@
     & + .sect1 {
       border: none !important;
     }
+  }
+  body.book #header {
+    text-align: center;
+  }
+  body.book #header > h1 {
+    border: none !important;
+    margin: 2.5em 0 1em 0;
+    padding: 0;
+  }
+  body.book #header span {
+    line-height: 1.6;
+  }
+  body.book #header br {
+    display: block;
+  }
+  body.book #header br + span {
+    padding-left: 0;
+  }
+  body.book #header br + span:before {
+    content: none !important;
+  }
+  body.book #toc {
+    border: none !important;
+    text-align: left !important;
+    padding: 0 !important;
+  }
+  body.book #toc,
+  body.book #preamble,
+  body.book h1.sect0,
+  body.book .sect1 > h2 {
+    page-break-before: always;
   }
   .literalblock, .listingblock {
     pre, pre[class] {
