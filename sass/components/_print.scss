@@ -1,6 +1,6 @@
 .print-only { display: none !important; }
 @media print {
-  @page { margin: 0.5cm; }
+  @page { margin: 1.25cm 0.75cm; }
   * {
     @include box-shadow(none !important);
     text-shadow: none !important;

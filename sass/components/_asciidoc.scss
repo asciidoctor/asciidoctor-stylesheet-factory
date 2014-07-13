@@ -201,6 +201,7 @@ b.button:after {
 #toc {
   //margin-bottom: $panel-margin-bottom * 2;
   border-bottom: $sect-divider-size $sect-divider-style $sect-divider-color;
+  padding-top: 1em;
   padding-bottom: $panel-margin-bottom;
   & > ul {
     //margin-left: 0;
@@ -229,10 +230,6 @@ b.button:after {
 #toctitle {
   @extend h3;
   color: $subheader-font-color;
-}
-
-#header #toc {
-  padding-top: 1.25em;
 }
 
 @media #{$small} {
@@ -383,6 +380,7 @@ b.button:after {
 // AsciiDoc block styles
 
 // these blocks that don't inherit panel styles
+.audioblock,
 .imageblock,
 .literalblock,
 .listingblock,
@@ -393,6 +391,7 @@ b.button:after {
 }
 
 .admonitionblock td.content,
+.audioblock,
 .exampleblock,
 .imageblock,
 .listingblock,
@@ -424,22 +423,24 @@ table.tableblock,
   }
 }
 
-table.tableblock > caption {
-  @extend %subheader;
-  text-align: left;
-  @if $caption-font-family != inherit {
-    font-family: $caption-font-family;
-  }
-  @if $caption-font-weight != inherit {
-    font-weight: $caption-font-weight;
-  }
-  @if $caption-font-style != inherit {
-    font-style: $caption-font-style;
-  }
+// trick to prevent wrapping? wat? why not max-width: 100%?
+table.tableblock > caption.title {
   white-space: nowrap;
   overflow: visible;
   max-width: 0;
 }
+
+// for now just allow title to be aligned for imageblock, might add others later
+// TODO might want to support auto-sizing content so title aligns to edge of content
+//.imageblock {
+//  &.text-center > .title {
+//    text-align: center !important;
+//  }
+//
+//  &.text-right > .title {
+//    text-align: right !important;
+//  }
+//}
 
 .paragraph.lead > p,
 #preamble > .sectionbody > .paragraph:first-of-type p {
