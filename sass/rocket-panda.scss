@@ -16,6 +16,13 @@
   }
 }
 
+.literalblock,
+.listingblock {
+  & pre {
+    background: $pre-bg;
+  }
+}
+
 #footnotes {
   margin-bottom: 2em;
 }
