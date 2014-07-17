@@ -12,6 +12,7 @@ $include-html-global-classes: $old-include-html-global-classes;
 $include-asciidoc-role-classes: true !default;
 
 // fall-through defaults
+$subheader-text-rendering: $header-text-rendering !default;
 $footer-bg: $body-font-color !default;
 $footer-font-color: invert($body-font-color) !default;
 
@@ -410,6 +411,7 @@ table.tableblock,
 .hdlist {
   & > .title {
     @extend %subheader;
+    text-rendering: $subheader-text-rendering;
     text-align: left;
     @if $caption-font-family != inherit {
       font-family: $caption-font-family;
