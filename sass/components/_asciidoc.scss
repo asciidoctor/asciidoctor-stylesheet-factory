@@ -159,6 +159,10 @@ b.button:after {
   @include grid-column($float:false);
 }
 
+#content:before {
+  content: none;
+}
+
 #header {
   // should this be changed to padding-bottom?
   margin-bottom: $panel-margin-bottom * 2;
