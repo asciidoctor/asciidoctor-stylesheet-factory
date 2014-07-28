@@ -2,6 +2,12 @@
 @import "components/asciidoc";
 @import "components/awesome-icons";
 
+.paragraph.lead > p,
+#preamble > .sectionbody > .paragraph:first-of-type p {
+  font-size: $paragraph-font-size + emCalc(2.5);
+  line-height: 1.5;
+}
+
 .admonitionblock > table {
   border: 0;
   background: none;
