@@ -12,6 +12,7 @@ $include-html-global-classes: $old-include-html-global-classes;
 $include-asciidoc-role-classes: true !default;
 
 // fall-through defaults
+$subheader-text-rendering: $header-text-rendering !default;
 $footer-bg: $body-font-color !default;
 $footer-font-color: invert($body-font-color) !default;
 
@@ -42,10 +43,12 @@ body {
   font-size: $code-font-size;
   padding: $code-padding;
   white-space: nowrap;
+  // FIXME only add background color if not inherit; only add border if not 0; only add radius if using border or background color
   background-color: $code-bg-color;
   border: $code-border-size $code-border-style $code-border-color;
   @include radius;
   text-shadow: none;
+  line-height: $code-line-height;
 }
 
 pre, pre > code {
@@ -77,7 +80,7 @@ kbd:not(.keyseq) {
   color: $body-font-color;
   font-size: emCalc(12px);
   line-height: 1.4;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   //border: 1px solid $pre-border-color;
   border: 1px solid #ccc;
   @include radius(3px);
@@ -156,6 +159,10 @@ b.button:after {
   @include grid-column($float:false);
 }
 
+#content:before {
+  content: none;
+}
+
 #header {
   // should this be changed to padding-bottom?
   margin-bottom: $panel-margin-bottom * 2;
@@ -199,6 +206,7 @@ b.button:after {
 #toc {
   //margin-bottom: $panel-margin-bottom * 2;
   border-bottom: $sect-divider-size $sect-divider-style $sect-divider-color;
+  padding-top: 1em;
   padding-bottom: $panel-margin-bottom;
   & > ul {
     //margin-left: 0;
@@ -213,7 +221,14 @@ b.button:after {
     margin-bottom: 0.5em;
   }
   ul {
+    font-family: $header-font-family;
     list-style-type: none;
+  }
+  a {
+    text-decoration: none;
+    &:active {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -229,14 +244,16 @@ b.button:after {
   }
 
   #toc.toc2 {
+    background-color: $panel-bg;
     position: fixed;
     width: 15em;
     left: 0;
     top: 0;
+    // why not panel border color?
     border-right: 1px solid $sect-divider-color;
     border-bottom: 0;
     z-index: 1000;
-    padding: 1em;
+    padding: 1.25em 1em;
     height: 100%;
     overflow: auto;
     #toctitle {
@@ -245,6 +262,7 @@ b.button:after {
     }
     & > ul {
       font-size: .90em;
+      margin-bottom: 0;
     }
     ul ul {
       margin-left: 0;
@@ -303,17 +321,11 @@ b.button:after {
   @include panel($panel-bg, $panel-padding, false);
   border-width: 0;
   @include radius;
-  a {
-    text-decoration: none;
-  }
 }
 
 #content #toctitle {
   @extend %subheader;
-  font-weight: bold;
-  font-family: $body-font-family;
-  font-size: emCalc(16px);
-  padding-left: emCalc(2px);
+  font-size: 1.375em;
 }
 
 #footer {
@@ -373,26 +385,27 @@ b.button:after {
 // AsciiDoc block styles
 
 // these blocks that don't inherit panel styles
+.audioblock,
 .imageblock,
 .literalblock,
 .listingblock,
-.mathblock,
+.stemblock,
 .verseblock,
 .videoblock {
   margin-bottom: $panel-margin-bottom;
 }
 
 .admonitionblock td.content,
+.audioblock,
 .exampleblock,
 .imageblock,
 .listingblock,
 .literalblock,
-.mathblock,
+.stemblock,
 .openblock,
 .paragraph,
 .quoteblock,
-.sidebarblock,
-.tableblock,
+table.tableblock,
 .verseblock,
 .videoblock,
 .dlist,
@@ -402,19 +415,38 @@ b.button:after {
 .hdlist {
   & > .title {
     @extend %subheader;
+    text-rendering: $subheader-text-rendering;
     text-align: left;
-    font-weight: bold;
+    @if $caption-font-family != inherit {
+      font-family: $caption-font-family;
+    }
+    @if $caption-font-weight != inherit {
+      font-weight: $caption-font-weight;
+    }
+    @if $caption-font-style != inherit {
+      font-style: $caption-font-style;
+    }
   }
 }
 
-.tableblock > caption {
-  @extend %subheader;
-  text-align: left;
-  font-weight: bold;
+// trick to prevent wrapping? wat? why not max-width: 100%?
+table.tableblock > caption.title {
   white-space: nowrap;
   overflow: visible;
   max-width: 0;
 }
+
+// for now just allow title to be aligned for imageblock, might add others later
+// TODO might want to support auto-sizing content so title aligns to edge of content
+//.imageblock {
+//  &.text-center > .title {
+//    text-align: center !important;
+//  }
+//
+//  &.text-right > .title {
+//    text-align: right !important;
+//  }
+//}
 
 .paragraph.lead > p,
 #preamble > .sectionbody > .paragraph:first-of-type p {
@@ -437,7 +469,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
       max-width: none;
     }
     .title {
-      font-weight: bold;
+      font-weight: $header-font-weight;
       text-transform: uppercase;
     }
   }
@@ -447,6 +479,8 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
     padding-right: emCalc(20px);
     border-left: $hr-border-width $hr-border-style $hr-border-color; 
     color: $blockquote-font-color;
+    // QUESTION use opacity instead of blockquote-font-color?
+    //opacity: 0.75;
 
     //& > .paragraph:last-child > p {
     & > :last-child > :last-child {
@@ -609,6 +643,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   @include language-label(asciidoc);
   @include language-label(clojure);
   @include language-label(css);
+  @include language-label(go);
   @include language-label(groovy);
   @include language-label(html);
   @include language-label(java);
@@ -668,13 +703,13 @@ table.pyhltable .linenodiv {
 
 // AsciiDoc quoteblock output is different from what Foundation expects
 .quoteblock {
-  margin: 0 0 $paragraph-margin-bottom;
+  margin: 0 0 $paragraph-margin-bottom 0;
   padding: $blockquote-padding;
   border-#{$default-float}: $blockquote-border;
 
   blockquote {
     margin: 0 0 $paragraph-margin-bottom 0;
-    padding: 0 0 emCalc(9px) 0;
+    padding: 0 0 emCalc(10px) 0;
     border: 0;
 
     & > .paragraph:last-child p {
@@ -683,50 +718,22 @@ table.pyhltable .linenodiv {
   }
 
   .attribution {
-    margin-top: -.25em;
-    padding-bottom: emCalc(9px);
+    margin-top: emCalc(-10px);
+    padding-bottom: emCalc(10px);
     font-size: $blockquote-cite-font-size;
     color: $blockquote-cite-font-color;
+    line-height: $paragraph-line-height;
     br {
       display: none;
     }
     cite {
       display: block;
-      margin-bottom: emCalc(10px);
     }
   }
 }
 
-// FIX Foundation, user-agent stylesheet is overriding
-table thead th,
-table tfoot th {
-  font-weight: $table-head-font-weight;
-}
-
-tbody tr th {
-}
-
-table.tableblock.grid-all {
-  border-collapse: separate;
-  border-spacing: 1px;
-  @include radius;
-  border-top: $table-border-highlight-size solid $table-border-highlight-color;
-  border-bottom: $table-border-highlight-size solid $table-border-highlight-color;
-}
-
-table.tableblock.frame-topbot,
-table.tableblock.frame-none {
-  border-left: 0;
-  border-right: 0;
-}
-
-table.tableblock.frame-sides,
-table.tableblock.frame-none {
-  border-top: 0;
-  border-bottom: 0;
-}
-
 table.tableblock {
+  max-width: 100%;
   td .paragraph:last-child p,
   th, td {
     & > p:last-child {
@@ -735,18 +742,86 @@ table.tableblock {
   }
 }
 
+table.spread {
+  width: 100%;
+}
+
+// NOTE .grid-* selectors must be defined before .frame-* selectors in order for styles to cascade properly
+table.tableblock,
+th.tableblock,
+td.tableblock {
+  border: 0 solid $table-border-color;
+}
+
+table.grid-all th.tableblock,
+table.grid-all td.tableblock {
+  border-width: 0 $table-border-size $table-border-size 0;
+}
+
+table.grid-all tfoot > tr > th.tableblock,
+table.grid-all tfoot > tr > td.tableblock {
+  border-width: $table-border-size $table-border-size 0 0;
+}
+
+table.grid-cols th.tableblock,
+table.grid-cols td.tableblock {
+  border-width: 0 $table-border-size 0 0;
+}
+
+table.grid-all * > tr > .tableblock:last-child,
+table.grid-cols * > tr > .tableblock:last-child {
+  border-right-width: 0;
+}
+
+table.grid-rows th.tableblock,
+table.grid-rows td.tableblock {
+  border-width: 0 0 $table-border-size 0;
+}
+
+table.grid-all tbody > tr:last-child > th.tableblock,
+table.grid-all tbody > tr:last-child > td.tableblock,
+table.grid-all thead:last-child > tr > th.tableblock,
+table.grid-rows tbody > tr:last-child > th.tableblock,
+table.grid-rows tbody > tr:last-child > td.tableblock,
+table.grid-rows thead:last-child > tr > th.tableblock {
+  border-bottom-width: 0;
+}
+
+table.grid-rows tfoot > tr > th.tableblock,
+table.grid-rows tfoot > tr > td.tableblock {
+  border-width: $table-border-size 0 0 0;
+}
+
+table.frame-all {
+  border-width: $table-border-size;
+}
+
+table.frame-sides {
+  border-width: 0 $table-border-size;
+}
+
+table.frame-topbot {
+  border-width: $table-border-size 0;
+}
+
 @each $halign in (left, right, center) {
-  th.tableblock.halign-#{$halign},
-  td.tableblock.halign-#{$halign} {
+  th.halign-#{$halign},
+  td.halign-#{$halign} {
     text-align: $halign;
   }
 }
 
 @each $valign in (top, bottom, middle) {
-  th.tableblock.valign-#{$valign},
-  td.tableblock.valign-#{$valign} {
+  th.valign-#{$valign},
+  td.valign-#{$valign} {
     vertical-align: $valign;
   }
+}
+
+// FIX Foundation, user-agent stylesheet is overriding
+table thead th,
+table tfoot th {
+  font-weight: $table-head-font-weight;
 }
 
 // vertical table header (block)
@@ -768,7 +843,6 @@ tfoot tr th {
 td > div.verse {
   white-space: pre;
 }
-
 
 // AsciiDoc list styles
 
@@ -815,7 +889,7 @@ ul.checklist {
 }
 
 // give the checkbox some room
-ul.checklist li > p:first-child > i[class^="icon-check"]:first-child,
+ul.checklist li > p:first-child > .fa-check-square-o:first-child,
 ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
   margin-right: 0.25em;
 }
@@ -961,6 +1035,9 @@ span.footnoteref {
   font-size: emCalc(14px);
   a {
     text-decoration: none;
+    &:active {
+      text-decoration: underline;
+    }
   }
 }
 

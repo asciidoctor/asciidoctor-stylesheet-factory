@@ -27,7 +27,8 @@ body {
 
 .literalblock,
 .listingblock {
-  & > .content > pre {
+  & pre {
+    background: $pre-bg;
     @include single-box-shadow(#AEB9B6, 0, 1px, 4px, $inset:inset);
     @include border-radius(5px);
     //font-size: 80%;

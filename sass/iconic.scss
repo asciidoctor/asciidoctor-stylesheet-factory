@@ -103,7 +103,8 @@ dl dt {
 .literalblock,
 .listingblock {
   @extend %stretch;
-  & > .content > pre {
+  & pre {
+    background: $pre-bg;
     @include border-radius($global-radius $global-radius 0 0);
     border: 0;
   }

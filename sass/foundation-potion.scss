@@ -13,7 +13,7 @@
 
 .listingblock,
 .literalblock {
-  & > .content > pre {
+  & pre {
     background: -moz-linear-gradient(top, #fff 0%, #f4f4f4 100%);
     background: -webkit-linear-gradient(top, #fff 0%, #f4f4f4 100%);
     background: linear-gradient(to bottom, #fff 0%, #f4f4f4 100%);

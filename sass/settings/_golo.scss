@@ -38,9 +38,9 @@ $header-top-margin: .8em;
 $title-font-color: $dark-brown;
 $title-font-weight: $header-font-weight;
 $hr-border-color: lighten($pale-brown, 20%);
-$sect-divider-color: lighten($pale-brown, 25%);
-$sect-divider-size: 1px;
-$sect-divider-style: solid;
+//$sect-divider-color: lighten($pale-brown, 25%);
+$sect-divider-size: 0;
+//$sect-divider-style: solid;
 
 // Paragraphs
 

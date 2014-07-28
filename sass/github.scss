@@ -80,3 +80,10 @@ h2 {
   font-size: emCalc(12px);
   background: #eaeaea;
 }
+
+.literalblock,
+.listingblock {
+  & pre {
+    background: $pre-bg;
+  }
+}

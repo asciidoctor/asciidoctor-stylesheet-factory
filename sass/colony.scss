@@ -6,6 +6,10 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid $sect-divider-color;
 }
 
+.sect1 {
+  padding-bottom: 0;
+}
+
 #toctitle {
   color: #00406F;
   font-weight: normal;
@@ -22,4 +26,11 @@ code {
 
 p.tableblock.header {
   color: $table-row-font-color;
+}
+
+.literalblock,
+.listingblock {
+  & pre {
+    background: $pre-bg;
+  }
 }
