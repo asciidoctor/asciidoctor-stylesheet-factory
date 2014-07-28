@@ -29,7 +29,7 @@
     padding-right: emCalc(16px);
     border-left: $hr-border-width $hr-border-style $hr-border-color;
     color: $blockquote-font-color;
-
+    line-height: 1.4;
     //& > .paragraph:last-child > p {
     & > :last-child > :last-child {
       margin-bottom: 0;
