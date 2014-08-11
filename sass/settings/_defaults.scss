@@ -1,8 +1,8 @@
+// TIP set a value to null to disable
 @import "normalize";
 $cursor-default-value: auto !default;
 @import "foundation/components/global";
 @import "compass/css3/box-shadow";
-@import "compass/css3/border-radius";
 
 // better defaults (TODO maybe do these at the bottom of the theme colors)
 //$table-line-height: 1.6 !default;
@@ -17,8 +17,10 @@ $table-row-font-color: $body-font-color !default;
 // come from importing the components
 $rainbow-lightness: -25% !default;
 $rainbow-bg-lightness: -2% !default;
-$table-border-highlight-color: #ddd !default;
-$table-border-highlight-size: 1px !default;
+$header-word-spacing: null !default;
+$subheader-font-family: null !default;
+$subheader-font-style: null !default;
+$subheader-font-size: null !default;
 $title-font-color: #000 !default;
 $title-font-weight: bold !default;
 $font-smoothing: antialiased !default;
@@ -28,9 +30,6 @@ $sect-divider-color: #ddd !default;
 $sidebar-header-border-style: solid !default;
 $sidebar-header-border-size: 0 !default;
 $sidebar-header-border-color: #ddd !default;
-$caption-font-family: inherit !default;
-$caption-font-weight: bold !default;
-$caption-font-style: inherit !default;
 
 $anchor-text-decoration-hover: null !default;
 
@@ -41,6 +40,8 @@ $code-border-color: #ddd !default;
 $code-border-style: solid !default;
 $code-border-size: 0 !default;
 $code-padding: 0 !default;
+$code-word-spacing: 0 !default;
+$code-text-rendering: inherit !default;
 
 $pre-font-family: Consolas, 'Liberation Mono', Courier, monospace !default;
 $pre-font-size: emCalc($em-base) !default;
@@ -61,6 +62,8 @@ $pre-line-height: 1.6 !default;
 $icon-text-shadow: 1px 1px 2px rgba(0, 0, 0, .5) !default;
 
 $definition-list-content-margin-left: emCalc(18px) !default;
+
+$blockquote-border-color: #ddd !default;
 
 $thumb-border-style: solid !default;
 $thumb-border-width: 4px !default;

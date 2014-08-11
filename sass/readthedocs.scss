@@ -10,7 +10,7 @@ h4 {
 .literalblock,
 .listingblock {
   & > .content > pre {
-    @include border-radius(6px);
+    @include radius(6px);
     margin-left: 2em;
     margin-right: 2em;
   }
@@ -24,7 +24,7 @@ h4 {
     border-top-width: 1.5em;
     background-color: #e9ffe9;
     border-collapse: separate;
-    @include border-radius(0);
+    @include radius(0);
     td.icon {
       padding-top: .5em;
       padding-bottom: .5em;
@@ -49,7 +49,7 @@ h4 {
 
 table.tableblock.grid-all {
   border-collapse: collapse;
-  @include border-radius(0);
+  @include radius(0);
   th.tableblock, td.tableblock {
     border-bottom: 1px solid #aaa;
   }

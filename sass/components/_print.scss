@@ -55,56 +55,65 @@
       border: none !important;
     }
   }
-  body.book #header {
-    text-align: center;
+  #header > h1:first-child {
+    margin: 0.5em 0 0 0; 
   }
-  body.book #header > h1 {
-    border: none !important;
-    margin: 2.5em 0 1em 0;
-    padding: 0;
-  }
-  body.book #header span {
-    line-height: 1.6;
-  }
-  body.book #header br {
-    display: block;
-  }
-  body.book #header br + span {
-    padding-left: 0;
-  }
-  body.book #header br + span:before {
-    content: none !important;
-  }
-  body.book #toc {
-    border: none !important;
-    text-align: left !important;
-    padding: 0 !important;
-  }
-  body.book #toc,
-  body.book #preamble,
-  body.book h1.sect0,
-  body.book .sect1 > h2 {
-    page-break-before: always;
-  }
-  .literalblock, .listingblock {
-    pre, pre[class] {
+  body.book {
+    #header {
+      text-align: center;
+      & > h1:first-child {
+        border: none !important;
+        margin: 2.5em 0 1em 0;
+      }
+      .details {
+        border: none !important;
+        display: block;
+        padding: 0 !important;
+        span:first-child { margin-left: 0 !important; }
+        br {
+          display: block;
+          & + span:before {
+            content: none !important;
+          }
+        }
+      }
+    }
+    #toc {
       border: none !important;
-      background: #f5f5f5 !important;
-      padding: 0.75em !important;
+      text-align: left !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    #toc,
+    #preamble,
+    h1.sect0,
+    .sect1 > h2 {
+      page-break-before: always;
     }
   }
-  .listingblock pre.highlight {
-    padding: 0 !important;
-    & > code {
-      background: #f5f5f5 !important;
-      padding: 0.75em !important;
+  .literalblock,
+  .listingblock {
+    pre, pre[class] {
+      @if $pre-border-size {
+        border: none !important;
+      }
+      // QUESTION force normal font weight?
+      //font-weight: normal !important;
+      background: #f7f7f7 !important;
+      padding: 1em !important;
     }
+  }
+  .listingblock pre.highlightjs > code {
+    padding: 0 !important;
+    background: none !important;
   }
   #footer {
     background: none !important;
+    padding: 0 ($column-gutter / 2);
   }
   #footer-text {
-    color: $body-font-color !important;
+    color: $blockquote-cite-font-color !important;
+    font-size: 0.9em;
   }
   .hide-on-print { display: none !important; }
   .print-only { display: block !important; }

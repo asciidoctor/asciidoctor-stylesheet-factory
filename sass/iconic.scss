@@ -3,6 +3,7 @@
 @import "settings/iconic";
 @import "components/asciidoc";
 @import "components/awesome-icons";
+@import "compass/css3/border-radius";
 
 %stretch {
   margin-left: -($column-gutter/2);
@@ -125,7 +126,7 @@ pre .conum {
 }
 
 table.tableblock.grid-all {
-  @include border-radius(0);
+  @include radius(0);
   border: 0;
   border-collapse: collapse;
 

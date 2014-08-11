@@ -53,7 +53,7 @@ body {
 }
 
 table.tableblock.grid-all {
-  @include border-radius(0);
+  @include radius(0);
 }
 
 #footer {
