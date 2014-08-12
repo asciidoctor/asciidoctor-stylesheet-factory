@@ -357,6 +357,7 @@ b.button:after {
     }
     & > ul {
       font-size: 0.9em;
+      // FIXME this removes all space below last item in TOC in Firefox (but not Chrome)
       margin-bottom: 0;
     }
     ul ul {
@@ -617,7 +618,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
       @extend h3;
       color: $subheader-font-color;
       //color: darken($header-font-color, 15%); // name this panel-header-color?
-      line-height: 1.45; // a touch up from the header line height
+      //line-height: 1.45; // a touch up from the header line height
       margin-top: 0;
       @if $sidebar-header-align {
         text-align: $sidebar-header-align;
@@ -724,7 +725,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   position: absolute;
   font-size: emCalc(12px);
   //top: 0.5rem; // 0.67em
-  top: 0.45rem;
+  top: 0.425rem;
   right: 0.5rem; // 0.67em
   line-height: 1;
   text-transform: uppercase;
