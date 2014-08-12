@@ -16,6 +16,8 @@ $subheader-text-rendering: $header-text-rendering !default;
 $footer-bg: $body-font-color !default;
 $footer-font-color: invert($body-font-color) !default;
 
+// NOTE: border-collapse: separate allows us to control border sides independently
+
 body {
   //-webkit-font-smoothing: $font-smoothing;
   @extend .antialiased;
@@ -98,7 +100,7 @@ pre, pre > code {
 //  padding: 0;
 //  background: none;
 //  font-weight: normal;
-//  border: none;
+//  border: 0;
 //}
 
 .keyseq {
@@ -189,18 +191,21 @@ b.button:after {
   @include grid-column($float: false);
 }
 
+#content {
+  margin-top: 1.25em;
+}
+
 #content:before {
   content: none;
 }
 
 #header {
-  // should this be changed to padding-bottom?
-  margin-bottom: $panel-margin-bottom * 1.5;
   & > h1:first-child {
     color: $title-font-color;
     @if $title-font-weight and $title-font-weight != $header-font-weight {
       font-weight: $title-font-weight;
     }
+    margin-top: 2.25rem;
     margin-bottom: 0;
 
     & + #toc {
@@ -272,14 +277,17 @@ b.button:after {
   }
 }
 
-// doctitle in embeddable html
-#content > h1:first-child {
+// doctitle in embeddable html; switch to using class once we add one to this element
+#content > h1:first-child:not([class]) {
   color: $title-font-color;
   @if $title-font-weight and $title-font-weight != $header-font-weight {
     font-weight: $title-font-weight;
   }
   border-bottom: $hr-border-width $hr-border-style $hr-border-color;
-  padding-bottom: 0.1em;
+  padding-bottom: 8px; // dependent on $header-line-height
+  margin-top: 0;
+  padding-top: 1rem;
+  margin-bottom: 1.25rem; // should match margin-top of #content
 }
 
 #toc {
@@ -552,9 +560,8 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
 }
 
 .admonitionblock > table {
-  // separate allows us to control border sides independently
   border-collapse: separate;
-  border: none;
+  border: 0;
   background: none;
   width: 100%;
   td.icon {
@@ -612,6 +619,9 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
       //color: darken($header-font-color, 15%); // name this panel-header-color?
       line-height: 1.45; // a touch up from the header line height
       margin-top: 0;
+      @if $sidebar-header-align {
+        text-align: $sidebar-header-align;
+      }
       @if $sidebar-header-border-size != 0 {
         border-width: $sidebar-header-border-size;
         border-style: $sidebar-header-border-style;
@@ -708,39 +718,22 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
   position: relative;
 }
 
-.listingblock:hover code[data-lang]:before {
+.listingblock code[data-lang]:before {
+  display: none;
   content: attr(data-lang);
   position: absolute;
   font-size: emCalc(12px);
-  top: 0.5rem; // 0.67em
+  //top: 0.5rem; // 0.67em
+  top: 0.45rem;
   right: 0.5rem; // 0.67em
   line-height: 1;
   text-transform: uppercase;
   color: #999;
 }
 
-//@mixin language-label($lang) {
-//  code.#{$lang}:before {
-//    content: quote($lang);
-//  }
-//}
-//
-//.listingblock:hover {
-//  @include language-label(asciidoc);
-//  @include language-label(clojure);
-//  @include language-label(css);
-//  @include language-label(go);
-//  @include language-label(groovy);
-//  @include language-label(html);
-//  @include language-label(java);
-//  @include language-label(javascript);
-//  @include language-label(python);
-//  @include language-label(ruby);
-//  @include language-label(sass);
-//  @include language-label(scss);
-//  @include language-label(xml);
-//  @include language-label(yaml);
-//}
+.listingblock:hover code[data-lang]:before {
+  display: block;
+}
 
 .listingblock.terminal pre .command:before {
   content: attr(data-prompt); 
@@ -754,9 +747,10 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
 
 // overrides for Pygments default styles
 table.pyhltable {
-  border: none;
+  border-collapse: separate;
+  border: 0;
   margin-bottom: 0;
-  background: transparent;
+  background: none;
 }
 
 table.pyhltable td {
@@ -770,7 +764,8 @@ table.pyhltable td.code {
   padding-right: 0;
 }
 
-.pygments.highlight .lineno,
+// QUESTION can't td:not(.code) be written as td.linenos?
+pre.pygments .lineno,
 table.pyhltable td:not(.code) {
   color: #999;
   padding-left: 0;
@@ -778,13 +773,13 @@ table.pyhltable td:not(.code) {
   border-right: 1px solid $hr-border-color;
 }
 
-.pygments.highlight .lineno {
+pre.pygments .lineno {
   display: inline-block;
   margin-right: .25em;
 }
 
 table.pyhltable .linenodiv {
-  background-color: transparent !important;
+  background: none !important;
   padding-right: 0 !important;
 }
 
@@ -811,7 +806,7 @@ table.pyhltable .linenodiv {
   blockquote {
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
 
     &:before {
       content: "\201c";
@@ -914,7 +909,6 @@ table.pyhltable .linenodiv {
 
 table.tableblock {
   max-width: 100%;
-  // separate allows us to control border sides independently
   border-collapse: separate;
   // QUESTION should this be any last-child?
   td > .paragraph:last-child p,
@@ -933,7 +927,7 @@ table.spread {
 table.tableblock,
 th.tableblock,
 td.tableblock {
-  border: none solid $table-border-color;
+  border: 0 solid $table-border-color;
 }
 
 table.grid-all th.tableblock,
@@ -1120,8 +1114,7 @@ ul.inline {
 
 .hdlist > table,
 .colist > table {
-  border: none;
-  //border-collapse: separate;
+  border: 0;
   background: none;
   & > tbody > tr {
     background: none;
@@ -1144,7 +1137,6 @@ td.hdlist2 {
 }
 
 .colist > table {
-  //border-collapse: separate;
   tr > td:first-of-type {
     padding: 0 0.75em;
     line-height: 1;
@@ -1273,8 +1265,7 @@ span.footnoteref {
 
 // for embedded gists
 .gist .file-data > table {
-  border: none;
-  //border-collapse: separate;
+  border: 0;
   background: #fff;
   width: 100%;
   margin-bottom: 0;

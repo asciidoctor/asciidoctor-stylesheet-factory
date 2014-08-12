@@ -7,44 +7,48 @@
     @include box-shadow(none !important);
     text-shadow: none !important;
   }
-  a, a:visited {
+  a {
     color: inherit !important;
     text-decoration: underline !important;
   }
-  a[href^="http:"]:after, a[href^="https:"]:after {
-    content: " (" attr(href) ")";
-  }
-  a[href^="#"], a[href^="#"]:visited, a[href^="mailto:"], a[href^="mailto:"]:visited {
+  a.bare,
+  a[href^="#"],
+  a[href^="mailto:"] {
     text-decoration: none !important;
+  }
+  a[href^="http:"]:not(.bare):after,
+  a[href^="https:"]:not(.bare):after,
+  a[href^="mailto:"]:not(.bare):after {
+    content: "(" attr(href) ")";
+    display: inline-block;
+    font-size: 0.875em;
+    padding-left: 0.25em;
   }
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
-  pre, blockquote {
+  pre, blockquote, tr, img {
     page-break-inside: avoid;
-  }
-  code {
-    color: $pre-font-color;
   }
   thead {
     display: table-header-group;
   }
-  tr, img {
-    page-break-inside: avoid;
-  }
   img {
     max-width: 100% !important;
   }
-  p {
+  // QUESTION should we reduce size of lead paragraph too?
+  p, blockquote, dt, td.content {
+    font-size: 1em;
     orphans: 3;
     widows: 3;
   }
   h2, h3, #toctitle, .sidebarblock > .content > .title {
     page-break-after: avoid;
   }
-  #toc, .sidebarblock {
+  #toc, .sidebarblock, .exampleblock > .content {
     background: none !important;
   }
+  // FIXME don't set padding-bottom for toc in content (appears like sidebarblock)
   #toc {
     border-bottom: 1px solid $hr-border-color !important;
     padding-bottom: 0 !important;
@@ -52,21 +56,21 @@
   .sect1 {
     padding-bottom: 0 !important;
     & + .sect1 {
-      border: none !important;
+      border: 0 !important;
     }
   }
   #header > h1:first-child {
-    margin: 0.5em 0 0 0; 
+    margin-top: 1.25rem; 
   }
   body.book {
     #header {
       text-align: center;
       & > h1:first-child {
-        border: none !important;
+        border: 0 !important;
         margin: 2.5em 0 1em 0;
       }
       .details {
-        border: none !important;
+        border: 0 !important;
         display: block;
         padding: 0 !important;
         span:first-child { margin-left: 0 !important; }
@@ -79,7 +83,7 @@
       }
     }
     #toc {
-      border: none !important;
+      border: 0 !important;
       text-align: left !important;
       padding: 0 !important;
       margin: 0 !important;
@@ -95,17 +99,16 @@
   .listingblock {
     pre, pre[class] {
       @if $pre-border-size {
-        border: none !important;
+        border: 0 !important;
       }
       // QUESTION force normal font weight?
       //font-weight: normal !important;
-      background: #f7f7f7 !important;
-      padding: 1em !important;
+      //background: #f7f7f7 !important;
+      //padding: 1em !important;
     }
   }
-  .listingblock pre.highlightjs > code {
-    padding: 0 !important;
-    background: none !important;
+  .listingblock code[data-lang]:before {
+    display: block;
   }
   #footer {
     background: none !important;
