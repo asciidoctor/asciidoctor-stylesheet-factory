@@ -83,4 +83,49 @@ p {
   }
 }
 
+.literalblock,
+.listingblock {
+  // use pre[class] so we win over pre.<name> styles
+  pre, pre[class] {
+    @if $pre-border-size {
+      border: $pre-border-size $pre-border-style $pre-border-color;
+    }
+    // FIXME make border radius on listing blocks configurable!
+    @include radius;
+    word-wrap: break-word;
+
+    &.nowrap {
+      overflow-x: auto;
+      white-space: pre;
+      word-wrap: normal;
+    }
+
+    // screens below breakpoint
+    padding: $pre-padding;
+    font-size: $em-base;
+
+    @media #{$small} {
+      font-size: emCalc($em-base + 1);
+    }
+
+    @media #{$medium} {
+      font-size: emCalc($em-base + 2);
+    }
+  }
+}
+
+.listingblock code[data-lang]:before {
+  display: none;
+  content: attr(data-lang);
+  position: absolute;
+  font-size: $em-base - 1;
+  //top: 0.5rem; // 0.67em
+  top: 0.425rem;
+  right: 0.5rem; // 0.67em
+  line-height: 1;
+  text-transform: uppercase;
+  color: #999;
+}
+
+
 @import "components/print";
