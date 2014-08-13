@@ -1,14 +1,48 @@
-//@import "fonts/metro";
+//@import "fonts/asciidoctor";
 @import "settings/asciidoctor";
 @import "components/asciidoc";
 @import "components/awesome-icons";
 
-.literalblock,
-.listingblock {
-  & > .content > pre {
-    // FIXME make border radius on literal and listing blocks configurable
-    @include border-radius(0);
+h1, h2 {
+  letter-spacing: -0.01em;
+}
+
+dt, th.tableblock, td.content {
+  text-rendering: optimizeLegibility; // already set for p
+}
+
+p, td.content {
+  letter-spacing: -0.01em;
+  // TODO needs to apply anywhere we have bold prose
+  strong {
+    letter-spacing: -0.005em;
   }
+}
+
+// NOTE include blockquote for when it doesn't have a nested p
+p, blockquote, dt, td.content {
+  font-size: 1.0625rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+// restore font size in sidebar block and regular table cells
+.sidebarblock p, .sidebarblock dt, .sidebarblock td.content, p.tableblock {
+  font-size: 1em;
+}
+
+.exampleblock > .content {
+  // white
+  //background-color: #fff;
+  //border-color: $panel-border-color;
+  //@include single-box-shadow($panel-border-color, 0, 1px, 2px);
+
+  // light yellow
+  background-color: #fffef7; // from rgb(252,247,227), analogous to #f8f8f7
+  border-color: $panel-border-color;
+  @include single-box-shadow($panel-border-color, 0, 1px, 4px);
 }
 
 @import "components/print";
