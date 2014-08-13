@@ -1,0 +1,131 @@
+@import "settings/asciidoctor-compact";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+
+h1, h2 {
+  letter-spacing: -0.01em;
+}
+
+dt, th.tableblock, td.content {
+  text-rendering: optimizeLegibility; // already set for p
+}
+
+p, td.content {
+  letter-spacing: -0.01em;
+  // TODO needs to apply anywhere we have bold prose
+  strong {
+    letter-spacing: -0.005em;
+  }
+}
+
+// NOTE include blockquote for when it doesn't have a nested p
+p, blockquote, dt, td.content {
+  font-size: 1.0625rem;
+}
+p {
+  margin-bottom: 1.25rem;
+}
+
+// restore font size in sidebar block and regular table cells
+.sidebarblock p, .sidebarblock dt, .sidebarblock td.content, p.tableblock {
+  font-size: 1em;
+}
+
+.exampleblock > .content {
+  // white
+  //background-color: #fff;
+  //border-color: $panel-border-color;
+  //@include single-box-shadow($panel-border-color, 0, 1px, 2px);
+  // light yellow
+  background-color: #fffef7; // from rgb(252,247,227), analogous to #f8f8f7
+  border-color: $panel-border-color;
+  @include single-box-shadow($panel-border-color, 0, 1px, 4px);
+}
+
+.paragraph.lead > p,
+#preamble > .sectionbody > .paragraph:first-of-type p {
+  font-size: $paragraph-font-size + emCalc(2.5);
+  line-height: 1.5;
+}
+
+.admonitionblock > table {
+  border-collapse: separate;
+  border: 0;
+  background: none;
+  width: 100%;
+  td.icon {
+    text-align: center;
+    // FIXME use ems!
+    width: 40px;
+    img {
+      max-width: none;
+    }
+    .title {
+      //font-weight: $header-font-weight;
+      font-weight: bold;
+      font-family: $header-font-family;
+      text-transform: uppercase;
+    }
+  }
+  td.content {
+    padding-left: emCalc(14px);
+    padding-right: emCalc(16px);
+    border-left: $hr-border-width $hr-border-style $hr-border-color;
+    // FIXME use $aside-font-color
+    color: $blockquote-cite-font-color;
+    line-height: 1.4;
+    // QUESTION use opacity instead of blockquote-cite-font-color?
+    //opacity: 0.75;
+    //& > .paragraph:last-child > p {
+    & > :last-child > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.literalblock,
+.listingblock {
+  // use pre[class] so we win over pre.<name> styles
+  pre, pre[class] {
+    @if $pre-border-size {
+      border: $pre-border-size $pre-border-style $pre-border-color;
+    }
+    // FIXME make border radius on listing blocks configurable!
+    @include radius;
+    word-wrap: break-word;
+
+    &.nowrap {
+      overflow-x: auto;
+      white-space: pre;
+      word-wrap: normal;
+    }
+
+    // screens below breakpoint
+    padding: $pre-padding;
+    font-size: $em-base;
+
+    @media #{$small} {
+      font-size: emCalc($em-base + 1);
+    }
+
+    @media #{$medium} {
+      font-size: emCalc($em-base + 2);
+    }
+  }
+}
+
+.listingblock code[data-lang]:before {
+  display: none;
+  content: attr(data-lang);
+  position: absolute;
+  font-size: $em-base - 1;
+  //top: 0.5rem; // 0.67em
+  top: 0.425rem;
+  right: 0.5rem; // 0.67em
+  line-height: 1;
+  text-transform: uppercase;
+  color: #999;
+}
+
+
+@import "components/print";

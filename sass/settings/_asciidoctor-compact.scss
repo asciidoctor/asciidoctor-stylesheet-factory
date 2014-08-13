@@ -1,0 +1,135 @@
+// Color Palette
+
+// rgba(0,0,0,.9) - deep black
+// rgba(0,0,0,.85) - black
+// rgba(0,0,0,.8) - print black
+// rgba(0,0,0,.75) - light black
+// rgba(0,0,0,.6) - muted black
+// #ba3925 - orange
+// #7a2518 - dark orange
+// #3a120c - maroon
+// #2561ba - blue
+// #f8f8f7 - warm beige
+// #f7f7f8 - cool beige
+// #f7f8f7 - tinted beige
+// #ddddd8 - light gray
+// #d8d8d8 - lighter gray
+// #efefed - very light gray
+
+// Body (IMPORTANT $body-* variables must be defined above the defaults import)
+
+$body-bg: white;
+$body-font-color: rgba(0,0,0,0.8);
+$body-font-family: "Noto Serif", "DejaVu Serif", serif;
+
+
+$base-font-size: 12px;
+
+@import "defaults";
+
+
+$em-base: $base-font-size;
+
+// Default Overrides
+
+$primary-color: darken(#2561ba, 5%);
+$alert-color: lighten(#3a120c, 15%); // $code-color is 15% darker than $alert-color, so we lighten here by 15%
+$global-radius: 4px;
+$panel-bg: #f8f8f7;
+$panel-font-color: rgba(0,0,0,0.75);
+
+// Headings
+
+$header-font-family: "Open Sans", "DejaVu Sans", sans-serif;
+$header-font-weight: 300;
+$header-font-color: #ba3925;
+$header-line-height: 1.2;
+$header-top-margin: 1em;
+$header-word-spacing: -0.05em;
+$title-font-color: rgba(0,0,0,0.85);
+$title-font-weight: $header-font-weight;
+$subheader-font-family: $body-font-family;
+$subheader-font-size: 1rem;
+$subheader-font-color: darken($header-font-color, 15%); // resolves to #7a2518
+$subheader-font-weight: normal;
+$subheader-font-style: italic;
+$subheader-line-height: 1.45;
+$subheader-top-margin: 0;
+$subheader-bottom-margin: 0.25em;
+$sidebar-header-align: center;
+$sect-divider-size: 1px;
+$sect-divider-style: solid;
+$sect-divider-color: #efefed;
+$hr-border-color: #ddddd8;
+
+$h1-font-size: emCalc(32px);
+$h2-font-size: emCalc(28px);
+$h3-font-size: emCalc(24px);
+$h4-font-size: emCalc(20px);
+$h5-font-size: emCalc(16px);
+$h6-font-size: 1em;
+
+// Paragraphs
+// FIXME doesn't support rem math
+//$paragraph-font-size: 1.0625rem; // result of emCalc(17px) converted to rem (18px is 1.125em)
+
+// Inline Code
+
+$code-font-family: "Droid Sans Mono", "DejaVu Sans Mono", "Monospace", monospace;
+// NOTE will need to adjust code-font-size if we bump p font-size to 1.125em
+//$code-font-size: 0.95em;
+$code-font-size: emCalc($em-base -1);
+$code-font-weight: normal;
+// FIXME don't forget about code in a table cell
+$code-line-height: 1.4;
+$code-color: rgba(0,0,0,0.9);
+$code-bg-color: #f7f7f8;
+$code-padding: 0.1em 0.5ex;
+$code-word-spacing: -0.15em;
+$code-text-rendering: optimizeSpeed;
+
+// Inline Code
+
+$code-font-weight: normal;
+$code-font-size: emCalc($em-base - 1);
+$code-bg-color: darken(#fff, 5%);
+$code-border-color: darken(#fff, 20%);
+$code-border-size: 1px;
+$code-padding: 1px 3px 0;
+
+// Code Blocks
+// *Recommended highlight.js themes: magula, default, docco
+
+$pre-font-family: "Droid Sans Mono", "DejaVu Sans Mono", "Monospace", monospace;
+$pre-font-color: rgba(0,0,0,0.9);
+$pre-border-size: null;
+$pre-bg: #f7f7f8;
+$pre-padding: emCalc(16px);
+$pre-line-height: 1.4;
+
+// Links
+
+$anchor-text-decoration: underline;
+
+// Lists
+
+$list-side-margin: emCalc(20px);
+$definition-list-header-margin-bottom: emCalc(5px);
+$definition-list-margin-bottom: emCalc(12px);
+
+// Blockquotes
+
+$blockquote-font-color: $title-font-color;
+$blockquote-cite-font-color: rgba(0,0,0,0.6);
+$blockquote-cite-font-size: emCalc(13px);
+
+// Tables
+
+$table-head-font-size: inherit;
+$table-row-font-size: inherit;
+$table-line-height: 1.6;
+$table-head-bg: #f7f8f7;
+$table-even-row-bg: #f8f8f7;
+$table-border-color: #dedede;
+
+
