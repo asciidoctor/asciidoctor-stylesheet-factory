@@ -1,102 +1,66 @@
+$body-bg: #fefdfd; // rgba(139,88,52,0.01);
+$body-font-color: rgba(0,0,0,0.8);
+$body-font-family: "Open Sans", sans-serif;
+
 @import "defaults";
 
-// Colors
-// schemed using:
-// - http://www.cssdrive.com/imagepalette/index.php using golo logo
-// - http://colorschemedesigner.com using #693C16
-// - http://colrd.com/image-dna/23430/ some inspiration
-
-$black: #2a1808;
-$black-brown: #362212;
-$dark-brown: #693C16;
-$light-brown: #89572f;
-$pale-brown: #b49e8b; // or #c4ab97
-$dark-orange: #dc9424;
-$light-orange: #f8b231;
-$pale-orange: #eeca92;
-$dark-teal: #042829;
-$teal: #0E3D3F;
-
-// Body
-
-$em-base: 16px;
-$body-bg: #fdfaf7;
-$body-font-color: darken($black, 2%);
-$body-font-family: "Open Sans", Arial, sans-serif;
-$primary-color: lighten($dark-teal, 10%);
-//$alert-color: lighten(#6d180b, 15%);
+$primary-color: #005580;
+// $code-color is 15% darker than $alert-color, so we lighten here by 15%
+//$alert-color: lighten(rgb(56,36,10), 15%);
+$alert-color: lighten(rgb(51,29,0), 15%);
 $global-radius: 6px;
+$panel-bg: #f2f2f4;
 
-// Headings
+$header-font-family: "Varela Round", sans-serif;
+$header-font-weight: 400;
+$header-font-color: rgb(0,50,107);
+$header-line-height: 1.25;
+$header-top-margin: 0.8em;
+$subheader-font-color: rgb(0,44,94);
+$subheader-line-height: $header-line-height;
+// TODO
+//$subheader-letter-spacing: -0.03em;
 
-$header-font-family: "Varela Round", Arial, sans-serif;
-//$header-font-family: "Droid Sans", Arial, sans-serif;
-$header-font-weight: normal;
-$header-font-color: #152347;
-$header-top-margin: .8em;
-//$subheader-font-color: darken($header-font-color, 15%);
-$title-font-color: $dark-brown;
+$title-font-color: rgb(112,63,28);
 $title-font-weight: $header-font-weight;
-$hr-border-color: lighten($pale-brown, 20%);
-//$sect-divider-color: lighten($pale-brown, 25%);
-$sect-divider-size: 0;
+$hr-border-color: rgba(145,135,84,0.15);
+$sect-divider-size: 0px;
 //$sect-divider-style: solid;
+//$sect-divider-color: $hr-border-color;
 
-// Paragraphs
+$paragraph-line-height: 1.5;
 
-// Inline Code
+$code-font-family: "Ubuntu Mono", "Inconsolata", monospace;
+//$code-font-size: 0.9em;
+//$code-line-height: 1.5;
+$code-font-size: emCalc(17px);
+$code-line-height: 1.25;
+$code-font-weight: 400;
 
-$code-color: #691816;
+$blockquote-font-color: #999;
+$blockquote-cite-font-color: #666;
 
-// Code Blocks
-// *Recommended highlight.js themes: foundation
-
-$pre-font-size: .9em;
-$pre-font-family: monospace, serif;
-//$pre-bg: lighten($pale-brown, 30%);
-//$pre-bg: lighten(#5A9C9F, 40%);
-//$pre-bg: background_noise(#DBEAEA, 4, .08, 400, false);
-$pre-bg: image-url('golo/pre-bg.png');
-$pre-line-height: 1.4;
+$pre-font-family: "Liberation Mono", "Consolas", monospace;
 $pre-border-size: 1px;
-//$pre-border-color: $hr-border-color;
-$pre-border-color: transparentize($header-font-color, .9);
-//$pre-border-color: #f0f0f0;
-$pre-border-style: solid;
-$pre-font-color: black;
-$pre-padding: .8em;
-
-// Links
+$pre-border-color: rgba(16,195,196,0.125);
+$pre-bg: rgba(16,195,196,.05);
+$pre-padding: 1em;
+$pre-line-height: 1.4;
+//$pre-font-color: black;
 
 $anchor-text-decoration: underline;
-$anchor-font-color-hover: darken($primary-color, 10%);
+$anchor-font-color-hover: #078d71;
 
-// Lists
 $list-side-margin: emCalc(24px);
 $definition-list-header-margin-bottom: emCalc(5px);
 $definition-list-margin-bottom: emCalc(20px);
-// FIXME need to account for nested definition list
-//$definition-list-content-margin-left: 0;
 
-// Blockquotes
-
-$blockquote-font-color: darken($pale-brown, 20%);
-//$blockquote-cite-font-size: inherit;
-$blockquote-cite-font-color: darken($pale-brown, 30%);
-
-// Tables
-
-$table-even-row-bg: lighten(#6476A3, 45%);
-$table-border-color: lighten(#6476A3, 40%);
-$table-border-highlight-color: $table-border-color;
-//$table-head-bg: lighten(#5A9C9F, 5%);
-$table-head-bg: transparentize($dark-brown, .75);
 $table-head-font-size: inherit;
-$table-head-font-color: $body-font-color;
 $table-row-font-size: inherit;
-$table-row-font-color: $body-font-color;
-$table-line-height: 1.6;
+$table-line-height: 1.5;
+$table-head-bg: rgba(119,84,22,0.1);
+$table-even-row-bg: rgba(119,84,22,0.025);
+$table-border-color: $hr-border-color;
 
-// Footer
-
-$footer-bg: darken($black-brown, 5%);
+$footer-bg: rgb(11,68,90);
+$footer-font-color: $body-bg;
