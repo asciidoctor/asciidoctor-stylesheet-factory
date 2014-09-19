@@ -62,7 +62,7 @@ $hr-border-color: #ddddd8;
 
 // Inline Code
 
-$code-font-family: "Droid Sans Mono", "DejaVu Sans Mono", "Monospace", monospace;
+$code-font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
 // NOTE will need to adjust code-font-size if we bump p font-size to 1.125em
 //$code-font-size: 0.95em;
 $code-font-size: emCalc(15px);
