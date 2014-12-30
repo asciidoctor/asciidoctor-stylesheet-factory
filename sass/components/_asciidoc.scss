@@ -1076,13 +1076,15 @@ ul.checklist {
   margin-left: emCalc(10px);
 }
 
-// give the checkbox some room
-ul.checklist li > p:first-child > .fa-check-square-o:first-child,
-ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
-  margin-right: 0.25em;
+// use consistent size for checkbox
+ul.checklist li > p:first-child > .fa-square-o:first-child,
+ul.checklist li > p:first-child > .fa-check-square-o:first-child {
+  width: 1em;
+  font-size: 0.85em;
 }
 
 ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
+  width: 1em;
   position: relative;
   top: 1px;
 }
