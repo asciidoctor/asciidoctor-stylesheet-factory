@@ -5,6 +5,31 @@
 
 @include font-face("liberation Sans Regular", inline-font-files("liberation/Sans-Regular.ttf", "liberation/Sans-Regular.eot", "liberation/Sans-Regular.svg","liberation/Sans-Regular.woff"));
 
+/*********************************************
+ * Header
+ *********************************************/
+.header-logo {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 80px;
+  font-family: 'liberation Sans Regular';
+  font-size: 20px;
+  text-align: center;
+}
+
+/*********************************************
+ * Copyright Footer
+ *********************************************/
+.footer-copyright {
+  font-family: 'liberation Sans Regular';
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
 .literalblock,
 .listingblock {
   & > .content > pre {
