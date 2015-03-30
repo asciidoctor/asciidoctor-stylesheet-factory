@@ -20,7 +20,7 @@ Next, run Bundler to install the required gems:
 
 That command is equivalent to executing:
 
- $ gem install --version '0.12.3' compass
+ $ gem install --version '0.12.7' compass
  $ gem install --version '4.3.2' zurb-foundation
 
 Once you have the gems installed, you can build the stylesheets.
