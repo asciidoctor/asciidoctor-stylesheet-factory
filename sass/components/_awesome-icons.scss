@@ -12,11 +12,11 @@ span.icon > .fa {
   }
   
   .icon-note:before {
-    // @extend .icon-pushpin;
+    // @extend .fa-thumb-tack;
     //content: "\f08d";
     //color: scale-color(green, $lightness: $rainbow-lightness);
 
-    //@extend .icon-info-sign;
+    //@extend .fa-info-circle;
     content: "\f05a";
     //color: scale-color(mediumblue, $lightness: $rainbow-lightness);
     //color: $primary-color;
@@ -24,10 +24,10 @@ span.icon > .fa {
   }
   
   .icon-tip:before {
-    // @extend .icon-info-sign;
+    // @extend .fa-info-circle;
     //content: "\f05a";
     //color: scale-color(mediumblue, $lightness: $rainbow-lightness);
-    // @extend .icon-lightbulb;
+    // @extend .fa-lightbulb-o;
     content: "\f0eb";
     //color: scale-color(yellow, $lightness: $rainbow-lightness);
     //color: scale-color(yellow, $saturation: -15%);
@@ -37,19 +37,19 @@ span.icon > .fa {
   }
   
   .icon-warning:before {
-    // @extend .icon-warning-sign;
+    // @extend .fa-exclamation-triangle;
     content: "\f071";
     color: scale-color(darkorange, $lightness: $rainbow-lightness);
   }
 
   .icon-caution:before {
-    // @extend .icon-fire;
+    // @extend .fa-fire;
     content: "\f06d";
     color: scale-color(orangered, $lightness: $rainbow-lightness);
   }
   
   .icon-important:before {
-    // @extend .icon-exclamation-sign;
+    // @extend .icon-exclamation-circle;
     content: "\f06a";
     color: scale-color(red, $lightness: $rainbow-lightness);
   }
