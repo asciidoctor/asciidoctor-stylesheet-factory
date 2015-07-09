@@ -883,7 +883,8 @@ table.pyhltable .linenodiv {
     }
     cite {
       display: block;
-      letter-spacing: -0.05em;
+      //letter-spacing: -0.05em;
+      letter-spacing: -0.025em;
       color: $blockquote-cite-font-color;
     }
   }
