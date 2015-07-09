@@ -21,6 +21,7 @@ $footer-font-color: invert($body-font-color) !default;
 body {
   //-webkit-font-smoothing: $font-smoothing;
   @extend .antialiased;
+  tab-size: 4;
 }
 
 // Foundation reduces heading font size and line-height for screens below small breakpoint
