@@ -109,18 +109,20 @@ pre, pre > code {
 }
 
 kbd {
+  font-family: $code-font-family;
   display: inline-block;
   color: $body-font-color;
-  font-size: emCalc(12px);
-  line-height: 1.4;
+  font-size: 0.65em;
+  line-height: 1.45;
   background-color: #f7f7f7;
-  //border: 1px solid $pre-border-color;
   border: 1px solid #ccc;
   @include radius(3px);
   @include box-shadow(0 1px 0 rgba(0, 0, 0, .2), 0 0 0 0.1em white inset);
-  margin: -0.15em 0.15em 0 0.15em;
-  padding: 0.2em 0.6em 0.2em 0.5em;
+  margin: 0 0.15em;
+  padding: 0.2em 0.5em;
   vertical-align: middle;
+  position: relative;
+  top: -0.1em;
   white-space: nowrap;
 }
 
@@ -760,6 +762,7 @@ table.pyhltable td {
   vertical-align: top;
   padding-top: 0;
   padding-bottom: 0;
+  line-height: $pre-line-height;
 }
 
 table.pyhltable td.code {
