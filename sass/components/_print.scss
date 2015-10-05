@@ -27,13 +27,13 @@
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
-  pre, blockquote, tr, img {
+  pre, blockquote, tr, img, object {
     page-break-inside: avoid;
   }
   thead {
     display: table-header-group;
   }
-  img {
+  img, object {
     max-width: 100% !important;
   }
   // QUESTION should we reduce size of lead paragraph too?

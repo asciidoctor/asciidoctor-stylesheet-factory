@@ -11,8 +11,11 @@ dt, th.tableblock, td.content {
   text-rendering: optimizeLegibility; // already set for p
 }
 
-p, td.content {
+p, td.content, span.alt {
   letter-spacing: -0.01em;
+}
+
+p, td.content {
   // TODO needs to apply anywhere we have bold prose
   strong {
     letter-spacing: -0.005em;
@@ -20,7 +23,7 @@ p, td.content {
 }
 
 // NOTE include blockquote for when it doesn't have a nested p
-p, blockquote, dt, td.content {
+p, blockquote, dt, td.content, span.alt {
   font-size: 1.0625rem;
 }
 

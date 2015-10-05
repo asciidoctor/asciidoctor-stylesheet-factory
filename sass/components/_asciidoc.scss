@@ -1161,6 +1161,11 @@ td.hdlist2 {
 //  color: darken($primary-color, 5%);
 //}
 
+object[type="image/svg+xml"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 // picked from foundation/components/_thumbs.css
 .thumb,
 .th {
@@ -1196,6 +1201,7 @@ td.hdlist2 {
   }
 }
 
+//span.image {
 .image {
   // QUESTION should we require the related role?
   // "related" mean "illustrative" or "supporting" of the text
@@ -1222,6 +1228,15 @@ td.hdlist2 {
 
 a.image {
   text-decoration: none;
+}
+
+// allow SVG to be a link
+.imageblock a.image,
+span.image a.image {
+  display: inline-block;
+  object {
+    pointer-events: none;
+  }
 }
 
 // AsciiDoc footnote styles
