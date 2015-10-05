@@ -1133,14 +1133,15 @@ ul.inline {
   }
 }
 
-td.hdlist1 {
-  padding-right: .75em;
-  font-weight: bold;
-}
-
 td.hdlist1,
 td.hdlist2 {
   vertical-align: top;
+  padding: 0 emCalc(10px);
+}
+
+td.hdlist1 {
+  font-weight: bold;
+  padding-bottom: $paragraph-margin-bottom;
 }
 
 .literalblock + .colist,
