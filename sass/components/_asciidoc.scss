@@ -1,3 +1,10 @@
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.spread {
+  width: 100%;
+}
 @import "foundation/components/grid";
 @import "foundation/components/type";
 @import "foundation/components/panels";
@@ -926,10 +933,6 @@ table.tableblock {
   }
 }
 
-table.spread {
-  width: 100%;
-}
-
 // NOTE .grid-* selectors must be defined before .frame-* selectors in order for styles to cascade properly
 table.tableblock,
 th.tableblock,
@@ -1186,6 +1189,9 @@ object[type="image/svg+xml"] {
   &.right,
   &[style*="float: right"] {
     margin: emCalc(4px) 0 $panel-margin-bottom emCalc(10px);
+  }
+  &.center {
+    display: table;
   }
 
   & > .title {
