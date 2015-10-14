@@ -1165,11 +1165,6 @@ td.hdlist1 {
 //  color: darken($primary-color, 5%);
 //}
 
-object[type="image/svg+xml"] {
-  display: inline-block;
-  vertical-align: middle;
-}
-
 // picked from foundation/components/_thumbs.css
 .thumb,
 .th {
@@ -1237,12 +1232,18 @@ a.image {
   text-decoration: none;
 }
 
-// allow SVG to be a link
-.imageblock a.image,
-span.image a.image {
-  display: inline-block;
-  object {
-    pointer-events: none;
+.imageblock,
+span.image {
+  svg, object[type="image/svg+xml"] {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  // allow SVG to be a link
+  a.image {
+    display: inline-block;
+    object {
+      pointer-events: none;
+    }
   }
 }
 
