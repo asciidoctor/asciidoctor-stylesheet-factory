@@ -13,13 +13,13 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   sed 's/ *\/\*\+!\? [^*]\+\($\| \*\/\)//g' | \
   sed 's/^\/\*\* .* \*\/$//' | \
   sed '/^\(*\/\|\) *$/d' | \
-  sed '/\(meta\.\|\.vcard\|\.vevent\)/d' | \
+  sed '/\(meta\.\|\.vcard\|\.vevent\|#map_canvas\)/d' | \
   grep -v 'font-awesome' >> $STYLESHEET_NAME.css
 
 # see https://www.npmjs.org/package/cssshrink
 cssshrink $STYLESHEET_NAME.css | \
   sed '1i\
-/* Remove the comments around the @import statement below when using this as a custom stylesheet */\
+/* Remove comment around the @import statement below when using this as a custom stylesheet */\
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/' | \
   sed '1i\
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */' | \
