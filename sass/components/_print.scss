@@ -33,8 +33,9 @@
   thead {
     display: table-header-group;
   }
-  img, object, svg {
-    max-width: 100% !important;
+  // NOTE Foundation already sets max-width: 100% for img, object & embed
+  svg {
+    max-width: 100%;
   }
   // QUESTION should we reduce size of lead paragraph too?
   p, blockquote, dt, td.content {

@@ -1228,22 +1228,20 @@ td.hdlist1 {
   }
 }
 
-a.image {
-  text-decoration: none;
-}
-
 .imageblock,
 span.image {
-  svg, object[type="image/svg+xml"] {
+  object[type="image/svg+xml"], svg {
     display: inline-block;
     vertical-align: middle;
   }
+}
+
+a.image {
+  text-decoration: none;
   // allow SVG to be a link
-  a.image {
-    display: inline-block;
-    object {
-      pointer-events: none;
-    }
+  display: inline-block;
+  object[type="image/svg+xml"] {
+    pointer-events: none;
   }
 }
 
