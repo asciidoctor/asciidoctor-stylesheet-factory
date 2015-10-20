@@ -3,21 +3,19 @@
 @import "components/asciidoc";
 @import "components/awesome-icons";
 
-h1, h2 {
+dt, th.tableblock, td.content, div.footnote {
+  // NOTE text-rendering is already set for p
+  text-rendering: optimizeLegibility;
+}
+
+// QUESTION should we tighten letter spacing of text in footnotes?
+h1, h2, p, td.content, span.alt {
   letter-spacing: -0.01em;
 }
 
-dt, th.tableblock, td.content {
-  text-rendering: optimizeLegibility; // already set for p
-}
-
-p, td.content, span.alt {
-  letter-spacing: -0.01em;
-}
-
-p, td.content {
-  // TODO needs to apply anywhere we have bold prose
+p, td.content, div.footnote {
   strong {
+    // NOTE needs to apply anywhere we have bold prose
     letter-spacing: -0.005em;
   }
 }
