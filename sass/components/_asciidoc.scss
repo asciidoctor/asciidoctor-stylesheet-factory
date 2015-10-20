@@ -1246,10 +1246,11 @@ a.image {
 }
 
 // AsciiDoc footnote styles
-span.footnote,
-span.footnoteref {
-  vertical-align: super;
+sup.footnote,
+sup.footnoteref {
   font-size: emCalc(14px);
+  position: static;
+  vertical-align: super;
   a {
     text-decoration: none;
     &:active {
