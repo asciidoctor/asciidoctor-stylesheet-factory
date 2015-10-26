@@ -300,6 +300,8 @@ b.button:after {
   margin-bottom: 1.25rem; // should match margin-top of #content
 }
 
+// WARNING things really break if you don't use "toc" as the id
+// FIXME this should really be ".toc" instead
 #toc {
   //margin-bottom: $panel-margin-bottom * 2;
   border-bottom: $sect-divider-size $sect-divider-style $sect-divider-color;
@@ -318,6 +320,11 @@ b.button:after {
   ul {
     font-family: $header-font-family;
     list-style-type: none;
+  }
+  // NOTE make wrapped lines appear slightly tigher than entries
+  li {
+    line-height: 1.3334;
+    margin-top: 0.3334em;
   }
   a {
     text-decoration: none;
@@ -363,6 +370,7 @@ b.button:after {
     overflow: auto;
     #toctitle {
       margin-top: 0;
+      margin-bottom: 0.8rem;
       font-size: 1.2em;
     }
     & > ul {
@@ -1271,7 +1279,7 @@ sup.footnoteref {
   }
   .footnote {
     padding: 0 emCalc(6px);
-    line-height: 1.3333;
+    line-height: 1.3334;
     font-size: emCalc(14px);
     margin-left: 1.2em;
     text-indent: -1.05em;
