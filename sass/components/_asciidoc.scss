@@ -1,3 +1,8 @@
+// QUESTION: should we add max-width:100% and height:auto to svg?
+object, svg {
+  display: inline-block;
+  vertical-align: middle;
+}
 .center {
   margin-left: auto;
   margin-right: auto;
@@ -1236,19 +1241,21 @@ td.hdlist1 {
   }
 }
 
-.imageblock,
-span.image {
-  object[type="image/svg+xml"], svg {
-    display: inline-block;
-    vertical-align: middle;
-  }
-}
+// NOTE defined directly on object & svg (above) to align with settings for img
+//.imageblock,
+//span.image {
+//  object[type="image/svg+xml"], svg {
+//    display: inline-block;
+//    vertical-align: middle;
+//  }
+//}
 
 a.image {
   text-decoration: none;
   // allow SVG to be a link
   display: inline-block;
-  object[type="image/svg+xml"] {
+  //object[type="image/svg+xml"] {
+  object {
     pointer-events: none;
   }
 }
