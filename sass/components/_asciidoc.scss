@@ -1285,7 +1285,7 @@ sup.footnoteref {
     border-width: 1px 0 0 0;
   }
   .footnote {
-    padding: 0 emCalc(6px);
+    padding: 0 0.375em 0 0.225em; // .15em difference is due to text-indent
     line-height: 1.3334;
     font-size: emCalc(14px);
     margin-left: 1.2em;
