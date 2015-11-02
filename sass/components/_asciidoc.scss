@@ -559,18 +559,6 @@ table.tableblock > caption.title {
   max-width: 0;
 }
 
-// for now just allow title to be aligned for imageblock, might add others later
-// TODO might want to support auto-sizing content so title aligns to edge of content
-//.imageblock {
-//  &.text-center > .title {
-//    text-align: center !important;
-//  }
-//
-//  &.text-right > .title {
-//    text-align: right !important;
-//  }
-//}
-
 .paragraph.lead > p,
 #preamble > .sectionbody > .paragraph:first-of-type p {
   @extend %lead;
@@ -1190,6 +1178,18 @@ td.hdlist1 {
   box-shadow: $thumb-box-shadow;
 }
 
+// for now just allow title to be aligned for imageblock, might add others later
+// TODO might want to support auto-sizing content so title aligns to edge of content
+//.imageblock {
+//  &.text-center > .title {
+//    text-align: center !important;
+//  }
+//
+//  &.text-right > .title {
+//    text-align: right !important;
+//  }
+//}
+
 .imageblock {
   &.left,
   &[style*="float: left"] {
@@ -1199,9 +1199,9 @@ td.hdlist1 {
   &[style*="float: right"] {
     margin: emCalc(4px) 0 $panel-margin-bottom emCalc(10px);
   }
-  &.center {
-    display: table;
-  }
+  //&.center {
+  //  display: table;
+  //}
 
   & > .title {
     margin-bottom: 0;
