@@ -16,21 +16,26 @@
 // #d8d8d8 - lighter gray
 // #efefed - very light gray
 
-// Body (IMPORTANT $body-* variables must be defined above the defaults import)
+// IMPORTANT: $body-* variables must be defined above the defaults import
 
-$body-bg: white;
-$body-font-color: rgba(0,0,0,0.8);
+// Body
+
+$body-font-color: rgba(0, 0, 0, 0.8);
 $body-font-family: "Noto Serif", "DejaVu Serif", serif;
+// TIP: set $base-font-size & $rem-base to scale all font sizes proprotionally
+//$base-font-size: 17px;
+//$rem-base: $base-font-size;
 
 @import "defaults";
 
-// Default Overrides
+// General
 
 $primary-color: darken(#2561ba, 5%);
-$alert-color: lighten(#3a120c, 15%); // $code-color is 15% darker than $alert-color, so we lighten here by 15%
+// NOTE $code-color is 15% darker than $alert-color, so we lighten here by 15%
+$alert-color: lighten(#3a120c, 15%);
 $global-radius: 4px;
 $panel-bg: #f8f8f7;
-$panel-font-color: rgba(0,0,0,0.75);
+$panel-font-color: rgba(0, 0, 0, 0.75);
 
 // Headings
 
@@ -39,11 +44,12 @@ $header-font-weight: 300;
 $header-font-color: #ba3925;
 $header-line-height: 1.2;
 $header-top-margin: 1em;
+$header-bottom-margin: 0.5em;
 $header-word-spacing: -0.05em;
-$title-font-color: rgba(0,0,0,0.85);
+$title-font-color: rgba(0, 0, 0, 0.85);
 $title-font-weight: $header-font-weight;
 $subheader-font-family: $body-font-family;
-$subheader-font-size: 1rem;
+$subheader-font-size: rem-calc(16px);
 $subheader-font-color: darken($header-font-color, 15%); // resolves to #7a2518
 $subheader-font-weight: normal;
 $subheader-font-style: italic;
@@ -57,20 +63,18 @@ $sect-divider-color: #efefed;
 $hr-border-color: #ddddd8;
 
 // Paragraphs
-// FIXME doesn't support rem math
-//$paragraph-font-size: 1.0625rem; // result of emCalc(17px) converted to rem (18px is 1.125em)
+// NOTE doesn't hit all key elements, so we'll apply it manually
+//$paragraph-font-size: rem-calc(17px);
 
 // Inline Code
 
 $code-font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
-// NOTE will need to adjust code-font-size if we bump p font-size to 1.125em
-//$code-font-size: 0.95em;
-$code-font-size: emCalc(15px);
+$code-font-size: rem-calc-to-em(15px);
 $code-font-weight: normal;
 // FIXME don't forget about code in a table cell
 $code-line-height: 1.45;
-$code-color: rgba(0,0,0,0.9);
-$code-bg-color: #f7f7f8;
+$code-color: rgba(0, 0, 0, 0.9);
+$code-background-color: #f7f7f8;
 $code-padding: 0.1em 0.5ex;
 $code-word-spacing: -0.15em;
 $code-text-rendering: optimizeSpeed;
@@ -79,33 +83,38 @@ $code-text-rendering: optimizeSpeed;
 // *Recommended highlight.js themes: magula, default, docco
 
 $pre-font-family: "Droid Sans Mono", "DejaVu Sans Mono", "Monospace", monospace;
-$pre-font-color: rgba(0,0,0,0.9);
+$pre-font-color: rgba(0, 0, 0, 0.9);
 $pre-border-size: null;
 $pre-bg: #f7f7f8;
-$pre-padding: emCalc(16px);
+$pre-padding: 1em;
 $pre-line-height: 1.45;
 
 // Links
 
 $anchor-text-decoration: underline;
+$anchor-text-decoration-hover: underline;
 
 // Lists
 
-$list-side-margin: emCalc(24px);
-$definition-list-header-margin-bottom: emCalc(5px);
-$definition-list-margin-bottom: emCalc(20px);
+$list-side-margin: rem-calc(24px);
+$list-ordered-side-margin: $list-side-margin + rem-calc(4px);
+$list-nested-margin: $list-side-margin;
+$definition-list-header-margin-bottom: rem-calc(4px);
+//$definition-list-margin-bottom: rem-calc(20px);
+$definition-list-margin-bottom: rem-calc(16px);
 
 // Blockquotes
 
 $blockquote-font-color: $title-font-color;
-$blockquote-cite-font-color: rgba(0,0,0,0.6);
-$blockquote-cite-font-size: emCalc(15px);
+$blockquote-cite-font-color: rgba(0, 0, 0, 0.6);
+$blockquote-cite-font-size: rem-calc(15px);
 
 // Tables
 
-$table-head-font-size: inherit;
-$table-row-font-size: inherit;
-$table-line-height: 1.6;
-$table-head-bg: #f7f8f7;
-$table-even-row-bg: #f8f8f7;
 $table-border-color: #dedede;
+$table-line-height: 1.6;
+$table-head-font-size: inherit;
+$table-head-bg: #f7f8f7;
+$table-head-padding: rem-calc(6px 10px);
+$table-row-font-size: inherit;
+$table-even-row-bg: #f8f8f7;

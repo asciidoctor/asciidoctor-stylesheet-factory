@@ -1,16 +1,16 @@
-$base-font-size: 15px;
-@import "defaults";
-
-// Settings
-
-$em-base: $base-font-size;
-$primary-color: #4183C4;
-$global-radius: 3px;
-
 // Body
 
 $body-font-color: #333;
 $body-font-family: helvetica, arial, freesans, clean, sans-serif;
+$base-font-size: 15px;
+$rem-base: $base-font-size;
+
+@import "defaults";
+
+// General
+
+$primary-color: #4183C4;
+$global-radius: 3px;
 
 // Headers
 
@@ -19,15 +19,19 @@ $title-font-weight: 300;
 $header-font-family: $body-font-family;
 $header-font-color: $body-font-color;
 $header-font-weight: bold;
+$header-top-margin: 0.2em;
+$header-bottom-margin: 0.5rem;
 $sect-divider-size: 0;
 $subheader-font-color: #777;
+$subheader-top-margin: $header-top-margin;
+$subheader-bottom-margin: $header-bottom-margin;
 
-$h1-font-size: emCalc(30px);
-$h2-font-size: emCalc(24px);
-$h3-font-size: emCalc(18px);
-$h4-font-size: 1em;
-$h5-font-size: 1em;
-$h6-font-size: 1em;
+$h1-font-size: rem-calc(30px);
+$h2-font-size: rem-calc(24px);
+$h3-font-size: rem-calc(18px);
+$h4-font-size: rem-calc(16px);
+$h5-font-size: rem-calc(16px);
+$h6-font-size: rem-calc(16px);
 
 // Footer
 
@@ -48,9 +52,11 @@ $sidebar-header-border-color: #cacaca;
 
 // Lists
 
-$list-side-margin: emCalc(10.5px);
-$definition-list-header-margin-bottom: emCalc(5px);
-$definition-list-margin-bottom: emCalc(20px);
+$list-side-margin: rem-calc(10.5px);
+$list-ordered-side-margin: $list-side-margin + rem-calc(4px);
+$list-nested-margin: $list-side-margin;
+$definition-list-header-margin-bottom: rem-calc(4px);
+$definition-list-margin-bottom: rem-calc(20px);
 
 // Links
 
@@ -60,22 +66,21 @@ $anchor-text-decoration-hover: underline;
 // Inline Code
 
 $code-font-family: Monaco, 'DejaVu Sans Mono', 'Courier New', monospace;
-$code-font-size: emCalc(13px);
+$code-font-size: rem-calc(13px);
 $code-color: #666;
 $code-font-weight: normal;
 $code-padding: 1px 5px 1px 5px;
 $code-border-size: 1px;
-$code-bg-color: transparent;
 
 // Code Blocks
 
 $pre-bg: #333;
 $pre-font-color: white;
-$pre-font-size: emCalc(13px);
+$pre-font-size: rem-calc(13px);
 $pre-border-color: #ddd;
 $pre-border-style: solid;
 $pre-border-size: 2px;
-$pre-padding: emCalc(10px);
+$pre-padding: rem-calc(10px);
 
 // Panels
 
@@ -85,10 +90,10 @@ $panel-border-color: #eaeaea;
 // Paragraphs
 
 $paragraph-font-family: $body-font-family;
-$paragraph-margin-bottom: emCalc(15px);
+$paragraph-margin-bottom: rem-calc(15px);
 $paragraph-line-height: 1.4;
 
 // Tables
 
 $table-line-height: 1.4;
-$table-row-font-size: emCalc(12px);
+$table-row-font-size: rem-calc(12px);

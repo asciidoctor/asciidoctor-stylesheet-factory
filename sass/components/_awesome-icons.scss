@@ -6,7 +6,7 @@ span.icon > .fa {
 
 .admonitionblock td.icon {
   [class^="fa icon-"] {
-    font-size: 2.5em;
+    font-size: 2.5rem;
     text-shadow: $icon-text-shadow;
     cursor: default;
   }
@@ -32,7 +32,7 @@ span.icon > .fa {
     //color: scale-color(yellow, $lightness: $rainbow-lightness);
     //color: scale-color(yellow, $saturation: -15%);
     //color: $primary-color;
-    text-shadow: 1px 1px 2px rgba(155, 155, 0, .8);
+    text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
     color: #111;
   }
   

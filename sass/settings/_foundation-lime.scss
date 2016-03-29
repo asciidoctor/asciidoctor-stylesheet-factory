@@ -24,7 +24,7 @@ $blockquote-border: 1px solid #efefef;
 $code-color: darken($alert-color, 15%);
 
 $pre-bg: #efefef;
-$pre-padding: emCalc(12px) emCalc(12px) emCalc(10px) emCalc(12px);
+$pre-padding: rem-calc(12px);
 
 $table-head-font-color: $header-font-color;
 $table-head-font-weight: normal;
@@ -32,5 +32,3 @@ $table-row-font-color: $body-font-color;
 
 $footer-bg: #272727;
 $footer-font-color: #bcbcbc;
-//$footer-anchor-font-color: $footer-font-color;
-//$footer-anchor-font-color-hover: darken($footer-anchor-font-color, 5%);

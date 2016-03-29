@@ -1,4 +1,5 @@
 /*.html
 /.sass-cache/
 /Gemfile.lock
+/bower_components/
 /stylesheets/

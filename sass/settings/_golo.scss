@@ -1,66 +1,103 @@
-$body-bg: #fefdfd; // rgba(139,88,52,0.01);
-$body-font-color: rgba(0,0,0,0.8);
-$body-font-family: "Open Sans", sans-serif;
+// IMPORTANT: $body-* variables must be defined above the defaults import
+
+// Body
+
+$body-bg: #fefdfd;
+$body-font-color: rgba(0, 0, 0, 0.8);
+$body-font-family: "Open Sans", "DejaVu Sans", sans-serif;
 
 @import "defaults";
 
+// Default Overrides
+
 $primary-color: #005580;
-// $code-color is 15% darker than $alert-color, so we lighten here by 15%
-//$alert-color: lighten(rgb(56,36,10), 15%);
-$alert-color: lighten(rgb(51,29,0), 15%);
+// NOTE $code-color is 15% darker than $alert-color, so we lighten here by 15%
+$alert-color: lighten(rgb(51, 29, 0), 15%);
 $global-radius: 6px;
 $panel-bg: #f2f2f4;
 
-$header-font-family: "Varela Round", sans-serif;
+// Headings
+
+$h1-font-size: rem-calc(38px);
+$h2-font-size: rem-calc(31px);
+$h3-font-size: rem-calc(25px);
+$h4-font-size: rem-calc(20px);
+$h4-font-size: rem-calc(18.5px);
+$h5-font-size: rem-calc(17px);
+$h6-font-size: 1rem;
+$header-font-family: "Varela Round", "DejaVu Sans", sans-serif;
 $header-font-weight: 400;
-$header-font-color: rgb(0,50,107);
+$header-font-color: rgb(0, 50, 107);
 $header-line-height: 1.25;
 $header-top-margin: 0.8em;
-$subheader-font-color: rgb(0,44,94);
+$header-bottom-margin: 0.4em;
+$title-font-color: rgb(112, 63, 28);
+$title-font-weight: bold;
+$subheader-font-color: rgb(0, 44, 94);
 $subheader-line-height: $header-line-height;
-// TODO
+$subheader-top-margin: 0;
+//$subheader-margin-bottom: 0.5rem;
+// TODO fix subheader font metrics
 //$subheader-letter-spacing: -0.03em;
-
-$title-font-color: rgb(112,63,28);
-$title-font-weight: $header-font-weight;
-$hr-border-color: rgba(145,135,84,0.15);
-$sect-divider-size: 0px;
+$hr-border-color: rgba(145, 135, 84, 0.15);
+$sect-divider-size: 0;
 //$sect-divider-style: solid;
 //$sect-divider-color: $hr-border-color;
 
+// Paragraphs
+
 $paragraph-line-height: 1.5;
 
-$code-font-family: "Ubuntu Mono", "Inconsolata", monospace;
-//$code-font-size: 0.9em;
-//$code-line-height: 1.5;
-$code-font-size: emCalc(17px);
+// Inline Code
+
+$code-font-family: "Ubuntu Mono", "DejaVu Sans Mono", monospace;
+//$code-font-color: rgba(0, 0, 0, 0.9);
+$code-font-size: rem-calc-to-em(17px);
 $code-line-height: 1.25;
 $code-font-weight: 400;
 
-$blockquote-font-color: #999;
-$blockquote-cite-font-color: #666;
+// Code Blocks
 
 $pre-font-family: "Liberation Mono", "Consolas", monospace;
+//$pre-font-color: rgba(0, 0, 0, 0.9);
 $pre-border-size: 1px;
-$pre-border-color: rgba(16,195,196,0.125);
-$pre-bg: rgba(16,195,196,.05);
+$pre-border-color: rgba(16, 195, 196, 0.125);
+$pre-bg: rgba(16, 195, 196, 0.05);
 $pre-padding: 1em;
 $pre-line-height: 1.4;
-//$pre-font-color: black;
+
+// Links
 
 $anchor-text-decoration: underline;
+$anchor-text-decoration-hover: underline;
 $anchor-font-color-hover: #078d71;
 
-$list-side-margin: emCalc(24px);
-$definition-list-header-margin-bottom: emCalc(5px);
-$definition-list-margin-bottom: emCalc(20px);
+// Lists
 
-$table-head-font-size: inherit;
-$table-row-font-size: inherit;
-$table-line-height: 1.5;
-$table-head-bg: rgba(119,84,22,0.1);
-$table-even-row-bg: rgba(119,84,22,0.025);
+$list-side-margin: rem-calc(24px);
+$list-ordered-side-margin: $list-side-margin + rem-calc(4px);
+$list-nested-margin: $list-side-margin;
+$definition-list-header-margin-bottom: rem-calc(4px);
+$definition-list-margin-bottom: rem-calc(16px);
+
+// Blockquotes
+
+// FIXME font color too light
+$blockquote-font-color: #999;
+$blockquote-cite-font-color: #666;
+$blockquote-cite-font-size: rem-calc(15px);
+
+// Tables
+
 $table-border-color: $hr-border-color;
+$table-line-height: 1.5;
+$table-head-font-size: inherit;
+$table-head-bg: rgba(119, 84, 22, 0.1);
+$table-head-padding: rem-calc(6px 10px);
+$table-row-font-size: inherit;
+$table-even-row-bg: rgba(119, 84, 22, 0.025);
 
-$footer-bg: rgb(11,68,90);
+// Footer
+
+$footer-bg: rgb(11, 68, 90);
 $footer-font-color: $body-bg;

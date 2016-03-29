@@ -7,6 +7,7 @@ module Sass::Script::Functions
     # FIXME check to see if a color could be found, don't just assume
     Sass::Script::Color.new Sass::Script::Color::COLOR_NAMES[name.value]
   end
+  declare :string_to_color, [:name]
 
   # background_noise from https://gist.github.com/aaronrussell/856571 by Aaron Russell
   def background_noise(c, noise = 0.5, opacity = 0.08, size = 200, mono = false)
@@ -43,4 +44,5 @@ module Sass::Script::Functions
     Sass::Script::String.new("url('data:image/png;base64,#{data}')")
      
   end
+  declare :background_noise, [:c, :noise, :opaciy, :size, :mono]
 end

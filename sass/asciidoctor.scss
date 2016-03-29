@@ -1,4 +1,4 @@
-//@import "fonts/asciidoctor";
+//@import "fonts/asciidoctor-collection";
 @import "settings/asciidoctor";
 @import "components/asciidoc";
 @import "components/awesome-icons";
@@ -20,30 +20,45 @@ p, td.content, div.footnote {
   }
 }
 
+// FIXME add variable and move this to asciidoc component
 // NOTE include blockquote for when it doesn't have a nested p
 p, blockquote, dt, td.content, span.alt {
-  font-size: 1.0625rem;
+  font-size: rem-calc(17px);
 }
 
-p {
-  margin-bottom: 1.25rem;
-}
-
-// restore font size in sidebar block and regular table cells
-.sidebarblock p, .sidebarblock dt, .sidebarblock td.content, p.tableblock {
+// restore font size in sidebar block
+.sidebarblock p, .sidebarblock dt, .sidebarblock td.content {
   font-size: 1em;
 }
 
 .exampleblock > .content {
   // white
-  //background-color: #fff;
-  //border-color: $panel-border-color;
-  //@include single-box-shadow($panel-border-color, 0, 1px, 2px);
+  background-color: #fff;
+  border-color: $panel-border-color;
+  @include single-box-shadow(0, 1px, 4px, null, $panel-border-color);
 
   // light yellow
-  background-color: #fffef7; // from rgb(252,247,227), analogous to #f8f8f7
-  border-color: $panel-border-color;
-  @include single-box-shadow($panel-border-color, 0, 1px, 4px);
+  //background-color: #fffef7; // from rgb(252,247,227), analogous to #f8f8f7
+  //border-color: $panel-border-color;
+  //@include single-box-shadow(0, 1px, 4px, null, $panel-border-color);
+}
+
+// FIXME make this situation simpler
+// we're trying to accomodate highlight themes that have background colors
+// if "highlight" is in first position, then a source highlighter is not in use
+.literalblock pre,
+.listingblock pre:not(.highlight),
+.listingblock pre[class="highlight"],
+.listingblock pre[class^="highlight "],
+.listingblock pre.CodeRay,
+.listingblock pre.prettyprint {
+  .sidebarblock & {
+    // FIXME make me a variable
+    // FIXME what about inline code?
+    //background: #ededef;
+    //background: #f2f1f1;
+    background: #fff;
+  }
 }
 
 @import "components/print";

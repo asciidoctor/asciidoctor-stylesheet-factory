@@ -1,19 +1,21 @@
-@import "defaults";
+// TODO
+// - make exampleblock match the callout panel colors
 
+// IMPORTANT: $body-* variables must be defined above the defaults import
 // Body
 
-$em-base: 16px;
-//$primary-color: #005498;
-//$alert-color: lighten(#6d180b, 15%);
+@import "defaults";
+
+// Default overrides
+
 $global-radius: 0;
 
 // Headings
 
-//$header-font-family: "Lucida Grande", Georgia, Verdana, "Helvetica", Helvetica, Arial, sans-serif;
-//$header-font-weight: normal;
-//$header-font-color: #BA3925;
-$header-top-margin: 1em;
-//$subheader-font-color: darken($header-font-color, 15%);
+$title-font-color: $jet;
+$title-font-weight: normal;
+$header-top-margin: 0.75em;
+$header-bottom-margin: 0.5rem;
 $sect-divider-size: 1px;
 $sect-divider-style: solid;
 $sect-divider-color: #ddd;
@@ -24,33 +26,32 @@ $sect-divider-color: #ddd;
 
 // Code Blocks
 // *Recommended highlight.js themes: foundation
+// FIXME we have to work to restore defaults here
+$code-color: $oil;
+//$code-color: $primary-color;
+$code-background-color: scale-color($secondary-color, $lightness: 70%);
+$code-border-size: 1px;
+$code-border-color: scale-color($code-background-color, $lightness: -10%);
+$code-padding: rem-calc(2) rem-calc(5) rem-calc(1);
 
-$pre-font-size: .9em;
-$pre-font-family: monospace, serif;
-$pre-bg: #eee;
+// FIXME needs some work
+//$pre-font-size: 0.9em;
+$pre-font-color: #333;
+$pre-bg: #fafafa;
 $pre-line-height: 1.4;
 $pre-border-size: 1px;
-$pre-border-color: #ccc;
+$pre-border-color: #dfdfdf;
 $pre-border-style: solid;
-$pre-font-color: black;
-$pre-padding: .8em .8em .65em .8em;
+$pre-padding: rem-calc(12px);
 
 // Links
 
-//$anchor-text-decoration: underline;
-
 // Lists
-$list-side-margin: emCalc(24px);
-$definition-list-header-margin-bottom: emCalc(5px);
-$definition-list-margin-bottom: emCalc(20px);
-// FIXME need to account for nested definition list
-//$definition-list-content-margin-left: 0;
-
-// Blockquotes
-
-//$blockquote-font-color: lighten($body-font-color, 30%);
-//$blockquote-cite-font-size: inherit;
-//$blockquote-cite-font-color: darken($blockquote-font-color, 10%);
+$list-side-margin: rem-calc(24px);
+$list-ordered-side-margin: $list-side-margin + rem-calc(4px);
+$list-nested-margin: $list-side-margin;
+$definition-list-header-margin-bottom: rem-calc-to-em(4px);
+$definition-list-margin-bottom: rem-calc(20px);
 
 // Tables
 

@@ -1,25 +1,39 @@
-@import "fonts/overpass";
+@import "fonts/rocket-panda-collection";
 @import "settings/rocket-panda";
 @import "components/asciidoc";
 @import "components/awesome-icons";
 
-#header, #content, #footnotes {
-  background: white;
-  padding-left: 2.5em;
-  padding-right: 2.5em;
-}
+//#header, #content, #footnotes, #footer {
+//  background-color: #fff;
+//  margin: 0;
+//}
 
 #header {
-  margin-bottom: 0;
-  & > h1 {
+  .details {
     border-bottom: none;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
-.literalblock,
-.listingblock {
-  & pre {
-    background: $pre-bg;
+#toc {
+  ul {
+    font-family: $body-font-family;
+  }
+  &.toc2 {
+    //background-color: #eee;
+    border-right: none;
+    box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.3);
+  }
+}
+
+#content {
+  margin-top: 0;
+  padding-top: 2.5rem;
+  #{headers()} {
+    a.anchor:before {
+      padding-top: 0.05em;
+    }
   }
 }
 
@@ -29,14 +43,17 @@
 
 .sect1 {
   padding-bottom: 0;
+  @media #{$small} {
+    padding-bottom: 0;
+  }
 }
 
-ol > li p,
-ul > li p,
-ul dd,
-ol dd,
-.olist .olist, 
-.ulist .olist,
-.olist .ulist {
-  margin-bottom: $paragraph-margin-bottom / 4;
-}
+//ol > li p,
+//ul > li p,
+//ul dd,
+//ol dd,
+//.olist .olist, 
+//.ulist .olist,
+//.olist .ulist {
+//  margin-bottom: $paragraph-margin-bottom / 4;
+//}
