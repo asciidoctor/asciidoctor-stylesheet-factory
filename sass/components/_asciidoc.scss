@@ -1300,13 +1300,13 @@ sup.footnoteref {
   .footnote:last-of-type {
     margin-bottom: 0;
   }
-}
 
-// footnotes in embedded documents
-#content #footnotes {
-  margin-top: -$panel-margin-bottom / 2;
-  margin-bottom: 0;
-  padding: emCalc(12px) 0;
+  // footnotes in embedded documents
+  #content & {
+    margin-top: -$panel-margin-bottom / 2;
+    margin-bottom: 0;
+    padding: emCalc(12px) 0;
+  }
 }
 
 // for embedded gists
