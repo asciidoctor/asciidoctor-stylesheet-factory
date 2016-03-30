@@ -1,69 +1,59 @@
-$body-bg: #e5e5e5;
+// Body
+
+//$body-bg: #e5e5e5;
+$body-font-color: #222;
+$body-font-family: "Helvetica Neue", Helvetica, "Liberation Sans", Arial, sans-serif;
 
 @import "defaults";
 
-// General settings
+// General
 
-$primary-color: #069;
+$primary-color: #006699;
 $global-radius: 0;
-
-// Body
-
-$body-font-color: #404040;
-$body-font-family: "Helvetica Neue",Helvetica,"Liberation Sans",Arial,sans-serif;
+$panel-bg: #eee;
+$icon-text-shadow: none;
 
 // Headings
 
-$header-font-family: Overpass,"Helvetica Neue",Helvetica,Arial,sans-serif;
-$header-font-weight: normal;
-$header-font-color: black;
+$header-font-family: Overpass, sans-serif;
+$header-font-weight: bold;
+$header-font-color: #222;
 $header-top-margin: 1em;
+$header-bottom-margin: 0.5em;
+$title-font-color: $header-font-color;
 $title-font-weight: $header-font-weight;
+$subheader-top-margin: 0.2em;
+$subheader-bottom-margin: 0.5em;
+$subheader-font-weight: bold;
 $sect-divider-size: 0;
-
-// Panels
-
-$panel-bg: #e5e5e5;
-
-// Paragraphs
-
-$paragraph-font-family: $body-font-family;
-$paragraph-font-size: emCalc(15px);
-$paragraph-margin-bottom: emCalc(22px);
-$paragraph-line-height: 1.4;
 
 // Links
 
-$anchor-font-color-hover: #ea0011;
-$anchor-text-decoration-hover: underline;
+$anchor-font-color-hover: #005580;
+$anchor-text-decoration: none;
+$anchor-text-decoration-hover: none;
 
 // Inline Code
 
-$code-font-family: Menlo, Monaco, 'Liberation Mono', Consolas, monospace;
-$code-font-size: emCalc(15px);
-$code-color: #3b3b3b;
-$code-font-weight: normal;
-$code-padding: 1px 4px;
-$code-border-color: #d4d9d9;
-$code-border-size: 1px;
-$code-bg-color: #eff1f1;
+$code-font-family: "Source Code Pro", monospace;
+$code-color: #7f0a0c;
+$code-font-weight: bold;
+$code-padding: 0;
+$code-border-size: 0;
 
 // Code Blocks
 
-$pre-bg: $code-bg-color;
+$pre-bg: #eee;
 $pre-font-family: $code-font-family;
-$pre-font-color: $code-color;
-$pre-font-size: emCalc(14px);
-$pre-border-color: rgba(120, 120, 120, 0.35);
-$pre-border-size: 0 0 0 2px;
-$pre-padding: emCalc(16px) emCalc(24px) emCalc(14px) emCalc(24px);
+$pre-font-color: #000;
+$pre-border-size: 0;
+$pre-line-height: 1.4;
+$pre-padding: 0.8em;
 
 // Block Quotes
 
-//$blockquote-font-color: #999;
 $blockquote-font-color: $body-font-color;
-$blockquote-border: 5px solid #ededed;
-$blockquote-padding: 0 0 0 1em;
+$blockquote-cite-font-size: rem-calc(15px);
 
 // Ruler
 
@@ -72,16 +62,20 @@ $blockquote-padding: 0 0 0 1em;
 
 // Lists
 
-$list-side-margin: emCalc(26px);
-$definition-list-content-margin-left: 2em;
+$list-side-margin: rem-calc(24px);
+$list-ordered-side-margin: $list-side-margin + rem-calc(4px);
+$list-nested-margin: $list-side-margin;
+$definition-list-header-margin-bottom: rem-calc(4px);
+$definition-list-margin-bottom: rem-calc(16px);
 
 // Tables
 
 $table-head-font-size: inherit;
 $table-row-font-size: inherit;
-$table-line-height: $paragraph-line-height;
+$table-line-height: 1.6;
 
 // Footer
 
-$footer-bg: white;
-$footer-font-color: #666;
+//$stretch-footer: false;
+//$footer-bg: white;
+//$footer-font-color: #666;

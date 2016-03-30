@@ -1,8 +1,14 @@
-// TIP set a value to null to disable
+// TIP: See bower_components/foundation/scss/foundation/_settings.scss for variables and default values
+// TIP: Set a value to null to disable; however, this it won't unset a variable already defined
 @import "normalize";
-$cursor-default-value: auto !default;
+// NOTE: $base-line-height must be set before global components are imported
+$base-line-height: 1 !default;
 @import "foundation/components/global";
 @import "compass/css3/box-shadow";
+
+@function rem-calc-to-em($values) {
+  @return strip-unit(rem-calc($values)) * 1em;
+}
 
 // better defaults (TODO maybe do these at the bottom of the theme colors)
 //$table-line-height: 1.6 !default;
@@ -32,11 +38,9 @@ $sidebar-header-border-size: 0 !default;
 $sidebar-header-border-color: #ddd !default;
 $sidebar-header-align: null !default;
 
-$anchor-text-decoration-hover: null !default;
-
 $code-font-size: inherit !default;
 $code-line-height: inherit !default;
-$code-bg-color: inherit !default;
+$code-background-color: initial !default;
 $code-border-color: #ddd !default;
 $code-border-style: solid !default;
 $code-border-size: 0 !default;
@@ -44,25 +48,26 @@ $code-padding: 0 !default;
 $code-word-spacing: 0 !default;
 $code-text-rendering: inherit !default;
 
-$pre-font-family: Consolas, 'Liberation Mono', Courier, monospace !default;
-$pre-font-size: emCalc($em-base) !default;
+$pre-font-family: Consolas, "Liberation Mono", Courier, monospace !default;
+$pre-font-size: rem-calc($rem-base) !default;
 $pre-font-color: inherit !default;
 $pre-border-size: 1px !default;
 $pre-border-style: solid !default;
 $pre-border-color: #ddd !default;
 $pre-bg: none !default;
 // smaller padding bottom needed if using Cousine / Liberation Sans font
-//$pre-padding: emCalc(12px) emCalc(12px) emCalc(8px) emCalc(12px) !default;
-$pre-padding: emCalc(12px) !default;
+//$pre-padding: rem-calc(12px 12px 8px 12px) !default;
+$pre-padding: rem-calc(12px) !default;
 $pre-line-height: 1.6 !default;
 
+$stretch-footer: true !default;
 // fallback values set in components/asciidoc
 //$footer-bg: $body-font-color !default;
 //$footer-font-color: invert($body-font-color) !default;
 
-$icon-text-shadow: 1px 1px 2px rgba(0, 0, 0, .5) !default;
+$icon-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !default;
 
-$definition-list-content-margin-left: emCalc(18px) !default;
+$definition-list-content-margin-left: rem-calc(18px) !default;
 
 $blockquote-border-color: #ddd !default;
 
@@ -79,11 +84,7 @@ $include-html-inline-list-classes: false;
 $include-print-styles: false;
 
 // cut down on number of vendor prefixes used
-$experimental-support-for-khtml: false;
-$experimental-support-for-microsoft: false;
-$experimental-support-for-mozilla: false;
-$experimental-support-for-opera: false;
-$experimental-support-for-webkit: true;
+$box-shadow-support-threshold: 0.2;
 
 // bg-noise from https://gist.github.com/aaronrussell/856571 by Aaron Russell
 $bg-noise-default-intensity: 0.5 !default;

@@ -1,10 +1,10 @@
-@import "defaults";
-
 // Body
 
-$em-base: 16px;
 $body-font-family: 'Titillium Web', Verdana, Arial, sans-serif;
 $body-font-color: #515151;
+
+@import "defaults";
+
 $primary-color: #2984A9;
 $alert-color: lighten(#6d180b, 15%);
 $global-radius: 4px;
@@ -15,10 +15,13 @@ $header-font-family: $body-font-family;
 $header-font-weight: normal;
 $header-font-color: #616366;
 $header-text-rendering: geometricPrecision;
-$header-top-margin: .5em;
+$header-top-margin: 0.5em;
+$header-bottom-margin: 0.5em;
 $subheader-font-color: darken($header-font-color, 15%);
 $title-font-color: $header-font-color;
 $title-font-weight: $header-font-weight;
+$subheader-top-margin: 0.2em;
+$subheader-bottom-margin: 0.5em;
 $sect-divider-style: dashed;
 $sect-divider-color: #ccc;
 $sidebar-header-border-size: 0;
@@ -27,15 +30,15 @@ $sidebar-header-border-size: 0;
 
 $paragraph-text-rendering: $header-text-rendering;
 $paragraph-line-height: 1.5;
-$paragraph-margin-bottom: emCalc(15px);
+$paragraph-margin-bottom: rem-calc(15px);
 
 // Inline Code
 
 $code-font-family: monospace, serif;
 $code-font-weight: normal;
-$code-font-size: .9em;
+$code-font-size: 0.9em;
 $code-color: $body-font-color;
-$code-bg-color: #dfdfdf;
+$code-background-color: #dfdfdf;
 $code-border-color: #c9c9c9;
 $code-border-size: 1px;
 $code-padding: 0 3px;
@@ -44,22 +47,25 @@ $code-padding: 0 3px;
 // *Recommended highlight.js themes: googlecode, default, xcode
 
 $pre-font-family: monospace, serif;
-$pre-font-size: .8em;
+$pre-font-size: 0.8em;
 $pre-padding: 15px;
 $pre-border-color: #f0f0f0;
 $pre-border-size: 0 0 1px 0;
-$pre-bg: image-url('riak/pre-bg.jpg', false, false);
+$pre-bg: image-url('stone/pre-bg.jpg', false, false);
 //$pre-bg: background_noise(#DDE8E4, 4, .08, 400, false);
 
 // Links
 
 $anchor-text-decoration: underline;
+$anchor-text-decoration-hover: underline;
 $anchor-font-color-hover: #FAA94C;
 
 // Lists
-$list-side-margin: emCalc(24px);
-$definition-list-header-margin-bottom: emCalc(5px);
-$definition-list-margin-bottom: emCalc(20px);
+$list-side-margin: rem-calc(24px);
+$list-ordered-side-margin: $list-side-margin + rem-calc(4px);
+$list-nested-margin: $list-side-margin;
+$definition-list-header-margin-bottom: rem-calc(4px);
+$definition-list-margin-bottom: rem-calc(16px);
 
 // Blockquotes
 
@@ -82,4 +88,4 @@ $table-border-highlight-color: white;
 
 // Icons
 
-$icon-text-shadow: 0 0 8px #fff, $icon-text-shadow;
+$icon-text-shadow: 0 0 8px #fff;

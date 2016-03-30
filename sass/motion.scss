@@ -1,0 +1,58 @@
+@import "fonts/motion-collection";
+@import "settings/motion";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+
+p, blockquote, dt, td.content {
+  font-size: rem-calc(17px);
+}
+
+.paragraph.lead > p,
+#preamble > .sectionbody > .paragraph:first-of-type p {
+  color: $body-font-color;
+}
+
+.sect2 > h3 {
+  text-decoration: underline;
+}
+
+#toctitle {
+  color: $header-font-color;
+}
+
+#toc > ul {
+  a {
+    color: $body-font-color;
+    &:hover {
+      color: $anchor-font-color;
+    }
+  }
+}
+
+#toc ul.sectlevel1 > li {
+  margin-bottom: 1em;
+  & > a {
+    font-weight: bold;
+  }
+}
+
+.admonitionblock {
+  margin-bottom: 1.25rem;
+  padding: 0.5rem 0;
+  background-color: #f1f1f1;
+  & > table {
+    margin: 0;
+    td.content {
+      padding-left: 0;
+      border-left: none;
+    }
+  }
+}
+
+.literalblock,
+.listingblock {
+  pre, pre[class] {
+    // FIXME asciidoc component should support multiple border widths
+    border-width: 0 0 0 6px;
+  }
+}

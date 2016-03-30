@@ -3,9 +3,14 @@
 @import "components/asciidoc";
 @import "components/awesome-icons";
 
+#toc ul {
+  // FIXME make this a variable
+  font-family: $body-font-family;
+}
+
 #toc.toc2 ul ul {
   list-style-type: circle;
-  padding-left: emCalc(16px) * 2;
+  padding-left: $rem-base * 2;
 }
 
 .sect1 {
@@ -15,15 +20,16 @@
 
 // shift heading text slightly to left to account for font appearance
 #header h1 {
-  font-weight: bold;
-  position: relative;
-  left: emCalc(-1px);
+  margin-left: rem-calc(-1px);
 }
 
 #content {
-  h2, h3, h4, h5, #toctitle {
-    position: relative;
-    left: emCalc(-1px);
+  #{headers()} {
+    margin-left: rem-calc(-1px);
+    a.anchor:before {
+      // FIXME make this a variable or otherwise calculate
+      padding-top: 0.05em;
+    }
   }
 
   h2 {
@@ -33,7 +39,8 @@
 
 .paragraph.lead > p,
 #preamble > .sectionbody > .paragraph:first-of-type p {
-  color: black;
+  // FIXME make this a variable
+  color: rgba(0, 0, 0, 0.9);
 }
 
 // recommended pygments-style values: bw, colorful
@@ -48,4 +55,8 @@ pre.pygments.highlight {
 
 .pygments .tok-c {
   color: #999 !important;
+}
+
+#footer-text {
+  font-size: rem-calc(14.5px);
 }

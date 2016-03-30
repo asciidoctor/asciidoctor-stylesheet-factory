@@ -1,5 +1,5 @@
-require 'zurb-foundation'
-require './lib/functions'
+add_import_path 'bower_components/foundation/scss'
+require_relative 'lib/functions'
 
 http_path = '/'
 css_dir = 'stylesheets'

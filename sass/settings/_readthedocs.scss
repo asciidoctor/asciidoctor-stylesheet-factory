@@ -1,55 +1,103 @@
-@import "defaults";
-
 // Body
 
-$body-font-color: #000;
-$body-font-family: ff-meta-web-pro-1, ff-meta-web-pro-2, Arial, 'Helvetica Neue', sans-serif;
-$title-font-color: #111;
-$global-radius: 6px;
-$primary-color: #444;
+$body-bg: #efefef;
+$body-font-color: #404040;
+$body-font-family: "Lato", sans-serif;
+
+@import "defaults";
+
+$global-radius: 0;
+$primary-color: #2980b9;
+$hr-border-color: #e1e4e5;
+$row-width: 800px;
+$column-gutter: rem-calc(100px);
 
 // Headers
 
-$header-font-color: #465158;
-$header-font-family: $body-font-family;
-$header-top-margin: 1em;
-$subheader-font-color: #6c818f;
+$h1-font-size: rem-calc(28px);
+$h2-font-size: rem-calc(24px);
+$h3-font-size: rem-calc(20px);
+$h4-font-size: rem-calc(18.4px);
+$h5-font-size: rem-calc(17.6px);
+$h6-font-size: rem-calc(16px);
+$title-font-color: $body-font-color;
+$header-font-color: $body-font-color;
+$header-font-family: "Roboto Slab", sans-serif;
+$header-font-weight: bold;
+$header-top-margin: 0;
+$header-bottom-margin: 0.85em;
+$header-line-height: 1.3;
+$subheader-top-margin: 0;
+$subheader-bottom-margin: 0.25em;
+$subheader-font-color: $primary-color;
+$subheader-font-weight: bold;
+$sect-divider-size: 0;
 
 // Paragraphs
 
-$paragraph-line-height: 1.5;
+// FIXME for some reason, we have to add em units or else we get a slight shift
+$paragraph-line-height: rem-calc-to-em(24px);
+//$paragraph-margin-bottom: rem-calc-to-em(24px);
+$paragraph-margin-bottom: rem-calc(24px);
 
 // Inline Code
 
-$code-bg-color: #f2f2f2;
-$code-color: $primary-color;
-$code-font-size: 0.95em;
-$code-font-weight: normal;
-$code-font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+$code-background-color: #fff;
+$code-color: #000;
+$code-border-color: $hr-border-color;
+$code-border-size: 1px;
+$code-font-size: 0.8em;
+$code-padding: 0 5px;
 
 // Code Blocks
 // *Recommended highlight.js themes: googlecode
 
-$pre-bg: #eee;
-$pre-border-color: #ccc;
-$pre-padding: .5em;
-$pre-font-size: .95em;
-$pre-font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
-$pre-line-height: 1.2;
+$pre-bg: #fff;
+$pre-border-color: $hr-border-color;
+$pre-padding: 1em;
+// FIXME pre-font-size is not being honored
+$pre-font-size: rem-calc(12px);
+$pre-line-height: 1.5em;
 
 // Links
 
-$anchor-text-decoration: underline;
-$anchor-font-color-hover: #111;
+$anchor-text-decoration: none;
+$anchor-text-decoration-hover: none;
+$anchor-font-color: $primary-color;
+$anchor-font-color-hover: #3091d1;
+
+// Lists
+
+$list-side-margin: rem-calc(24px);
+$list-ordered-side-margin: $list-side-margin + rem-calc(4px);
+$list-nested-margin: $list-side-margin;
+$definition-list-header-margin-bottom: rem-calc(4px);
+$definition-list-margin-bottom: rem-calc(20px);
+
+// Panels
+
+$panel-bg: #e5ebeb;
+$panel-margin-bottom: $paragraph-margin-bottom;
+
+// Blockquotes
+
+$blockquote-font-color: $body-font-color;
 
 // Tables
 
-$table-line-height: $paragraph-line-height;
-$table-even-row-bg: none;
-$table-border-size: 0;
-$table-head-bg: none;
-$table-head-font-size: emCalc(16px);
-$table-head-padding: 1px 8px 1px 5px;
-$table-border-highlight-size: 0;
-$table-row-padding: 1px 8px 1px 5px;
-$table-row-font-size: emCalc(16px);
+$table-bg: #f3f6f6;
+$table-border-color: $hr-border-color;
+$table-head-bg: #fff;
+$table-head-font-color: #000;
+$table-head-padding: rem-calc(8px 16px);
+$table-even-row-bg: #fff;
+$table-row-padding: $table-head-padding;
+$table-foot-bg: $table-head-bg;
+$table-foot-padding: $table-head-padding;
+$table-margin-bottom: $paragraph-margin-bottom;
+
+// Footer
+
+$stretch-footer: false;
+$footer-bg: $body-bg;
+$footer-font-color: #999;

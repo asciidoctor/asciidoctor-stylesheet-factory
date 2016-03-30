@@ -2,9 +2,44 @@
 @import "components/asciidoc";
 @import "components/awesome-icons";
 
+// FIXME make preamble color a variable!
+#preamble > .sectionbody > .paragraph:first-of-type p {
+  color: $subheader-font-color;
+}
+
+.admonitionblock td.content,
+.audioblock,
+.exampleblock,
+.imageblock,
+.listingblock,
 .literalblock,
-.listingblock {
-  & pre {
-    background: $pre-bg;
+.stemblock,
+.openblock,
+.paragraph,
+.quoteblock,
+table.tableblock,
+.verseblock,
+.videoblock,
+.dlist,
+.olist,
+.ulist,
+.qlist,
+.hdlist {
+  & > .title {
+    color: $header-font-color;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: rem-calc(12px);
+  }
+}
+
+.exampleblock > .content {
+  @include panel(scale-color($primary-color, $lightness: 94%));
+  a:not(.button) {
+    color: $callout-panel-link-color;
+    &:hover,
+    &:focus {
+      color: $callout-panel-link-color-hover;
+    }
   }
 }

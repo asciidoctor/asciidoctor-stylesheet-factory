@@ -39,7 +39,7 @@
   }
   // QUESTION should we reduce size of lead paragraph too?
   p, blockquote, dt, td.content {
-    font-size: 1em;
+    font-size: 1rem;
     orphans: 3;
     widows: 3;
   }
@@ -117,7 +117,7 @@
   }
   #footer-text {
     color: $blockquote-cite-font-color !important;
-    font-size: 0.9em;
+    font-size: 0.9rem;
   }
   .hide-on-print { display: none !important; }
   .print-only { display: block !important; }

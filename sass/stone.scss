@@ -1,20 +1,22 @@
-/* Derived from the Riak documentation theme developed by Basho Technologies, Inc. | CC BY 3.0 License | http://docs.basho.org */
-@import "fonts/titillium-web";
-@import "fonts/noticia-text";
-@import "settings/riak";
+/* Derived from the old Riak documentation theme developed by Basho Technologies, Inc. | CC BY 3.0 License | http://docs.basho.org */
+@import "fonts/stone-collection";
+@import "settings/stone";
 @import "components/asciidoc";
 @import "components/awesome-icons";
 
 body {
-  background-image: image-url('riak/body-bg.jpg', false, false);
+  background-image: image-url('stone/body-bg.jpg', false, false);
   //@include bg-noise-mono(#f0f0f0, 4, .07, 200);
 }
 
-//@media #{$medium} {
-//  #toc.toc2 {
-//    background-image: image-url('riak/body-bg.jpg', false, false);
-//  }
-//}
+#toc.toc2 {
+  background-image: image-url('stone/sidebar-bg.jpg', false, false);
+  border-right: none;
+
+  #toctitle {
+    color: #dfdfdf;
+  }
+}
 
 ::selection {
   background-color: #fcc07f;
@@ -28,10 +30,8 @@ body {
 .literalblock,
 .listingblock {
   & pre {
-    background: $pre-bg;
-    @include single-box-shadow(#AEB9B6, 0, 1px, 4px, $inset:inset);
+    @include single-box-shadow(0, 1px, 4px, null, #AEB9B6, inset);
     @include radius(5px);
-    //font-size: 80%;
   }
 }
 
@@ -48,7 +48,7 @@ p > em {
 .admonitionblock {
   & > table {
     width: 100%;
-    background-image: image-url('riak/info-bg.jpg', false, false);
+    background-image: image-url('stone/info-bg.jpg', false, false);
     border-collapse: separate;
     border-spacing: 0;
     @include radius(5px);
@@ -56,7 +56,7 @@ p > em {
     td.icon {
       padding: 15px;
       .icon-tip:before {
-        text-shadow: 0 0 20px white, 1px 1px 2px rgba(155, 155, 0, .8);
+        text-shadow: 0 0 20px white, 1px 1px 2px rgba(155, 155, 0, 0.8);
       }
     }
     td.content {
@@ -71,16 +71,16 @@ p > em {
 
 .admonitionblock .literalblock > .content > pre,
 .admonitionblock .listingblock > .content > pre {
-  background-image: image-url('riak/info-bg.jpg', false, false);
+  background-image: image-url('stone/info-bg.jpg', false, false);
 }
 
 .exampleblock > .content {
-  background-color: transparent;
+  //background-color: transparent;
   border-color: #c9c9c9;
 }
 
 .sidebarblock {
-  background-image: image-url('riak/sidebar-bg.jpg', false, false);
+  background-image: image-url('stone/sidebar-bg.jpg', false, false);
   //@include bg-noise-mono(#444445, 8, .125, 200);
   @include radius(5px);
   & > .content {
@@ -102,9 +102,9 @@ p > em {
     }
     a {
       color: #60B5D8;
-    }
-    a:hover {
-      color: #FAA94C;
+      &:hover {
+        color: #FAA94C;
+      }
     }
 
     .admonitionblock p,
@@ -116,12 +116,11 @@ p > em {
 }
 
 table.tableblock.grid-all {
-  @include radius(0);
-  @include single-box-shadow(#999, 0, 1px, 3px);
+  @include single-box-shadow(0, 1px, 3px, null, #999);
 }
 
 #footer {
-  background-image: image-url('riak/footer-bg.jpg', false, false);
+  background-image: image-url('stone/footer-bg.jpg', false, false);
   padding: 25px 0;
 }
 
