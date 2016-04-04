@@ -1,0 +1,195 @@
+// rvm use 2.3@asciidoctor.org --create
+// asciidoctor -D /tmp/ -a data-uri user-manual.adoc
+// Document conventions:
+// * directory (not folder)
+// * set/unset attributes (not define)
+// * US spelling (single t in formating, ize not ise, color).
+// * e.g. not eg
+// * "AsciiDoc" is the language, "AsciiDoc Python" is the original processor, "Asciidoctor" is the modern processor.
+// * Processors "convert" AsciiDoc to whatever, browsers "render" content.
+// * The author is "we" or "Asciidoctor"
+// * The reader is "you"
+= Asciidoctor User Manual
+Sarah White <https://twitter.com/carbonfray[@carbonfray]>; Dan Allen <https://github.com/mojavelinux[@mojavelinux]>
+:description: This guide describes the Asciidoctor attributes, values, and layout options available for producing a customized and polished document.
+:keywords: AsciiDoc, Asciidoctor, syntax, reference, learn, how to, AsciiMath, LaTeX math, MathJax, Pygments, CodeRay
+:doctype: book
+:compat-mode!:
+:page-layout!:
+:toc: left
+:toclevels: 2
+:sectanchors:
+:sectlinks:
+:sectnums:
+:linkattrs:
+:icons: font
+:source-highlighter: coderay
+:source-language: asciidoc
+:experimental:
+:stem:
+:idprefix:
+:idseparator: -
+:ast: &ast;
+:dagger: pass:normal[^&dagger;^]
+:endash: &#8211;
+:y: icon:check[role="green"]
+:n: icon:times[role="red"]
+:c: icon:file-text-o[role="blue"]
+:table-caption!:
+:example-caption!:
+:figure-caption!:
+:imagesdir: ../images
+:includedir: _includes
+:underscore: _
+:adp: AsciiDoc Python
+:adr: Asciidoctor
+// Refs
+:uri-home: http://asciidoctor.org
+:uri-gem: http://rubygems.org/gems/asciidoctor
+:uri-org: https://github.com/asciidoctor
+:uri-repo: {uri-org}/asciidoctor
+:uri-tilt: https://github.com/rtomayko/tilt
+:uri-jruby: http://jruby.org
+:uri-man: {uri-home}/man/asciidoctor
+:uri-rewrite: https://github.com/ocpsoft/rewrite/tree/master/transform-markup
+:markup-ref: http://en.wikipedia.org/wiki/Lightweight_markup_language
+:markdown-ref: http://daringfireball.net/projects/markdown
+:fedora-docs: http://docs.fedoraproject.org
+:java: http://asciidoctor.org/docs/asciidoctorj
+:uri-anttask: https://github.com/asciidoctor/asciidoctor-ant#asciidoctor-ant-task
+:tests: https://github.com/asciidoctor/asciidoctor/tree/master/test
+:asciidoc-edit-ref: http://asciidoc.org/#_editor_support
+:docref: link:/docs
+:doc-asciidoctorj: {docref}/asciidoctorj
+:editing-ref: {docref}/editing-asciidoc-with-live-preview
+:asciidoclet-ref: {docref}/install-and-use-asciidoclet/
+:docbook-info-ref: http://www.docbook.org/tdg5/en/html/info.html
+:richfaces-docinfo: https://github.com/richfaces/richfaces-docs/blob/master/Developer_Guide/src/main/docbook/en-US/Developer_Guide-docinfo.xml
+:air-ref: http://en.wikipedia.org/wiki/Air_quotes
+:uri-xml: http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
+:uri-unicode: http://en.wikipedia.org/wiki/List_of_Unicode_characters
+:fontawesome-ref: http://fortawesome.github.io/Font-Awesome/
+:factory-ref: http://github.com/asciidoctor/asciidoctor-stylesheet-factory
+:uri-http: http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html
+:pygments-org: http://pygments.org
+:pygments-gem: https://rubygems.org/gems/pygments.rb
+:pygments-lang: {pygments-org}/languages/
+:coderay-uri: http://coderay.rubychan.de/
+:coderay-gem: https://rubygems.org/gems/coderay
+:highlightjs-org: https://highlightjs.org/
+:highlightjs-lang: https://highlightjs.org/download/
+:showcase-ref: http://themes.asciidoctor.org/preview/
+:uri-docbook5: http://www.docbook.org/tdg5/en/html/ch01.html#introduction-whats-new
+:uri-yelp: https://wiki.gnome.org/action/show/Apps/Yelp
+:publican: http://fedorahosted.org/publican
+:uri-a2x-manpage: http://asciidoc.org/a2x.1.html
+:man-raw: https://raw.githubusercontent.com/asciidoctor/asciidoctor/master/man/asciidoctor.adoc
+:man-backend-git: https://github.com/asciidoctor/asciidoctor-backends/tree/master/erb/manpage
+:fopub-ref: https://github.com/asciidoctor/asciidoctor-fopub
+:fopub-doc-ref: https://github.com/asciidoctor/asciidoctor-fopub/blob/master/README.adoc
+:guard-doc-ref: https://github.com/asciidoctor/guard-asciidoc/blob/master/README.adoc
+:backend-git: http://github.com/asciidoctor/asciidoctor-backends
+:deckjs-org: http://imakewebthings.com/deck.js
+:deckjs-git: https://github.com/imakewebthings/deck.js
+:deckjs-zip: {deckjs-git}/archive/latest.zip
+:decksplitjs-git: https://github.com/houqp/deck.split.js
+:compass-ref: http://compass-style.org
+:sass-ref: http://sass-lang.com
+:uri-foundation: http://foundation.zurb.com
+:get-ruby-ref: http://www.ruby-lang.org/en/downloads
+:bundler-ref: http://rubygems.org/gems/bundler
+:issue-ref: https://github.com/asciidoctor/asciidoctor/issues
+:license: https://github.com/asciidoctor/asciidoctor/blob/master/LICENSE.adoc
+:mojavelinux: https://github.com/mojavelinux
+:erebor: https://github.com/erebor
+:lightguard: https://github.com/lightguard
+:nickh: http://github.com/nickh
+:contributors: https://github.com/asciidoctor/asciidoctor/graphs/contributors
+:gitscm-next: https://github.com/github/gitscm-next
+:seed-contribution: https://github.com/github/gitscm-next/commits/master/lib/asciidoc.rb
+:uri-asciimath: http://docs.mathjax.org/en/latest/asciimath.html
+:uri-latexmath: http://docs.mathjax.org/en/latest/tex.html
+:uri-mathjax: http://www.mathjax.org
+:uri-mathjax-docs: http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference
+:uri-mailinglist: http://discuss.asciidoctor.org
+:uri-ad-org-issues: https://github.com/asciidoctor/asciidoctor.org/issues
+:uri-asciidoctorj: {uri-org}/asciidoctorj
+:uri-asciidoctorjs: {uri-org}/asciidoctor.js
+:uri-irc: irc://irc.freenode.org/#asciidoctor
+:uri-asciidoc-leveloffset: http://asciidoc.org/userguide.html#X90
+:uri-asciidoctor-pdf: https://github.com/asciidoctor/asciidoctor-pdf
+:uri-asciidoctor-pdf-readme: https://github.com/asciidoctor/asciidoctor-pdf/blob/master/README.adoc
+:uri-asciidoctor-pdf-theming-guide: http://gist.asciidoctor.org/?github-asciidoctor%2Fasciidoctor-pdf%2F%2Fdocs%2Ftheming-guide.adoc
+
+[NOTE]
+.This document is under active development and discussion!
+====
+If you find errors or omissions in this document, please don't hesitate to {uri-ad-org-issues}[submit an issue or open a pull request] with a fix.
+We also encourage you to ask questions and discuss any aspects of the project on the {uri-mailinglist}[mailing list] or {uri-irc}[IRC].
+New contributors are always welcome!
+====
+
+This manual assumes you are using Asciidoctor to produce and render your document.
+Asciidoctor implements more syntax, attributes and functions than the legacy AsciiDoc.py processor.
+<<migrating-from-asciidoc-python>> lists which features are available to the Asciidoctor and AsciiDoc processors.
+
+////
+== Navigating this document
+
+The first sections define the general concepts and terms used by Asciidoctor
+Next, each Asciidoctor feature, its capabilities, and how it can be customized is reviewed.
+And when applicable, the feature's attributes and options are summarized in a table at the section's end.
+////
+
+= Introduction to Asciidoctor
+
+.Discuss and Contribute
+TIP: Use {uri-ad-org-issues}/433[Issue 433] to drive development of this section. Your contributions make a difference. No contribution is too small.
+
+include::{includedir}/about-asciidoctor.adoc[]
+
+=== Asciidoctor's Most Notable Benefits
+
+include::{includedir}/benefits.adoc[]
+
+==== AsciiDoc Syntax Processing
+
+Asciidoctor reads and parses text written in the AsciiDoc syntax, then feeds the parse tree into a set of built-in templates to produce HTML5, PDF, DocBook 5, etc.
+You have the option of writing your own converter or providing {uri-tilt}[Tilt]-supported templates to customize the generated output or produce alternative formats.
+
+NOTE: Asciidoctor is a drop-in replacement for the original AsciiDoc Python processor (`asciidoc.py`).
+The Asciidoctor test suite has > 1,500 tests to ensure compatibility with the AsciiDoc syntax.
+
+In addition to the standard AsciiDoc syntax, Asciidoctor recognizes additional markup and formatting options, such as font-based icons (e.g., [x-]`icon:fire[]`) and UI elements (e.g., [x-]`button:[Save]`).
+Asciidoctor also offers a modern, responsive theme based on {uri-foundation}[Foundation] to style the HTML5 output.
+
+=== Compared to AsciiDoc
+
+.Discuss and Contribute
+TIP: Use {uri-ad-org-issues}/434[Issue 434] to drive development of this section. Your contributions make a difference. No contribution is too small.
+
+////
+.What is AsciiDoc?
+
+AsciiDoc is two things:
+
+. A mature{empty}footnote:[AsciiDoc is over 10 years old. It was first introduced in 2002.], plain-text format for authoring notes, articles, documentation, books, ebooks, web pages, slide decks, blog posts, man pages and more.
+. A text processor and toolchain for translating AsciiDoc documents into various formats (called _backends_), including HTML, DocBook, PDF and ePub{empty}footnote:[There are two implementations of the AsciiDoc processor. The original processor, named AsciiDoc, is written in Python. A more modern implementation, named Asciidoctor, is written in Ruby.].
+
+AsciiDoc belongs to the family of {markup-ref}[lightweight markup languages], the most renowned of which is {markdown-ref}[Markdown].
+AsciiDoc stands out from this group because it supports all the structural elements necessary for drafting articles, technical manuals, books, presentations and prose.
+In fact, it's capable of meeting even the most advanced publishing requirements and technical semantics.
+
+
+Serving as testament of this fact, many O'Reilly authors, including https://github.com/matthewmccullough[Matthew McCullough], https://github.com/tlberglund[Tim Berglund], https://github.com/oreillymedia/etudes-for-erlang[Simon St.Laurent] and http://www.apeth.net/matt/iosbooktoolchain.html[Matt Neuburg], have used AsciiDoc to write their books for that iconic technical library.
+
+From the very beginning, AsciiDoc was designed to be a shorthand replacement for http://www.docbook.org/whatis[DocBook], one of the formats AsciiDoc can generate.
+AsciiDoc can also produce beautiful HTML 5, PDFs, eBooks, man pages and even slide decks.
+It has you covered from first draft to publishing.
+////
+
+=== Compared to MarkDown
+
+.Discuss and Contribute
+TIP: Use {uri-ad-org-issues}/435[Issue 435] to drive development of this section. Your contributions make a difference. No contribution is too small.
+

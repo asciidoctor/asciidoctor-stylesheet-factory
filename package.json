@@ -1,0 +1,28 @@
+{
+  "name": "asciidoctor-stylesheet-factory",
+  "version": "1.0.0-dev",
+  "description": "Asciidoctor stylesheet factory",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asciidoctor/asciidoctor-stylesheet-factory.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asciidoctor/asciidoctor-stylesheet-factory/issues"
+  },
+  "scripts": {
+    "visual:build": "./build-stylesheet.sh && sed -i 's/\\/\\*@import \\(.*\\)\\*\\//@import \\1/' asciidoctor.min.css",
+    "visual:test": "casperjs test spec/testsuite.js",
+    "visual:generate": "asciidoctor -a stylesheet=../../../asciidoctor.min.css -a reproducible spec/fixtures/docs/user-manual-intro.adoc",
+    "visual:regenerate": "rm -f spec/screenshots/* && asciidoctor -a reproducible spec/fixtures/docs/user-manual-intro.adoc && casperjs test spec/testsuite.js || true"
+  },
+  "devDependencies": {
+    "cssshrink": "0.0.5",
+    "phantomcss": "1.1.5"
+  },
+  "resolutions": {
+    "color": "0.11.3",
+    "color-string": "0.4.0",
+    "assert-plus": "1.0.0"
+  }
+}

@@ -4,3 +4,10 @@
 /Gemfile.lock
 /node_modules/
 /stylesheets/
+/node_modules/
+/.idea/
+/spec/failures/
+/spec/screenshots/*.diff.*
+/spec/screenshots/*.fail.*
+/asciidoctor.css
+/asciidoctor.min.css

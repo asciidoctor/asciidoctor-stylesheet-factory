@@ -1,0 +1,15 @@
+sudo: false
+
+language: node_js
+
+node_js: 'lts/*'
+
+before_install:
+- bundle install
+- gem install asciidoctor
+
+script:
+- npm install -g casperjs
+- npm run visual:build
+- npm run visual:generate
+- npm run visual:test

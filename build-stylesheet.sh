@@ -25,7 +25,6 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   grep -v 'font-awesome' >> $STYLESHEET_NAME.css
 
 # see https://www.npmjs.org/package/cssshrink (using 0.0.5)
-# must run first: npm install cssshrink
 ./node_modules/.bin/cssshrink $STYLESHEET_NAME.css | \
   sed '1i\
 /* Remove comment around @import statement below when using as a custom stylesheet */\
