@@ -68,7 +68,7 @@ body {
   }
 }
 
-*:not(pre) > code {
+*:not(pre) > code:not([data-lang]) {
   font-size: $code-font-size;
   font-style: normal !important;
   letter-spacing: 0;
