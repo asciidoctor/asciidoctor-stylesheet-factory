@@ -690,11 +690,13 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
     }
     // FIXME make border radius on listing blocks configurable!
     @include radius;
+    //overflow-wrap: break-word;
     word-wrap: break-word;
 
     &.nowrap {
       overflow-x: auto;
       white-space: pre;
+      //overflow-wrap: normal;
       word-wrap: normal;
     }
     
