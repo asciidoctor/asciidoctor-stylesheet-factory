@@ -116,6 +116,16 @@ pre, pre > code {
 //  border: 0;
 //}
 
+em em {
+  font-style: normal;
+  line-height: inherit;
+}
+
+strong strong {
+  font-weight: normal;
+  line-height: inherit;
+}
+
 .keyseq {
   color: lighten($body-font-color, 20%);
 }
