@@ -6,7 +6,7 @@ if [ ! -z $1 ]; then
   STYLESHEET_NAME=$1
 fi
 
-compass compile -s compact
+bundle exec compass compile -s compact
 LINES=`wc -l stylesheets/$STYLESHEET_NAME.css | cut -d" " -f1`
 echo '/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */' > $STYLESHEET_NAME.css
 cat stylesheets/$STYLESHEET_NAME.css | \
@@ -19,8 +19,9 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   sed '/\(meta\.\|\.vcard\|\.vevent\|#map_canvas\)/d' | \
   grep -v 'font-awesome' >> $STYLESHEET_NAME.css
 
-# see https://www.npmjs.org/package/cssshrink
-cssshrink $STYLESHEET_NAME.css | \
+# see https://www.npmjs.org/package/cssshrink (using 0.0.5)
+# must run first: npm install cssshrink
+./node_modules/.bin/cssshrink $STYLESHEET_NAME.css | \
   sed '1i\
 /* Remove comment around @import statement below when using as a custom stylesheet */\
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/' | \
