@@ -13,7 +13,10 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   sed 's/ *\/\*\+!\? [^*]\+\($\| \*\/\)//g' | \
   sed 's/^\/\*\* .* \*\/$//' | \
   sed '/^\(*\/\|\) *$/d' | \
-  sed 's/\.antialiased, body/body/' | \
+  sed '/\.antialiased {/d' | \
+  sed '/^body { margin: 0;/d' | \
+  sed 's/^body { background:[^}]*/&tab-size: 4; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;/' | \
+  sed '/^body { -moz-osx-font-smoothing:/d' | \
   sed '/object, svg { display: inline-block;/d' | \
   sed 's/img { display: inline-block;/img, object, svg { display: inline-block;/' | \
   sed '/\(meta\.\|\.vcard\|\.vevent\|#map_canvas\)/d' | \
