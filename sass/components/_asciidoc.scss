@@ -76,7 +76,6 @@ body {
   @if $code-word-spacing != 0 {
     word-spacing: $code-word-spacing;
   }
-  //white-space: nowrap;
   @if $code-bg-color != inherit {
     background-color: $code-bg-color;
   }
@@ -90,6 +89,15 @@ body {
   line-height: $code-line-height;
   @if $code-text-rendering != inherit {
     text-rendering: $code-text-rendering;
+  }
+  //overflow-wrap: break-word;
+  word-wrap: break-word;
+  &.nobreak {
+    //overflow-wrap: normal;
+    word-wrap: normal;
+  }
+  &.nowrap {
+    white-space: nowrap;
   }
 }
 
