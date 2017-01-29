@@ -1171,8 +1171,9 @@ td.hdlist1 {
 .colist > table {
   tr > td {
     &:first-of-type {
-      padding: 0 0.75em;
+      padding: 0.4em 0.75em 0 0.75em;
       line-height: 1;
+      vertical-align: top;
       img {
         max-width: initial;
       }
