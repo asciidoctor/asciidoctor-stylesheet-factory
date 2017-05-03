@@ -162,8 +162,25 @@ kbd {
   margin-right: 0;
 }
 
-.menuseq, .menu {
-  color: darken($body-font-color, 10%);
+.menuseq, .menuref {
+  color: #000;
+}
+
+.menuseq b:not(.caret), .menuref {
+  font-weight: inherit;
+}
+
+.menuseq {
+  word-spacing: -0.02em;
+  b.caret {
+    font-size: 1.25em;
+    line-height: 0.8;
+  }
+  i.caret {
+    font-weight: bold;
+    text-align: center;
+    width: 0.45em;
+  }
 }
 
 b.button:before, b.button:after {
