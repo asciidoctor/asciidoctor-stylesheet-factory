@@ -970,49 +970,42 @@ table.tableblock {
 }
 
 // NOTE .grid-* selectors must be defined before .frame-* selectors in order for styles to cascade properly
-table.tableblock,
-th.tableblock,
-td.tableblock {
+table.tableblock, th.tableblock, td.tableblock {
   border: 0 solid $table-border-color;
 }
 
-table.grid-all th.tableblock,
-table.grid-all td.tableblock {
+table.grid-all > thead > tr > .tableblock,
+table.grid-all > tbody > tr > .tableblock {
   border-width: 0 $table-border-size $table-border-size 0;
 }
 
-table.grid-all tfoot > tr > th.tableblock,
-table.grid-all tfoot > tr > td.tableblock {
+table.grid-all > tfoot > tr > .tableblock {
   border-width: $table-border-size $table-border-size 0 0;
 }
 
-table.grid-cols th.tableblock,
-table.grid-cols td.tableblock {
+table.grid-cols > * > tr > .tableblock {
   border-width: 0 $table-border-size 0 0;
 }
 
-table.grid-all * > tr > .tableblock:last-child,
-table.grid-cols * > tr > .tableblock:last-child {
-  border-right-width: 0;
-}
-
-table.grid-rows th.tableblock,
-table.grid-rows td.tableblock {
+table.grid-rows > thead > tr > .tableblock,
+table.grid-rows > tbody > tr > .tableblock {
   border-width: 0 0 $table-border-size 0;
 }
 
-table.grid-all tbody > tr:last-child > th.tableblock,
-table.grid-all tbody > tr:last-child > td.tableblock,
-table.grid-all thead:last-child > tr > th.tableblock,
-table.grid-rows tbody > tr:last-child > th.tableblock,
-table.grid-rows tbody > tr:last-child > td.tableblock,
-table.grid-rows thead:last-child > tr > th.tableblock {
-  border-bottom-width: 0;
+table.grid-rows > tfoot > tr > .tableblock {
+  border-width: $table-border-size 0 0 0;
 }
 
-table.grid-rows tfoot > tr > th.tableblock,
-table.grid-rows tfoot > tr > td.tableblock {
-  border-width: $table-border-size 0 0 0;
+table.grid-all > * > tr > .tableblock:last-child,
+table.grid-cols > * > tr > .tableblock:last-child {
+  border-right-width: 0;
+}
+
+table.grid-all > tbody > tr:last-child > .tableblock,
+table.grid-all > thead:last-child > tr > .tableblock,
+table.grid-rows > tbody > tr:last-child > .tableblock,
+table.grid-rows > thead:last-child > tr > .tableblock {
+  border-bottom-width: 0;
 }
 
 table.frame-all {
