@@ -1116,14 +1116,14 @@ ul.checklist {
 // use consistent size for checkbox
 ul.checklist li > p:first-child > .fa-square-o:first-child,
 ul.checklist li > p:first-child > .fa-check-square-o:first-child {
-  width: 1em;
-  font-size: 0.85em;
+  width: 1.25em;
+  font-size: 0.8em;
+  position: relative;
+  bottom: 0.125em;
 }
 
 ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
-  width: 1em;
-  position: relative;
-  top: 1px;
+  margin-right: 0.25em;
 }
 
 ul.inline {
