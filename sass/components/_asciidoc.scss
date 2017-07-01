@@ -1100,15 +1100,21 @@ ol dd,
   margin-bottom: $paragraph-margin-bottom / 2;
 }
 
-ul.unstyled,
-ol.unnumbered,
 ul.checklist,
-ul.none {
+ul.none, ol.none,
+ul.no-bullet, ol.no-bullet, ol.unnumbered,
+ul.unstyled, ol.unstyled {
   list-style-type: none;
 }
 
-ul.unstyled,
-ol.unnumbered,
+ul.no-bullet, ol.no-bullet, ol.unnumbered {
+  margin-left: 0.625em;
+}
+
+ul.unstyled, ol.unstyled {
+  margin-left: 0;
+}
+
 ul.checklist {
   margin-left: emCalc(10px);
 }

@@ -19,6 +19,8 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   sed '/^body { -moz-osx-font-smoothing:/d' | \
   sed '/object, svg { display: inline-block;/d' | \
   sed 's/img { display: inline-block;/img, object, svg { display: inline-block;/' | \
+  sed '/^ul\.no-bullet, ol\.no-bullet { margin-left: 1.5em; }$/d' | \
+  sed '/^ul\.no-bullet { list-style: none; }$/d' | \
   sed '/\(meta\.\|\.vcard\|\.vevent\|#map_canvas\)/d' | \
   grep -v 'font-awesome' >> $STYLESHEET_NAME.css
 
