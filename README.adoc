@@ -51,6 +51,14 @@ A preface about http://asciidoc.org[AsciiDoc].
 
 [source,ruby]
 puts "Hello, World!"
+
+[.rtl]
+== اسکی داک باحاله
+
+[.rtl]
+* تست Java
+* تست
+
 ----
 
 TIP: Alternatively, you can use this README as an example.
@@ -58,6 +66,7 @@ TIP: Alternatively, you can use this README as an example.
 Then, use AsciiDoc or Asciidoctor to generate HTML that uses one of the stylesheets from the +stylesheets/+ directory:
 
  $ asciidoctor -a stylesheet=./stylesheets/asciidoctor.css sample.adoc
+ $ asciidoctor -a linkcss -a stylesheet=asciidoctor.css -a stylesdir=./stylesheets rtl_test.adoc
 
 If you want to activate syntax highlighting in the code, add this argument:
 
