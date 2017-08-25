@@ -17,7 +17,7 @@ object, svg {
 $old-include-html-global-classes: $include-html-global-classes;
 $include-html-global-classes: false;
 $inline-list-bottom-margin: $paragraph-margin-bottom / 2 !default;
-@import "foundation/components/inline-lists";
+$inline-list-item-spacing: $paragraph-margin-bottom !default;
 $include-html-global-classes: $old-include-html-global-classes;
 
 // controls whether built-in AsciiDoc role classes are generated
@@ -1133,7 +1133,18 @@ ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
 }
 
 ul.inline {
-  @include inline-list;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  list-style: none;
+  margin: 0 0 $inline-list-bottom-margin (-$inline-list-item-spacing);
+}
+
+ul.inline > li {
+  margin-left: $inline-list-item-spacing;
 }
 
 // used when you need to style the term inline
