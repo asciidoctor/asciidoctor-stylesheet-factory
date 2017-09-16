@@ -1340,11 +1340,11 @@ sup.footnoteref {
     line-height: 1.3334;
     font-size: emCalc(14px);
     margin-left: 1.2em;
-    text-indent: -1.05em;
     margin-bottom: 0.2em;
     a:first-of-type {
       font-weight: bold;
       text-decoration: none;
+      margin-left: -1.05em;
     }
   }
 
