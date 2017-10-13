@@ -487,15 +487,27 @@ b.button:after {
   line-height: $paragraph-line-height * 0.9;
 }
 
+#content {
+  margin-bottom: $panel-margin-bottom - em-calc(10);
+}
+
 .sect1 {
   // reduce padding below small breakpoint to match header font size change
   padding-bottom: $panel-margin-bottom - em-calc(10);
 }
 
 @media #{$small} {
+  #content {
+    margin-bottom: $panel-margin-bottom;
+  }
+
   .sect1 {
     padding-bottom: $panel-margin-bottom;
   }
+}
+
+.sect1:last-child {
+  padding-bottom: 0;
 }
 
 .sect1 + .sect1 {
