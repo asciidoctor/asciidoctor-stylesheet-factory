@@ -1207,20 +1207,21 @@ td.hdlist1 {
   margin-top: -0.5em;
 }
 
-.colist > table {
-  tr > td {
-    &:first-of-type {
-      padding: 0.4em 0.75em 0 0.75em;
-      line-height: 1;
-      vertical-align: top;
-      img {
-        max-width: initial;
-      }
+// NOTE be less specific so as not to override nested source block
+.colist td:not([class]) {
+  // number column
+  &:first-child {
+    padding: 0.4em 0.75em 0 0.75em;
+    line-height: 1;
+    vertical-align: top;
+    img {
+      max-width: initial;
     }
+  }
 
-    &:last-of-type {
-      padding: emCalc(4px) 0;
-    }
+  // text column
+  &:last-child {
+    padding: emCalc(4px) 0;
   }
 }
 
