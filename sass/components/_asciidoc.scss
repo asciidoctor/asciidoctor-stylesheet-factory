@@ -626,7 +626,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
     // FIXME use ems!
     width: 80px;
     img {
-      max-width: initial;
+      max-width: none;
     }
     .title {
       //font-weight: $header-font-weight;
@@ -1215,7 +1215,7 @@ td.hdlist1 {
     line-height: 1;
     vertical-align: top;
     img {
-      max-width: initial;
+      max-width: none;
     }
   }
 
