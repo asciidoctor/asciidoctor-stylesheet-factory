@@ -1,8 +1,9 @@
 .print-only { display: none !important; }
+// @page must be outside of @media print according to some validators
+@page {
+  margin: 1.25cm 0.75cm;
+}
 @media print {
-  @page {
-    margin: 1.25cm 0.75cm;
-  }
   * {
     @include box-shadow(none !important);
     text-shadow: none !important;
