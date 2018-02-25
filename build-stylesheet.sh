@@ -22,14 +22,14 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   sed 's/table thead, table tfoot {\(.*\) font-weight: bold;\(.*\)}/table thead, table tfoot {\1\2}/' | \
   sed '/^ul\.no-bullet, ol\.no-bullet { margin-left: 1.5em; }$/d' | \
   sed '/^ul\.no-bullet { list-style: none; }$/d' | \
-  sed '/\(meta\.\|\.vcard\|\.vevent\|#map_canvas\)/d' | \
+  sed '/\(meta\.\|\.vcard\|\.vevent\|#map_canvas\|"search"\|\[hidden\]\)/d' | \
   grep -v 'font-awesome' >> $STYLESHEET_NAME.css
 
 # see https://www.npmjs.org/package/cssshrink (using 0.0.5)
 # must run first: npm install cssshrink
 ./node_modules/.bin/cssshrink $STYLESHEET_NAME.css | \
   sed '1i\
-/* Remove comment around @import statement below when using as a custom stylesheet */\
+/* Uncomment @import statement below to use as custom stylesheet */\
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/' | \
   sed '1i\
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */' | \
