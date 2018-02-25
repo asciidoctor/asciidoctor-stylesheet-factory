@@ -35,4 +35,5 @@ cat stylesheets/$STYLESHEET_NAME.css | \
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */' | \
   sed 's/\(Open Sans\|DejaVu Sans\|Noto Serif\|DejaVu Serif\|Droid Sans Mono\|DejaVu Sans Mono\|Ubuntu Mono\|Liberation Mono\|Varela Round\)/"\1"/g' | \
   sed 's/font-weight:700/font-weight:bold/g' | \
+  sed 's/\([^:]\):\(before\|after\)/\1::\2/g' | \
   ruby -e 'puts STDIN.read.gsub(/}(?!})/, %(}\n)).chomp' - > $STYLESHEET_NAME.min.css
