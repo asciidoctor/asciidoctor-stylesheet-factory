@@ -8,7 +8,7 @@ fi
 
 bundle exec compass compile -s compact
 LINES=`wc -l stylesheets/$STYLESHEET_NAME.css | cut -d" " -f1`
-echo '/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */' > $STYLESHEET_NAME.css
+echo '/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */' > $STYLESHEET_NAME.css
 cat stylesheets/$STYLESHEET_NAME.css | \
   sed 's/ *\/\*\+!\? [^*]\+\($\| \*\/\)//g' | \
   sed 's/^\/\*\* .* \*\/$//' | \
