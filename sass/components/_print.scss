@@ -8,6 +8,9 @@
     @include box-shadow(none !important);
     text-shadow: none !important;
   }
+  html {
+    font-size: 80%;
+  }
   a {
     color: inherit !important;
     text-decoration: underline !important;
