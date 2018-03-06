@@ -7,7 +7,7 @@ object, svg {
   margin-left: auto;
   margin-right: auto;
 }
-.spread {
+.stretch {
   width: 100%;
 }
 @import "foundation/components/grid";
@@ -972,13 +972,15 @@ table.pyhltable .linenodiv {
 table.tableblock {
   max-width: 100%;
   border-collapse: separate;
-  // QUESTION should this be any last-child?
-  td > .paragraph:last-child p,
-  th, td {
-    & > p:last-child {
-      margin-bottom: 0;
-    }
-  }
+}
+
+p.tableblock:last-child {
+  margin-bottom: 0;
+}
+
+td.tableblock > .content {
+  // NOTE compensate for bottom margin on last block in AsciiDoc table cell
+  margin-bottom: -$paragraph-margin-bottom;
 }
 
 // NOTE .grid-* selectors must be defined before .frame-* selectors in order for styles to cascade properly
