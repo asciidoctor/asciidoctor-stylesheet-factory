@@ -604,10 +604,12 @@ table.tableblock > caption.title {
   max-width: 0;
 }
 
+// matches %lead
 .paragraph.lead > p,
-#preamble > .sectionbody > .paragraph:first-of-type p {
-  @extend %lead;
-  color: $title-font-color;
+#preamble > .sectionbody > [class="paragraph"]:first-of-type p {
+  font-size: $paragraph-font-size + em-calc(3.5);
+  line-height: 1.6;
+  font-color: $title-font-color;
   // QUESTION remove or reduce letter-spacing?
 }
 
