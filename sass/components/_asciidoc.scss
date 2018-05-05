@@ -1047,13 +1047,13 @@ table.frame-topbot {
   border-width: $table-border-size 0;
 }
 
-table.stripe-all tr,
-table.stripe-odd tr:nth-of-type(odd) {
+table.stripes-all tr,
+table.stripes-odd tr:nth-of-type(odd) {
   background: $table-even-row-bg;
 }
 
-table.stripe-none tr,
-table.stripe-odd tr:nth-of-type(even) {
+table.stripes-none tr,
+table.stripes-odd tr:nth-of-type(even) {
   background: none;
 }
 
