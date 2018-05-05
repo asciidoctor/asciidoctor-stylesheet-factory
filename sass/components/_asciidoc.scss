@@ -961,20 +961,21 @@ table.pyhltable .linenodiv {
 }
 
 .quoteblock.abstract {
-  margin: 0 0 $paragraph-margin-bottom 0;
+  margin: 0 1em $paragraph-margin-bottom 1em;
   display: block;
-  blockquote, blockquote p {
-    text-align: left;
-    word-spacing: 0;
-    //letter-spacing: -0.001em;
+  & > .title {
+    margin: 0 0 0.375em 0;
+    font-size: 1.15em;
+    text-align: center;
   }
 
-  blockquote, blockquote p:first-of-type {
-    //&:first-line {
-    //  font-weight: bold;
-    //  letter-spacing: 0;
-    //}
+  blockquote, blockquote p {
+    //text-align: left;
+    word-spacing: 0;
+    line-height: 1.6;
+  }
 
+  blockquote, p {
     &:before {
       display: none;
     }
