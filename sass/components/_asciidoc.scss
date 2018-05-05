@@ -145,7 +145,7 @@ kbd {
   background-color: #f7f7f7;
   border: 1px solid #ccc;
   @include radius(3px);
-  @include box-shadow(0 1px 0 rgba(0, 0, 0, .2), 0 0 0 0.1em white inset);
+  @include box-shadow(0 1px 0 rgba(0,0,0,0.2), 0 0 0 0.1em white inset);
   margin: 0 0.15em;
   padding: 0.2em 0.5em;
   vertical-align: middle;
@@ -1043,7 +1043,7 @@ table.frame-sides {
   border-width: 0 $table-border-size;
 }
 
-table.frame-topbot {
+table.frame-topbot, table.frame-ends {
   border-width: $table-border-size 0;
 }
 
