@@ -597,19 +597,29 @@ table.tableblock,
   }
 }
 
-// trick to prevent wrapping? wat? why not max-width: 100%?
-table.tableblock > caption.title {
+// trick to prevent caption from influencing width of an autowidth table
+table.tableblock.fit-content > caption.title {
   white-space: nowrap;
-  overflow: visible;
-  max-width: 0;
+  width: 0;
 }
+
+// Firefox sizes caption to width of table parent, so setting width: 100% works
+// A better solution is to wrap the table in a figure/figcaption
+//@supports (-moz-appearance:none) {
+//  table.tableblock.fit-content > caption.title {
+//    white-space: normal;
+//  }
+//  table.tableblock:not(.stretch) > caption.title {
+//    width: 100%;
+//  }
+//}
 
 // matches %lead
 .paragraph.lead > p,
 #preamble > .sectionbody > [class="paragraph"]:first-of-type p {
   font-size: $paragraph-font-size + em-calc(3.5);
   line-height: 1.6;
-  font-color: $title-font-color;
+  color: $title-font-color;
   // QUESTION remove or reduce letter-spacing?
 }
 
