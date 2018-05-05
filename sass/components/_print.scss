@@ -58,15 +58,6 @@
     border-bottom: 1px solid $hr-border-color !important;
     padding-bottom: 0 !important;
   }
-  .sect1 {
-    padding-bottom: 0 !important;
-    & + .sect1 {
-      border: 0 !important;
-    }
-  }
-  #header > h1:first-child {
-    margin-top: 1.25rem; 
-  }
   body.book {
     #header {
       text-align: center;
@@ -116,15 +107,33 @@
     display: block;
   }
   #footer {
-    background: none !important;
     padding: 0 ($column-gutter / 2);
-  }
-  #footer-text {
-    color: $blockquote-cite-font-color !important;
-    font-size: 0.9em;
   }
   .hide-on-print { display: none !important; }
   .print-only { display: block !important; }
   .hide-for-print { display: none !important; }
   .show-for-print { display: inherit !important; }
+}
+@media print, amzn-kf8 {
+  #header > h1:first-child {
+    margin-top: 1.25rem;
+  }
+  .sect1 {
+    padding: 0 !important;
+    & + .sect1 {
+      border: 0;
+    }
+  }
+  #footer {
+    background: none;
+  }
+  #footer-text {
+    color: $blockquote-cite-font-color;
+    font-size: 0.9em;
+  }
+}
+@media amzn-kf8 {
+  #header, #content, #footnotes, #footer {
+    padding: 0;
+  }
 }
