@@ -1280,12 +1280,10 @@ td.hdlist1 {
 //}
 
 .imageblock {
-  &.left,
-  &[style*="float: left"] {
+  &.left {
     margin: emCalc(4px) emCalc(10px) $panel-margin-bottom 0;
   }
-  &.right,
-  &[style*="float: right"] {
+  &.right {
     margin: emCalc(4px) 0 $panel-margin-bottom emCalc(10px);
   }
   //&.center {
