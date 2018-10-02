@@ -866,7 +866,7 @@ table.pyhltable .linenodiv {
     margin-bottom: 0.75em;
   }
 
-  blockquote, blockquote p {
+  blockquote, p {
     color: $blockquote-font-color;
     font-size: 1.15rem;
     line-height: 1.75;
@@ -969,13 +969,12 @@ table.pyhltable .linenodiv {
     text-align: center;
   }
 
-  blockquote, blockquote p {
-    //text-align: left;
+  blockquote, p {
     word-spacing: 0;
     line-height: 1.6;
   }
 
-  blockquote, p {
+  blockquote {
     &:before {
       display: none;
     }
