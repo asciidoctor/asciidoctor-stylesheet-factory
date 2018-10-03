@@ -900,24 +900,9 @@ table.pyhltable .linenodiv {
   }
 
   .attribution {
-    //margin-top: 0.5rem;
-    margin-top: 0.5em;
+    margin-top: 0.75em;
     margin-right: 0.5ex;
     text-align: right;
-  }
-
-  .quoteblock {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0.5em 0;
-    border-left: 3px solid $blockquote-cite-font-color;
-
-    blockquote {
-      padding: 0 0 0 0.75em;
-      &:before {
-        display: none;
-      }
-    }
   }
 }
 
@@ -960,23 +945,47 @@ table.pyhltable .linenodiv {
   }
 }
 
-.quoteblock.abstract {
-  margin: 0 1em $paragraph-margin-bottom 1em;
-  display: block;
-  & > .title {
-    margin: 0 0 0.375em 0;
-    font-size: 1.15em;
-    text-align: center;
+.quoteblock {
+  &.abstract,
+  &.excerpt,
+  .quoteblock {
+    blockquote {
+      &:before {
+        display: none;
+      }
+    }
+
+    blockquote, p {
+      line-height: 1.6;
+      word-spacing: 0;
+    }
   }
 
-  blockquote, p {
-    word-spacing: 0;
-    line-height: 1.6;
+  &.abstract {
+    margin: 0 1em $paragraph-margin-bottom 1em;
+    display: block;
+    & > .title {
+      margin: 0 0 0.375em 0;
+      font-size: 1.15em;
+      text-align: center;
+    }
   }
 
-  blockquote {
-    &:before {
-      display: none;
+  &.excerpt,
+  .quoteblock {
+    margin: 0 0 $paragraph-margin-bottom 0;
+    padding: 0 0 0.25em 1em;
+    border-left: 0.25em solid $hr-border-color;
+    blockquote, p {
+      //color: rgba(0, 0, 0, 0.6);
+      color: inherit;
+      font-size: 1.0625rem;
+    }
+    .attribution {
+      //color: rgba(0, 0, 0, 0.6);
+      color: inherit;
+      text-align: left;
+      margin-right: 0;
     }
   }
 }
