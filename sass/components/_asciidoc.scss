@@ -741,14 +741,9 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
     @include radius;
     //overflow-wrap: break-word;
     word-wrap: break-word;
+    // set overflow-x just in case content refuses to break
+    overflow-x: auto;
 
-    &.nowrap {
-      overflow-x: auto;
-      white-space: pre;
-      //overflow-wrap: normal;
-      word-wrap: normal;
-    }
-    
     // screens below breakpoint
     padding: $pre-padding;
     font-size: emCalc(13px);
@@ -760,6 +755,11 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
     @media #{$medium} {
       font-size: emCalc(16px);
     }
+  }
+  pre.nowrap, pre.nowrap pre {
+    white-space: pre;
+    //overflow-wrap: normal;
+    word-wrap: normal;
   }
 }
 
