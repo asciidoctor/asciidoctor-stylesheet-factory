@@ -25,7 +25,26 @@ That command is equivalent to executing:
 
 Once you have the gems installed, you can build the stylesheets.
 
-== Build the stylesheets
+== Build the default stylesheet
+
+The main purpose of this repository is to build the default stylesheet.
+The default stylesheet is generated using the [.path]_build-stylesheet.sh_ command.
+
+To run this command, you need the following programs:
+
+* bundler (`gem install bundler`)
+* cssshrink (`npm install -g cssshrink`)
+* cat
+* sed
+* ruby
+
+Once those are installed, run the command as follows:
+
+ $ ./build-stylesheet.sh
+
+This command will create asciidoctor.css and asciidoctor.min.css in the root of this project.
+
+== Build the other stylesheets
 
 To build the stylesheets, simply run:
 
