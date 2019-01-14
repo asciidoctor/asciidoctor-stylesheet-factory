@@ -68,7 +68,8 @@ body {
   }
 }
 
-*:not(pre) > code:not([data-lang]) {
+// :not([class^=L]) is for prettify; could also use :not(li)
+:not(pre):not([class^=L]) > code {
   font-size: $code-font-size;
   font-style: normal !important;
   letter-spacing: 0;
@@ -92,6 +93,9 @@ body {
   }
   //overflow-wrap: break-word;
   word-wrap: break-word;
+}
+
+:not(pre) > code {
   &.nobreak {
     //overflow-wrap: normal;
     word-wrap: normal;
@@ -779,12 +783,6 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
   }
 }
 
-@if not $pre-border-size {
-  .listingblock pre.prettyprint {
-    border-width: 0;
-  }
-}
-
 .listingblock > .content {
   // give floating language text a place to drop anchor
   position: relative;
@@ -817,7 +815,25 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
   content: "$"; 
 }
 
-// overrides for Pygments default styles
+// overrides for built-in prettify styles
+@if not $pre-border-size {
+  .listingblock pre.prettyprint {
+    border-width: 0;
+  }
+}
+
+pre.prettyprint .linenums {
+  color: #999;
+  line-height: $pre-line-height;
+  margin-left: 2em;
+}
+
+pre.prettyprint .linenums li {
+  background: none;
+  list-style-type: inherit;
+}
+
+// overrides for built-in Pygments styles
 table.pyhltable {
   border-collapse: separate;
   border: 0;
@@ -1446,7 +1462,7 @@ sup.footnoteref {
     }
   }
 
-  //*:not(code) > .comment {
+  //:not(code) > .comment {
   //  background: yellow;
   //}
 }
