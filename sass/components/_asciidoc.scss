@@ -105,28 +105,18 @@ body {
   }
 }
 
-pre, pre > code {
-  line-height: $pre-line-height;
-  // this overrides what was set on code
+pre {
   color: $pre-font-color;
   font-family: $pre-font-family;
-  font-weight: normal;
+  //font-weight: $pre-font-weight;
+  line-height: $pre-line-height;
   @if $code-text-rendering != inherit {
     text-rendering: $code-text-rendering;
   }
+  > code {
+    color: inherit;
+  }
 }
-
-// if we need to trump the code settings
-//pre > code {
-//  font-size: 1em;
-//  white-space: inherit;
-//  color: $pre-font-color;
-//  font-family: $pre-font-family;
-//  padding: 0;
-//  background: none;
-//  font-weight: normal;
-//  border: 0;
-//}
 
 em em {
   font-style: normal;
@@ -842,31 +832,30 @@ table.pyhltable {
 }
 
 table.pyhltable td {
+  color: inherit;
   vertical-align: top;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
   line-height: $pre-line-height;
 }
 
 table.pyhltable td.code {
-  padding-left: .75em;
-  padding-right: 0;
+  padding-left: 0.75em;
 }
 
-// QUESTION can't td:not(.code) be written as td.linenos?
+// we have to use td:not(.code) because pygments doesn't add linenos class when pygments-css=inline
 pre.pygments .lineno,
 table.pyhltable td:not(.code) {
-  color: #999;
-  padding-left: 0;
-  padding-right: .5em;
-  border-right: 1px solid $hr-border-color;
+  border-right: 1px solid currentColor;
+  opacity: 0.35;
+  padding-right: 0.5em;
 }
 
 pre.pygments .lineno {
   display: inline-block;
-  margin-right: .25em;
+  margin-right: 0.25em;
 }
 
+// NOTE these overrides are needed to override hard-coded styles when pygments-css=inline
 table.pyhltable .linenodiv {
   background: none !important;
   padding-right: 0 !important;
