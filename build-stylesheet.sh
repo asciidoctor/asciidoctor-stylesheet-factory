@@ -37,7 +37,7 @@ cat stylesheets/$STYLESHEET_NAME.css | \
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */' | \
   sed 's/\(Open Sans\|DejaVu Sans\|Noto Serif\|DejaVu Serif\|Droid Sans Mono\|DejaVu Sans Mono\|Ubuntu Mono\|Liberation Mono\|Varela Round\)/"\1"/g' | \
   sed 's/font-weight:700/font-weight:bold/g' | \
-  # use modern syntax for before/after pseudo-selectors
+  # use double colon for before/after pseudo-elements (see https://www.w3.org/TR/selectors/#pseudo-element-syntax)
   sed 's/\([^:]\):\(before\|after\)/\1::\2/g' | \
   # drop the fourth value if it matches the second
   sed 's/\([a-z-]\+\):\([0-9.empx-]\+\) \([0-9.empx-]\+\) \([0-9.empx-]\+\) \3/\1:\2 \3 \4/g' | \
