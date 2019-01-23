@@ -113,9 +113,20 @@ pre {
   @if $code-text-rendering != inherit {
     text-rendering: $code-text-rendering;
   }
-  > code {
+  // NOTE syntax highlighters may deeply nest both code and pre tags
+  code, pre {
+    // QUESTION what about background?
     color: inherit;
+    font-size: inherit;
+    line-height: inherit;
   }
+}
+
+pre.nowrap,
+pre.nowrap pre {
+  white-space: pre;
+  //overflow-wrap: normal;
+  word-wrap: normal;
 }
 
 em em {
@@ -625,7 +636,7 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
 .admonitionblock > table {
   border-collapse: separate;
   border: 0;
-  background: none;
+  background: none; // FIXME this wouldn't be required if a background was set on table.tableblock and not table
   width: 100%;
   td.icon {
     text-align: center;
@@ -705,55 +716,25 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
   }
 }
 
-// FIXME make this situation simpler
-// we're trying to accomodate highlight themes that have background colors
-// if "highlight" is in first position, then a source highlighter is not in use
 .literalblock pre,
-.listingblock pre:not(.highlight),
-.listingblock pre[class="highlight"],
-.listingblock pre[class^="highlight "],
-.listingblock pre.CodeRay,
-.listingblock pre.prettyprint {
-  background: $pre-bg;
-
-  .sidebarblock & {
-    // FIXME make me a variable
-    // FIXME what about inline code?
-    //background: #ededef;
-    background: #f2f1f1;
+.listingblock > .content > pre {
+  @if $pre-border-size {
+    border: $pre-border-size $pre-border-style $pre-border-color;
   }
-}
-
-.literalblock,
-.listingblock {
-  // use pre[class] so we win over pre.<name> styles
-  pre, pre[class] {
-    @if $pre-border-size {
-      border: $pre-border-size $pre-border-style $pre-border-color;
-    }
-    // FIXME make border radius on listing blocks configurable!
-    @include radius;
-    //overflow-wrap: break-word;
-    word-wrap: break-word;
-    // set overflow-x just in case content refuses to break
-    overflow-x: auto;
-
-    // screens below breakpoint
-    padding: $pre-padding;
-    font-size: emCalc(13px);
-
-    @media #{$small} {
-      font-size: emCalc(14.5px);
-    }
-
-    @media #{$medium} {
-      font-size: emCalc(16px);
-    }
+  // FIXME make border radius on listing blocks configurable!
+  @include radius;
+  //overflow-wrap: break-word;
+  word-wrap: break-word;
+  // set overflow-x just in case content refuses to break
+  overflow-x: auto;
+  // screens below breakpoint
+  padding: $pre-padding;
+  font-size: emCalc(13px);
+  @media #{$small} {
+    font-size: emCalc(14.5px);
   }
-  pre.nowrap, pre.nowrap pre {
-    white-space: pre;
-    //overflow-wrap: normal;
-    word-wrap: normal;
+  @media #{$medium} {
+    font-size: emCalc(16px);
   }
 }
 
@@ -763,13 +744,16 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
   background-color: $pre-font-color;
 }
 
-// highlight.js themes put bg on <code>, so shift padding
-.listingblock pre.highlightjs {
-  padding: 0;
-  & > code {
-    padding: $pre-padding;
-    // FIXME make border radius on listing blocks configurable!
-    @include radius;
+// NOTE if highlight class is absent or in first position, we know source highlighter is not active
+.listingblock > .content > pre:not(.highlight),
+.listingblock > .content > pre[class="highlight"],
+.listingblock > .content > pre[class^="highlight "] {
+  background: $pre-bg;
+  .sidebarblock & {
+    // FIXME make me a variable
+    // FIXME what about inline <code>?
+    //background: #ededef;
+    background: #f2f1f1;
   }
 }
 
@@ -788,7 +772,8 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
   right: 0.5rem; // 0.67em
   line-height: 1;
   text-transform: uppercase;
-  color: #999;
+  color: inherit;
+  opacity: 0.5;
 }
 
 .listingblock:hover code[data-lang]:before {
@@ -798,11 +783,22 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
 .listingblock.terminal pre .command:before {
   content: attr(data-prompt); 
   padding-right: 0.5em;
-  color: #999;
+  color: inherit;
+  opacity: 0.5;
 }
 
 .listingblock.terminal pre .command:not([data-prompt]):before {
   content: "$"; 
+}
+
+// highlight.js themes put bg on <code>, so shift padding
+.listingblock pre.highlightjs {
+  padding: 0;
+  & > code {
+    padding: $pre-padding;
+    // FIXME make border radius on listing blocks configurable!
+    @include radius;
+  }
 }
 
 // overrides for built-in prettify styles
@@ -812,54 +808,78 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
   }
 }
 
+// NOTE set the lowest priority background color in case prettify style doesn't provide one
+.prettyprint {
+  background: $pre-bg;
+}
+
 pre.prettyprint .linenums {
-  color: #999;
   line-height: $pre-line-height;
   margin-left: 2em;
 }
 
-pre.prettyprint .linenums li {
+pre.prettyprint li {
   background: none;
   list-style-type: inherit;
+  padding-left: 0;
+}
+
+pre.prettyprint li code[data-lang]:before {
+  opacity: 1;
+}
+
+pre.prettyprint li:not(:first-child) code[data-lang]:before {
+  display: none;
 }
 
 // overrides for built-in Pygments styles
-table.pyhltable {
+table.pygments-table {
   border-collapse: separate;
   border: 0;
   margin-bottom: 0;
-  background: none;
+  background: none; // FIXME this wouldn't be required if a background was set on table.tableblock and not table
 }
 
-table.pyhltable td {
+table.pygments-table td {
   color: inherit;
   vertical-align: top;
   padding: 0;
-  line-height: $pre-line-height;
+  line-height: inherit;
+  white-space: normal;
 }
 
-table.pyhltable td.code {
+table.pygments-table td.code {
   padding-left: 0.75em;
 }
 
 // we have to use td:not(.code) because pygments doesn't add linenos class when pygments-css=inline
 pre.pygments .lineno,
-table.pyhltable td:not(.code) {
+table.pygments-table td:not(.code) {
   border-right: 1px solid currentColor;
   opacity: 0.35;
+}
+
+// NOTE pygments uses fixed-length line numbers (padded with spaces) in this case
+pre.pygments .lineno {
+  display: inline-block;
+  // NOTE margin-right should match padding-left of code in table linenum-mode
+  margin-right: 0.75em;
+  &:before {
+    content: "";
+    margin-right: -0.125em;
+  }
+}
+
+table.pygments-table td:not(.code) {
   padding-right: 0.5em;
 }
 
-pre.pygments .lineno {
-  display: inline-block;
-  margin-right: 0.25em;
-}
-
 // NOTE these overrides are needed to override hard-coded styles when pygments-css=inline
-table.pyhltable .linenodiv {
-  background: none !important;
-  padding-right: 0 !important;
-}
+// NOTE we decided to handle these by patching the HTML
+//table.pygments-table .linenodiv {
+//  background: none !important;
+//  padding-right: 0 !important;
+//}
 
 // TODO
 // - add centered option using margin-left: auto; margin-right: auto; padding-left: 1.5em;
@@ -1223,7 +1243,7 @@ ul.inline > li {
 .hdlist > table,
 .colist > table {
   border: 0;
-  background: none;
+  background: none; // FIXME this wouldn't be required if a background was set on table.tableblock and not table
   & > tbody > tr {
     background: none;
   }
