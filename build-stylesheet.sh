@@ -36,7 +36,8 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   sed '1i\
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */' | \
   sed 's/\(Open Sans\|DejaVu Sans\|Noto Serif\|DejaVu Serif\|Droid Sans Mono\|DejaVu Sans Mono\|Ubuntu Mono\|Liberation Mono\|Varela Round\)/"\1"/g' | \
-  sed 's/font-weight:700/font-weight:bold/g' | \
+  sed 's/background:transparent/background:none/g' | \
+  #sed 's/background-color:\([^};]\+\)/background:\1/g' | \
   sed 's/border:none/border:0/g' | \
   # use double colon for before/after pseudo-elements (see https://www.w3.org/TR/selectors/#pseudo-element-syntax)
   sed 's/\([^:]\):\(before\|after\)/\1::\2/g' | \
