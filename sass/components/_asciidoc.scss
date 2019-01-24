@@ -398,7 +398,7 @@ b.button:after {
 
   #toc.toc2 {
     margin-top: 0 !important;
-    background-color: $panel-bg;
+    background: $panel-bg;
     position: fixed;
     width: 15em;
     left: 0;
@@ -483,7 +483,7 @@ b.button:after {
 #footer {
   max-width: 100%;
   //margin-top: $panel-margin-bottom * 2;
-  background-color: $footer-bg;
+  background: $footer-bg;
   padding: $panel-padding;
 }
 
