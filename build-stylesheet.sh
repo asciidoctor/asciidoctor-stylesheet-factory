@@ -37,7 +37,7 @@ cat stylesheets/$STYLESHEET_NAME.css | \
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */' | \
   sed 's/\(Open Sans\|DejaVu Sans\|Noto Serif\|DejaVu Serif\|Droid Sans Mono\|DejaVu Sans Mono\|Ubuntu Mono\|Liberation Mono\|Varela Round\)/"\1"/g' | \
   sed 's/background:transparent/background:none/g' | \
-  #sed 's/background-color:\([^};]\+\)/background:\1/g' | \
+  sed 's/background-color:\([^};]\+\)/background:\1/g' | \
   sed 's/border:none/border:0/g' | \
   # changing to font-weight:bold allows us to map the font weight 600 as bold
   sed 's/font-weight:700/font-weight:bold/g' | \
