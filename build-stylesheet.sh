@@ -31,10 +31,10 @@ cat stylesheets/$STYLESHEET_NAME.css | \
 # must run first: npm install cssshrink
 ./node_modules/.bin/cssshrink $STYLESHEET_NAME.css | \
   sed '1i\
-/* Uncomment @import statement below to use as custom stylesheet */\
+/* Uncomment @import statement when using as custom stylesheet */\
 /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/' | \
   sed '1i\
-/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */' | \
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */' | \
   sed 's/\(Open Sans\|DejaVu Sans\|Noto Serif\|DejaVu Serif\|Droid Sans Mono\|DejaVu Sans Mono\|Ubuntu Mono\|Liberation Mono\|Varela Round\)/"\1"/g' | \
   sed 's/background:transparent/background:none/g' | \
   sed 's/background-color:\([^};]\+\)/background:\1/g' | \
