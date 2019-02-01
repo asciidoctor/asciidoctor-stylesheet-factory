@@ -832,46 +832,40 @@ pre.prettyprint li:not(:first-child) code[data-lang]:before {
   display: none;
 }
 
-// overrides for built-in Pygments styles
-table.pygments-table {
+// overrides for built-in Pygments & Rouge styles
+table.pygments-table,
+table.rouge-table {
   border-collapse: separate;
   border: 0;
   margin-bottom: 0;
   background: none; // FIXME this wouldn't be required if a background was set on table.tableblock and not table
-}
-
-table.pygments-table td {
-  color: inherit;
-  vertical-align: top;
-  padding: 0;
-  line-height: inherit;
-  white-space: normal;
-}
-
-table.pygments-table td.code {
-  padding-left: 0.75em;
-}
-
-// we have to use td:not(.code) because pygments doesn't add linenos class when pygments-css=inline
-pre.pygments .lineno,
-table.pygments-table td:not(.code) {
-  border-right: 1px solid currentColor;
-  opacity: 0.35;
+  td {
+    color: inherit;
+    vertical-align: top;
+    padding: 0;
+    line-height: inherit;
+    white-space: normal; // NOTE we don't want whitespace in the table elements themselves to cause a problem
+    &.linenos {
+      border-right: 1px solid currentColor;
+      opacity: 0.35;
+      padding-right: 0.5em;
+    }
+    &.code {
+      padding-left: 0.75em;
+    }
+  }
 }
 
 // NOTE pygments uses fixed-length line numbers (padded with spaces) in this case
 pre.pygments .lineno {
+  border-right: 1px solid currentColor;
+  opacity: 0.35;
   display: inline-block;
-  // NOTE margin-right should match padding-left of code in table linenum-mode
-  margin-right: 0.75em;
+  margin-right: 0.75em; // NOTE margin-right should match padding-left of code in table linenum-mode
   &:before {
     content: "";
     margin-right: -0.125em;
   }
-}
-
-table.pygments-table td:not(.code) {
-  padding-right: 0.5em;
 }
 
 // NOTE these overrides are needed to override hard-coded styles when pygments-css=inline
