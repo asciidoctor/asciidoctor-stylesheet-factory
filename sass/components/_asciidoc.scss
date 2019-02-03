@@ -833,25 +833,26 @@ pre.prettyprint li:not(:first-child) code[data-lang]:before {
 }
 
 // overrides for built-in Pygments & Rouge styles
-table.pygments-table,
-table.rouge-table {
+table.linenotable {
   border-collapse: separate;
   border: 0;
   margin-bottom: 0;
   background: none; // FIXME this wouldn't be required if a background was set on table.tableblock and not table
-  td {
+  td[class] {
     color: inherit;
     vertical-align: top;
     padding: 0;
     line-height: inherit;
     white-space: normal; // NOTE we don't want whitespace in the table elements themselves to cause a problem
+  }
+  td {
+    &.code {
+      padding-left: 0.75em;
+    }
     &.linenos {
       border-right: 1px solid currentColor;
       opacity: 0.35;
       padding-right: 0.5em;
-    }
-    &.code {
-      padding-left: 0.75em;
     }
   }
 }
