@@ -683,7 +683,7 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
 }
 
 .sidebarblock {
-  @include panel($panel-bg, $panel-padding, false);
+  @include panel(darken($panel-bg, 2%), $panel-padding, false);
   @include radius;
 
   & > .content {
@@ -749,12 +749,6 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
 .listingblock > .content > pre[class="highlight"],
 .listingblock > .content > pre[class^="highlight "] {
   background: $pre-bg;
-  .sidebarblock & {
-    // FIXME make me a variable
-    // FIXME what about inline <code>?
-    //background: #ededef;
-    background: #f2f1f1;
-  }
 }
 
 .listingblock > .content {
