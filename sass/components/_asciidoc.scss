@@ -120,6 +120,9 @@ pre {
     font-size: inherit;
     line-height: inherit;
   }
+  > code {
+    display: block;
+  }
 }
 
 pre.nowrap,
