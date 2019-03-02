@@ -1073,14 +1073,18 @@ table.frame-topbot, table.frame-ends {
 }
 
 table.stripes-all tr,
-table.stripes-odd tr:nth-of-type(odd) {
+table.stripes-odd tr:nth-of-type(odd),
+table.stripes-even tr:nth-of-type(even),
+table.stripes-hover tr:hover {
   background: $table-even-row-bg;
 }
 
-table.stripes-none tr,
-table.stripes-odd tr:nth-of-type(even) {
-  background: none;
-}
+// NOTE removing default stripes using script instead
+//table.stripes-none tr,
+//table.stripes-odd tr:nth-of-type(even),
+//table.stripes-even tr:nth-of-type(odd) {
+//  background: none;
+//}
 
 @each $halign in (left, right, center) {
   th.halign-#{$halign},
