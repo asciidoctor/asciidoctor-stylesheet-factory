@@ -559,6 +559,12 @@ b.button:after {
   }
 }
 
+details>summary:first-of-type {
+  display: list-item;
+  cursor: pointer;
+  margin-bottom: $panel-margin-bottom;
+}
+
 // AsciiDoc block styles
 
 // these blocks that don't inherit panel styles

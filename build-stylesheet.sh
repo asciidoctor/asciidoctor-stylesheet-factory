@@ -18,6 +18,7 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   sed '/^body { margin: 0;/d' | \
   sed 's/^body { background:[^}]*/&tab-size: 4; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;/' | \
   sed '/^body { -moz-osx-font-smoothing:/d' | \
+  sed 's/, summary//' | \
   sed '/object, svg { display: inline-block;/d' | \
   sed 's/img { display: inline-block;/img, object, svg { display: inline-block;/' | \
   sed 's/table thead, table tfoot {\(.*\) font-weight: bold;\(.*\)}/table thead, table tfoot {\1\2}/' | \
