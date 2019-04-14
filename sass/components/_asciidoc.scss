@@ -559,15 +559,10 @@ b.button:after {
   }
 }
 
-details>summary:first-of-type {
-  display: list-item;
-  cursor: pointer;
-  margin-bottom: $panel-margin-bottom;
-}
-
 // AsciiDoc block styles
 
-// these blocks that don't inherit panel styles
+// these blocks don't receive a specialized margin
+details,
 .audioblock,
 .imageblock,
 .literalblock,
@@ -575,6 +570,13 @@ details>summary:first-of-type {
 .stemblock,
 .videoblock {
   margin-bottom: $panel-margin-bottom;
+}
+
+details > summary:first-of-type {
+  cursor: pointer;
+  display: list-item;
+  outline: none;
+  margin-bottom: 0.75em;
 }
 
 .admonitionblock td.content,
