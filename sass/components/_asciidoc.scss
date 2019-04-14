@@ -749,17 +749,18 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
   }
 }
 
-.literalblock.output pre {
-  // FIXME this doesn't work if pre-bg is an image!
-  color: $pre-bg;
-  background-color: $pre-font-color;
-}
-
 // NOTE if highlight class is absent or in first position, we know source highlighter is not active
+.literalblock pre,
 .listingblock > .content > pre:not(.highlight),
 .listingblock > .content > pre[class="highlight"],
 .listingblock > .content > pre[class^="highlight "] {
   background: $pre-bg;
+}
+
+.literalblock.output pre {
+  // FIXME this doesn't work if pre-bg is an image!
+  color: $pre-bg;
+  background-color: $pre-font-color;
 }
 
 .listingblock > .content {
