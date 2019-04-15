@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 STYLESHEET_NAME=asciidoctor
 
