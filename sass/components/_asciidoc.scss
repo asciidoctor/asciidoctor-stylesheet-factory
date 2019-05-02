@@ -1025,9 +1025,12 @@ p.tableblock:last-child {
   margin-bottom: 0;
 }
 
-td.tableblock > .content {
-  // NOTE compensate for bottom margin on last block in AsciiDoc table cell
+// NOTE compensate for bottom margin on last block in AsciiDoc table cell
+td.tableblock > .content > :last-child {
   margin-bottom: -$paragraph-margin-bottom;
+  &.sidebarblock {
+    margin-bottom: 0;
+  }
 }
 
 // NOTE .grid-* selectors must be defined before .frame-* selectors in order for styles to cascade properly
