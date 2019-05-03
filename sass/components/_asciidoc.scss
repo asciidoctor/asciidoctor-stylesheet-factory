@@ -887,7 +887,7 @@ pre.pygments .lineno {
 .quoteblock {
   margin: 0 1em $paragraph-margin-bottom 1.5em;
   display: table; // enables auto width
-  & > .title {
+  &:not(.excerpt) > .title {
     margin-left: -1.5em;
     margin-bottom: 0.75em;
   }
@@ -997,11 +997,15 @@ pre.pygments .lineno {
     }
   }
 
-  &.excerpt,
+  &.excerpt > blockquote,
   .quoteblock {
-    margin: 0 0 $paragraph-margin-bottom 0;
     padding: 0 0 0.25em 1em;
     border-left: 0.25em solid $hr-border-color;
+  }
+
+  &.excerpt,
+  .quoteblock {
+    margin-left: 0;
     blockquote, p {
       //color: rgba(0, 0, 0, 0.6);
       color: inherit;
