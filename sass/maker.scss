@@ -39,11 +39,11 @@ body {
 }
 
 .imageblock {
-  & > .content {
+  > .content {
     text-align: center;
   }
 
-  & > .title {
+  > .title {
     text-align: center;
     font-style: italic;
     font-weight: normal;

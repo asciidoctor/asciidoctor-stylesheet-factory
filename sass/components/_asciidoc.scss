@@ -256,7 +256,7 @@ b.button:after {
 }
 
 #header {
-  & > h1:first-child {
+  > h1:first-child {
     color: $title-font-color;
     @if $title-font-weight and $title-font-weight != $header-font-weight {
       font-weight: $title-font-weight;
@@ -264,14 +264,14 @@ b.button:after {
     margin-top: 2.25rem;
     margin-bottom: 0;
 
-    & + #toc {
+    + #toc {
       margin-top: 8px; // dependent on $header-line-height
       border-top: $hr-border-width $hr-border-style $hr-border-color;
     }
   }
 
   // when neither details or toc are there to draw line
-  & > h1:only-child,
+  > h1:only-child,
   body.toc2 & > h1:nth-last-child(2) {
     // FIXME shouldn't this be sect-divider?
     border-bottom: $hr-border-width $hr-border-style $hr-border-color;
@@ -306,10 +306,10 @@ b.button:after {
 
     br {
       display: none;
-      & + span:before {
+      + span:before {
         content: "\00a0\2013\00a0";
       }
-      & + span.author:before {
+      + span.author:before {
         // we can't prevent wrap before comma, so use middot instead
         //content: ",\00a0";
         //content: "\00a0\00b7\00a0";
@@ -317,7 +317,7 @@ b.button:after {
         // FIXME darken the $aside-font-color
         color: $blockquote-font-color;
       }
-      & + span#revremark:before {
+      + span#revremark:before {
         content: "\00a0|\00a0";
         // FIXME darken the $aside-font-color
         //color: $blockquote-font-color;
@@ -352,7 +352,7 @@ b.button:after {
   //margin-bottom: $panel-margin-bottom * 2;
   border-bottom: $sect-divider-size $sect-divider-style $sect-divider-color;
   padding-bottom: 0.5em;
-  & > ul {
+  > ul {
     //margin-left: 0;
     //margin-left: emCalc(4px);
     margin-left: emCalc(2px);
@@ -419,7 +419,7 @@ b.button:after {
       margin-bottom: 0.8rem;
       font-size: 1.2em;
     }
-    & > ul {
+    > ul {
       font-size: 0.9em;
       // FIXME this removes all space below last item in TOC in Firefox (but not Chrome)
       margin-bottom: 0;
@@ -461,7 +461,7 @@ b.button:after {
       font-size: 1.375em;
     }
 
-    & > ul {
+    > ul {
       font-size: 0.95em;
     }
 
@@ -524,7 +524,7 @@ b.button:after {
 
 // QUESTION why #content here?
 #content #{headers()} {
-  & > a.anchor {
+  > a.anchor {
     position: absolute;
     z-index: 1001;
     // 1ex is the width of "x"
@@ -546,11 +546,11 @@ b.button:after {
   }
 
   &:hover > a.anchor,
-  & > a.anchor:hover {
+  > a.anchor:hover {
     visibility: visible;
   }
 
-  & > a.link {
+  > a.link {
     color: $header-font-color;
     text-decoration: none;
     &:hover {
@@ -597,7 +597,7 @@ table.tableblock,
 .ulist,
 .qlist,
 .hdlist {
-  & > .title {
+  > .title {
     @extend %subheader;
     text-rendering: $subheader-text-rendering;
     text-align: left;
@@ -673,8 +673,8 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
     // QUESTION use opacity instead of blockquote-cite-font-color?
     //opacity: 0.75;
 
-    //& > .paragraph:last-child > p {
-    & > :last-child > :last-child {
+    //> .paragraph:last-child > p {
+    > :last-child > :last-child {
       margin-bottom: 0;
     }
   }
@@ -684,7 +684,7 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
   // FIXME add variable for $example-bg
   @include panel($body-bg, $panel-padding, false);
   @include radius;
-  //& > :last-child > :last-child,
+  //> :last-child > :last-child,
   //// argh, review!
   //.olist > ol > li:last-child > :last-child,
   //.ulist > ul > li:last-child > :last-child,
@@ -697,8 +697,8 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
   @include panel(darken($panel-bg, 2%), $panel-padding, false);
   @include radius;
 
-  & > .content {
-    & > .title {
+  > .content {
+    > .title {
       @extend h3;
       color: $subheader-font-color;
       //color: darken($header-font-color, 15%); // name this panel-header-color?
@@ -719,7 +719,7 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
 .exampleblock > .content,
 .sidebarblock > .content {
   // FIXME argh, review!
-  & > :last-child > :last-child,
+  > :last-child > :last-child,
   .olist > ol > li:last-child > :last-child,
   .ulist > ul > li:last-child > :last-child,
   .qlist > ol > li:last-child > :last-child {
@@ -800,7 +800,7 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
 // highlight.js themes put bg on <code>, so shift padding
 .listingblock pre.highlightjs {
   padding: 0;
-  & > code {
+  > code {
     padding: $pre-padding;
     // FIXME make border radius on listing blocks configurable!
     @include radius;
@@ -920,7 +920,7 @@ pre.pygments .lineno {
       text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
 
-    & > .paragraph:last-child p {
+    > .paragraph:last-child p {
       margin-bottom: 0;
     }
   }
@@ -990,7 +990,7 @@ pre.pygments .lineno {
   &.abstract {
     margin: 0 1em $paragraph-margin-bottom 1em;
     display: block;
-    & > .title {
+    > .title {
       margin: 0 0 0.375em 0;
       font-size: 1.15em;
       text-align: center;
@@ -1032,7 +1032,7 @@ p.tableblock:last-child {
 // NOTE compensate for bottom margin on last block in AsciiDoc table cell
 td.tableblock > .content {
   margin-bottom: $paragraph-margin-bottom;
-  & > :last-child {
+  > :last-child {
     margin-bottom: -$paragraph-margin-bottom;
   }
 }
@@ -1256,7 +1256,7 @@ ul.inline > li {
 .colist > table {
   border: 0;
   background: none; // FIXME this wouldn't be required if a background was set on table.tableblock and not table
-  & > tbody > tr {
+  > tbody > tr {
     background: none;
   }
 }
@@ -1335,14 +1335,14 @@ td.hdlist1 {
   //  display: table;
   //}
 
-  & > .title {
+  > .title {
     margin-bottom: 0;
   }
 
   &.thumb,
   &.th {
     border-width: $thumb-border-width + ($thumb-border-width * .5);
-    & > .title {
+    > .title {
       padding: 0 emCalc(2px);
     }
   }

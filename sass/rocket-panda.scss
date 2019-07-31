@@ -11,14 +11,14 @@
 
 #header {
   margin-bottom: 0;
-  & > h1 {
+  > h1 {
     border-bottom: none;
   }
 }
 
 .literalblock,
 .listingblock {
-  & pre {
+  pre {
     background: $pre-bg;
   }
 }

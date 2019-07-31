@@ -19,7 +19,7 @@ body {
 #header {
   margin-bottom: 4em;
 
-  & > h1 {
+  > h1 {
     border-bottom: none;
     margin-bottom: -28px;
     margin-top: 2em;
@@ -89,10 +89,10 @@ dl dt {
   margin-top: emCalc(50px);
   margin-bottom: emCalc(50px);
   padding: 15px 15px 5px 15px;
-  & > .content {
+  > .content {
     text-align: center;
   }
-  & > .title {
+  > .title {
     font-weight: normal;
     font-style: italic;
     letter-spacing: 0.5px;
@@ -104,7 +104,7 @@ dl dt {
 .literalblock,
 .listingblock {
   @extend %stretch;
-  & pre {
+  pre {
     background: $pre-bg;
     @include border-radius($global-radius $global-radius 0 0);
     border: 0;
@@ -115,7 +115,7 @@ pre .conum {
   background: white;
   color: $body-font-color !important;
 
-  & * {
+  * {
     color: $body-font-color !important;
   }
 }
@@ -130,11 +130,11 @@ table.tableblock.grid-all {
   border: 0;
   border-collapse: collapse;
 
-  & > thead > tr {
+  > thead > tr {
     border-bottom: 2px solid $table-border-color;
   }
 
-  & > tbody > tr {
+  > tbody > tr {
     border-bottom: 1px solid $table-border-color;
   }
 }

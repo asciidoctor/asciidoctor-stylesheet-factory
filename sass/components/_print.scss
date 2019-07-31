@@ -61,7 +61,7 @@
   body.book {
     #header {
       text-align: center;
-      & > h1:first-child {
+      > h1:first-child {
         border: 0 !important;
         margin: 2.5em 0 1em 0;
       }
@@ -72,7 +72,7 @@
         span:first-child { margin-left: 0 !important; }
         br {
           display: block;
-          & + span:before {
+          + span:before {
             content: none !important;
           }
         }
@@ -120,7 +120,7 @@
   }
   .sect1 {
     padding: 0 !important;
-    & + .sect1 {
+    + .sect1 {
       border: 0;
     }
   }

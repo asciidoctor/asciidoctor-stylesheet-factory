@@ -81,11 +81,11 @@ span.icon > .fa {
   // text-indent only seems to be required for webkit
   //text-indent: -1px;
 
-  & * {
+  * {
     color: #fff !important;
   }
 
-  & + b {
+  + b {
     display: none;
   }
 

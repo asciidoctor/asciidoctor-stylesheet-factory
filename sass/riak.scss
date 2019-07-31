@@ -27,7 +27,7 @@ body {
 
 .literalblock,
 .listingblock {
-  & pre {
+  pre {
     background: $pre-bg;
     @include single-box-shadow(#AEB9B6, 0, 1px, 4px, $inset:inset);
     @include radius(5px);
@@ -46,7 +46,7 @@ p > em {
 }
 
 .admonitionblock {
-  & > table {
+  > table {
     width: 100%;
     background-image: image-url('riak/info-bg.jpg', false, false);
     border-collapse: separate;
@@ -83,8 +83,8 @@ p > em {
   background-image: image-url('riak/sidebar-bg.jpg', false, false);
   //@include bg-noise-mono(#444445, 8, .125, 200);
   @include radius(5px);
-  & > .content {
-    & > .title { 
+  > .content {
+    > .title { 
       color: #f1f1f1;
       text-shadow: 0px 2px 2px black;
       font-size: emCalc(20px);

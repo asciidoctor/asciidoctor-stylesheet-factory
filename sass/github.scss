@@ -17,7 +17,7 @@ h2 {
 }
 
 #content #{headers()} {
-  & > a.anchor {
+  > a.anchor {
     color: $body-font-color;
   }
 }
@@ -40,7 +40,7 @@ h2 {
   counter-reset: li;
   list-style: none;
   position: relative;
-  & > li {
+  > li {
     position: relative;
     padding: 5px 0 5px 55px;
     margin-bottom: 5px;
@@ -83,7 +83,7 @@ h2 {
 
 .literalblock,
 .listingblock {
-  & pre {
+  pre {
     background: $pre-bg;
   }
 }

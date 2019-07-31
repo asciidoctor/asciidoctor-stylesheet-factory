@@ -9,7 +9,7 @@ h4 {
 // TODO make pre-radius configurable
 .literalblock,
 .listingblock {
-  & > .content > pre {
+  > .content > pre {
     @include radius(6px);
     margin-left: 2em;
     margin-right: 2em;
@@ -19,7 +19,7 @@ h4 {
 .admonitionblock {
   margin-left: 2em;
   margin-right: 2em;
-  & > table {
+  > table {
     border: 1px solid #609060;
     border-top-width: 1.5em;
     background-color: #e9ffe9;
@@ -42,7 +42,7 @@ h4 {
   background-color: #e8ecef;
   border-color: #ccc;
 
-  & > .content > .title {
+  > .content > .title {
     color: $primary-color;
   }
 }
