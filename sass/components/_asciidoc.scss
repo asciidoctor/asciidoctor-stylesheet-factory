@@ -1030,10 +1030,10 @@ p.tableblock:last-child {
 }
 
 // NOTE compensate for bottom margin on last block in AsciiDoc table cell
-td.tableblock > .content > :last-child {
-  margin-bottom: -$paragraph-margin-bottom;
-  &.sidebarblock {
-    margin-bottom: 0;
+td.tableblock > .content {
+  margin-bottom: $paragraph-margin-bottom;
+  & > :last-child {
+    margin-bottom: -$paragraph-margin-bottom;
   }
 }
 
