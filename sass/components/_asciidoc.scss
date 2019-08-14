@@ -1044,7 +1044,8 @@ table.tableblock, th.tableblock, td.tableblock {
 
 table.grid-all > thead > tr > .tableblock,
 table.grid-all > tbody > tr > .tableblock {
-  border-width: 0 $table-border-size $table-border-size 0;
+  border-width: $table-border-size;
+  border-collapse: collapse;
 }
 
 table.grid-all > tfoot > tr > .tableblock {
@@ -1066,18 +1067,19 @@ table.grid-rows > tfoot > tr > .tableblock {
 
 table.grid-all > * > tr > .tableblock:last-child,
 table.grid-cols > * > tr > .tableblock:last-child {
-  border-right-width: 0;
+  border-right-width: $table-border-size;
 }
 
 table.grid-all > tbody > tr:last-child > .tableblock,
 table.grid-all > thead:last-child > tr > .tableblock,
 table.grid-rows > tbody > tr:last-child > .tableblock,
 table.grid-rows > thead:last-child > tr > .tableblock {
-  border-bottom-width: 0;
+  border-bottom-width: $table-border-size;
 }
 
 table.frame-all {
-  border-width: $table-border-size;
+  border-width: 0;
+  border-collapse: collapse;
 }
 
 table.frame-sides {
