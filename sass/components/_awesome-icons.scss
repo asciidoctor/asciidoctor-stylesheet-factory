@@ -64,7 +64,7 @@ span.icon > .fa {
   display: inline-block;
   color: #fff !important;
   background-color: $body-font-color;
-  @include radius(100px);
+  @include radius(50%);
   text-align: center;
   font-size: 0.75em;
   //width: 1.5em;
