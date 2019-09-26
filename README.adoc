@@ -33,7 +33,7 @@ The default stylesheet is generated using the [.path]_build-stylesheet.sh_ comma
 To run this command, you need the following programs:
 
 * bundler (`gem install bundler`)
-* cssshrink (`npm install -g cssshrink`)
+* cssshrink (`npm install cssshrink`)
 * cat
 * sed
 * ruby
