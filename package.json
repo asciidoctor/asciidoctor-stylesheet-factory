@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "color": "0.11.4",
+    "csscolormin": "0.0.5",
+    "cssshrink": "0.0.5"
+  }
+}
