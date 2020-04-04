@@ -6,7 +6,15 @@ if [ ! -z $1 ]; then
   STYLESHEET_NAME=$1
 fi
 
-bundle exec compass compile -s compact
+mkdir -p stylesheets
+
+./node_modules/.bin/node-sass \
+  --include-path node_modules/foundation-sites/scss \
+  --include-path node_modules/compass-mixins/lib \
+  --functions lib/functions.js \
+  --output-style compact \
+  sass/${STYLESHEET_NAME}.scss > stylesheets/${STYLESHEET_NAME}.css
+
 LINES=`wc -l stylesheets/$STYLESHEET_NAME.css | cut -d" " -f1`
 echo '/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */' > $STYLESHEET_NAME.css
 cat stylesheets/$STYLESHEET_NAME.css | \

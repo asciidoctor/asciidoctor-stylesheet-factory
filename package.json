@@ -1,7 +1,11 @@
 {
   "devDependencies": {
+    "canvas": "^2.6.1",
     "color": "0.11.4",
+    "compass-mixins": "^0.12.10",
     "csscolormin": "0.0.5",
-    "cssshrink": "0.0.5"
+    "cssshrink": "^0.0.5",
+    "foundation-sites": "foundation/foundation-sites#v4.3.2",
+    "node-sass": "^4.13.1"
   }
 }

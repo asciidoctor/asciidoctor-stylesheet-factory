@@ -2,6 +2,7 @@
 @import "normalize";
 $cursor-default-value: auto !default;
 @import "foundation/components/global";
+@import "compass/functions";
 @import "compass/css3/box-shadow";
 
 // better defaults (TODO maybe do these at the bottom of the theme colors)
