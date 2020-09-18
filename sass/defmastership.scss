@@ -1,0 +1,31 @@
+@import "settings/asciidoctor";
+@import "components/awesome-icons";
+
+@import "settings/defmastership";
+@import "maker";
+
+
+.define .content, .define>p {
+    @include single-box-shadow($definition-border-color, 0, 1px, 4px);
+}
+
+.tag {
+    border: none;
+    height: 100%;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 0 4px;
+    font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+}
+
+@each $color in ('aqua', 'black', 'blue', 'fuchsia', 'gray', 'green', 'lime', 'maroon', 'navy', 'olive', 'purple', 'red', 'silver', 'teal', 'white', 'yellow') {
+    .tag.#{$color} {
+        color: white;
+        background-color: scale-color(string-to-color($color), $lightness: $rainbow-lightness);
+
+    }
+}
+
+.external_reference a {
+    font-style: italic;
+}
