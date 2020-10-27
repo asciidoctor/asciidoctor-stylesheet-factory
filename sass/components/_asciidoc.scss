@@ -1061,11 +1061,6 @@ table.grid-rows > tfoot > tr > .tableblock {
   border-width: $table-border-size 0 0 0;
 }
 
-table.grid-all > * > tr > .tableblock:last-child,
-table.grid-cols > * > tr > .tableblock:last-child {
-  border-right-width: 0;
-}
-
 table.grid-all > tbody > tr:last-child > .tableblock,
 table.grid-all > thead:last-child > tr > .tableblock,
 table.grid-rows > tbody > tr:last-child > .tableblock,
