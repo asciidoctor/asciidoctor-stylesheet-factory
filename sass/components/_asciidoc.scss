@@ -28,8 +28,6 @@ $subheader-text-rendering: $header-text-rendering !default;
 $footer-bg: $body-font-color !default;
 $footer-font-color: invert($body-font-color) !default;
 
-// NOTE: border-collapse: separate allows us to control border sides independently
-
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -1022,7 +1020,6 @@ pre.pygments .lineno {
 
 table.tableblock {
   max-width: 100%;
-  border-collapse: separate;
 }
 
 p.tableblock:last-child {
