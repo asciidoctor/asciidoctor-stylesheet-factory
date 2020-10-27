@@ -18,6 +18,7 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   sed '/^body { margin: 0;/d' | \
   sed 's/^body { background:[^}]*/&tab-size: 4; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;/' | \
   sed '/^body { -moz-osx-font-smoothing:/d' | \
+  sed 's/direction: ltr;//' | \
   sed 's/, \(summary\|canvas\)//' | \
   sed '/^script /d' | \
   sed '/object, svg { display: inline-block;/d' | \
