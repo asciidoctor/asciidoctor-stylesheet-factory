@@ -16,8 +16,8 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   sed 's/^@media only/@media/' | \
   sed '/\.antialiased {/d' | \
   sed '/^body { margin: 0;/d' | \
-  sed 's/^body { background:[^}]*/&tab-size: 4; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;/' | \
-  sed '/^body { -moz-osx-font-smoothing:/d' | \
+  sed "s/^body { background:[^}]*/&$(grep -oP '(?<=^body {) *tab-size.*-moz[^}]*' stylesheets/$STYLESHEET_NAME.css)/" | \
+  sed '/^body { *tab-size/d' | \
   sed 's/direction: ltr;//' | \
   sed 's/, \(summary\|canvas\)//' | \
   sed '/^script /d' | \
