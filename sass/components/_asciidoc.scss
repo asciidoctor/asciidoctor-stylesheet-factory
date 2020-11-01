@@ -1,15 +1,3 @@
-// QUESTION: should we add max-width:100% and height:auto to svg?
-object, svg {
-  display: inline-block;
-  vertical-align: middle;
-}
-.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-.stretch {
-  width: 100%;
-}
 @import "foundation/components/grid";
 @import "foundation/components/type";
 @import "foundation/components/panels";
@@ -29,9 +17,11 @@ $footer-bg: $body-font-color !default;
 $footer-font-color: invert($body-font-color) !default;
 
 body {
+  tab-size: 4;
+  //overflow-wrap: anywhere;
+  word-wrap: anywhere;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  tab-size: 4;
 }
 
 // Foundation reduces heading font size and line-height for screens below small breakpoint
@@ -55,6 +45,21 @@ body {
   }
 }
 
+// QUESTION: should we add max-width:100% and height:auto to svg?
+object, svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stretch {
+  width: 100%;
+}
+
 .clearfix,
 .float-group {
   &:before, &:after {
@@ -64,6 +69,14 @@ body {
   &:after {
     clear: both;
   }
+}
+
+.nobreak {
+  //overflow-wrap: normal;
+  word-wrap: normal;
+}
+.nowrap {
+  white-space: nowrap;
 }
 
 // :not([class^=L]) is for prettify; could also use :not(li)
@@ -88,18 +101,6 @@ body {
   line-height: $code-line-height;
   @if $code-text-rendering != inherit {
     text-rendering: $code-text-rendering;
-  }
-  //overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-:not(pre) > code {
-  &.nobreak {
-    //overflow-wrap: normal;
-    word-wrap: normal;
-  }
-  &.nowrap {
-    white-space: nowrap;
   }
 }
 
@@ -732,8 +733,6 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
   }
   // FIXME make border radius on listing blocks configurable!
   @include radius;
-  //overflow-wrap: break-word;
-  word-wrap: break-word;
   // set overflow-x just in case content refuses to break
   overflow-x: auto;
   // screens below breakpoint
