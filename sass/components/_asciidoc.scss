@@ -488,7 +488,7 @@ b.button:after {
 }
 
 #footer {
-  max-width: 100%;
+  max-width: none;
   //margin-top: $panel-margin-bottom * 2;
   background: $footer-bg;
   padding: $panel-padding;
