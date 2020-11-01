@@ -71,12 +71,17 @@ object, svg {
   }
 }
 
-.nobreak {
-  //overflow-wrap: normal;
-  word-wrap: normal;
-}
-.nowrap {
-  white-space: nowrap;
+:not(pre) {
+  &.nobreak {
+    //overflow-wrap: normal;
+    word-wrap: normal;
+  }
+  &.nowrap {
+    white-space: nowrap;
+  }
+  &.pre-wrap {
+    white-space: pre-wrap;
+  }
 }
 
 // :not([class^=L]) is for prettify; could also use :not(li)
