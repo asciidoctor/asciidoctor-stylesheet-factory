@@ -24,6 +24,8 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   sed '/object, svg { display: inline-block;/d' | \
   sed 's/img { display: inline-block;/img, object, svg { display: inline-block;/' | \
   sed 's/table thead, table tfoot {\(.*\) font-weight: bold;\(.*\)}/table thead, table tfoot {\1\2}/' | \
+  sed 's/ tr td { display: table-cell; / tr td { /' | \
+  sed 's/ tr th { display: table-cell; line-height: [^;]\+; / tr th { /' | \
   sed 's/, table tr:nth-of-type(even)//' | \
   sed '/^p\.lead {/d' | \
   sed '/^ul\.no-bullet, ol\.no-bullet { margin-left: 1.5em; }$/d' | \
