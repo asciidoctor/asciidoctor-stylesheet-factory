@@ -1022,9 +1022,10 @@ pre.pygments .lineno {
   }
 }
 
-table.tableblock {
-  max-width: 100%;
-}
+// NOTE max-width only works if the display is set to block (but that breaks border collapsing)
+//table.tableblock {
+//  max-width: 100%;
+//}
 
 p.tableblock:last-child {
   margin-bottom: 0;
