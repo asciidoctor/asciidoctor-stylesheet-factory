@@ -45,6 +45,15 @@ body {
   }
 }
 
+// use this technique to force tables to scroll horizontally if they overflow bounds
+// however, it breaks border collapsing
+//table {
+//  display: block;
+//  width: max-content;
+//  max-width: 100%;
+//  overflow-x: auto;
+//}
+
 // QUESTION: should we add max-width:100% and height:auto to svg?
 object, svg {
   display: inline-block;
