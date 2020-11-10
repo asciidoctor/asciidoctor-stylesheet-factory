@@ -27,6 +27,8 @@ cat stylesheets/$STYLESHEET_NAME.css | \
   sed 's/ tr td { display: table-cell; / tr td { /' | \
   sed 's/ tr th { display: table-cell; line-height: [^;]\+; / tr th { /' | \
   sed 's/, table tr:nth-of-type(even)//' | \
+  sed 's/table { \(background:.*\) }/table { \1 word-wrap: normal; }/' | \
+  sed '/table { word-wrap:/d' | \
   sed '/^p\.lead {/d' | \
   sed '/^ul\.no-bullet, ol\.no-bullet { margin-left: 1.5em; }$/d' | \
   sed '/^ul\.no-bullet { list-style: none; }$/d' | \

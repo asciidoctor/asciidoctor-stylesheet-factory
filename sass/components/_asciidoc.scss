@@ -18,15 +18,18 @@ $footer-font-color: invert($body-font-color) !default;
 
 body {
   tab-size: 4;
-  //overflow-wrap: anywhere;
   word-wrap: anywhere;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
 
-// Foundation reduces heading font size and line-height for screens below small breakpoint
-// Force the line-height to remain consistent!
+table {
+  word-wrap: normal;
+}
+
 #{headers()} {
+  // Foundation reduces heading font size and line-height for screens below small breakpoint
+  // Force the line-height to remain consistent!
   line-height: $header-line-height;
   @if $header-word-spacing {
     word-spacing: $header-word-spacing;
@@ -82,7 +85,6 @@ object, svg {
 
 :not(pre) {
   &.nobreak {
-    //overflow-wrap: normal;
     word-wrap: normal;
   }
   &.nowrap {
@@ -141,7 +143,6 @@ pre {
 pre.nowrap,
 pre.nowrap pre {
   white-space: pre;
-  //overflow-wrap: normal;
   word-wrap: normal;
 }
 
@@ -685,6 +686,7 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
     color: $blockquote-cite-font-color;
     // QUESTION use opacity instead of blockquote-cite-font-color?
     //opacity: 0.75;
+    word-wrap: anywhere;
 
     //> .paragraph:last-child > p {
     > :last-child > :last-child {
@@ -1040,12 +1042,14 @@ p.tableblock:last-child {
   margin-bottom: 0;
 }
 
-// NOTE compensate for bottom margin on last block in AsciiDoc table cell
+// NOTE AsciiDoc table cell
 td.tableblock > .content {
+  // NOTE compensate for bottom margin on last block in AsciiDoc table cell
   margin-bottom: $paragraph-margin-bottom;
   > :last-child {
     margin-bottom: -$paragraph-margin-bottom;
   }
+  word-wrap: anywhere;
 }
 
 table.tableblock, th.tableblock, td.tableblock {
@@ -1299,6 +1303,10 @@ td.hdlist2 {
 td.hdlist1 {
   font-weight: bold;
   padding-bottom: $paragraph-margin-bottom;
+}
+
+td.hdlist2 {
+  word-wrap: anywhere;
 }
 
 .literalblock + .colist,
