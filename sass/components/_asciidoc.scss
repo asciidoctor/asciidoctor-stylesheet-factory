@@ -654,9 +654,9 @@ table.tableblock.fit-content > caption.title {
 }
 
 // nested AsciiDoc document (should put "nested" class on surrounding div)
-table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p {
-  font-size: inherit;
-}
+//table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p {
+//  font-size: inherit;
+//}
 
 .admonitionblock > table {
   border-collapse: separate;
