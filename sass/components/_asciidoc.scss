@@ -1231,21 +1231,19 @@ ul.unstyled, ol.unstyled {
   margin-left: 0;
 }
 
-ul.checklist {
-  margin-left: emCalc(10px);
-}
-
-// use consistent size for checkbox
-ul.checklist li > p:first-child > .fa-square-o:first-child,
-ul.checklist li > p:first-child > .fa-check-square-o:first-child {
-  width: 1.25em;
-  font-size: 0.8em;
-  position: relative;
-  bottom: 0.125em;
-}
-
-ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
-  margin-right: 0.25em;
+ul.checklist > li > p:first-child {
+  margin-left: $list-side-margin * -2 / 3;
+  // use consistent size for checkbox
+  > .fa-square-o:first-child,
+  > .fa-check-square-o:first-child {
+    width: 1.25em;
+    font-size: 0.8em;
+    position: relative;
+    bottom: 0.125em;
+  }
+  > input[type="checkbox"]:first-child {
+    margin-right: 0.25em;
+  }
 }
 
 ul.inline {
