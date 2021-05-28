@@ -653,7 +653,7 @@ table.tableblock.fit-content > caption.title {
   // QUESTION remove or reduce letter-spacing?
 }
 
-// nested AsciiDoc document (should put "nested" class on surrounding div)
+// disable implicit lead role inside AsciiDoc table cell
 //table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p {
 //  font-size: inherit;
 //}
