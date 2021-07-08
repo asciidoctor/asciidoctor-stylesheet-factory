@@ -87,3 +87,17 @@ h2 {
     background: $pre-bg;
   }
 }
+
+.rtl{
+	direction:rtl;
+}
+
+.rtl div,.rtl dl,.rtl dt,.rtl dd,.rtl ul,.rtl ol,.rtl li,.rtl h1,.rtl h2,.rtl h3,.rtl #toctitle,.rtl.sidebarblock > .rtl.content > .rtl.title,.rtl h4,.rtl h5,.rtl h6,.rtl pre,.rtl form,.rtl p,.rtl blockquote,.rtl th,.rtl td{
+  direction:rtl;
+  
+}
+
+@font-face {
+    font-family: 'Vazir';    
+    src: local('Vazir'),  url("http://omidbiz.us.cube.filecorn.com/Vazir-Light.ttf") format('truetype');
+}
