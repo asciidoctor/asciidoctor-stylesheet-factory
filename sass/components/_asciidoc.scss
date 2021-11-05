@@ -546,7 +546,7 @@ b.button:after {
     margin-left: -1.5ex;
     display: block;
     text-decoration: none !important;
-    visibility: hidden;
+    opacity: 0;
     text-align: center;
     font-weight: normal;
 
@@ -561,7 +561,7 @@ b.button:after {
 
   &:hover > a.anchor,
   > a.anchor:hover {
-    visibility: visible;
+    opacity: 1;
   }
 
   > a.link {
